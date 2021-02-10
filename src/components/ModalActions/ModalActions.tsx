@@ -27,6 +27,7 @@ const StyledModalActions = styled.div`
 
 const StyledModalAction = styled.div`
   flex: 1;
+  text-align: center;
 `
 
 export default ModalActions
