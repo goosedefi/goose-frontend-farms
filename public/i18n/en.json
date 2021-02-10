@@ -1,0 +1,1226 @@
+{
+  "data": [
+    {
+      "data": {
+        "stringId": 278,
+        "text": "Farm"
+      }
+    },
+    {
+      "data": {
+        "stringId": 280,
+        "text": "Staking"
+      }
+    },
+    {
+      "data": {
+        "stringId": 284,
+        "text": "Exchange"
+      }
+    },
+    {
+      "data": {
+        "stringId": 286,
+        "text": "Docs"
+      }
+    },
+    {
+      "data": {
+        "stringId": 288,
+        "text": "Voting"
+      }
+    },
+    {
+      "data": {
+        "stringId": 290,
+        "text": "Lottery"
+      }
+    },
+    {
+      "data": {
+        "stringId": 292,
+        "text": "Unlock Wallet"
+      }
+    },
+    {
+      "data": {
+        "stringId": 294,
+        "text": "Your %asset% Balance"
+      }
+    },
+    {
+      "data": {
+        "stringId": 296,
+        "text": "Total %asset% Supply"
+      }
+    },
+    {
+      "data": {
+        "stringId": 298,
+        "text": "LOCKED"
+      }
+    },
+    {
+      "data": {
+        "stringId": 300,
+        "text": "Pending harvest"
+      }
+    },
+    {
+      "data": {
+        "stringId": 302,
+        "text": "New rewards per block"
+      }
+    },
+    {
+      "data": {
+        "stringId": 304,
+        "text": "Total EGG burned since launch"
+      }
+    },
+    {
+      "data": {
+        "stringId": 306,
+        "text": "See the Kitchen"
+      }
+    },
+    {
+      "data": {
+        "stringId": 308,
+        "text": "Telegram"
+      }
+    },
+    {
+      "data": {
+        "stringId": 310,
+        "text": "Blog"
+      }
+    },
+    {
+      "data": {
+        "stringId": 312,
+        "text": "Github"
+      }
+    },
+    {
+      "data": {
+        "stringId": 314,
+        "text": "Twitter"
+      }
+    },
+    {
+      "data": {
+        "stringId": 316,
+        "text": "Deposit"
+      }
+    },
+    {
+      "data": {
+        "stringId": 318,
+        "text": "Earn"
+      }
+    },
+    {
+      "data": {
+        "stringId": 320,
+        "text": "Stake LP tokens to earn EGG"
+      }
+    },
+    {
+      "data": {
+        "stringId": 322,
+        "text": "Stake Egg, get SYRUP."
+      }
+    },
+    {
+      "data": {
+        "stringId": 328,
+        "text": "You can swap back anytime"
+      }
+    },
+    {
+      "data": {
+        "stringId": 330,
+        "text": "%asset% Earned"
+      }
+    },
+    {
+      "data": {
+        "stringId": 332,
+        "text": "Tokens Staked"
+      }
+    },
+    {
+      "data": {
+        "stringId": 334,
+        "text": "Every time you stake and unstake EGG tokens, the contract will automatically harvest EGG rewards for you!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 338,
+        "text": "The Sous Chef is cooking up a treat for all SYRUP holders"
+      }
+    },
+    {
+      "data": {
+        "stringId": 340,
+        "text": "SYRUP Tokens Staked"
+      }
+    },
+    {
+      "data": {
+        "stringId": 342,
+        "text": "XVS Tokens Earned"
+      }
+    },
+    {
+      "data": {
+        "stringId": 344,
+        "text": "Stake your SYRUP to earn tokens of new projects."
+      }
+    },
+    {
+      "data": {
+        "stringId": 346,
+        "text": "Rewards will be calculated per block and total rewards will be distributed automatically at the end of each project\u2019s farming period."
+      }
+    },
+    {
+      "data": {
+        "stringId": 348,
+        "text": "Pool"
+      }
+    },
+    {
+      "data": {
+        "stringId": 350,
+        "text": "Coming soon"
+      }
+    },
+    {
+      "data": {
+        "stringId": 352,
+        "text": "APY"
+      }
+    },
+    {
+      "data": {
+        "stringId": 354,
+        "text": "Total Liquidity"
+      }
+    },
+    {
+      "data": {
+        "stringId": 356,
+        "text": "View on BscScan"
+      }
+    },
+    {
+      "data": {
+        "stringId": 358,
+        "text": "Egg price"
+      }
+    },
+    {
+      "data": {
+        "stringId": 360,
+        "text": "%asset% Tokens Earned"
+      }
+    },
+    {
+      "data": {
+        "stringId": 362,
+        "text": "%num% blocks until farming ends"
+      }
+    },
+    {
+      "data": {
+        "stringId": 364,
+        "text": "Total Syrup Staked"
+      }
+    },
+    {
+      "data": {
+        "stringId": 380,
+        "text": "1 EGG = 1 SYRUP"
+      }
+    },
+    {
+      "data": {
+        "stringId": 382,
+        "text": "Coming soon..."
+      }
+    },
+    {
+      "data": {
+        "stringId": 384,
+        "text": "Your Stake"
+      }
+    },
+    {
+      "data": {
+        "stringId": 386,
+        "text": "Farming starts in %num% Blocks"
+      }
+    },
+    {
+      "data": {
+        "stringId": 388,
+        "text": "Finished"
+      }
+    },
+    {
+      "data": {
+        "stringId": 390,
+        "text": "Farming ends in %num% Blocks"
+      }
+    },
+    {
+      "data": {
+        "stringId": 392,
+        "text": "Project Site"
+      }
+    },
+    {
+      "data": {
+        "stringId": 394,
+        "text": "Unstake SYRUP"
+      }
+    },
+    {
+      "data": {
+        "stringId": 400,
+        "text": "SYRUP holders proportionally split 25% of EGG block emissions each day (10 EGG per block), Rewards are distributed each block."
+      }
+    },
+    {
+      "data": {
+        "stringId": 402,
+        "text": "Stake SYRUP to earn new tokens."
+      }
+    },
+    {
+      "data": {
+        "stringId": 406,
+        "text": "Rewards are calculated per block."
+      }
+    },
+    {
+      "data": {
+        "stringId": 408,
+        "text": "Total"
+      }
+    },
+    {
+      "data": {
+        "stringId": 410,
+        "text": "End"
+      }
+    },
+    {
+      "data": {
+        "stringId": 412,
+        "text": "View project site"
+      }
+    },
+    {
+      "data": {
+        "stringId": 414,
+        "text": "Your Project? \ud83d\udc40"
+      }
+    },
+    {
+      "data": {
+        "stringId": 416,
+        "text": "Create a pool for your token"
+      }
+    },
+    {
+      "data": {
+        "stringId": 418,
+        "text": "Apply now"
+      }
+    },
+    {
+      "data": {
+        "stringId": 420,
+        "text": "Phase 1: BUYING"
+      }
+    },
+    {
+      "data": {
+        "stringId": 424,
+        "text": "%num% EGG"
+      }
+    },
+    {
+      "data": {
+        "stringId": 426,
+        "text": "Spend EGG to buy tickets, contributing to the lottery pot. Ticket purchases end approx. 30 minutes before lottery. Win prizes if 2, 3, or 4 of your ticket numbers match the winning numbers and their positions! Good luck!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 428,
+        "text": "Your total tickets for this round"
+      }
+    },
+    {
+      "data": {
+        "stringId": 430,
+        "text": "Buy ticket"
+      }
+    },
+    {
+      "data": {
+        "stringId": 432,
+        "text": "View your tickets"
+      }
+    },
+    {
+      "data": {
+        "stringId": 434,
+        "text": "Approx. time left to buy tickets"
+      }
+    },
+    {
+      "data": {
+        "stringId": 438,
+        "text": "Close"
+      }
+    },
+    {
+      "data": {
+        "stringId": 440,
+        "text": "Latest Winning Numbers"
+      }
+    },
+    {
+      "data": {
+        "stringId": 442,
+        "text": "Tickets matching 4 numbers:"
+      }
+    },
+    {
+      "data": {
+        "stringId": 444,
+        "text": "Tickets matching 3 numbers:"
+      }
+    },
+    {
+      "data": {
+        "stringId": 446,
+        "text": "Tickets matching 2 numbers:"
+      }
+    },
+    {
+      "data": {
+        "stringId": 448,
+        "text": "Export recent winning numbers"
+      }
+    },
+    {
+      "data": {
+        "stringId": 450,
+        "text": "Enter amount of tickets to buy"
+      }
+    },
+    {
+      "data": {
+        "stringId": 452,
+        "text": "Max"
+      }
+    },
+    {
+      "data": {
+        "stringId": 454,
+        "text": "%num% EGG Available"
+      }
+    },
+    {
+      "data": {
+        "stringId": 456,
+        "text": "Your amount must be a multiple of 10 EGG"
+      }
+    },
+    {
+      "data": {
+        "stringId": 458,
+        "text": "1 Ticket = 10 EGG"
+      }
+    },
+    {
+      "data": {
+        "stringId": 462,
+        "text": "Cancel"
+      }
+    },
+    {
+      "data": {
+        "stringId": 464,
+        "text": "Confirm"
+      }
+    },
+    {
+      "data": {
+        "stringId": 466,
+        "text": "Warning"
+      }
+    },
+    {
+      "data": {
+        "stringId": 468,
+        "text": "Lottery ticket purchases are final."
+      }
+    },
+    {
+      "data": {
+        "stringId": 472,
+        "text": "Tickets are only valid for one lottery draw, and will be burned after the draw."
+      }
+    },
+    {
+      "data": {
+        "stringId": 474,
+        "text": "Buying tickets does not guarantee you will win anything. Please only participate once you understand the risks."
+      }
+    },
+    {
+      "data": {
+        "stringId": 476,
+        "text": "I understand"
+      }
+    },
+    {
+      "data": {
+        "stringId": 478,
+        "text": "Ticket purchases are final. Your EGG cannot be returned to you after buying tickets."
+      }
+    },
+    {
+      "data": {
+        "stringId": 480,
+        "text": "Claim prizes"
+      }
+    },
+    {
+      "data": {
+        "stringId": 482,
+        "text": "EGG prizes to be claimed"
+      }
+    },
+    {
+      "data": {
+        "stringId": 484,
+        "text": "Phase 2: CLAIMING"
+      }
+    },
+    {
+      "data": {
+        "stringId": 486,
+        "text": "You can unstake at any time."
+      }
+    },
+    {
+      "data": {
+        "stringId": 488,
+        "text": "Pending Confirmation"
+      }
+    },
+    {
+      "data": {
+        "stringId": 490,
+        "text": "My Tickets (Total: %TICKETS%)"
+      }
+    },
+    {
+      "data": {
+        "stringId": 492,
+        "text": "Approx. time before next lottery start"
+      }
+    },
+    {
+      "data": {
+        "stringId": 494,
+        "text": "Approve EGG"
+      }
+    },
+    {
+      "data": {
+        "stringId": 496,
+        "text": "SYRUP holders proportionally split 40% of EGG block emissions each day (10 EGG per block), Rewards are distributed each block."
+      }
+    },
+    {
+      "data": {
+        "stringId": 500,
+        "text": "IFO: Initial Farm Offerings"
+      }
+    },
+    {
+      "data": {
+        "stringId": 502,
+        "text": "Buy new tokens with a brand new token sale model."
+      }
+    },
+    {
+      "data": {
+        "stringId": 504,
+        "text": "You\u2019ll pay for the new tokens using EGG-BNB LP tokens, which means you need to stake equal amounts of EGG and BNB in a liquidity pool to take part."
+      }
+    },
+    {
+      "data": {
+        "stringId": 506,
+        "text": "Get EGG-BNB LP >"
+      }
+    },
+    {
+      "data": {
+        "stringId": 508,
+        "text": "The project gets the BNB, Goose Finance burns the EGG."
+      }
+    },
+    {
+      "data": {
+        "stringId": 510,
+        "text": "You get the tokens."
+      }
+    },
+    {
+      "data": {
+        "stringId": 512,
+        "text": "Want to launch your own IFO?"
+      }
+    },
+    {
+      "data": {
+        "stringId": 514,
+        "text": "Launch your project with Goose Finance, Binance Smart Chain\u2019s most-used AMM project and liquidity provider, to bring your token directly to the most active and rapidly growing community on BSC."
+      }
+    },
+    {
+      "data": {
+        "stringId": 516,
+        "text": "Apply to launch"
+      }
+    },
+    {
+      "data": {
+        "stringId": 520,
+        "text": "Community"
+      }
+    },
+    {
+      "data": {
+        "stringId": 522,
+        "text": "Core"
+      }
+    },
+    {
+      "data": {
+        "stringId": 526,
+        "text": "Available"
+      }
+    },
+    {
+      "data": {
+        "stringId": 528,
+        "text": "My Wallet"
+      }
+    },
+    {
+      "data": {
+        "stringId": 530,
+        "text": "Sign out"
+      }
+    },
+    {
+      "data": {
+        "stringId": 532,
+        "text": "Harvest all (%count%)"
+      }
+    },
+    {
+      "data": {
+        "stringId": 534,
+        "text": "Egg Stats"
+      }
+    },
+    {
+      "data": {
+        "stringId": 536,
+        "text": "Total EGG Supply"
+      }
+    },
+    {
+      "data": {
+        "stringId": 538,
+        "text": "Total EGG Burned"
+      }
+    },
+    {
+      "data": {
+        "stringId": 540,
+        "text": "New EGG\/block"
+      }
+    },
+    {
+      "data": {
+        "stringId": 542,
+        "text": "Farms & Staking"
+      }
+    },
+    {
+      "data": {
+        "stringId": 544,
+        "text": "EGG to Harvest"
+      }
+    },
+    {
+      "data": {
+        "stringId": 546,
+        "text": "EGG in Wallet"
+      }
+    },
+    {
+      "data": {
+        "stringId": 548,
+        "text": "Collecting EGG"
+      }
+    },
+    {
+      "data": {
+        "stringId": 550,
+        "text": "Your Lottery Winnings"
+      }
+    },
+    {
+      "data": {
+        "stringId": 552,
+        "text": "EGG to Collect"
+      }
+    },
+    {
+      "data": {
+        "stringId": 554,
+        "text": "Total jackpot this round"
+      }
+    },
+    {
+      "data": {
+        "stringId": 556,
+        "text": "Collect Winnings"
+      }
+    },
+    {
+      "data": {
+        "stringId": 558,
+        "text": "Buy Tickets"
+      }
+    },
+    {
+      "data": {
+        "stringId": 562,
+        "text": "Harvest"
+      }
+    },
+    {
+      "data": {
+        "stringId": 564,
+        "text": "Approve"
+      }
+    },
+    {
+      "data": {
+        "stringId": 568,
+        "text": "Select"
+      }
+    },
+    {
+      "data": {
+        "stringId": 570,
+        "text": "Winning Numbers This Round"
+      }
+    },
+    {
+      "data": {
+        "stringId": 574,
+        "text": "Staking Pool"
+      }
+    },
+    {
+      "data": {
+        "stringId": 576,
+        "text": "Goose Finance"
+      }
+    },
+    {
+      "data": {
+        "stringId": 578,
+        "text": "The #1 AMM and yield farm on Binance Smart Chain."
+      }
+    },
+    {
+      "data": {
+        "stringId": 580,
+        "text": "Stake EGG to earn new tokens."
+      }
+    },
+    {
+      "data": {
+        "stringId": 582,
+        "text": "Launch Time"
+      }
+    },
+    {
+      "data": {
+        "stringId": 584,
+        "text": "For Sale"
+      }
+    },
+    {
+      "data": {
+        "stringId": 586,
+        "text": "EGG to burn (USD)"
+      }
+    },
+    {
+      "data": {
+        "stringId": 588,
+        "text": "Unstake"
+      }
+    },
+    {
+      "data": {
+        "stringId": 590,
+        "text": "\u2b50\ufe0f Every time you stake and unstake LP tokens, the contract will automatically harvest EGG rewards for you!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 592,
+        "text": "How to take part"
+      }
+    },
+    {
+      "data": {
+        "stringId": 594,
+        "text": "Before Sale"
+      }
+    },
+    {
+      "data": {
+        "stringId": 596,
+        "text": "Buy EGG and BNB tokens"
+      }
+    },
+    {
+      "data": {
+        "stringId": 598,
+        "text": "Get EGG-BNB LP tokens by adding EGG and BNB liquidity"
+      }
+    },
+    {
+      "data": {
+        "stringId": 600,
+        "text": "During Sale"
+      }
+    },
+    {
+      "data": {
+        "stringId": 602,
+        "text": "While the sale is live, commit your EGG-LP tokens to buy the IFO tokens"
+      }
+    },
+    {
+      "data": {
+        "stringId": 604,
+        "text": "After Sale"
+      }
+    },
+    {
+      "data": {
+        "stringId": 606,
+        "text": "Claim the tokens you purchased, along with any unspent funds."
+      }
+    },
+    {
+      "data": {
+        "stringId": 608,
+        "text": "Done!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 610,
+        "text": "Read more"
+      }
+    },
+    {
+      "data": {
+        "stringId": 612,
+        "text": "Connect"
+      }
+    },
+    {
+      "data": {
+        "stringId": 614,
+        "text": "Trade in for EGG, or keep for your collection!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 616,
+        "text": "Register your interest in winning an NFT below."
+      }
+    },
+    {
+      "data": {
+        "stringId": 618,
+        "text": "Register for a chance to win"
+      }
+    },
+    {
+      "data": {
+        "stringId": 620,
+        "text": "Learn more"
+      }
+    },
+    {
+      "data": {
+        "stringId": 622,
+        "text": "Trade in NFT"
+      }
+    },
+    {
+      "data": {
+        "stringId": 624,
+        "text": "Trade in"
+      }
+    },
+    {
+      "data": {
+        "stringId": 626,
+        "text": "You will receive"
+      }
+    },
+    {
+      "data": {
+        "stringId": 628,
+        "text": "When you trade in this NFT to receive EGG, you will lose access to it forever!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 630,
+        "text": "Claim NFT"
+      }
+    },
+    {
+      "data": {
+        "stringId": 632,
+        "text": "How it works"
+      }
+    },
+    {
+      "data": {
+        "stringId": 634,
+        "text": "Winners will be able to claim an NFT on this page once the claiming period starts."
+      }
+    },
+    {
+      "data": {
+        "stringId": 636,
+        "text": "If you are not selected, you won\u2019t be able to claim. Better luck next time!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 638,
+        "text": "Winners can trade in their NFTs for a EGG value until the expiry date written below. If you don't trade in your NFT by then, don\u2019t worry: you\u2019ll still keep it in your wallet!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 640,
+        "text": "How are winners selected?"
+      }
+    },
+    {
+      "data": {
+        "stringId": 642,
+        "text": "Winners are selected at random! Good luck!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 646,
+        "text": "Value if traded in"
+      }
+    },
+    {
+      "data": {
+        "stringId": 648,
+        "text": "Number minted"
+      }
+    },
+    {
+      "data": {
+        "stringId": 650,
+        "text": "Number burned"
+      }
+    },
+    {
+      "data": {
+        "stringId": 652,
+        "text": "Claim this NFT"
+      }
+    },
+    {
+      "data": {
+        "stringId": 654,
+        "text": "Trade in for EGG"
+      }
+    },
+    {
+      "data": {
+        "stringId": 656,
+        "text": "Loading\u2026"
+      }
+    },
+    {
+      "data": {
+        "stringId": 658,
+        "text": "Details"
+      }
+    },
+    {
+      "data": {
+        "stringId": 660,
+        "text": "You won!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 662,
+        "text": "Claim an NFT from the options below!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 664,
+        "text": "Can be traded until"
+      }
+    },
+    {
+      "data": {
+        "stringId": 666,
+        "text": "Wallet Disconnected"
+      }
+    },
+    {
+      "data": {
+        "stringId": 668,
+        "text": "Connect to see if you have won an NFT!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 670,
+        "text": "Home"
+      }
+    },
+    {
+      "data": {
+        "stringId": 672,
+        "text": "Trade"
+      }
+    },
+    {
+      "data": {
+        "stringId": 674,
+        "text": "Farms"
+      }
+    },
+    {
+      "data": {
+        "stringId": 676,
+        "text": "Pools"
+      }
+    },
+    {
+      "data": {
+        "stringId": 678,
+        "text": "NFT"
+      }
+    },
+    {
+      "data": {
+        "stringId": 680,
+        "text": "Info"
+      }
+    },
+    {
+      "data": {
+        "stringId": 682,
+        "text": "IFO"
+      }
+    },
+    {
+      "data": {
+        "stringId": 684,
+        "text": "More"
+      }
+    },
+    {
+      "data": {
+        "stringId": 686,
+        "text": "Liquidity"
+      }
+    },
+    {
+      "data": {
+        "stringId": 688,
+        "text": "Overview"
+      }
+    },
+    {
+      "data": {
+        "stringId": 690,
+        "text": "Token"
+      }
+    },
+    {
+      "data": {
+        "stringId": 692,
+        "text": "Pairs"
+      }
+    },
+    {
+      "data": {
+        "stringId": 694,
+        "text": "Accounts"
+      }
+    },
+    {
+      "data": {
+        "stringId": 696,
+        "text": "Stake LP tokens to earn EGG"
+      }
+    },
+    {
+      "data": {
+        "stringId": 698,
+        "text": "Active"
+      }
+    },
+    {
+      "data": {
+        "stringId": 700,
+        "text": "Inactive"
+      }
+    },
+    {
+      "data": {
+        "stringId": 702,
+        "text": "Dual"
+      }
+    },
+    {
+      "data": {
+        "stringId": 704,
+        "text": "Compound"
+      }
+    },
+    {
+      "data": {
+        "stringId": 706,
+        "text": "Unstake %asset%"
+      }
+    },
+    {
+      "data": {
+        "stringId": 708,
+        "text": "The EGG Lottery"
+      }
+    },
+    {
+      "data": {
+        "stringId": 710,
+        "text": "Buy tickets with EGG"
+      }
+    },
+    {
+      "data": {
+        "stringId": 712,
+        "text": "Win if 2, 3 or 4 of your ticket numbers match!"
+      }
+    },
+    {
+      "data": {
+        "stringId": 716,
+        "text": "Next draw"
+      }
+    },
+    {
+      "data": {
+        "stringId": 718,
+        "text": "Past draws"
+      }
+    },
+    {
+      "data": {
+        "stringId": 720,
+        "text": "Round %num%"
+      }
+    },
+    {
+      "data": {
+        "stringId": 722,
+        "text": "Total Pot"
+      }
+    },
+    {
+      "data": {
+        "stringId": 724,
+        "text": "Your tickets for this round"
+      }
+    },
+    {
+      "data": {
+        "stringId": 726,
+        "text": "Sorry, no prizes to collect"
+      }
+    },
+    {
+      "data": {
+        "stringId": 728,
+        "text": "In Wallet"
+      }
+    },
+    {
+      "data": {
+        "stringId": 10000,
+        "text": "Deposit Fee will be used to buyback EGG"
+      }
+    },
+    {
+      "data": {
+        "stringId": 10001,
+        "text": "Deposit Fee"
+      }
+    },
+    {
+      "data": {
+        "stringId": 10002,
+        "text": "Stake tokens to earn EGG"
+      }
+    }
+  ],
+  "pagination": {
+    "offset": 0,
+    "limit": 200
+  }
+}
