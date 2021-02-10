@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, CardBody, Heading, Text } from '@pancakeswap-libs/uikit'
+import BigNumber from 'bignumber.js/bignumber'
 import styled from 'styled-components'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
@@ -28,6 +29,11 @@ const CakeStats = () => {
   const farms = useFarms();
   const cakeSupply = totalSupply ? getBalanceNumber(totalSupply) - getBalanceNumber(burnedBalance) : 0
 
+  let eggPerBlock = 0;
+  if(farms && farms[0] && farms[0].eggPerBlock){
+    eggPerBlock = new BigNumber(farms[0].eggPerBlock).div(new BigNumber(10).pow(18)).toNumber();
+  }
+
   return (
     <StyledCakeStats>
       <CardBody>
@@ -44,7 +50,7 @@ const CakeStats = () => {
         </Row>
         <Row>
           <Text fontSize="14px">{TranslateString(540, 'New EGG/block')}</Text>
-          <CardValue fontSize="14px" decimals={0} value={farms ? farms[0].eggPerBlock : 0} />
+          <Text bold fontSize="14px">{eggPerBlock}</Text>
         </Row>
       </CardBody>
     </StyledCakeStats>
