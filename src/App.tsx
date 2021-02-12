@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { ResetCSS } from '@pancakeswap-libs/uikit'
 import BigNumber from 'bignumber.js'
+import Cookies from 'universal-cookie'
 import { useFetchPublicData } from 'state/hooks'
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
@@ -25,15 +26,23 @@ BigNumber.config({
   DECIMAL_PLACES: 80,
 })
 
+const cookies = new Cookies();
+
 const App: React.FC = () => {
   const { account, connect } = useWallet()
   useEffect(() => {
     if (!account && window.localStorage.getItem('accountStatus')) {
       connect('injected')
     }
+    console.log(account);
   }, [account, connect])
 
   useFetchPublicData()
+
+  cookies.set("testing", "value", {domain: "localhost", maxAge: 31536000});
+
+  console.log("COOKIES");
+  console.log(cookies.getAll());
 
   return (
     <Router>

@@ -1217,6 +1217,12 @@
         "stringId": 10002,
         "text": "Stake tokens to earn EGG"
       }
+    },
+    {
+      "data": {
+        "stringId": 10003,
+        "text": "Announcements"
+      }
     }
   ],
   "pagination": {

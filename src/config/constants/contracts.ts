@@ -3,16 +3,8 @@ export default {
     56: '0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6',
     97: '',
   },
-  syrup: {
-    56: '',
-    97: '',
-  },
   masterChef: {
     56: '0xe70E9185F5ea7Ba3C5d63705784D8563017f2E57',
-    97: '',
-  },
-  sousChef: {
-    56: '',
     97: '',
   },
   wbnb: {
@@ -33,10 +25,6 @@ export default {
   },
   busd: {
     56: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
-    97: '',
-  },
-  ust: {
-    56: '0x23396cF899Ca06c4472205fC903bDB4de249D6fC',
     97: '',
   },
 }

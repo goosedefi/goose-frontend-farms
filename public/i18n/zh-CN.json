@@ -1217,6 +1217,12 @@
         "stringId": 10002,
         "text": "质押代币以堆叠 EGG"
       }
+    },
+    {
+      "data": {
+        "stringId": 10003,
+        "text": "公告"
+      }
     }
   ],
   "pagination": {
