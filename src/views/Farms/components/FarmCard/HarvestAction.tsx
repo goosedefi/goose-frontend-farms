@@ -34,6 +34,7 @@ const HarvestAction: React.FC<FarmCardActionsProps> = ({ earnings, pid }) => {
       <BalanceAndCompound>
         {pid === 12 ?
           <Button
+            disabled={rawEarningsBalance === 0 || pendingTx}
             size='sm'
             variant='secondary'
             marginBottom='15px'
