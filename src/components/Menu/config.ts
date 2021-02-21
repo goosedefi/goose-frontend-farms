@@ -67,11 +67,6 @@ const config: MenuEntry[] = [
       },
     ],
   },
-  // {
-  //   label: 'IFO',
-  //   icon: 'IfoIcon',
-  //   href: '/ifo',
-  // },
   {
     label: 'More',
     icon: 'MoreIcon',
@@ -93,6 +88,11 @@ const config: MenuEntry[] = [
         href: "https://goosefinance.medium.com/",
       },
     ],
+  },
+  {
+    label: 'Audit by Hacken',
+    icon: 'AuditIcon',
+    href: 'https://www.goosedefi.com/files/hackenAudit.pdf',
   },
 ]
 
