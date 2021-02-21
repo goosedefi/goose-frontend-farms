@@ -76,10 +76,10 @@ const config: MenuEntry[] = [
     label: 'More',
     icon: 'MoreIcon',
     items: [
-      // {
-      //   label: 'Voting',
-      //   href: 'https://voting.pancakeswap.finance',
-      // },
+      {
+        label: 'Audit by Hacken',
+        href: 'https://www.goosedefi.com/files/hackenAudit.pdf',
+      },
       {
         label: "Github",
         href: "https://github.com/goosedefi/",
