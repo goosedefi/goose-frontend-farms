@@ -365,6 +365,23 @@ const farms: FarmConfig[] = [
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
   },
+  {
+    pid: 23,
+    risk: 3,
+    isTokenOnly: true,
+    lpSymbol: 'AUTO',
+    lpAddresses: {
+      97: '',
+      56: '0x4d0228ebeb39f6d2f29ba528e2d15fc9121ead56', // AUTO-BNB LP
+    },
+    tokenSymbol: 'AUTO',
+    tokenAddresses: {
+      97: '',
+      56: '0xa184088a740c695e156f91f5cc086a06bb78b827',
+    },
+    quoteTokenSymbol: QuoteToken.BNB,
+    quoteTokenAdresses: contracts.wbnb,
+  },
 ]
 
 export default farms
