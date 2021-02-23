@@ -2,12 +2,18 @@ import React, { useState, useCallback } from 'react'
 import styled from 'styled-components'
 import { Heading, Card, CardBody, Button } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
+import BigNumber from 'bignumber.js'
 import useI18n from 'hooks/useI18n'
 import { useAllHarvest } from 'hooks/useHarvest'
 import useFarmsWithBalance from 'hooks/useFarmsWithBalance'
 import UnlockButton from 'components/UnlockButton'
 import CakeHarvestBalance from './CakeHarvestBalance'
 import CakeWalletBalance from './CakeWalletBalance'
+import { usePriceCakeBusd } from '../../../state/hooks'
+import useTokenBalance from '../../../hooks/useTokenBalance'
+import { getCakeAddress } from '../../../utils/addressHelpers'
+import useAllEarnings from '../../../hooks/useAllEarnings'
+import { getBalanceNumber } from '../../../utils/formatBalance'
 
 const StyledFarmStakingCard = styled(Card)`
   background-image: url('/images/egg/2a.png');
@@ -38,6 +44,12 @@ const FarmedStakingCard = () => {
   const { account } = useWallet()
   const TranslateString = useI18n()
   const farmsWithBalance = useFarmsWithBalance()
+  const cakeBalance = getBalanceNumber(useTokenBalance(getCakeAddress()))
+  const eggPrice = usePriceCakeBusd().toNumber()
+  const allEarnings = useAllEarnings()
+  const earningsSum = allEarnings.reduce((accum, earning) => {
+    return accum + new BigNumber(earning).div(new BigNumber(10).pow(18)).toNumber()
+  }, 0)
   const balancesWithValue = farmsWithBalance.filter((balanceType) => balanceType.balance.toNumber() > 0)
 
   const { onReward } = useAllHarvest(balancesWithValue.map((farmWithBalance) => farmWithBalance.pid))
@@ -61,12 +73,14 @@ const FarmedStakingCard = () => {
         </Heading>
         <CardImage src="/images/egg/2.png" alt="cake logo" width={64} height={64} />
         <Block>
-          <CakeHarvestBalance />
           <Label>{TranslateString(544, 'EGG to Harvest')}</Label>
+          <CakeHarvestBalance earningsSum={earningsSum}/>
+          <Label>~${(eggPrice * earningsSum).toFixed(2)}</Label>
         </Block>
         <Block>
-          <CakeWalletBalance />
           <Label>{TranslateString(546, 'EGG in Wallet')}</Label>
+          <CakeWalletBalance cakeBalance={cakeBalance} />
+          <Label>~${(eggPrice * cakeBalance).toFixed(2)}</Label>
         </Block>
         <Actions>
           {account ? (
