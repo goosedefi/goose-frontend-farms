@@ -72,20 +72,16 @@ const config: MenuEntry[] = [
     icon: 'MoreIcon',
     items: [
       {
-        label: 'Audit by Hacken',
-        href: 'https://www.goosedefi.com/files/hackenAudit.pdf',
+        label: 'Github',
+        href: 'https://github.com/goosedefi/',
       },
       {
-        label: "Github",
-        href: "https://github.com/goosedefi/",
+        label: 'Docs',
+        href: 'https://goosedefi.gitbook.io/goose-finance/',
       },
       {
-        label: "Docs",
-        href: "https://goosedefi.gitbook.io/goose-finance/",
-      },
-      {
-        label: "Blog",
-        href: "https://goosefinance.medium.com/",
+        label: 'Blog',
+        href: 'https://goosefinance.medium.com/',
       },
     ],
   },
@@ -93,6 +89,11 @@ const config: MenuEntry[] = [
     label: 'Audit by Hacken',
     icon: 'AuditIcon',
     href: 'https://www.goosedefi.com/files/hackenAudit.pdf',
+  },
+  {
+    label: 'Audit by CertiK',
+    icon: 'AuditIcon',
+    href: 'https://certik.org/projects/goose-finance',
   },
 ]
 
