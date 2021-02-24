@@ -1130,6 +1130,12 @@
     },
     {
       "data": {
+        "stringId": 699,
+        "text": "已質押"
+      }
+    },
+    {
+      "data": {
         "stringId": 700,
         "text": "\u672a\u555f\u52d5"
       }

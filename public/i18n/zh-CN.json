@@ -1130,6 +1130,12 @@
     },
     {
       "data": {
+        "stringId": 699,
+        "text": "已质押"
+      }
+    },
+    {
+      "data": {
         "stringId": 700,
         "text": "\u505c\u7528"
       }

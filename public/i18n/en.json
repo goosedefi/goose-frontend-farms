@@ -1118,6 +1118,12 @@
     },
     {
       "data": {
+        "stringId": 699,
+        "text": "Staked only"
+      }
+    },
+    {
+      "data": {
         "stringId": 700,
         "text": "Inactive"
       }
