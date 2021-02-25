@@ -663,13 +663,13 @@
     {
       "data": {
         "stringId": 536,
-        "text": "EGG \u7e3d\u4f9b\u61c9\u91cf"
+        "text": "總鑄幣量"
       }
     },
     {
       "data": {
         "stringId": 538,
-        "text": "EGG \u7e3d\u92b7\u6bc0\u91cf"
+        "text": "總銷毀量"
       }
     },
     {
@@ -1228,6 +1228,18 @@
       "data": {
         "stringId": 10003,
         "text": "公告"
+      }
+    },
+    {
+      "data": {
+        "stringId": 10004,
+        "text": "總流通量"
+      }
+    },
+    {
+      "data": {
+        "stringId": 10005,
+        "text": "總市值"
       }
     }
   ],

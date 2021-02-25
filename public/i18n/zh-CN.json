@@ -663,13 +663,13 @@
     {
       "data": {
         "stringId": 536,
-        "text": "EGG \u603b\u4f9b\u5e94\u91cf"
+        "text": "总铸币量"
       }
     },
     {
       "data": {
         "stringId": 538,
-        "text": "EGG \u603b\u711a\u6bc1\u91cf"
+        "text": "总焚毁量"
       }
     },
     {
@@ -1228,6 +1228,18 @@
       "data": {
         "stringId": 10003,
         "text": "公告"
+      }
+    },
+    {
+      "data": {
+        "stringId": 10004,
+        "text": "总流通量"
+      }
+    },
+    {
+      "data": {
+        "stringId": 10005,
+        "text": "总市值"
       }
     }
   ],

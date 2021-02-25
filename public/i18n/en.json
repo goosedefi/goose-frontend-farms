@@ -651,13 +651,13 @@
     {
       "data": {
         "stringId": 536,
-        "text": "Total EGG Supply"
+        "text": "Total Minted"
       }
     },
     {
       "data": {
         "stringId": 538,
-        "text": "Total EGG Burned"
+        "text": "Total Burned"
       }
     },
     {
@@ -1228,6 +1228,18 @@
       "data": {
         "stringId": 10003,
         "text": "Announcements"
+      }
+    },
+    {
+      "data": {
+        "stringId": 10004,
+        "text": "Circulating Supply"
+      }
+    },
+    {
+      "data": {
+        "stringId": 10005,
+        "text": "Market Cap"
       }
     }
   ],
