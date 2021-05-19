@@ -30,18 +30,20 @@ const RainbowLight = keyframes`
 `
 
 const StyledCardAccent = styled.div`
-  background: linear-gradient(45deg,
-  rgba(255, 0, 0, 1) 0%,
-  rgba(255, 154, 0, 1) 10%,
-  rgba(208, 222, 33, 1) 20%,
-  rgba(79, 220, 74, 1) 30%,
-  rgba(63, 218, 216, 1) 40%,
-  rgba(47, 201, 226, 1) 50%,
-  rgba(28, 127, 238, 1) 60%,
-  rgba(95, 21, 242, 1) 70%,
-  rgba(186, 12, 248, 1) 80%,
-  rgba(251, 7, 217, 1) 90%,
-  rgba(255, 0, 0, 1) 100%);
+  background: linear-gradient(
+    45deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 154, 0, 1) 10%,
+    rgba(208, 222, 33, 1) 20%,
+    rgba(79, 220, 74, 1) 30%,
+    rgba(63, 218, 216, 1) 40%,
+    rgba(47, 201, 226, 1) 50%,
+    rgba(28, 127, 238, 1) 60%,
+    rgba(95, 21, 242, 1) 70%,
+    rgba(186, 12, 248, 1) 80%,
+    rgba(251, 7, 217, 1) 90%,
+    rgba(255, 0, 0, 1) 100%
+  );
   background-size: 300% 300%;
   animation: ${RainbowLight} 2s linear infinite;
   border-radius: 16px;
@@ -97,7 +99,9 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
   // We assume the token name is coin pair + lp e.g. CAKE-BNB LP, LINK-BNB LP,
   // NAR-CAKE LP. The images should be cake-bnb.svg, link-bnb.svg, nar-cake.svg
   // const farmImage = farm.lpSymbol.split(' ')[0].toLocaleLowerCase()
-  const farmImage = farm.isTokenOnly ? farm.tokenSymbol.toLowerCase() : `${farm.tokenSymbol.toLowerCase()}-${farm.quoteTokenSymbol.toLowerCase()}`
+  const farmImage = farm.isTokenOnly
+    ? farm.tokenSymbol.toLowerCase()
+    : `${farm.tokenSymbol.toLowerCase()}-${farm.quoteTokenSymbol.toLowerCase()}`
 
   const totalValue: BigNumber = useMemo(() => {
     if (!farm.lpTotalInQuoteToken) {
@@ -118,10 +122,12 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
 
   const lpLabel = farm.lpSymbol
   const earnLabel = 'EGG'
-  const farmAPY = farm.apy && farm.apy.times(new BigNumber(100)).toNumber().toLocaleString(undefined, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })
+  const farmAPY =
+    farm.apy &&
+    farm.apy.times(new BigNumber(100)).toNumber().toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })
 
   const { quoteTokenAdresses, quoteTokenSymbol, tokenAddresses, risk } = farm
 
@@ -137,7 +143,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
         tokenSymbol={farm.tokenSymbol}
       />
       {!removed && (
-        <Flex justifyContent='space-between' alignItems='center'>
+        <Flex justifyContent="space-between" alignItems="center">
           <Text>{TranslateString(352, 'APR')}:</Text>
           <Text bold style={{ display: 'flex', alignItems: 'center' }}>
             {farm.apy ? (
@@ -158,13 +164,15 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
           </Text>
         </Flex>
       )}
-      <Flex justifyContent='space-between'>
+      <Flex justifyContent="space-between">
         <Text>{TranslateString(318, 'Earn')}:</Text>
         <Text bold>{earnLabel}</Text>
       </Flex>
-      <Flex justifyContent='space-between'>
+      <Flex justifyContent="space-between">
         <Text style={{ fontSize: '24px' }}>{TranslateString(10001, 'Deposit Fee')}:</Text>
-        <Text bold style={{ fontSize: '24px' }}>{(farm.depositFeeBP / 100)}%</Text>
+        <Text bold style={{ fontSize: '24px' }}>
+          {farm.depositFeeBP / 100}%
+        </Text>
       </Flex>
       <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
       <Divider />
@@ -177,10 +185,9 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
           removed={removed}
           isTokenOnly={farm.isTokenOnly}
           bscScanAddress={
-            farm.isTokenOnly ?
-              `https://bscscan.com/token/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
-              :
-              `https://bscscan.com/token/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
+            farm.isTokenOnly
+              ? `https://bscscan.com/token/${farm.tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+              : `https://bscscan.com/token/${farm.lpAddresses[process.env.REACT_APP_CHAIN_ID]}`
           }
           totalValueFormated={totalValueFormated}
           lpLabel={lpLabel}
