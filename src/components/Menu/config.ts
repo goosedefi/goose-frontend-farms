@@ -11,12 +11,12 @@ const config: MenuEntry[] = [
     icon: 'TradeIcon',
     items: [
       {
-        label: 'Exchange',
-        href: 'https://exchange.goosedefi.com/',
+        label: 'Buy SafeSTOS',
+        href: 'https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x9eab0a93b0cd5d904493694f041bdcedb97b88c6',
       },
       {
         label: 'Liquidity',
-        href: 'https://exchange.goosedefi.com/#/pool',
+        href: 'https://exchange.pancakeswap.finance/#/pool',
       },
     ],
   },
@@ -24,11 +24,6 @@ const config: MenuEntry[] = [
     label: 'Farms',
     icon: 'FarmIcon',
     href: '/farms',
-  },
-  {
-    label: 'Nests',
-    icon: 'PoolIcon',
-    href: '/nests',
   },
   // {
   //   label: 'Pools',
@@ -50,20 +45,20 @@ const config: MenuEntry[] = [
     icon: 'InfoIcon',
     items: [
       {
-        label: 'PancakeSwap',
-        href: 'https://pancakeswap.info/token/0xF952Fc3ca7325Cc27D15885d37117676d25BfdA6',
+        label: 'Bscscan',
+        href: 'https://bscscan.com/token/0x9eab0a93b0cd5d904493694f041bdcedb97b88c6',
       },
       {
-        label: 'CoinGecko',
-        href: 'https://www.coingecko.com/en/coins/goose-finance',
+        label: 'Chart',
+        href: 'https://charts.bogged.finance/?token=0x9eAB0a93b0cd5d904493694F041BdCedb97b88C6',
       },
       {
-        label: 'CoinMarketCap',
-        href: 'https://coinmarketcap.com/currencies/goose-finance/',
+        label: 'Coingecko Coming Soon',
+        href: '#',
       },
       {
-        label: 'AstroTools',
-        href: 'https://app.astrotools.io/pancake-pair-explorer/0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
+        label: 'CoinMarketCap Coming Soon',
+        href: '#',
       },
     ],
   },
@@ -73,33 +68,18 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Github',
-        href: 'https://github.com/goosedefi/',
+        href: 'https://github.com/stosent/',
       },
       {
-        label: 'Docs',
-        href: 'https://goosedefi.gitbook.io/goose-finance/',
-      },
-      {
-        label: 'Blog',
-        href: 'https://goosefinance.medium.com/',
-      },
+        label: 'Medium',
+        href: 'https://stos-entertainment-co.medium.com/',
+      }
     ],
   },
   {
-    label: 'Partnerships/IFO',
-    icon: 'GooseIcon',
-    href:
-      'https://docs.google.com/forms/d/e/1FAIpQLSe7ycrw8Dq4C5Vjc9WNlRtTxEhFDB1Ny6jlAByZ2Y6qBo7SKg/viewform?usp=sf_link',
-  },
-  {
-    label: 'Audit by Hacken',
+    label: 'Audits Coming Soon',
     icon: 'AuditIcon',
-    href: 'https://www.goosedefi.com/files/hackenAudit.pdf',
-  },
-  {
-    label: 'Audit by CertiK',
-    icon: 'AuditIcon',
-    href: 'https://certik.org/projects/goose-finance',
+    href: '#',
   },
 ]
 
