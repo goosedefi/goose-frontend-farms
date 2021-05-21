@@ -16,7 +16,6 @@ fetch('https://api.vlad.finance/price.php?key=6547643&pool=0x60d5e86c0074b56e52a
   .then(
     (result) => {
       if (result.status === true) {
-        console.log("test", result.data);
         STOSValue = new BigNumber(result.data)
       } else {
         STOSValue = ZERO
