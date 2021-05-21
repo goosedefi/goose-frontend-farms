@@ -73,7 +73,7 @@ const config: MenuEntry[] = [
       {
         label: 'Medium',
         href: 'https://stos-entertainment-co.medium.com/',
-      }
+      },
     ],
   },
   {
