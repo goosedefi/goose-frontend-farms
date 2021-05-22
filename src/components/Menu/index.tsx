@@ -11,7 +11,7 @@ import config from './config'
 const ZERO = new BigNumber(0)
 
 let STOSValue = ZERO;
-fetch('https://api.vlad.finance/price.php?key=6547643&pool=0x60d5e86c0074b56e52a7540b3bf36c399e9f3038&token=0x279d41f3f78fe5c1f0ba41ae963d6e545113c973&decimals=8')
+fetch('https://api.stosentertainment.com/price-bnbpool.php?key=236547643&pool=0xe0e3f3698ba35487e5285fdfd31a5b8d8f564d8b&token=0x9eab0a93b0cd5d904493694f041bdcedb97b88c6&decimals=18')
   .then((res) => res.json())
   .then(
     (result) => {
