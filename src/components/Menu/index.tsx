@@ -10,8 +10,10 @@ import config from './config'
 
 const ZERO = new BigNumber(0)
 
-let STOSValue = ZERO;
-fetch('https://api.stosentertainment.com/price-bnbpool.php?key=236547643&pool=0xe0e3f3698ba35487e5285fdfd31a5b8d8f564d8b&token=0x9eab0a93b0cd5d904493694f041bdcedb97b88c6&decimals=18')
+let STOSValue = ZERO
+fetch(
+  'https://api.stosentertainment.com/price-bnbpool.php?key=236547643&pool=0xe0e3f3698ba35487e5285fdfd31a5b8d8f564d8b&token=0x9eab0a93b0cd5d904493694f041bdcedb97b88c6&decimals=18',
+)
   .then((res) => res.json())
   .then(
     (result) => {
@@ -24,10 +26,10 @@ fetch('https://api.stosentertainment.com/price-bnbpool.php?key=236547643&pool=0x
     (error) => {
       STOSValue = ZERO
     },
-  ).catch(() => {
+  )
+  .catch(() => {
     STOSValue = ZERO
-  }
-  );
+  })
 
 const Menu = (props) => {
   const { account, connect, reset } = useWallet()
