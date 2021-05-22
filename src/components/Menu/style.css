@@ -1,0 +1,7 @@
+
+nav ~ div > div:nth-child(2) {
+	background-image: url(./bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
