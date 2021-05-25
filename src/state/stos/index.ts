@@ -11,12 +11,10 @@ export const stosSlice = createSlice({
   initialState,
   reducers: {
     setPriceData: (state, action) => {
-      console.log("price", state)
       const priceData = action.payload
       return { data: {...state.data, price: priceData } };
     },
     setTotalSupplyData: (state, action) => {
-      console.log("supply", state)
       const totalSupplyData = action.payload
       return {  data: {...state.data, totalSupply: totalSupplyData } };
     }
@@ -49,7 +47,6 @@ await fetch(
   .catch(() => {
     STOSValue = 0;
   })
-  console.log("STOSValue", STOSValue);
   dispatch(setPriceData(STOSValue))
 }
 
@@ -63,7 +60,6 @@ export const fetchTotalSupplyDataAsync = () => async (dispatch) => {
     .then(
       (result) => {
         if (result.status === "1") {
-          console.log("aaaa", result.result);
           totalSupplyValue = (result.result / (10 ** 18))
         } else {
           totalSupplyValue = 0;
@@ -76,7 +72,6 @@ export const fetchTotalSupplyDataAsync = () => async (dispatch) => {
     .catch(() => {
       totalSupplyValue = 0;
     })
-    console.log("totalSupplyValue", totalSupplyValue);
     dispatch(setTotalSupplyData(totalSupplyValue))
   }
 
