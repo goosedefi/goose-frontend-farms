@@ -1,7 +1,5 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
-import BigNumber from 'bignumber.js'
-import fetchPrice from './fetchPrice'
 import { StosState } from '../types'
 
 const initialState: StosState = { data: { price: 0, totalSupply: 0 } }
