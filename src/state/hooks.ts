@@ -2,7 +2,7 @@ import BigNumber from 'bignumber.js'
 import { useEffect, useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import useRefresh from 'hooks/useRefresh'
-import { fetchFarmsPublicDataAsync, fetchPoolsPublicDataAsync, fetchPoolsUserDataAsync } from './actions'
+import { fetchFarmsPublicDataAsync, fetchPoolsPublicDataAsync, fetchPoolsUserDataAsync, fetchPriceDataAsync, fetchTotalSupplyDataAsync } from './actions'
 import { State, Farm, Pool } from './types'
 import { QuoteToken } from '../config/constants/types'
 
@@ -14,6 +14,24 @@ export const useFetchPublicData = () => {
   useEffect(() => {
     dispatch(fetchFarmsPublicDataAsync())
     // dispatch(fetchPoolsPublicDataAsync())
+  }, [dispatch, slowRefresh])
+}
+
+// For Price
+export const useFetchPriceData = () => {
+  const dispatch = useDispatch()
+  const { slowRefresh } = useRefresh()
+  useEffect(() => {
+    dispatch(fetchPriceDataAsync())
+  }, [dispatch, slowRefresh])
+}
+
+// For Total Supply
+export const useFetchTotalSupplyData = () => {
+  const dispatch = useDispatch()
+  const { slowRefresh } = useRefresh()
+  useEffect(() => {
+    dispatch(fetchTotalSupplyDataAsync())
   }, [dispatch, slowRefresh])
 }
 
@@ -81,6 +99,16 @@ export const usePriceCakeBusd = (): BigNumber => {
   const pid = 0 // STOS-BUSD LP
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO
+}
+
+export const useSTOSPrice = (): BigNumber => {
+  const { price } = useSelector((state: State) => state.stos.data)
+  return price ? new BigNumber(price) : ZERO
+}
+
+export const useTotalSupplyPrice = (): BigNumber => {
+  const { totalSupply } = useSelector((state: State) => state.stos.data)
+  return totalSupply ? new BigNumber(totalSupply) : ZERO
 }
 
 export const useTotalValue = (): BigNumber => {

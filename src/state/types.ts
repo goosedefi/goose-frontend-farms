@@ -34,6 +34,9 @@ export interface Pool extends PoolConfig {
 export interface FarmsState {
   data: Farm[]
 }
+export interface StosState {
+  data: {}
+}
 
 export interface PoolsState {
   data: Pool[]
@@ -43,5 +46,6 @@ export interface PoolsState {
 
 export interface State {
   farms: FarmsState
-  pools: PoolsState
+  pools: PoolsState,
+  stos: StosState
 }
