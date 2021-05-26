@@ -62,7 +62,7 @@ const Home: React.FC = () => {
         <Heading as="h1" size="xl" mb="24px" color="secondary">
           {TranslateString(576, 'STOS Entertainment')}
         </Heading>
-        <Text>
+        <Text fontSize="24px" style={{ textShadow: "2px 2px 2px #888" }}>
           {TranslateString(
             578,
             'A global NFT hospitality project, curating unique entertainment experiences for our NFT & Token holders.',
