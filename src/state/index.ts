@@ -8,6 +8,6 @@ export default configureStore({
   reducer: {
     farms: farmsReducer,
     pools: poolsReducer,
-    stos: stosReducer
+    stos: stosReducer,
   },
 })

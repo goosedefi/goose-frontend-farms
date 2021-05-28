@@ -34,7 +34,7 @@ export const farmsSlice = createSlice({
 })
 
 // Actions
-export const { setFarmsPublicData, setFarmUserData, } = farmsSlice.actions
+export const { setFarmsPublicData, setFarmUserData } = farmsSlice.actions
 
 // Thunks
 export const fetchFarmsPublicDataAsync = () => async (dispatch) => {

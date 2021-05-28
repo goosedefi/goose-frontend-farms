@@ -13,7 +13,7 @@ const Menu = (props) => {
   const { account, connect, reset } = useWallet()
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
   const { isDark, toggleTheme } = useTheme()
-  const STOSValue = useSTOSPrice();
+  const STOSValue = useSTOSPrice()
 
   return (
     <UikitMenu

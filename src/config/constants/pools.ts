@@ -1,23 +1,27 @@
 import { PoolConfig, QuoteToken, PoolCategory } from './types'
+import contracts from './contracts'
 
 const pools: PoolConfig[] = [
-  // {
-  //   sousId: 0,
-  //   tokenName: 'CAKE',
-  //   stakingTokenName: QuoteToken.CAKE,
-  //   stakingTokenAddress: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
-  //   contractAddress: {
-  //     97: '0xd3af5fe61dbaf8f73149bfcfa9fb653ff096029a',
-  //     56: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',
-  //   },
-  //   poolCategory: PoolCategory.CORE,
-  //   projectLink: 'https://pancakeswap.finance/',
-  //   harvest: true,
-  //   tokenPerBlock: '10',
-  //   sortOrder: 1,
-  //   isFinished: false,
-  //   tokenDecimals: 18,
-  // },
+  {
+    sousId: 2,
+    tokenName: 'STOS',
+    stakingTokenName: QuoteToken.STOS,
+    earningToken: '0xADA2270B0CB5b6254d3d48A6fEE55b72693B746A',
+    stakingTokenAddress: '0xADA2270B0CB5b6254d3d48A6fEE55b72693B746A',
+    contractAddress: {
+      97: '0x33F9559f66d94642D935c3F8db8c693eD8EEb9d5',
+      56: '0x00',
+    },
+    poolCategory: PoolCategory.COMMUNITY,
+    projectLink: 'https://stos.finance/',
+    harvest: true,
+    tokenPerBlock: '0.000',
+    sortOrder: 1,
+    isFinished: false,
+    tokenDecimals: 18,
+    quoteTokenSymbol: QuoteToken.STOS,
+    quoteTokenAdresses: contracts.cake,
+  },
   // {
   //   sousId: 1,
   //   tokenName: 'TWT',
