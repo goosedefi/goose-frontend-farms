@@ -9,7 +9,7 @@ const pools: PoolConfig[] = [
     earningToken: '0xADA2270B0CB5b6254d3d48A6fEE55b72693B746A',
     stakingTokenAddress: '0xADA2270B0CB5b6254d3d48A6fEE55b72693B746A',
     contractAddress: {
-      97: '0x33F9559f66d94642D935c3F8db8c693eD8EEb9d5',
+      97: '0xD6472f34F6418C1dE5aC460644C9F1938B832dC5',
       56: '0x00',
     },
     poolCategory: PoolCategory.COMMUNITY,

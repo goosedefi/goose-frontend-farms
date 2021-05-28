@@ -6,6 +6,7 @@ import { getMasterChefAddress } from 'utils/addressHelpers'
 import farmsConfig from 'config/constants/farms'
 import { QuoteToken } from '../../config/constants/types'
 
+// const web3 = require('web3');
 const CHAIN_ID = process.env.REACT_APP_CHAIN_ID
 
 const fetchFarms = async () => {
@@ -91,7 +92,7 @@ const fetchFarms = async () => {
         }
       }
 
-      const [info, totalAllocPoint, eggPerBlock] = await multicall(masterchefABI, [
+      const [info, totalAllocPoint, lifePerBlock] = await multicall(masterchefABI, [
         {
           address: getMasterChefAddress(),
           name: 'poolInfo',
@@ -103,13 +104,12 @@ const fetchFarms = async () => {
         },
         {
           address: getMasterChefAddress(),
-          name: 'eggPerBlock',
+          name: 'lifePerBlock',
         },
       ])
 
       const allocPoint = new BigNumber(info.allocPoint._hex)
       const poolWeight = allocPoint.div(new BigNumber(totalAllocPoint))
-
       return {
         ...farmConfig,
         tokenAmount: tokenAmount.toJSON(),
@@ -119,7 +119,7 @@ const fetchFarms = async () => {
         poolWeight: poolWeight.toNumber(),
         multiplier: `${allocPoint.div(100).toString()}X`,
         depositFeeBP: info.depositFeeBP,
-        eggPerBlock: new BigNumber(eggPerBlock).toNumber(),
+        lifePerBlock: new BigNumber(lifePerBlock).toNumber(),
       }
     }),
   )
