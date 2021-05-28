@@ -1,16 +1,5 @@
 [
   {
-    "inputs": [
-      {
-        "internalType": "contract CakeToken",
-        "name": "_cake",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
@@ -217,37 +206,6 @@
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_from",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "burn",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "cake",
-    "outputs": [
-      {
-        "internalType": "contract CakeToken",
-        "name": "",
-        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -573,24 +531,6 @@
   {
     "inputs": [],
     "name": "renounceOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_to",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "safeCakeTransfer",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
