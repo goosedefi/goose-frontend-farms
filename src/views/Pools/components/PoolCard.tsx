@@ -5,7 +5,7 @@ import { Button, IconButton, useModal, AddIcon, Image } from '@pancakeswap-libs/
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import UnlockButton from 'components/UnlockButton'
 import Label from 'components/Label'
-import { useERC20 } from 'hooks/useContract'
+import { useERC20, useLP } from 'hooks/useContract'
 import { useSousApprove } from 'hooks/useApprove'
 import useI18n from 'hooks/useI18n'
 import { useSousStake } from 'hooks/useStake'
@@ -16,6 +16,8 @@ import { useSousHarvest } from 'hooks/useHarvest'
 import Balance from 'components/Balance'
 import { QuoteToken, PoolCategory } from 'config/constants/types'
 import { Pool } from 'state/types'
+import { useGetApiPrice, useFarms, usePriceBnbBusd } from 'state/hooks'
+import { getPoolApr, getLPprice } from 'utils/apr'
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
 import CompoundModal from './CompoundModal'
@@ -25,12 +27,8 @@ import OldSyrupTitle from './OldSyrupTitle'
 import HarvestButton from './HarvestButton'
 import CardFooter from './CardFooter'
 
-interface PoolWithApy extends Pool {
-  apy: BigNumber
-}
-
 interface HarvestProps {
-  pool: PoolWithApy
+  pool: Pool
 }
 
 const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
@@ -42,7 +40,6 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
     stakingTokenAddress,
     projectLink,
     harvest,
-    apy,
     tokenDecimals,
     poolCategory,
     totalStaked,
@@ -56,12 +53,32 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const isBnbPool = poolCategory === PoolCategory.BINANCE
   const TranslateString = useI18n()
   const stakingTokenContract = useERC20(stakingTokenAddress)
+  const lpTokenContract = useLP(stakingTokenAddress)
+
+  const [apy, setAPY] = useState(new BigNumber(0))
+
+  const [liquidity, setLiquidity] = useState(new BigNumber(0))
+  const [totalSupply, setTotalSupply] = useState(new BigNumber(0))
+
+  const [reserve0, setReserve0] = useState(new BigNumber(0))
+  const [reserve1, setReserve1] = useState(new BigNumber(0))
+
+  const [token0, setToken0] = useState()
+  const [token1, setToken1] = useState()
+
   const { account } = useWallet()
   const block = useBlock()
   const { onApprove } = useSousApprove(stakingTokenContract, sousId)
   const { onStake } = useSousStake(sousId, isBnbPool)
   const { onUnstake } = useSousUnstake(sousId)
   const { onReward } = useSousHarvest(sousId, isBnbPool)
+  const farms = useFarms()
+
+  // APR
+  const rewardTokenPrice = useGetApiPrice(pool.earningToken ? pool.earningToken : '')
+
+  const token0price = useGetApiPrice(token0 !== undefined ? token0 : '')
+  const token1price = useGetApiPrice(token1 !== undefined ? token1 : '')
 
   const [requestedApproval, setRequestedApproval] = useState(false)
   const [pendingTx, setPendingTx] = useState(false)
@@ -107,6 +124,74 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
       console.error(e)
     }
   }, [onApprove, setRequestedApproval])
+
+  React.useEffect(() => {
+    if (stakingTokenAddress !== undefined) {
+      lpTokenContract.methods
+        .token0()
+        .call()
+        .then((res0) => {
+          setToken0(res0)
+          lpTokenContract.methods
+            .token1()
+            .call()
+            .then((res1) => {
+              setToken1(res1)
+              lpTokenContract.methods
+                .totalSupply()
+                .call()
+                .then((res2) => {
+                  setTotalSupply(new BigNumber(res2))
+                  lpTokenContract.methods
+                    .getReserves()
+                    .call()
+                    .then((reserves) => {
+                      setReserve0(new BigNumber(getBalanceNumber(reserves._reserve0)))
+                      setReserve1(new BigNumber(getBalanceNumber(reserves._reserve1)))
+                    })
+                })
+            })
+        })
+    }
+  }, [lpTokenContract, stakingTokenAddress])
+
+  React.useEffect(() => {
+    if (token0 !== undefined && token1 !== undefined && reserve0 !== undefined && reserve1 !== undefined) {
+      const pair = (token0 !== undefined ? token0 : '').concat('_').concat(token1)
+      getLPprice().then((data) => {
+        setLiquidity(new BigNumber(data[pair].liquidity))
+
+        // console.log('pairData:', data[pair])
+
+        // console.log('reserve0:', reserve0.toString())
+        // console.log('reserve1:', reserve1.toString())
+
+        const baseValue = new BigNumber(token0price).times(reserve0)
+        const quoteValue = new BigNumber(token1price).times(reserve1)
+
+        const totalValue = baseValue.plus(quoteValue)
+        const lpTokenPrice = totalValue.div(getBalanceNumber(totalSupply))
+
+        // console.log('totalSupply:', getBalanceNumber(totalSupply).toString())
+        // console.log('token0price:', token0price.toString())
+        // console.log('token1price:', token1price.toString())
+
+        // console.log('baseValue:', baseValue.toString())
+        // console.log('quoteValue:', quoteValue.toString())
+        // console.log('totalValue:', totalValue.toString())
+        // console.log('lpTokenPrice:', lpTokenPrice.toString())
+
+        const apr = getPoolApr(
+          lpTokenPrice,
+          rewardTokenPrice,
+          getBalanceNumber(pool.totalStaked, pool.tokenDecimals),
+          parseFloat(pool.tokenPerBlock),
+        )
+        setAPY(new BigNumber(apr))
+        // console.log('APR:', apr)
+      })
+    }
+  }, [token0, token1, token0price, token1price, totalSupply, pool, rewardTokenPrice, reserve0, reserve1])
 
   return (
     <Card isActive={isCardActive} isFinished={isFinished && sousId !== 0}>
@@ -181,7 +266,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
             ))}
         </StyledCardActions>
         <StyledDetails>
-          <div style={{ flex: 1 }}>{TranslateString(736, 'APR')}:</div>
+          <div style={{ flex: 1 }}>{TranslateString(736, 'APY')}:</div>
           {isFinished || isOldSyrup || !apy || apy?.isNaN() || !apy?.isFinite() ? (
             '-'
           ) : (

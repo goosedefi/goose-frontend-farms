@@ -82,5 +82,6 @@ export interface PriceState {
 export interface State {
   farms: FarmsState
   pools: PoolsState
+  prices: PriceState
   stos: StosState
 }
