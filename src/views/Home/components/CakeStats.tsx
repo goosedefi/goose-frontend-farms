@@ -54,10 +54,10 @@ const CakeStats = () => {
           {totalSupply && <CardValue fontSize="14px" value={totalSupply.toNumber()} decimals={0} />}
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(540, 'New STOS/block')}</Text>
+          {/* <Text fontSize="14px">{TranslateString(540, 'New STOS/block')}</Text>
           <Text bold fontSize="14px">
             {0}
-          </Text>
+          </Text> */}
         </Row>
       </CardBody>
     </StyledCakeStats>
