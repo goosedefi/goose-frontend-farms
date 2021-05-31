@@ -105,7 +105,7 @@ const CardFooter: React.FC<Props> = ({
                 <span role="img" aria-label="syrup">
                   🥞{' '}
                 </span>
-                {TranslateString(408, 'Total')}
+                {TranslateString(408, 'Total STOS Staked')}
               </Label>
             </FlexFull>
             <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />
@@ -121,7 +121,7 @@ const CardFooter: React.FC<Props> = ({
           {blocksUntilStart === 0 && blocksRemaining > 0 && (
             <Row>
               <FlexFull>
-                <Label>{TranslateString(410, 'End')}:</Label>
+                <Label>{TranslateString(410, 'Remaining Blocks')}:</Label>
               </FlexFull>
               <Balance fontSize="14px" isDisabled={isFinished} value={blocksRemaining} decimals={0} />
             </Row>

@@ -309,13 +309,13 @@
     {
       "data": {
         "stringId": 408,
-        "text": "Total"
+        "text": "Total STOS Staked"
       }
     },
     {
       "data": {
         "stringId": 410,
-        "text": "End"
+        "text": "Remaining Blocks"
       }
     },
     {

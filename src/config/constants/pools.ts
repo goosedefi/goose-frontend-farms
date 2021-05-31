@@ -15,7 +15,7 @@ const pools: PoolConfig[] = [
     poolCategory: PoolCategory.COMMUNITY,
     projectLink: 'https://stos.finance/',
     harvest: true,
-    tokenPerBlock: '0.000',
+    tokenPerBlock: '0.0147',
     sortOrder: 1,
     isFinished: false,
     tokenDecimals: 18,
