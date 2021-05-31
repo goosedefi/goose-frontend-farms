@@ -3,13 +3,13 @@ import contracts from './contracts'
 
 const pools: PoolConfig[] = [
   {
-    sousId: 0,
+    sousId: 1,
     tokenName: 'STOS',
     stakingTokenName: QuoteToken.STOS,
     earningToken: '0xADA2270B0CB5b6254d3d48A6fEE55b72693B746A',
     stakingTokenAddress: '0xADA2270B0CB5b6254d3d48A6fEE55b72693B746A',
     contractAddress: {
-      97: '0xD6472f34F6418C1dE5aC460644C9F1938B832dC5',
+      97: '0x52B0b88b172E0b21f0558605496Ab46bb1Ce0557',
       56: '0x00',
     },
     poolCategory: PoolCategory.COMMUNITY,
