@@ -54,7 +54,7 @@ const Cards = styled(BaseLayout)`
 `
 
 const CustomText = styled(Text)`
-  color: white;
+  color: orange;
   font-size: 30px;
   text-shadow: 2px 2px 2px #000;
 `

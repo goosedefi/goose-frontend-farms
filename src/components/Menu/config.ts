@@ -50,7 +50,7 @@ const config: MenuEntry[] = [
       },
       {
         label: 'Chart',
-        href: 'https://charts.bogged.finance/?token=0x9eAB0a93b0cd5d904493694F041BdCedb97b88C6',
+        href: 'https://dex.guru/token/0x9eab0a93b0cd5d904493694f041bdcedb97b88c6-bsc',
       },
       {
         label: 'Coingecko Coming Soon',
