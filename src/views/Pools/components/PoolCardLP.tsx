@@ -175,7 +175,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
         const quoteValue = new BigNumber(token1price).times(reserve1)
 
         const totalValue = baseValue.plus(quoteValue)
-        const lpTokenPrice = totalValue.div(getBalanceNumber(totalSupply))
+        const lpTokenPrice = totalValue.div(getBalanceNumber(totalSupply)).times(token0price)
 
         // console.log('totalSupply:', getBalanceNumber(totalSupply).toString())
         // console.log('token0price:', token0price.toString())
