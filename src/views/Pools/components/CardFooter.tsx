@@ -21,6 +21,7 @@ interface Props {
   isFinished: boolean
   blocksUntilStart: number
   poolCategory: PoolCategory
+  stakingTokenName: string
 }
 
 const StyledFooter = styled.div<{ isFinished: boolean }>`
@@ -79,6 +80,7 @@ const CardFooter: React.FC<Props> = ({
   isFinished,
   blocksUntilStart,
   poolCategory,
+  stakingTokenName,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const TranslateString = useI18n()
@@ -105,7 +107,7 @@ const CardFooter: React.FC<Props> = ({
                 <span role="img" aria-label="syrup">
                   🥞{' '}
                 </span>
-                {TranslateString(408, 'Total STOS Staked')}
+                Total {stakingTokenName} Staked
               </Label>
             </FlexFull>
             <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />

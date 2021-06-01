@@ -295,6 +295,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
         isFinished={isFinished}
         blocksUntilStart={blocksUntilStart}
         poolCategory={poolCategory}
+        stakingTokenName={stakingTokenName}
       />
     </Card>
   )

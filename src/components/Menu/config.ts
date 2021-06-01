@@ -26,7 +26,7 @@ const config: MenuEntry[] = [
   //   href: '/farms',
   // },
   {
-    label: 'Pools',
+    label: 'Earn SafeSTOS',
     icon: 'PoolIcon',
     href: '/pools',
   },

@@ -72,7 +72,7 @@ const Farm: React.FC = () => {
       <Hero>
         <div>
           <Heading as="h1" size="xxl" mb="16px">
-            {TranslateString(282, 'SYRUP Pool')}
+            {TranslateString(282, 'Earn SafeSTOS')}
           </Heading>
         </div>
       </Hero>
