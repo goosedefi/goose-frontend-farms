@@ -25,11 +25,11 @@ const config: MenuEntry[] = [
   //   icon: 'FarmIcon',
   //   href: '/farms',
   // },
-  {
-    label: 'Earn SafeSTOS',
-    icon: 'PoolIcon',
-    href: '/pools',
-  },
+  // {
+  //   label: 'Earn SafeSTOS',
+  //   icon: 'PoolIcon',
+  //   href: '/pools',
+  // },
   // {
   //   label: 'Lottery',
   //   icon: 'TicketIcon',

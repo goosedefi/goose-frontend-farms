@@ -27,6 +27,7 @@ const Menu = (props) => {
       setLang={setSelectedLanguage}
       cakePriceUsd={STOSValue.toNumber()}
       links={config}
+      backgroundVideo="./videos/bg_video.mp4"
       {...props}
     />
   )
