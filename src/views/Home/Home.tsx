@@ -53,6 +53,12 @@ const Cards = styled(BaseLayout)`
   }
 `
 
+const CustomText = styled(Text)`
+  color: white;
+  font-size: 30px;
+  text-shadow: 2px 2px 2px #000;
+`
+
 const Home: React.FC = () => {
   const TranslateString = useI18n()
 
@@ -62,12 +68,12 @@ const Home: React.FC = () => {
         <Heading as="h1" size="xl" mb="24px" color="secondary">
           {TranslateString(576, 'STOS Entertainment')}
         </Heading>
-        <Text fontSize="24px" style={{ textShadow: '2px 2px 2px #888' }}>
+        <CustomText fontSize="24px">
           {TranslateString(
             578,
             'A global NFT hospitality project, curating unique entertainment experiences for our NFT & Token holders.',
           )}
-        </Text>
+        </CustomText>
       </Hero>
       <div>
         <Cards>
