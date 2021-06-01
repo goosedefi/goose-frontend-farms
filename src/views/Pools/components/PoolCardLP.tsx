@@ -49,6 +49,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
     userData,
     stakingLimit,
     tokenPerBlock,
+    rewardTokenPrice,
   } = pool
   // Pools using native BNB behave differently than pools using a token
   const isBnbPool = poolCategory === PoolCategory.BINANCE
@@ -83,8 +84,6 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
 
   const token0price = useSTOSPrice()
   const token1price = usePriceBnbBusd()
-
-  const rewardTokenPrice = 3000
 
   const [requestedApproval, setRequestedApproval] = useState(false)
   const [pendingTx, setPendingTx] = useState(false)
