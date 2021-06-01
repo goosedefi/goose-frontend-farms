@@ -84,19 +84,20 @@ const Farm: React.FC = () => {
       <Divider />
       <FlexLayout>
         <Route exact path={`${path}`}>
-          <>
-            {orderBy(openPools, ['sortOrder']).map((pool) => {
-              if (pool.earningToken === pool.stakingTokenAddress) {
-                return <PoolCard key={pool.sousId} pool={pool} />
-              }
-              return <PoolCardLP key={pool.sousId} pool={pool} />
-            })}
-          </>
+          {orderBy(openPools, ['sortOrder']).map((pool) => {
+            if (pool.earningToken === pool.stakingTokenAddress) {
+              return <PoolCard key={pool.sousId} pool={pool} />
+            }
+            return <PoolCardLP key={pool.sousId} pool={pool} />
+          })}
         </Route>
         <Route path={`${path}/history`}>
-          {orderBy(finishedPools, ['sortOrder']).map((pool) => (
-            <PoolCard key={pool.sousId} pool={pool} />
-          ))}
+          {orderBy(openPools, ['sortOrder']).map((pool) => {
+            if (pool.earningToken === pool.stakingTokenAddress) {
+              return <PoolCard key={pool.sousId} pool={pool} />
+            }
+            return <PoolCardLP key={pool.sousId} pool={pool} />
+          })}
         </Route>
       </FlexLayout>
     </Page>
