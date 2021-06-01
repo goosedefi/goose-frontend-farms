@@ -110,15 +110,15 @@ const CardFooter: React.FC<Props> = ({
             </FlexFull>
             <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />
           </Row>
-          {blocksUntilStart > 0 && (
+          {/* {blocksUntilStart > 0 && (
             <Row>
               <FlexFull>
                 <Label>{TranslateString(410, 'Start')}:</Label>
               </FlexFull>
               <Balance fontSize="14px" isDisabled={isFinished} value={blocksUntilStart} decimals={0} />
             </Row>
-          )}
-          {blocksUntilStart === 0 && blocksRemaining > 0 && (
+          )} */}
+          {blocksRemaining > 0 && (
             <Row>
               <FlexFull>
                 <Label>{TranslateString(410, 'Remaining Blocks')}:</Label>
