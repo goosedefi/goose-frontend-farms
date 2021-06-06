@@ -14,15 +14,9 @@ const NftProgressSimple = () => {
     <Card>
       <CardBody>
         <InfoRow>
-          <Text>{TranslateString(999, "Total NFT's claimed")}:</Text>
+          <Text>{TranslateString(999, "Total Base and Rare NFTs Claimed")}:</Text>
           <Text>
             <strong>{!isInitialized ? '...' : `${currentDistributedSupply}/${totalSupplyDistributed}`}</strong>
-          </Text>
-        </InfoRow>
-        <InfoRow>
-          <Text>{TranslateString(999, "Total NFT's burned")}:</Text>
-          <Text>
-            <strong>{!isInitialized ? '...' : `${countBunniesBurnt}/${totalSupplyDistributed}`}</strong>
           </Text>
         </InfoRow>
       </CardBody>

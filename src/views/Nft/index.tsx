@@ -22,15 +22,14 @@ const Nft = () => {
       <Page>
         <StyledHero>
           <Heading as="h1" size="xxl" color="secondary" mb="24px">
-            NFTs
+            Base and Rare NFTs
           </Heading>
           <Heading as="h2" size="lg" color="secondary">
-            {TranslateString(999, 'Trade in for CAKE, or keep for your collection!')}
+            {TranslateString(999, 'Trade in for STOS, or keep for your collection!')}
           </Heading>
         </StyledHero>
         <NftInfo />
         <NftList />
-        <HowItWorks />
       </Page>
     </NftProvider>
   )

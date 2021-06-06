@@ -163,10 +163,6 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
               {description}
             </Text>
             <InfoRow>
-              <Text>{TranslateString(999, 'Value if traded in')}:</Text>
-              <Value>10 CAKE</Value>
-            </InfoRow>
-            <InfoRow>
               <Text>{TranslateString(999, 'Number minted')}:</Text>
               <Value>{state.bunnyCount + state.bunnyBurnCount}</Value>
             </InfoRow>
