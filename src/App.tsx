@@ -17,7 +17,8 @@ const Home = lazy(() => import('./views/Home'))
 const Pools = lazy(() => import('./views/Pools'))
 // const Ifos = lazy(() => import('./views/Ifos'))
 const NotFound = lazy(() => import('./views/NotFound'))
-// const Nft = lazy(() => import('./views/Nft'))
+const Nft = lazy(() => import('./views/Nft'))
+const MyCollection = lazy(() => import('./views/MyCollection'))
 
 // This config is required for number formating
 BigNumber.config({
@@ -64,9 +65,12 @@ const App: React.FC = () => {
             {/* <Route path="/ifo"> */}
             {/*  <Ifos /> */}
             {/* </Route> */}
-            {/* <Route path="/nft"> */}
-            {/*  <Nft /> */}
-            {/* </Route> */}
+            <Route path="/nft">
+              <Nft />
+            </Route>
+            <Route path="/my-collection">
+              <MyCollection />
+            </Route>
             {/* Redirect */}
             {/* <Route path="/staking"> */}
             {/*  <Redirect to="/pools" /> */}

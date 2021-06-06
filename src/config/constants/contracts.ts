@@ -27,4 +27,8 @@ export default {
     56: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
     97: '0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee',
   },
+  life: {
+    56: '0x50f4220C82c9325dC99f729C3328FB5c338BEaae',
+    97: '0xADA2270B0CB5b6254d3d48A6fEE55b72693B746A',
+  },
 }

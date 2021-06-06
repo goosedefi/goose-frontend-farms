@@ -8,6 +8,7 @@ import { useSTOSPrice } from 'state/hooks'
 import { Menu as UikitMenu } from '@pancakeswap-libs/uikit'
 import config from './config'
 import './style.css'
+import 'antd/dist/antd.css'
 
 const Menu = (props) => {
   const { account, connect, reset } = useWallet()
