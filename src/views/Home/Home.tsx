@@ -11,9 +11,6 @@ import TwitterCard from './components/TwitterCard'
 
 const Hero = styled.div`
   align-items: center;
-  background-image: url('/images/egg/3.png');
-  background-repeat: no-repeat;
-  background-position: top center;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -23,10 +20,6 @@ const Hero = styled.div`
   text-align: center;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    background-image: url('/images/egg/3.png'), url('/images/egg/3b.png');
-    background-position: left center, right center;
-    height: 165px;
-    padding-top: 0;
   }
 `
 
@@ -59,10 +52,7 @@ const Home: React.FC = () => {
   return (
     <Page>
       <Hero>
-        <Heading as="h1" size="xl" mb="24px" color="secondary">
-          {TranslateString(576, 'Goose Finance')}
-        </Heading>
-        <Text>{TranslateString(578, 'Top 3 best DEFI app on Binance Smart Chain.')}</Text>
+        <img src="/images/Title.png" alt="cake logo" width={950} height={225} />
       </Hero>
       <div>
         <Cards>
