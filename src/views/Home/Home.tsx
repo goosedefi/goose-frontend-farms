@@ -16,7 +16,7 @@ const Hero = styled.div`
   flex-direction: column;
   margin: auto;
   margin-bottom: 32px;
-  padding-top: 116px;
+  padding-top: 32px;
   text-align: center;
 
   ${({ theme }) => theme.mediaQueries.lg} {
@@ -52,7 +52,7 @@ const Home: React.FC = () => {
   return (
     <Page>
       <Hero>
-        <img src="/images/Title.png" alt="cake logo" width={950} height={225} />
+        <img src="/images/Title.png" alt="cake logo" width={475} height={115} />
       </Hero>
       <div>
         <Cards>
