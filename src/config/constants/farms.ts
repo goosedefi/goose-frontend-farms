@@ -32,7 +32,7 @@ const farms: FarmConfig[] = [
       56: '',
     },
     quoteTokenSymbol: QuoteToken.BNB,
-    quoteTokenAdresses: contracts.bnb,
+    quoteTokenAdresses: contracts.wbnb,
   },
   {
     pid: 2,
@@ -48,7 +48,7 @@ const farms: FarmConfig[] = [
       56: '',
     },
     quoteTokenSymbol: QuoteToken.BNB,
-    quoteTokenAdresses: contracts.bnb,
+    quoteTokenAdresses: contracts.wbnb,
   },
   
 
