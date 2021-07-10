@@ -10,9 +10,9 @@ const farms: FarmConfig[] = [
       97: '0xa116a70d0a4955c8f749e4ef833d5bee2ce3119a',
       56: '',
     },
-    tokenSymbol: 'CFT',
+    tokenSymbol: 'BUSD',
     tokenAddresses: {
-      97: '0xDACee0C89E7d6CE4cE384C6de8B595343276CA3c',
+      97: '0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7',
       56: '',
     },
     quoteTokenSymbol: QuoteToken.BUSD,
@@ -26,9 +26,9 @@ const farms: FarmConfig[] = [
       97: '0xeF7Ff8BBab806063E2C30Ac2C07bD6703B7AF421',
       56: '',
     },
-    tokenSymbol: 'CFT',
+    tokenSymbol: 'BNB',
     tokenAddresses: {
-      97: '0xDACee0C89E7d6CE4cE384C6de8B595343276CA3c',
+      97: '0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7',
       56: '',
     },
     quoteTokenSymbol: QuoteToken.BNB,
