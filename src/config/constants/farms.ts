@@ -15,8 +15,8 @@ const farms: FarmConfig[] = [
       97: '0xDACee0C89E7d6CE4cE384C6de8B595343276CA3c',
       56: '',
     },
-    quoteTokenSymbol: QuoteToken.CFT,
-    quoteTokenAdresses: contracts.cft,
+    quoteTokenSymbol: QuoteToken.BUSD,
+    quoteTokenAdresses: contracts.busd,
   },
   {
     pid: 1,
@@ -31,8 +31,8 @@ const farms: FarmConfig[] = [
       97: '0xDACee0C89E7d6CE4cE384C6de8B595343276CA3c',
       56: '',
     },
-    quoteTokenSymbol: QuoteToken.CFT,
-    quoteTokenAdresses: contracts.cft,
+    quoteTokenSymbol: QuoteToken.WBNB,
+    quoteTokenAdresses: contracts.wbnb,
   },
   {
     pid: 2,
@@ -51,7 +51,7 @@ const farms: FarmConfig[] = [
     quoteTokenAdresses: contracts.wbnb,
   },
   
-  
+
 ]
 
 export default farms
