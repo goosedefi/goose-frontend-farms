@@ -2,54 +2,41 @@ import contracts from './contracts'
 import { FarmConfig, QuoteToken } from './types'
 
 const farms: FarmConfig[] = [
-  {
-    pid: 0,
-    risk: 5,
-    lpSymbol: 'EGG-BUSD LP',
-    lpAddresses: {
-      97: '',
-      56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
-    },
-    tokenSymbol: 'EGG',
-    tokenAddresses: {
-      97: '',
-      56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
-    },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
-  },
+ 
   {
     pid: 1,
     risk: 5,
-    lpSymbol: 'EGG-BNB LP',
+    lpSymbol: 'HOMER-BNB LP',
     lpAddresses: {
-      97: '',
-      56: '0xd1b59d11316e87c3a0a069e80f590ba35cd8d8d3',
+      97: '0xbfb8357f3ccfa105968b1836823f5e144145ada5',
+      56: '',
     },
-    tokenSymbol: 'EGG',
+    tokenSymbol: 'HOMER',
     tokenAddresses: {
-      97: '',
-      56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
+      97: '0xeaBdE99A1DD264849886ffF11A7fBe5637ed6Fa6',
+      56: '',
     },
     quoteTokenSymbol: QuoteToken.BNB,
     quoteTokenAdresses: contracts.wbnb,
   },
   {
     pid: 2,
-    risk: 3,
-    lpSymbol: 'BNB-BUSD LP',
+    risk: 5,
+    lpSymbol: 'EGG-BUSD LP',
     lpAddresses: {
-      97: '',
-      56: '0x1b96b92314c44b159149f7e0303511fb2fc4774f',
+      97: '0x897155a02e5a610d7dd035cf2620d6972d025d80',
+      56: '',
     },
-    tokenSymbol: 'BNB',
+    tokenSymbol: 'HOMER',
     tokenAddresses: {
-      97: '',
-      56: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c',
+      97: '0xeaBdE99A1DD264849886ffF11A7fBe5637ed6Fa6',
+      56: '',
     },
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
   },
+  
+  
   {
     pid: 3,
     risk: 1,
