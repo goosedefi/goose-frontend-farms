@@ -7,14 +7,19 @@ import { usePriceCakeBusd } from 'state/hooks'
 import { Menu as UikitMenu } from '@pancakeswap-libs/uikit'
 import config from './config'
 
+
+
 const Menu = (props) => {
   const { account, connect, reset } = useWallet()
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
   const { isDark, toggleTheme } = useTheme()
   const cakePriceUsd = usePriceCakeBusd()
 
+  const textCol ='black';
+
+
   return (
-    <UikitMenu
+    <UikitMenu // color={textCol}
       account={account}
       login={connect}
       logout={reset}
@@ -32,3 +37,4 @@ const Menu = (props) => {
 }
 
 export default Menu
+

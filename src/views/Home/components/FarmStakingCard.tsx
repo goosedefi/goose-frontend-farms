@@ -1,4 +1,6 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, Fragment } from 'react'
+
+// import {ImageBackground} from 'react-native'
 import styled from 'styled-components'
 import { Heading, Card, CardBody, Button } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
@@ -15,19 +17,30 @@ import { getCakeAddress } from '../../../utils/addressHelpers'
 import useAllEarnings from '../../../hooks/useAllEarnings'
 import { getBalanceNumber } from '../../../utils/formatBalance'
 
+//   background-image: url('https://icons.iconarchive.com/icons/designcontest/ecommerce-business/256/bar-chart-icon.png');
 const StyledFarmStakingCard = styled(Card)`
-  background-image: url('/images/egg/2a.png');
+  background: radial-gradient(ellipse at center, rgb(202, 202, 202) 10%, rgb(248, 239, 225) 100%);
   background-repeat: no-repeat;
-  background-position: top right;
-  min-height: 376px;
+  background-position: center;
+  min-height: 16px;
 `
+
 
 const Block = styled.div`
   margin-bottom: 16px;
+  width: 200px;
 `
 
 const CardImage = styled.img`
   margin-bottom: 16px;
+`
+
+const ChartImageArea = styled.div`
+  background: url('https://icons.iconarchive.com/icons/designcontest/ecommerce-business/256/bar-chart-icon.png');
+  background-position: right;
+  justify-content: center;
+  background-repeat: no-repeat;
+  object-fit: contain;
 `
 
 const Label = styled.div`
@@ -65,23 +78,30 @@ const FarmedStakingCard = () => {
     }
   }, [onReward])
 
+const headerCol = 'rgba(0, 32, 96, 1)';
+const bodyCol = 'black';
+
+
   return (
     <StyledFarmStakingCard>
       <CardBody>
-        <Heading size="xl" mb="24px">
+        <Heading size="xl" mb="24px" color={headerCol}>
           {TranslateString(542, 'Farms & Staking')}
         </Heading>
-        <CardImage src="/images/egg/2.png" alt="cake logo" width={64} height={64} />
+        <ChartImageArea>
+        <CardImage src="https://quantresurgencemhy2069p5074.s3.eu-west-2.amazonaws.com/logos/QR_reduced.png" alt="QR logo" width={64} height={64}/>
         <Block>
-          <Label>{TranslateString(544, 'EGG to Harvest')}</Label>
+          <Label color={bodyCol}>{/* TranslateString(544, 'QR to Harvest') */'QR to Harvest'}</Label>
           <CakeHarvestBalance earningsSum={earningsSum}/>
-          <Label>~${(eggPrice * earningsSum).toFixed(2)}</Label>
+          <Label color={bodyCol}>~${(eggPrice * earningsSum).toFixed(2)}</Label>
         </Block>
         <Block>
-          <Label>{TranslateString(546, 'EGG in Wallet')}</Label>
+          <Label color={bodyCol}> {/* TranslateString(546, 'QR in Wallet') */ 'QR in Wallet'}</Label>
           <CakeWalletBalance cakeBalance={cakeBalance} />
-          <Label>~${(eggPrice * cakeBalance).toFixed(2)}</Label>
+          <Label color={bodyCol}>~${(eggPrice * cakeBalance).toFixed(2)}</Label>
         </Block>
+      </ChartImageArea>
+
         <Actions>
           {account ? (
             <Button
@@ -89,9 +109,10 @@ const FarmedStakingCard = () => {
               disabled={balancesWithValue.length <= 0 || pendingTx}
               onClick={harvestAllFarms}
               fullWidth
+              color="rgba(142, 0, 0, 1)"
             >
               {pendingTx
-                ? TranslateString(548, 'Collecting EGG')
+                ? TranslateString(548, 'Collecting QR')
                 : TranslateString(999, `Harvest all (${balancesWithValue.length})`)}
             </Button>
           ) : (

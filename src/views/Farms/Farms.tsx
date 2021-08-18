@@ -88,19 +88,20 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
     },
     [bnbPrice, account, cakePrice, ethereum],
   )
+const textCol ='rgba(0, 32, 96, 1)';
 
   return (
     <Page>
-      <Heading as="h1" size="lg" color="primary" mb="50px" style={{ textAlign: 'center' }}>
+      <Heading as="h1" size="lg" color={textCol} mb="50px" style={{ textAlign: 'center' }}>
         {
           tokenMode ?
-            TranslateString(10002, 'Stake tokens to earn EGG')
+            'Stake tokens to earn QT'
             :
-          TranslateString(320, 'Stake LP tokens to earn EGG')
+            'Stake LP tokens to earn QT'
         }
       </Heading>
       <Heading as="h2" color="secondary" mb="50px" style={{ textAlign: 'center' }}>
-        {TranslateString(10000, 'Deposit Fee will be used to buyback EGG')}
+        Deposit Fee will be used to buyback QT
       </Heading>
       <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/>
       <div>
@@ -114,7 +115,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
           </Route>
         </FlexLayout>
       </div>
-      <Image src="/images/egg/8.png" alt="illustration" width={1352} height={587} responsive />
+      <Image src="https://quantresurgencemhy2069p5074.s3.eu-west-2.amazonaws.com/logos/QR_reduced.png" alt="illustration" width={1352} height={587} responsive />
     </Page>
   )
 }

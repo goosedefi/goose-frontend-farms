@@ -9,9 +9,12 @@ import { getCakeAddress } from 'utils/addressHelpers'
 import CardValue from './CardValue'
 import { useFarms, usePriceCakeBusd } from '../../../state/hooks'
 
-const StyledCakeStats = styled(Card)`
-  margin-left: auto;
-  margin-right: auto;
+const StyledQTStats = styled(Card)`
+  background: radial-gradient(ellipse at center, rgb(202, 202, 202) 10%, rgb(248, 239, 225) 100%);
+  transparency: 0.5;
+  background-repeat: no-repeat;
+  background-position: top right;
+  min-height: 30px;
 `
 
 const Row = styled.div`
@@ -37,34 +40,37 @@ const CakeStats = () => {
     eggPerBlock = new BigNumber(farms[0].eggPerBlock).div(new BigNumber(10).pow(18)).toNumber();
   }
 
+  const headerCol = 'rgba(0, 32, 96, 1)';
+  const bodyCol = 'black';
+  const number = 'rgba(142, 0, 0, 1)';
   return (
-    <StyledCakeStats>
+    <StyledQTStats>
       <CardBody>
-        <Heading size="xl" mb="24px">
-          {TranslateString(534, 'Egg Stats')}
+        <Heading size="xl" mb="24px" color={headerCol}>
+          Quant Token Stats
         </Heading>
         <Row>
-          <Text fontSize="14px">{TranslateString(10005, 'Market Cap')}</Text>
+          <Text fontSize="14px" color={bodyCol}>Market Cap</Text>
           <CardValue fontSize="14px" value={getBalanceNumber(marketCap)} decimals={0} prefix="$" />
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(536, 'Total Minted')}</Text>
+          <Text fontSize="14px" color={bodyCol}>Total Minted</Text>
           {totalSupply && <CardValue fontSize="14px" value={getBalanceNumber(totalSupply)} decimals={0} />}
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(538, 'Total Burned')}</Text>
+          <Text fontSize="14px" color={bodyCol}>Total Burned</Text>
           <CardValue fontSize="14px" value={getBalanceNumber(burnedBalance)} decimals={0} />
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(10004, 'Circulating Supply')}</Text>
+          <Text fontSize="14px" color={bodyCol}>Circulating Supply</Text>
           {cakeSupply && <CardValue fontSize="14px" value={cakeSupply} decimals={0} />}
         </Row>
         <Row>
-          <Text fontSize="14px">{TranslateString(540, 'New EGG/block')}</Text>
-          <Text bold fontSize="14px">{eggPerBlock}</Text>
+          <Text fontSize="14px" color={bodyCol} >New QT/block</Text>
+          <Text color={number} bold fontSize="14px">{eggPerBlock}</Text>
         </Row>
       </CardBody>
-    </StyledCakeStats>
+    </StyledQTStats>
   )
 }
 

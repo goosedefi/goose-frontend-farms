@@ -37,18 +37,18 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <ResetCSS />
+      <ResetCSS  />
       <GlobalStyle />
-      <Menu>
+      <Menu >
         <Suspense fallback={<PageLoader />}>
           <Switch>
             <Route path="/" exact>
               <Home />
             </Route>
-            <Route path="/farms">
+            <Route path="/liquidity-rewards">
               <Farms />
             </Route>
-            <Route path="/nests">
+            <Route path="/pools">
               <Farms tokenMode/>
             </Route>
             {/* <Route path="/pools"> */}

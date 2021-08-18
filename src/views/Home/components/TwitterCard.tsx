@@ -11,6 +11,7 @@ import CardValue from './CardValue'
 import { useFarms } from '../../../state/hooks'
 
 const StyledTwitterCard = styled(Card)`
+  background: radial-gradient(ellipse at center, rgb(202, 202, 202) 10%, rgb(248, 239, 225) 100%);
   margin-left: auto;
   margin-right: auto;
 `
@@ -22,6 +23,7 @@ const Row = styled.div`
   justify-content: space-between;
   margin-bottom: 8px;
 `
+const textCol = 'rgba(0, 32, 96, 1)';
 
 const TwitterCard = () => {
   const TranslateString = useI18n()
@@ -29,13 +31,13 @@ const TwitterCard = () => {
   return (
     <StyledTwitterCard>
       <CardBody>
-        <Heading size="xl" mb="24px">
+        <Heading size="xl" mb="24px" color={textCol}>
           {TranslateString(10003, 'Announcements')}
         </Heading>
         <Timeline
           dataSource={{
             sourceType: 'profile',
-            screenName: 'GooseFinance'
+            screenName: 'binance'
           }}
           options={{
             height: '300',

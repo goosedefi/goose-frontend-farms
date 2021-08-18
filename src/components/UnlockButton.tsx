@@ -8,6 +8,10 @@ const UnlockButton = (props) => {
   const { connect, reset } = useWallet()
   const { onPresentConnectModal } = useWalletModal(connect, reset)
 
+Button.defaultProps = {
+  color: 'rgba(142, 0, 0, 1)'
+}
+
   return (
     <Button onClick={onPresentConnectModal} {...props}>
       {TranslateString(292, 'Unlock Wallet')}

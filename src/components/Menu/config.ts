@@ -21,14 +21,14 @@ const config: MenuEntry[] = [
     ],
   },
   {
-    label: 'Farms',
+    label: 'Liquidity Rewards',
     icon: 'FarmIcon',
-    href: '/farms',
+    href: '/liquidity-rewards',
   },
   {
-    label: 'Nests',
+    label: 'Pools',
     icon: 'PoolIcon',
-    href: '/nests',
+    href: '/pools',
   },
   // {
   //   label: 'Pools',

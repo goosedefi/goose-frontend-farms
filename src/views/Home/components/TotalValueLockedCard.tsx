@@ -7,6 +7,7 @@ import { useTotalValue } from '../../../state/hooks'
 import CardValue from './CardValue'
 
 const StyledTotalValueLockedCard = styled(Card)`
+  background: radial-gradient(ellipse at center, rgb(202, 202, 202) 10%, rgb(248, 239, 225) 100%);
   align-items: center;
   display: flex;
   flex: 1;
@@ -18,18 +19,20 @@ const TotalValueLockedCard = () => {
   const totalValue = useTotalValue();
   // const tvl = totalValue.toFixed(2);
 
+  const textCol = 'rgba(0, 32, 96, 1)';
+  const number = 'rgba(142, 0, 0, 1)';
   return (
     <StyledTotalValueLockedCard>
-      <CardBody>
-        <Heading size="lg" mb="24px">
+      <CardBody color={number}>
+        <Heading size="lg" mb="24px" color={textCol}>
           {TranslateString(999, 'Total Value Locked (TVL)')}
         </Heading>
         <>
           {/* <Heading size="xl">{`$${tvl}`}</Heading> */}
           {/* <Heading size="xl"> */}
-            <CardValue value={totalValue.toNumber()} prefix="$" decimals={2}/>
+            <CardValue value={totalValue.toNumber()} prefix="$" decimals={0} />
           {/* </Heading> */}
-          <Text color="textSubtle">{TranslateString(999, 'Across all Farms and Pools')}</Text>
+          <Text color={textCol}>{TranslateString(999, 'Across all Farms and Pools')}</Text>
         </>
       </CardBody>
     </StyledTotalValueLockedCard>

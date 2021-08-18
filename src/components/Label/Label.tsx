@@ -9,9 +9,9 @@ interface LabelProps {
 const Label: React.FC<LabelProps> = ({ text, isFinished = false }) => (
   <StyledLabel isFinished={isFinished}>{text}</StyledLabel>
 )
-
+// ${({ isFinished, theme }) => theme.colors[isFinished ? 'textDisabled' : 'primary']}
 const StyledLabel = styled.div<{ isFinished: boolean }>`
-  color: ${({ isFinished, theme }) => theme.colors[isFinished ? 'textDisabled' : 'primary']};
+  color: rgba(142, 0, 0, 1)';
   font-size: 14px;
 `
 
