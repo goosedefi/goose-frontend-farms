@@ -21,7 +21,7 @@
 .DS_Store
 .env.local
 .env.development.local
-.env
+# .env
 .eslintcache
 
 # debug
@@ -32,3 +32,6 @@ yarn-error.log*
 # gitignore
 sftp-config.json
 /.github/
+
+# Local Netlify folder
+.netlify

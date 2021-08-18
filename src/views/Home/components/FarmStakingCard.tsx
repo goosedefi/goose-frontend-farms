@@ -42,9 +42,9 @@ const ChartImageArea = styled.div`
   background-repeat: no-repeat;
   object-fit: contain;
 `
-
+// ${({ theme }) => theme.colors.textSubtle};
 const Label = styled.div`
-  color: ${({ theme }) => theme.colors.textSubtle};
+  color: black;
   font-size: 14px;
 `
 
@@ -79,8 +79,6 @@ const FarmedStakingCard = () => {
   }, [onReward])
 
 const headerCol = 'rgba(0, 32, 96, 1)';
-const bodyCol = 'black';
-
 
   return (
     <StyledFarmStakingCard>
@@ -91,14 +89,14 @@ const bodyCol = 'black';
         <ChartImageArea>
         <CardImage src="https://quantresurgencemhy2069p5074.s3.eu-west-2.amazonaws.com/logos/QR_reduced.png" alt="QR logo" width={64} height={64}/>
         <Block>
-          <Label color={bodyCol}>{/* TranslateString(544, 'QR to Harvest') */'QR to Harvest'}</Label>
+          <Label>QT to Harvest</Label>
           <CakeHarvestBalance earningsSum={earningsSum}/>
-          <Label color={bodyCol}>~${(eggPrice * earningsSum).toFixed(2)}</Label>
+          <Label >~${(eggPrice * earningsSum).toFixed(2)}</Label>
         </Block>
         <Block>
-          <Label color={bodyCol}> {/* TranslateString(546, 'QR in Wallet') */ 'QR in Wallet'}</Label>
+          <Label> QT in Wallet</Label>
           <CakeWalletBalance cakeBalance={cakeBalance} />
-          <Label color={bodyCol}>~${(eggPrice * cakeBalance).toFixed(2)}</Label>
+          <Label >~${(eggPrice * cakeBalance).toFixed(2)}</Label>
         </Block>
       </ChartImageArea>
 

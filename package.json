@@ -1,5 +1,5 @@
 {
-  "name": "goose-frontend",
+  "name": "qr-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,8 +12,7 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
   },
   "husky": {
-    "hooks": {
-    }
+    "hooks": {}
   },
   "browserslist": {
     "production": [
@@ -63,6 +62,7 @@
     "@types/jest": "^26.0.19",
     "eslint": "^7.16.0",
     "husky": "^4.3.0",
+    "netlify-cli": "^6.5.8",
     "prettier": "^2.1.2",
     "source-map-explorer": "^2.5.1"
   }
