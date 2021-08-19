@@ -1828,6 +1828,16 @@
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.0.0"
 
+"@pancakeswap-libs/uikit@bisharesindexfund/bishares-uikit":
+  version "0.10.2"
+  resolved "https://codeload.github.com/bisharesindexfund/bishares-uikit/tar.gz/4a665ca7b735e1fc9e22191b98912308a6001bbd"
+  dependencies:
+    "@types/lodash" "^4.14.162"
+    "@types/styled-system" "^5.1.10"
+    lodash "^4.17.20"
+    react-transition-group "^4.4.1"
+    styled-system "^5.1.5"
+
 "@pancakeswap-libs/uikit@goosedefi/goose-uikit":
   version "0.10.2"
   resolved "https://codeload.github.com/goosedefi/goose-uikit/tar.gz/068e017bb0f927c566a43596fb555a5818e13154"

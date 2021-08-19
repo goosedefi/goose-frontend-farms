@@ -1,15 +1,17 @@
 {
-  "name": "goose-frontend",
+  "name": "bishares-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-mainnet": "react-scripts build && rm -rf ../bishares-mainnet/* && mv ./build/* ../bishares-mainnet/ && mv ../mainnet/CNAME-MAINNET ../bishares-mainnet/CNAME",
+    "build-testnet": "react-scripts build && rm -rf ../bishares-testnet/* && mv ./build/* ../bishares-testnet/ && mv ../testnet/CNAME-TESTNET ../bishares-testnet/CNAME",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
+    "uikit": "cd ../bishares-uikit && yarn && yarn build && rm -rf ../bishares-frontend-farms/node_modules/@pancakeswap-libs/uikit/dist && cp -Rp ./dist ../bishares-frontend-farms/node_modules/@pancakeswap-libs/uikit/"
   },
   "husky": {
     "hooks": {
@@ -33,7 +35,7 @@
     "@binance-chain/bsc-use-wallet": "^0.8.1",
     "@crowdin/crowdin-api-client": "^1.10.1",
     "@ethersproject/abi": "^5.0.7",
-    "@pancakeswap-libs/uikit": "goosedefi/goose-uikit",
+    "@pancakeswap-libs/uikit": "bisharesindexfund/bishares-uikit",
     "@reduxjs/toolkit": "^1.5.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
