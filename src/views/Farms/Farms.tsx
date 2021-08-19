@@ -48,10 +48,10 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   // )
 
   const activeFarms = farmsLP.filter(
-    (farm) => farm.multiplier !== '0X' && farm.lpSymbol !== 'BNB-BUSD LP',
+    (farm) => farm.multiplier !== '0X' && farm.lpSymbol !== 'BNB-BUSD LP' && farm.lpSymbol !== 'BISON-BUSD LP',
   )
   const inactiveFarms = farmsLP.filter(
-    (farm) => farm.multiplier === '0X' && farm.lpSymbol !== 'BNB-BUSD LP',
+    (farm) => farm.multiplier === '0X' && farm.lpSymbol !== 'BNB-BUSD LP' && farm.lpSymbol !== 'BISON-BUSD LP',
   )
   
   const stakedOnlyFarms = activeFarms.filter(
@@ -68,7 +68,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         // if (!farm.tokenAmount || !farm.lpTotalInQuoteToken || !farm.lpTotalInQuoteToken) {
         //   return farm
         // }
-        const cakeRewardPerBlock = new BigNumber(farm.eggPerBlock || 1).times(new BigNumber(farm.poolWeight)) .div(new BigNumber(10).pow(18))
+        const cakeRewardPerBlock = new BigNumber(farm.tokenPerBlock || 1).times(new BigNumber(farm.poolWeight)) .div(new BigNumber(10).pow(18))
         const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
 
         let apy = cakePrice.times(cakeRewardPerYear);
