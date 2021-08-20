@@ -5,7 +5,9 @@ import { LanguageContext } from 'contexts/Localisation/languageContext'
 import useTheme from 'hooks/useTheme'
 import { usePriceCakeBusd } from 'state/hooks'
 import { Menu as UikitMenu } from '@pancakeswap-libs/uikit'
+import styled from 'styled-components'
 import config from './config'
+
 
 
 
@@ -17,9 +19,22 @@ const Menu = (props) => {
 
   const textCol ='black';
 
+/*
+const styleX = styled.div`
+background: url('https://icons.iconarchive.com/icons/designcontest/ecommerce-business/256/bar-chart-icon.png');
+background-position: right;
+justify-content: center;
+background-repeat: no-repeat;
+`
+*/
 
   return (
-    <UikitMenu // color={textCol}
+    <UikitMenu 
+      innerProps={{ style: { margin: '0', width: '100%' } }}
+      background= 'radial-gradient(103.12% 50% at 50% 50%, #21193A 0%, #191326 100%)'
+      
+      index={2}
+      hasCurvedDivider={false}
       account={account}
       login={connect}
       logout={reset}

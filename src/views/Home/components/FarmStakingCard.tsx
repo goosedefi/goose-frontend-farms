@@ -40,7 +40,6 @@ const ChartImageArea = styled.div`
   background-position: right;
   justify-content: center;
   background-repeat: no-repeat;
-  object-fit: contain;
 `
 // ${({ theme }) => theme.colors.textSubtle};
 const Label = styled.div`

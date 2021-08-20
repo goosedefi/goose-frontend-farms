@@ -9,10 +9,19 @@ const Wrapper = styled(Page)`
   align-items: center;
 `
 
+const LogoLoad = styled.img`
+  margin-bottom: 16px;
+  opacity: 0.7
+`
+
+
+/* <Wrapper>
+      <Spinner />
+    </Wrapper> */
 const PageLoader: React.FC = () => {
   return (
     <Wrapper>
-      <Spinner />
+      <LogoLoad src="https://quantresurgencemhy2069p5074.s3.eu-west-2.amazonaws.com/logos/QRLogo.png"/>
     </Wrapper>
   )
 }
