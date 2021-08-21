@@ -35,7 +35,7 @@ export interface FarmsState {
   data: Farm[]
 }
 export interface BisonState {
-  data: {}
+  data: any
 }
 
 export interface PoolsState {

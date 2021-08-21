@@ -32,7 +32,7 @@ export const fetchPriceDataAsync = () => async (dispatch) => {
     .then(
       (result) => {
         if (result.status === true) {
-          BISONValue = result.data
+          BISONValue = 4
         } else {
           BISONValue = 0
         }
