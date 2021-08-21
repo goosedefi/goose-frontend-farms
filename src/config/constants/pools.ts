@@ -22,6 +22,26 @@ const pools: PoolConfig[] = [
     quoteTokenSymbol: QuoteToken.BISON,
     quoteTokenAdresses: contracts.cake,
   },
+  {
+    sousId: 2,
+    tokenName: 'BISON-BNB',
+    stakingTokenName: QuoteToken.BISONBNB,
+    earningToken: '0xADA2270B0CB5b6254d3d48A6fEE55b72693B746A',
+    stakingTokenAddress: '0x197885a5af8ffdc945f2c5677a6e0f3a84c141a2',
+    contractAddress: {
+      97: '0xC382c9f0f585bBb4e7459C2Be2Cd6775a0e53351',
+      56: '0x00',
+    },
+    poolCategory: PoolCategory.COMMUNITY,
+    projectLink: 'https://bishares.finance/',
+    harvest: true,
+    tokenPerBlock: '0.000459896',
+    sortOrder: 1,
+    isFinished: false,
+    tokenDecimals: 18,
+    quoteTokenSymbol: QuoteToken.BISON,
+    quoteTokenAdresses: contracts.cake,
+  },
 ]
 
 export default pools
