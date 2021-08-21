@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js'
 import { useEffect, useMemo } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, RootStateOrAny } from 'react-redux'
 import useRefresh from 'hooks/useRefresh'
 import { useAppDispatch } from 'state'
 import {
@@ -134,12 +134,12 @@ export const usePriceCakeBusd = (): BigNumber => {
 }
 
 export const useBISONPrice = (): BigNumber => {
-  const { price } = useSelector((state: State) => state.bison.data)
+  const { price } = useSelector((state: RootStateOrAny) => state.bison.data);
   return price ? new BigNumber(price) : ZERO
 }
 
 export const useTotalSupplyPrice = (): BigNumber => {
-  const { totalSupply } = useSelector((state: State) => state.bison.data)
+  const { totalSupply } = useSelector((state: RootStateOrAny) => state.bison.data)
   return totalSupply ? new BigNumber(totalSupply) : ZERO
 }
 
