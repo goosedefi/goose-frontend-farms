@@ -67,7 +67,7 @@ const pools: PoolConfig[] = [
   },
   {
     sousId: 4,
-    poolName: 'biAPE-BNB',
+    poolName: 'biAPE-BNB APE',
     tokenName: 'BISON',
     stakingTokenName: QuoteToken.biAPEBNB,
     earningToken: '0x19a6da6e382b85f827088092a3dbe864d9ccba73',
