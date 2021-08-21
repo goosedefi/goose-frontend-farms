@@ -115,7 +115,11 @@ const CardFooter: React.FC<Props> = ({
                 Total {stakingTokenName} Staked
               </Label>
             </FlexFull>
-            <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)  - 5000} />
+            {singleStake ? <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)  - 5000} />
+            :
+            <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />
+            }
+            
           </Row>
           {/* {blocksUntilStart > 0 && (
             <Row>
