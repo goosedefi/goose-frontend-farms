@@ -51,6 +51,7 @@ export interface FarmConfig {
   isTokenOnly?: boolean
   isCommunity?: boolean
   risk: number
+  factory?: string
   dual?: {
     rewardPerBlock: number
     earnLabel: string
