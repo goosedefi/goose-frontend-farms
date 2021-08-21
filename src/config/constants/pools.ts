@@ -25,7 +25,7 @@ const pools: PoolConfig[] = [
   },
   {
     sousId: 2,
-    poolName: 'BISON-BNB',
+    poolName: 'BISON-BNB APE',
     tokenName: 'BISON',
     stakingTokenName: QuoteToken.BISONBNB,
     earningToken: '0x19a6da6e382b85f827088092a3dbe864d9ccba73',
@@ -46,7 +46,7 @@ const pools: PoolConfig[] = [
   },
   {
     sousId: 3,
-    poolName: 'BISON-BNB',
+    poolName: 'BISON-BNB PCS',
     tokenName: 'BISON',
     stakingTokenName: QuoteToken.BISONBNB,
     earningToken: '0x19a6da6e382b85f827088092a3dbe864d9ccba73',
