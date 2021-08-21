@@ -56,7 +56,6 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const stakingTokenContract = useERC20(stakingTokenAddress)
   const lpTokenContract = useLP(stakingTokenAddress)
 
-  const [apy, setAPY] = useState(new BigNumber(0))
 
   const [liquidity, setLiquidity] = useState(new BigNumber(0))
   const [totalSupply, setTotalSupply] = useState(new BigNumber(0))
@@ -160,43 +159,24 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
     }
   }, [lpTokenContract, stakingTokenAddress])
 
-  React.useEffect(() => {
-    if (token0 !== undefined && token1 !== undefined && reserve0 !== undefined && reserve1 !== undefined) {
-      const pair = (token0 !== undefined ? token0 : '').concat('_').concat(token1)
-      getLPprice().then((data) => {
-        // setLiquidity(new BigNumber(data[pair].liquidity))
+  const getApr = useCallback(() => {
+    const baseValue = new BigNumber(token0price).times(reserve0)
+    const quoteValue = new BigNumber(token1price).times(reserve1)
 
-        // console.log('pairData:', data[pair])
+    const totalValue = baseValue.plus(quoteValue)
+    const lpTokenPrice = totalValue.div(getBalanceNumber(totalSupply)).times(token0price)
 
-        // console.log('reserve0:', reserve0.toString())
-        // console.log('reserve1:', reserve1.toString())
+    const apr = getPoolApr(
+      lpTokenPrice,
+      rewardTokenPrice,
+      getBalanceNumber(pool.totalStaked, pool.tokenDecimals),
+      parseFloat(pool.tokenPerBlock),
+    )
+    return new BigNumber(apr);
+ 
+}, [pool.tokenDecimals, pool.tokenPerBlock, pool.totalStaked, reserve0, reserve1, rewardTokenPrice, token0price, token1price, totalSupply])
 
-        const baseValue = new BigNumber(token0price).times(reserve0)
-        const quoteValue = new BigNumber(token1price).times(reserve1)
-
-        const totalValue = baseValue.plus(quoteValue)
-        const lpTokenPrice = totalValue.div(getBalanceNumber(totalSupply)).times(token0price)
-
-        // console.log('totalSupply:', getBalanceNumber(totalSupply).toString())
-        // console.log('token0price:', token0price.toString())
-        // console.log('token1price:', token1price.toString())
-
-        // console.log('baseValue:', baseValue.toString())
-        // console.log('quoteValue:', quoteValue.toString())
-        // console.log('totalValue:', totalValue.toString())
-        // console.log('lpTokenPrice:', lpTokenPrice.toString())
-
-        const apr = getPoolApr(
-          lpTokenPrice,
-          rewardTokenPrice,
-          getBalanceNumber(pool.totalStaked, pool.tokenDecimals),
-          parseFloat(pool.tokenPerBlock),
-        )
-        setAPY(new BigNumber(apr))
-        // console.log('APR:', apr)
-      })
-    }
-  }, [token0, token1, token0price, token1price, totalSupply, pool, rewardTokenPrice, reserve0, reserve1])
+const apy = getApr();
 
   return (
     <Card
