@@ -5,13 +5,14 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import useI18n from 'hooks/useI18n'
 import { ChevronDown, ChevronUp } from 'react-feather'
 import Balance from 'components/Balance'
-import { CommunityTag, CoreTag, BinanceTag } from 'components/Tags'
+import { CommunityTag, CoreTag, BinanceTag, RewardsTag } from 'components/Tags'
 import { PoolCategory } from 'config/constants/types'
 
 const tags = {
   [PoolCategory.BINANCE]: BinanceTag,
   [PoolCategory.CORE]: CoreTag,
   [PoolCategory.COMMUNITY]: CommunityTag,
+  [PoolCategory.REWARDS]: RewardsTag,
 }
 
 interface Props {
@@ -22,6 +23,7 @@ interface Props {
   blocksUntilStart: number
   poolCategory: PoolCategory
   stakingTokenName: string
+  singleStake: boolean
 }
 
 const StyledFooter = styled.div<{ isFinished: boolean }>`
@@ -70,7 +72,7 @@ const Label = styled.div`
 const TokenLink = styled.a`
   font-size: 14px;
   text-decoration: none;
-  color: #12aab5;
+  color: white;
 `
 
 const CardFooter: React.FC<Props> = ({
@@ -81,6 +83,7 @@ const CardFooter: React.FC<Props> = ({
   blocksUntilStart,
   poolCategory,
   stakingTokenName,
+  singleStake
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const TranslateString = useI18n()
@@ -128,9 +131,14 @@ const CardFooter: React.FC<Props> = ({
               <Balance fontSize="14px" isDisabled={isFinished} value={blocksRemaining} decimals={0} />
             </Row>
           )}
-          <TokenLink href={projectLink} target="_blank">
-            {TranslateString(412, 'View project site')}
-          </TokenLink>
+          {singleStake && <Row>
+            <FlexFull>
+              Stake your BISON to earn more BISON rewards and be eligible for the weekly platform distribution.
+            </FlexFull>
+          </Row>}
+          {!singleStake && <TokenLink href={projectLink} target="_blank">
+            {TranslateString(412, 'LP Staking')}
+          </TokenLink>}
         </Details>
       )}
     </StyledFooter>

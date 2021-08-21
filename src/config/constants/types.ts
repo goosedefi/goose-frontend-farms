@@ -33,6 +33,7 @@ export enum QuoteToken {
 export enum PoolCategory {
   'COMMUNITY' = 'Community',
   'CORE' = 'Core',
+  'REWARDS' = 'Rewards',
   'BINANCE' = 'Binance', // Pools using native BNB behave differently than pools using a token
 }
 

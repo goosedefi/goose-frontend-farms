@@ -73,11 +73,9 @@ const Farm: React.FC = () => {
   return (
     <Page>
       <Hero>
-        <div>
-          <Heading as="h1" size="xl" mb="16px" style={{ color: 'orange' }}>
-            {TranslateString(282, 'Earn BISON')}
+          <Heading as="h1" size="xl" mb="16px">
+            {TranslateString(282, 'Graze with the great plains and earn BISON')}
           </Heading>
-        </div>
       </Hero>
       <PoolTabButtons />
       <Divider />
@@ -106,12 +104,10 @@ const Farm: React.FC = () => {
 const Hero = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.colors.primary};
-  display: grid;
   grid-gap: 32px;
   grid-template-columns: 1fr;
   margin-left: auto;
   margin-right: auto;
-  max-width: 250px;
   padding: 48px 0;
   ul {
     margin: 0;

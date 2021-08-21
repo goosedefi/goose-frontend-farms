@@ -98,6 +98,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const accountHasStakedBalance = stakedBalance?.toNumber() > 0
   const needsApproval = !accountHasStakedBalance && !allowance.toNumber() && !isBnbPool
   const isCardActive = isFinished && accountHasStakedBalance
+  const singleStake = false
 
   const convertedLimit = new BigNumber(stakingLimit).multipliedBy(new BigNumber(10).pow(tokenDecimals))
   const [onPresentDeposit] = useModal(
@@ -226,7 +227,7 @@ const apy = getApr();
             (needsApproval && !isOldSyrup ? (
               <div style={{ flex: 1 }}>
                 <Button disabled={isFinished || requestedApproval} onClick={handleApprove} fullWidth>
-                  {`Approve ${stakingTokenName}`}
+                  Approve
                 </Button>
               </div>
             ) : (
@@ -243,7 +244,7 @@ const apy = getApr();
                       : onPresentWithdraw
                   }
                 >
-                  {`Unstake ${stakingTokenName}`}
+                  Unstake
                 </Button>
                 <StyledActionSpacer />
                 {!isOldSyrup && (
@@ -255,7 +256,7 @@ const apy = getApr();
             ))}
         </StyledCardActions>
         <StyledDetails>
-          <div style={{ flex: 1 }}>{TranslateString(736, 'APY')}:</div>
+          <div style={{ flex: 1 }}>{TranslateString(736, 'APR')}:</div>
           {isFinished || isOldSyrup || !apy || apy?.isNaN() || !apy?.isFinite() ? (
             '-'
           ) : (
@@ -280,6 +281,7 @@ const apy = getApr();
         blocksUntilStart={blocksUntilStart}
         poolCategory={poolCategory}
         stakingTokenName={stakingTokenName}
+        singleStake={singleStake}
       />
     </Card>
   )

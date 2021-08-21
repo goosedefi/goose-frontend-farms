@@ -25,10 +25,16 @@ const CommunityTag = () => (
   </Tag>
 )
 
+const RewardsTag = () => (
+  <Tag variant="textSubtle" outline startIcon={<BinanceIcon />}>
+    Rewards
+  </Tag>
+)
+
 const BinanceTag = () => (
   <Tag variant="binance" outline startIcon={<BinanceIcon />}>
     Binance
   </Tag>
 )
 
-export { CoreTag, CommunityTag, BinanceTag, RiskTag, NoFeeTag }
+export { CoreTag, CommunityTag, BinanceTag, RiskTag, NoFeeTag, RewardsTag }
