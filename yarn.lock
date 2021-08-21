@@ -1965,7 +1965,7 @@
 
 "@pancakeswap-libs/uikit@bisharesindexfund/bishares-uikit":
   version "0.10.2"
-  resolved "https://codeload.github.com/bisharesindexfund/bishares-uikit/tar.gz/63944756f9be85dcadcc230de769ceb4373c04ce"
+  resolved "https://codeload.github.com/bisharesindexfund/bishares-uikit/tar.gz/9988262a8e15c8ba9c4b7b408ca1f61d82f78c4c"
   dependencies:
     "@types/lodash" "^4.14.162"
     "@types/styled-system" "^5.1.10"
