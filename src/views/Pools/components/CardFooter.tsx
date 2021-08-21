@@ -16,6 +16,7 @@ const tags = {
 }
 
 interface Props {
+  poolName: string
   projectLink: string
   totalStaked: BigNumber
   blocksRemaining: number
@@ -76,6 +77,7 @@ const TokenLink = styled.a`
 `
 
 const CardFooter: React.FC<Props> = ({
+  poolName,
   projectLink,
   totalStaked,
   blocksRemaining,
@@ -137,7 +139,7 @@ const CardFooter: React.FC<Props> = ({
             </FlexFull>
           </Row>}
           {!singleStake && <TokenLink href={projectLink} target="_blank">
-            {TranslateString(412, 'LP Staking')}
+            {poolName} LP
           </TokenLink>}
         </Details>
       )}

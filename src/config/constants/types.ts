@@ -65,6 +65,7 @@ export interface FarmConfig {
 export interface PoolConfig {
   sousId: number
   image?: string
+  poolName: string
   tokenName: string
   stakingTokenName: QuoteToken
   earningToken?: string

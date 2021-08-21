@@ -83,7 +83,8 @@ const pools: PoolConfig[] = [
   // },
   {
     sousId: 2,
-    tokenName: 'BISON-BNB',
+    poolName: 'BISON-BNB',
+    tokenName: 'BISON',
     stakingTokenName: QuoteToken.BISONBNB,
     earningToken: '0x19a6da6e382b85f827088092a3dbe864d9ccba73',
     stakingTokenAddress: '0xec1214ee197304c17eb9e427e246a4fd37ba718e',
