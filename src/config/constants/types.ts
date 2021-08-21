@@ -26,6 +26,7 @@ export enum QuoteToken {
   'BUSD' = 'BUSD',
   'TWT' = 'TWT',
   'UST' = 'UST',
+  'BISON' = 'BISON',
 }
 
 export enum PoolCategory {
@@ -64,16 +65,19 @@ export interface PoolConfig {
   image?: string
   tokenName: string
   stakingTokenName: QuoteToken
+  earningToken?: string
   stakingLimit?: number
   stakingTokenAddress?: string
   contractAddress: Address
   poolCategory: PoolCategory
   projectLink: string
-  tokenPerBlock: string
+  lifePerBlock: string
   sortOrder?: number
   harvest?: boolean
   isFinished?: boolean
   tokenDecimals: number
+  quoteTokenSymbol: string
+  quoteTokenAdresses: { 56: string; 97: string }
 }
 
 export type Nft = {

@@ -2,8 +2,8 @@
   {
     "inputs": [
       {
-        "internalType": "address",
-        "name": "_alife",
+        "internalType": "contract LifeToken",
+        "name": "_life",
         "type": "address"
       },
       {
@@ -18,7 +18,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_tokenPerBlock",
+        "name": "_lifePerBlock",
         "type": "uint256"
       },
       {
@@ -215,29 +215,11 @@
         "internalType": "bool",
         "name": "_withUpdate",
         "type": "bool"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_mustHaveNft",
-        "type": "uint256"
       }
     ],
     "name": "add",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "alife",
-    "outputs": [
-      {
-        "internalType": "contract AfterLife",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -336,93 +318,33 @@
   },
   {
     "inputs": [],
-    "name": "massUpdatePools",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "life",
+    "outputs": [
+      {
+        "internalType": "contract LifeToken",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "sender",
-        "type": "address"
-      },
+    "inputs": [],
+    "name": "lifePerBlock",
+    "outputs": [
       {
         "internalType": "uint256",
-        "name": "id",
+        "name": "",
         "type": "uint256"
       }
     ],
-    "name": "mustHaveNft",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
-    "name": "nft",
-    "outputs": [
-      {
-        "internalType": "contract NFT",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "nftMinter1",
-    "outputs": [
-      {
-        "internalType": "contract NftFarm",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "nftMinter2",
-    "outputs": [
-      {
-        "internalType": "contract NftFarm",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_nft",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_nftMinter1",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_nftMinter2",
-        "type": "address"
-      }
-    ],
-    "name": "nft_init",
+    "name": "massUpdatePools",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -453,12 +375,31 @@
         "type": "address"
       }
     ],
-    "name": "pendingReward",
+    "name": "pendingLife",
     "outputs": [
       {
         "internalType": "uint256",
         "name": "",
         "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IBEP20",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "poolExistence",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -498,11 +439,6 @@
         "internalType": "uint16",
         "name": "depositFeeBP",
         "type": "uint16"
-      },
-      {
-        "internalType": "uint256",
-        "name": "mustHaveNft",
-        "type": "uint256"
       }
     ],
     "stateMutability": "view",
@@ -570,57 +506,8 @@
     "type": "function"
   },
   {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_minter",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "_status",
-        "type": "bool"
-      }
-    ],
-    "name": "setMinterStatus",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_pid",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_mustHaveNft",
-        "type": "uint256"
-      }
-    ],
-    "name": "set_rarity",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [],
     "name": "startBlock",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "tokenPerBlock",
     "outputs": [
       {
         "internalType": "uint256",
@@ -661,7 +548,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_tokenPerBlock",
+        "name": "_lifePerBlock",
         "type": "uint256"
       }
     ],

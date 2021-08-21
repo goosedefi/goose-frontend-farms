@@ -1,40 +1,27 @@
 import { PoolConfig, QuoteToken, PoolCategory } from './types'
+import contracts from './contracts'
 
 const pools: PoolConfig[] = [
-  // {
-  //   sousId: 0,
-  //   tokenName: 'CAKE',
-  //   stakingTokenName: QuoteToken.CAKE,
-  //   stakingTokenAddress: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
-  //   contractAddress: {
-  //     97: '0xd3af5fe61dbaf8f73149bfcfa9fb653ff096029a',
-  //     56: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',
-  //   },
-  //   poolCategory: PoolCategory.CORE,
-  //   projectLink: 'https://pancakeswap.finance/',
-  //   harvest: true,
-  //   tokenPerBlock: '10',
-  //   sortOrder: 1,
-  //   isFinished: false,
-  //   tokenDecimals: 18,
-  // },
-  // {
-  //   sousId: 1,
-  //   tokenName: 'TWT',
-  //   stakingTokenName: QuoteToken.SYRUP,
-  //   stakingTokenAddress: '0x009cF7bC57584b7998236eff51b98A168DceA9B0',
-  //   contractAddress: {
-  //     97: '0xAfd61Dc94f11A70Ae110dC0E0F2061Af5633061A',
-  //     56: '0xAfd61Dc94f11A70Ae110dC0E0F2061Af5633061A',
-  //   },
-  //   poolCategory: PoolCategory.CORE,
-  //   projectLink: 'https://trustwallet.com/',
-  //   harvest: true,
-  //   tokenPerBlock: '20',
-  //   sortOrder: 999,
-  //   isFinished: true,
-  //   tokenDecimals: 18,
-  // },
+  {
+    sousId: 1,
+    tokenName: 'BISON',
+    stakingTokenName: QuoteToken.BISON,
+    earningToken: '0xADA2270B0CB5b6254d3d48A6fEE55b72693B746A',
+    stakingTokenAddress: '0xADA2270B0CB5b6254d3d48A6fEE55b72693B746A',
+    contractAddress: {
+      97: '0x65114d5af1a33f89d36a79a56c75a4728e02d492',
+      56: '0x00',
+    },
+    poolCategory: PoolCategory.COMMUNITY,
+    projectLink: 'https://bishares.finance/',
+    harvest: true,
+    lifePerBlock: '0.000459896',
+    sortOrder: 1,
+    isFinished: false,
+    tokenDecimals: 18,
+    quoteTokenSymbol: QuoteToken.BISON,
+    quoteTokenAdresses: contracts.cake,
+  },
 ]
 
 export default pools

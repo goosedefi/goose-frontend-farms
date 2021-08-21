@@ -14,7 +14,7 @@ const PoolTabButtons = () => {
         <ButtonMenuItem as={Link} to={`${url}`}>
           {TranslateString(999, 'Active')}
         </ButtonMenuItem>
-        <ButtonMenuItem as={Link} to={`${url}/history`}>
+        <ButtonMenuItem as={Link} to="/history">
           {TranslateString(999, 'Inactive')}
         </ButtonMenuItem>
       </ButtonMenu>
