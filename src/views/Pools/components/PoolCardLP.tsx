@@ -267,7 +267,7 @@ const apy = getApr();
         <StyledDetails>
           <div style={{ flex: 1 }}>
             <span role="img" aria-label={stakingTokenName}>
-              🥞{' '}
+              {' '}
             </span>
             {TranslateString(384, 'Your Stake')}:
           </div>

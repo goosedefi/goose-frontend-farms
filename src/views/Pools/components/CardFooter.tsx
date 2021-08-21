@@ -110,7 +110,7 @@ const CardFooter: React.FC<Props> = ({
             <FlexFull>
               <Label>
                 <span role="img" aria-label="syrup">
-                  🥞{' '}
+                  {' '}
                 </span>
                 Total {stakingTokenName} Staked
               </Label>
@@ -135,12 +135,12 @@ const CardFooter: React.FC<Props> = ({
           )}
           {singleStake && <Row>
             <FlexFull>
-              Stake your BISON to earn more BISON rewards and be eligible for the weekly platform distribution.
+            <Label>Stake your BISON to earn more BISON rewards and be eligible for the weekly platform distribution.</Label>
             </FlexFull>
           </Row>}
-          {!singleStake && <TokenLink href={projectLink} target="_blank">
-            {poolName} LP
-          </TokenLink>}
+          <TokenLink href={projectLink} target="_blank">
+            {!singleStake ? `${poolName} LP`: `GET ${poolName}`} 
+          </TokenLink>
         </Details>
       )}
     </StyledFooter>
