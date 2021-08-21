@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { ResetCSS } from '@pancakeswap-libs/uikit'
 import BigNumber from 'bignumber.js'
-import { useFetchPublicData } from 'state/hooks'
+import { useFetchPublicData, useFetchPriceData, useFetchTotalSupplyData } from 'state/hooks'
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
 import PageLoader from './components/PageLoader'
@@ -12,7 +12,7 @@ import PageLoader from './components/PageLoader'
 // Route-based code splitting
 // Only pool is included in the main bundle because of it's the most visited page'
 const Home = lazy(() => import('./views/Home'))
-const Farms = lazy(() => import('./views/Farms'))
+// const Farms = lazy(() => import('./views/Farms'))
 // const Lottery = lazy(() => import('./views/Lottery'))
 const Pools = lazy(() => import('./views/Pools'))
 // const Ifos = lazy(() => import('./views/Ifos'))
@@ -34,6 +34,10 @@ const App: React.FC = () => {
   }, [account, connect])
 
   useFetchPublicData()
+
+  useFetchPriceData()
+
+  useFetchTotalSupplyData()
 
   return (
     <Router>

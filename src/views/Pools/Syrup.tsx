@@ -16,9 +16,11 @@ import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
 import Coming from './components/Coming'
 import PoolCard from './components/PoolCard'
+import PoolCardLP from './components/PoolCardLP'
 import PoolTabButtons from './components/PoolTabButtons'
 import Divider from './components/Divider'
 
+const CHAIN_ID = process.env.REACT_APP_CHAIN_ID
 const Farm: React.FC = () => {
   const { path } = useRouteMatch()
   const TranslateString = useI18n()
@@ -41,19 +43,22 @@ const Farm: React.FC = () => {
 
   const poolsWithApy = pools.map((pool) => {
     const isBnbPool = pool.poolCategory === PoolCategory.BINANCE
-    const rewardTokenFarm = farms.find((f) => f.tokenSymbol === pool.tokenName)
-    const stakingTokenFarm = farms.find((s) => s.tokenSymbol === pool.stakingTokenName)
+    // const rewardTokenFarm = farms.find((f) => f.tokenSymbol === pool.quoteTokenSymbol)
+    // const stakingTokenFarm = farms.find((s) => s.tokenAddresses[CHAIN_ID] === pool.quoteTokenAdresses[CHAIN_ID])
 
     // /!\ Assume that the farm quote price is BNB
-    const stakingTokenPriceInBNB = isBnbPool ? new BigNumber(1) : new BigNumber(stakingTokenFarm?.tokenPriceVsQuote)
-    const rewardTokenPriceInBNB = priceToBnb(
-      pool.tokenName,
-      rewardTokenFarm?.tokenPriceVsQuote,
-      rewardTokenFarm?.quoteTokenSymbol,
-    )
+    // const stakingTokenPriceInBNB = isBnbPool ? new BigNumber(1) : new BigNumber(stakingTokenFarm?.tokenPriceVsQuote)
+    // const rewardTokenPriceInBNB = priceToBnb(
+    //   pool.tokenName,
+    //   rewardTokenFarm?.tokenPriceVsQuote,
+    //   rewardTokenFarm?.quoteTokenSymbol,
+    // )
 
-    const totalRewardPricePerYear = rewardTokenPriceInBNB.times(pool.lifePerBlock).times(BLOCKS_PER_YEAR)
-    const totalStakingTokenInPool = stakingTokenPriceInBNB.times(getBalanceNumber(pool.totalStaked))
+    const rewardTokenPrice = new BigNumber(1)
+    const stakingTokenPrice = new BigNumber(1)
+
+    const totalRewardPricePerYear = rewardTokenPrice.times(pool.tokenPerBlock).times(BLOCKS_PER_YEAR)
+    const totalStakingTokenInPool = stakingTokenPrice.times(getBalanceNumber(pool.totalStaked))
     const apy = totalRewardPricePerYear.div(totalStakingTokenInPool).times(100)
 
     return {
@@ -67,21 +72,31 @@ const Farm: React.FC = () => {
 
   return (
     <Page>
+      <Hero>
+        <div>
+          <Heading as="h1" size="xl" mb="16px" style={{ color: 'orange' }}>
+            {TranslateString(282, 'Earn BISON')}
+          </Heading>
+        </div>
+      </Hero>
       <PoolTabButtons />
       <Divider />
       <FlexLayout>
         <Route exact path={`${path}`}>
-          <>
-            {orderBy(openPools, ['sortOrder']).map((pool) => (
-              <PoolCard key={pool.sousId} pool={pool} />
-            ))}
-            {/* <Coming /> */}
-          </>
+          {orderBy(openPools, ['sortOrder']).map((pool) => {
+            if (pool.earningToken === pool.stakingTokenAddress) {
+              return <PoolCard key={pool.sousId} pool={pool} />
+            }
+            return <PoolCardLP key={pool.sousId} pool={pool} />
+          })}
         </Route>
         <Route path={`${path}/history`}>
-          {orderBy(finishedPools, ['sortOrder']).map((pool) => (
-            <PoolCard key={pool.sousId} pool={pool} />
-          ))}
+          {orderBy(finishedPools, ['sortOrder']).map((pool) => {
+            if (pool.earningToken === pool.stakingTokenAddress) {
+              return <PoolCard key={pool.sousId} pool={pool} />
+            }
+            return <PoolCardLP key={pool.sousId} pool={pool} />
+          })}
         </Route>
       </FlexLayout>
     </Page>

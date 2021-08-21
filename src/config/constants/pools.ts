@@ -15,7 +15,7 @@ const pools: PoolConfig[] = [
     poolCategory: PoolCategory.COMMUNITY,
     projectLink: 'https://bishares.finance/',
     harvest: true,
-    lifePerBlock: '0.000459896',
+    tokenPerBlock: '0.000459896',
     sortOrder: 1,
     isFinished: false,
     tokenDecimals: 18,

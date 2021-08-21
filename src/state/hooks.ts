@@ -2,9 +2,17 @@ import BigNumber from 'bignumber.js'
 import { useEffect, useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import useRefresh from 'hooks/useRefresh'
-import { fetchFarmsPublicDataAsync, fetchPoolsPublicDataAsync, fetchPoolsUserDataAsync } from './actions'
-import { State, Farm, Pool } from './types'
+import { useAppDispatch } from 'state'
+import {
+  fetchFarmsPublicDataAsync,
+  fetchPoolsPublicDataAsync,
+  fetchPoolsUserDataAsync,
+  fetchPriceDataAsync,
+  fetchTotalSupplyDataAsync,
+} from './actions'
+import { State, Farm, Pool, PriceState } from './types'
 import { QuoteToken } from '../config/constants/types'
+import { fetchPrices } from './prices'
 
 const ZERO = new BigNumber(0)
 
@@ -13,7 +21,25 @@ export const useFetchPublicData = () => {
   const { slowRefresh } = useRefresh()
   useEffect(() => {
     dispatch(fetchFarmsPublicDataAsync())
-    // dispatch(fetchPoolsPublicDataAsync())
+    dispatch(fetchPoolsPublicDataAsync())
+  }, [dispatch, slowRefresh])
+}
+
+// For Price
+export const useFetchPriceData = () => {
+  const dispatch = useDispatch()
+  const { slowRefresh } = useRefresh()
+  useEffect(() => {
+    dispatch(fetchPriceDataAsync())
+  }, [dispatch, slowRefresh])
+}
+
+// For Total Supply
+export const useFetchTotalSupplyData = () => {
+  const dispatch = useDispatch()
+  const { slowRefresh } = useRefresh()
+  useEffect(() => {
+    dispatch(fetchTotalSupplyDataAsync())
   }, [dispatch, slowRefresh])
 }
 
@@ -45,7 +71,6 @@ export const useFarmUser = (pid) => {
   }
 }
 
-
 // Pools
 
 export const usePools = (account): Pool[] => {
@@ -69,9 +94,33 @@ export const usePoolFromPid = (sousId): Pool => {
 // Prices
 
 export const usePriceBnbBusd = (): BigNumber => {
-  const pid = 4 // BUSD-BNB LP
+  const pid = 2 // BUSD-BNB LP
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO
+}
+
+export const useFetchPriceList = () => {
+  const { slowRefresh } = useRefresh()
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchPrices())
+  }, [dispatch, slowRefresh])
+}
+
+export const useGetApiPrices = () => {
+  const prices: PriceState['data'] = useSelector((state: State) => state.prices.data)
+  return prices
+}
+
+export const useGetApiPrice = (address: string) => {
+  const prices = useGetApiPrices()
+
+  if (!prices) {
+    return null
+  }
+
+  return prices[address.toLowerCase()]
 }
 
 export const usePriceCakeBusd = (): BigNumber => {
@@ -84,24 +133,34 @@ export const usePriceCakeBusd = (): BigNumber => {
   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO;
 }
 
+export const useBISONPrice = (): BigNumber => {
+  const { price } = useSelector((state: State) => state.bison.data)
+  return price ? new BigNumber(price) : ZERO
+}
+
+export const useTotalSupplyPrice = (): BigNumber => {
+  const { totalSupply } = useSelector((state: State) => state.bison.data)
+  return totalSupply ? new BigNumber(totalSupply) : ZERO
+}
+
 export const useTotalValue = (): BigNumber => {
-  const farms = useFarms();
-  const bnbPrice = usePriceBnbBusd();
-  const cakePrice = usePriceCakeBusd();
-  let value = new BigNumber(0);
+  const farms = useFarms()
+  const bnbPrice = usePriceBnbBusd()
+  const cakePrice = usePriceCakeBusd()
+  let value = new BigNumber(0)
   for (let i = 0; i < farms.length; i++) {
     const farm = farms[i]
     if (farm.lpTotalInQuoteToken) {
-      let val;
+      let val
       if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-        val = (bnbPrice.times(farm.lpTotalInQuoteToken));
-      }else if (farm.quoteTokenSymbol === QuoteToken.CAKE) {
-        val = (cakePrice.times(farm.lpTotalInQuoteToken));
-      }else{
-        val = (farm.lpTotalInQuoteToken);
+        val = bnbPrice.times(farm.lpTotalInQuoteToken)
+      } else if (farm.quoteTokenSymbol === QuoteToken.CAKE) {
+        val = cakePrice.times(farm.lpTotalInQuoteToken)
+      } else {
+        val = farm.lpTotalInQuoteToken
       }
-      value = value.plus(val);
+      value = value.plus(val)
     }
   }
-  return value;
+  return value
 }

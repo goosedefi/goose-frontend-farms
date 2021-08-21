@@ -71,7 +71,7 @@ export interface PoolConfig {
   contractAddress: Address
   poolCategory: PoolCategory
   projectLink: string
-  lifePerBlock: string
+  tokenPerBlock: string
   sortOrder?: number
   harvest?: boolean
   isFinished?: boolean
