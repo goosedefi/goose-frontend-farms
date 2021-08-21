@@ -74,7 +74,7 @@ const Farm: React.FC = () => {
     <Page>
       <Hero>
           <Heading as="h1" size="xl" mb="16px">
-            {TranslateString(282, 'Graze on the great plains and earn BISON')}
+            {TranslateString(282, 'Graze the great plains and earn BISON')}
           </Heading>
       </Hero>
       <PoolTabButtons />
