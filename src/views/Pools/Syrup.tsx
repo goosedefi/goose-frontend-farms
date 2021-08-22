@@ -14,13 +14,13 @@ import { useFarms, usePriceBnbBusd, usePools } from 'state/hooks'
 import { QuoteToken, PoolCategory } from 'config/constants/types'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
-import Coming from './components/Coming'
+import { Grid } from '@material-ui/core';
 import PoolCard from './components/PoolCard'
 import PoolCardLP from './components/PoolCardLP'
 import PoolTabButtons from './components/PoolTabButtons'
 import Divider from './components/Divider'
 
-const CHAIN_ID = process.env.REACT_APP_CHAIN_ID
+
 const Farm: React.FC = () => {
   const { path } = useRouteMatch()
   const TranslateString = useI18n()
@@ -73,30 +73,30 @@ const Farm: React.FC = () => {
   return (
     <Page>
       <Hero>
-          <Heading as="h1" size="xl" mb="16px">
+          <Heading as="h1" size="xl" mb="16px" style={{ textAlign: 'center'}}>
             {TranslateString(282, 'Graze the great plains and earn BISON')}
           </Heading>
       </Hero>
       <PoolTabButtons />
       <Divider />
-      <FlexLayout>
+      <Grid container spacing={3}>
         <Route exact path={`${path}`}>
-          {orderBy(openPools, ['sortOrder']).map((pool) => {
-            if (pool.earningToken === pool.stakingTokenAddress) {
-              return <PoolCard key={pool.sousId} pool={pool} />
-            }
-            return <PoolCardLP key={pool.sousId} pool={pool} />
-          })}
+            {orderBy(openPools, ['sortOrder']).map((pool) => {
+              if (pool.earningToken === pool.stakingTokenAddress) {
+                return  <Grid item lg={4} xs={12}><PoolCard key={pool.sousId} pool={pool} /></Grid>
+              }
+              return <Grid item lg={4} xs={12}><PoolCardLP key={pool.sousId} pool={pool} /></Grid>
+            })}
         </Route>
         <Route path={`${path}/history`}>
-          {orderBy(finishedPools, ['sortOrder']).map((pool) => {
-            if (pool.earningToken === pool.stakingTokenAddress) {
-              return <PoolCard key={pool.sousId} pool={pool} />
-            }
-            return <PoolCardLP key={pool.sousId} pool={pool} />
-          })}
+            {orderBy(finishedPools, ['sortOrder']).map((pool) => {
+              if (pool.earningToken === pool.stakingTokenAddress) {
+                return  <Grid item lg={4} xs={12}><PoolCard key={pool.sousId} pool={pool} /></Grid>
+              }
+              return <Grid item lg={4} xs={12}><PoolCardLP key={pool.sousId} pool={pool} /></Grid>
+            })}
         </Route>
-      </FlexLayout>
+      </Grid>
     </Page>
   )
 }

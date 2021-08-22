@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
-import styled from 'styled-components'
-import { getBalanceNumber } from 'utils/formatBalance'
-import useI18n from 'hooks/useI18n'
 import { ChevronDown, ChevronUp } from 'react-feather'
+import { Image } from '@pancakeswap-libs/uikit'
+import Tooltip from '@material-ui/core/Tooltip';
+
+import useI18n from 'hooks/useI18n'
+
+import { getBalanceNumber } from 'utils/formatBalance'
+
 import Balance from 'components/Balance'
-import { CommunityTag, CoreTag, BinanceTag, RewardsTag } from 'components/Tags'
+import Button from 'components/Button'
+import InfoIcon from '@material-ui/icons/Info';
+
 import { PoolCategory } from 'config/constants/types'
 
-const tags = {
-  [PoolCategory.BINANCE]: BinanceTag,
-  [PoolCategory.CORE]: CoreTag,
-  [PoolCategory.COMMUNITY]: CommunityTag,
-  [PoolCategory.REWARDS]: RewardsTag,
-}
+import styled from 'styled-components'
+
 
 interface Props {
   poolName: string
@@ -71,9 +73,24 @@ const Label = styled.div`
   font-size: 14px;
 `
 const TokenLink = styled.a`
+  display: block;
+ margin-top: 20px;
+`
+
+const Rewards = styled.a`
+  display: flex;
+  color: #c9c4d4;
   font-size: 14px;
-  text-decoration: none;
-  color: white;
+  border: 2px solid #DAA10E;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100px;
+  padding: 5px;
+  
+  span {
+    margin-right: 5px;
+  }
 `
 
 const CardFooter: React.FC<Props> = ({
@@ -82,8 +99,6 @@ const CardFooter: React.FC<Props> = ({
   totalStaked,
   blocksRemaining,
   isFinished,
-  blocksUntilStart,
-  poolCategory,
   stakingTokenName,
   singleStake
 }) => {
@@ -92,13 +107,16 @@ const CardFooter: React.FC<Props> = ({
   const Icon = isOpen ? ChevronUp : ChevronDown
 
   const handleClick = () => setIsOpen(!isOpen)
-  const Tag = tags[poolCategory]
 
   return (
     <StyledFooter isFinished={isFinished}>
       <Row>
+
         <FlexFull>
-          <Tag />
+          <Rewards>
+            <Image src="images/tokens/BISON.png" width={20} height={20} alt='logo'/>
+            <span>Rewards</span>
+          </Rewards>
         </FlexFull>
         <StyledDetailsButton onClick={handleClick}>
           {isOpen ? 'Hide' : 'Details'} <Icon />
@@ -112,38 +130,34 @@ const CardFooter: React.FC<Props> = ({
                 <span role="img" aria-label="syrup">
                   {' '}
                 </span>
-                Total {stakingTokenName} Staked
+                <span style={{ color: '#DAA10E'}}>Total {stakingTokenName} Staked</span>
               </Label>
             </FlexFull>
-            {singleStake ? <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)  - 5000} />
+            {singleStake ? <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />
             :
             <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />
             }
-            
           </Row>
-          {/* {blocksUntilStart > 0 && (
-            <Row>
-              <FlexFull>
-                <Label>{TranslateString(410, 'Start')}:</Label>
-              </FlexFull>
-              <Balance fontSize="14px" isDisabled={isFinished} value={blocksUntilStart} decimals={0} />
-            </Row>
-          )} */}
           {blocksRemaining > 0 && (
             <Row>
               <FlexFull>
-                <Label>{TranslateString(410, 'Remaining Blocks')}:</Label>
+                <Label style={{ color: '#DAA10E'}}>
+                  {TranslateString(410, 'Remaining Blocks')}
+                  :</Label>
               </FlexFull>
               <Balance fontSize="14px" isDisabled={isFinished} value={blocksRemaining} decimals={0} />
+              {singleStake &&
+              <Tooltip title="Stake your BISON to earn more BISON rewards and be eligible for the weekly platform distribution.">
+                <InfoIcon fontSize='small'  style={{ color: '#DAA10E', marginLeft: '3px'}}/>
+              </Tooltip>
+              }
             </Row>
           )}
-          {singleStake && <Row>
-            <FlexFull>
-            <Label>Stake your BISON to earn more BISON rewards and be eligible for the weekly platform distribution.</Label>
-            </FlexFull>
-          </Row>}
-          <TokenLink href={projectLink} target="_blank">
-            {!singleStake ? `${poolName} LP`: `GET ${poolName}`} 
+
+          <TokenLink href={projectLink} target="_blank" rel="noreferrer">
+            <Button outLine>
+              {!singleStake ? `${poolName} LP`: `GET ${poolName}`}
+            </Button>
           </TokenLink>
         </Details>
       )}

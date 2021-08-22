@@ -1,23 +1,28 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
-import { Button, IconButton, useModal, AddIcon, Image } from '@pancakeswap-libs/uikit'
+import { useModal, AddIcon, Image } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
+
 import UnlockButton from 'components/UnlockButton'
 import Label from 'components/Label'
+import Balance from 'components/Balance'
+import Button from 'components/Button';
+
 import { useERC20, useLP } from 'hooks/useContract'
 import { useSousApprove } from 'hooks/useApprove'
 import useI18n from 'hooks/useI18n'
 import { useSousStake } from 'hooks/useStake'
 import { useSousUnstake } from 'hooks/useUnstake'
 import useBlock from 'hooks/useBlock'
-import { getBalanceNumber } from 'utils/formatBalance'
 import { useSousHarvest } from 'hooks/useHarvest'
-import Balance from 'components/Balance'
+
+import { getBalanceNumber } from 'utils/formatBalance'
 import { QuoteToken, PoolCategory } from 'config/constants/types'
 import { Pool } from 'state/types'
-import { useGetApiPrice, useFarms, usePriceBnbBusd, useBISONPrice } from 'state/hooks'
-import { getPoolApr, getLPprice } from 'utils/apr'
+import { useFarms, usePriceBnbBusd, useBISONPrice } from 'state/hooks'
+import { getPoolApr } from 'utils/apr'
+
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
 import CompoundModal from './CompoundModal'
@@ -195,7 +200,6 @@ const apy = getApr();
     <Card
       isActive={isCardActive}
       isFinished={isFinished && sousId !== 0}
-      style={{ backdropFilter: 'blur(3px)', background: 'rgba(39, 38, 44, 0.8)' }}
     >
       {isFinished && sousId !== 0 && <PoolFinishedSash />}
       <div style={{ padding: '24px' }}>
@@ -238,7 +242,7 @@ const apy = getApr();
           {account &&
             (needsApproval && !isOldSyrup ? (
               <div style={{ flex: 1 }}>
-                <Button disabled={isFinished || requestedApproval} onClick={handleApprove} fullWidth>
+                <Button disabled={isFinished || requestedApproval} onClick={handleApprove} outLine>
                   Approve
                 </Button>
               </div>
@@ -246,6 +250,7 @@ const apy = getApr();
               <>
                 <Button
                   disabled={stakedBalance.eq(new BigNumber(0)) || pendingTx}
+                  outLine
                   onClick={
                     isOldSyrup
                       ? async () => {
@@ -260,15 +265,15 @@ const apy = getApr();
                 </Button>
                 <StyledActionSpacer />
                 {!isOldSyrup && (
-                  <IconButton disabled={isFinished && sousId !== 0} onClick={onPresentDeposit}>
-                    <AddIcon color="background" />
-                  </IconButton>
+                  <Button disabled={isFinished && sousId !== 0} onClick={onPresentDeposit} outLine>
+                    <AddIcon/>
+                  </Button>
                 )}
               </>
             ))}
         </StyledCardActions>
         <StyledDetails>
-          <div style={{ flex: 1 }}>{TranslateString(736, 'APR')}:</div>
+          <div style={{ flex: 1,  color: '#DAA10E' }}>{TranslateString(736, 'APR')}:</div>
           {isFinished || isOldSyrup || !apy || apy?.isNaN() || !apy?.isFinite() ? (
             '-'
           ) : (
@@ -276,7 +281,7 @@ const apy = getApr();
           )}
         </StyledDetails>
         <StyledDetails>
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, color: '#DAA10E' }}>
             <span role="img" aria-label={stakingTokenName}>
               {' '}
             </span>
