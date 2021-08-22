@@ -81,7 +81,6 @@ const Header = () => {
                   className={classes.mobileButton}
                   aria-controls="simple-menu"
                   aria-haspopup="true"
-                  onClick={(event) => setDropDown(event)}
                   type='button'
                 >
                   {ArrowDownIcon}
