@@ -3,7 +3,7 @@ import contracts from './contracts'
 
 const pools: PoolConfig[] = [
   {
-    sousId: 1,
+    sousId: 5,
     poolName: 'BISON',
     tokenName: 'BISON',
     stakingTokenName: QuoteToken.BISON,
