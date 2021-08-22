@@ -166,9 +166,16 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   }, [lpTokenContract, stakingTokenAddress])
 
   const getApr = useCallback(() => {
-    const baseValue = new BigNumber(token0price).times(reserve0)
-    const quoteValue = new BigNumber(token1price).times(reserve1)
 
+    let baseValue;
+    let quoteValue;
+    if(pool.poolName !== 'biAPE-BNB APE') {
+      baseValue = new BigNumber(token0price).times(reserve0)
+      quoteValue = new BigNumber(token1price).times(reserve1)
+    } else {
+      baseValue = new BigNumber(token0price).times(reserve1)
+      quoteValue = new BigNumber(token1price).times(reserve0)
+    }
     const totalValue = baseValue.plus(quoteValue)
     const lpTokenPrice = totalValue.div(getBalanceNumber(totalSupply)).times(token0price)
 
@@ -180,7 +187,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
     )
     return new BigNumber(apr);
  
-}, [pool.tokenDecimals, pool.tokenPerBlock, pool.totalStaked, reserve0, reserve1, rewardTokenPrice, token0price, token1price, totalSupply])
+}, [pool.tokenDecimals, pool.tokenPerBlock, pool.totalStaked, pool.poolName, reserve0, reserve1, rewardTokenPrice, token0price, token1price, totalSupply])
 
 const apy = getApr();
 
