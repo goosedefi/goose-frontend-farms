@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     background-color: ${({ theme }) => theme.colors.background};
+    overflow-x: hidden;
 
     img {
       height: auto;

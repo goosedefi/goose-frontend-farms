@@ -1,23 +1,17 @@
-import React, { useEffect, Suspense, lazy } from 'react'
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import React, { useEffect, Suspense, lazy, memo, FC } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { ResetCSS } from '@pancakeswap-libs/uikit'
 import BigNumber from 'bignumber.js'
 import { useFetchPublicData, useFetchPriceData, useFetchTotalSupplyData } from 'state/hooks'
 import GlobalStyle from './style/Global'
-import Menu from './components/Menu'
-import PageLoader from './components/PageLoader'
-// import NftGlobalNotification from './views/Nft/components/NftGlobalNotification'
 
-// Route-based code splitting
-// Only pool is included in the main bundle because of it's the most visited page'
-const Home = lazy(() => import('./views/Home'))
-// const Farms = lazy(() => import('./views/Farms'))
-// const Lottery = lazy(() => import('./views/Lottery'))
+import PageLoader from './components/PageLoader'
+import Layout from './views/Layout';
+import ConnectWallet from './views/ConnectWallet';
+
 const Pools = lazy(() => import('./views/Pools'))
-// const Ifos = lazy(() => import('./views/Ifos'))
 const NotFound = lazy(() => import('./views/NotFound'))
-// const Nft = lazy(() => import('./views/Nft'))
 
 // This config is required for number formating
 BigNumber.config({
@@ -25,13 +19,13 @@ BigNumber.config({
   DECIMAL_PLACES: 80,
 })
 
-const App: React.FC = () => {
-  const { account, connect } = useWallet()
-  useEffect(() => {
+const App: FC = () => {
+  const { account, connect } = useWallet();
+   useEffect(() => {
     if (!account && window.localStorage.getItem('accountStatus')) {
       connect('injected')
     }
-  }, [account, connect])
+  }, [account, connect]);
 
   useFetchPublicData()
 
@@ -41,47 +35,26 @@ const App: React.FC = () => {
 
   return (
     <Router>
-      <ResetCSS />
-      <GlobalStyle />
-      <Menu>
-        <Suspense fallback={<PageLoader />}>
-          <Switch>
-            {/* <Route path="/" exact>
-              <Home />
-            </Route> */}
-            <Route path="/">
-              <Pools />
-            </Route>
-            {/* <Route path="/nests">
-              <Farms tokenMode/>
-            </Route> */}
-            {/* <Route path="/pools"> */}
-            {/*  <Pools /> */}
-            {/* </Route> */}
-            {/* <Route path="/lottery"> */}
-            {/*  <Lottery /> */}
-            {/* </Route> */}
-            {/* <Route path="/ifo"> */}
-            {/*  <Ifos /> */}
-            {/* </Route> */}
-            {/* <Route path="/nft"> */}
-            {/*  <Nft /> */}
-            {/* </Route> */}
-            {/* Redirect */}
-            {/* <Route path="/staking"> */}
-            {/*  <Redirect to="/pools" /> */}
-            {/* </Route> */}
-            {/* <Route path="/syrup"> */}
-            {/*  <Redirect to="/pools" /> */}
-            {/* </Route> */}
-            {/* 404 */}
-            <Route component={NotFound} />
-          </Switch>
-        </Suspense>
-      </Menu>
-      {/* <NftGlobalNotification /> */}
+        <ResetCSS />
+        <GlobalStyle />
+        <Layout>
+          <Suspense fallback={<PageLoader />}>
+            <Switch>
+              <Route path="/">
+                <div style={{ minHeight: 'calc(100vh - 250px)'}}>
+                   {
+                    account
+                      ? <Pools />
+                      : <ConnectWallet/>
+                  }
+                </div>
+              </Route>
+              <Route component={NotFound} />
+            </Switch>
+          </Suspense>
+        </Layout>
     </Router>
   )
 }
 
-export default React.memo(App)
+export default memo(App)

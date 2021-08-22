@@ -1,21 +1,26 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useState } from 'react'
-import styled from 'styled-components'
-import { Button, IconButton, useModal, AddIcon, Image } from '@pancakeswap-libs/uikit'
+import { IconButton, useModal, AddIcon, Image } from '@pancakeswap-libs/uikit';
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import UnlockButton from 'components/UnlockButton'
+
 import Label from 'components/Label'
+import Balance from 'components/Balance'
+import Button from 'components/Button';
+
 import { useERC20 } from 'hooks/useContract'
 import { useSousApprove } from 'hooks/useApprove'
 import useI18n from 'hooks/useI18n'
 import { useSousStake } from 'hooks/useStake'
 import { useSousUnstake } from 'hooks/useUnstake'
 import useBlock from 'hooks/useBlock'
-import { getBalanceNumber } from 'utils/formatBalance'
 import { useSousHarvest } from 'hooks/useHarvest'
-import Balance from 'components/Balance'
+
+import { getBalanceNumber } from 'utils/formatBalance'
 import { QuoteToken, PoolCategory } from 'config/constants/types'
 import { Pool } from 'state/types'
+
+import styled from 'styled-components'
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
 import CompoundModal from './CompoundModal'
@@ -24,6 +29,7 @@ import Card from './Card'
 import OldSyrupTitle from './OldSyrupTitle'
 import HarvestButton from './HarvestButton'
 import CardFooter from './CardFooter'
+
 
 interface PoolWithApy extends Pool {
   apy: BigNumber
@@ -157,7 +163,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
           {account &&
             (needsApproval && !isOldSyrup ? (
               <div style={{ flex: 1 }}>
-                <Button disabled={isFinished || requestedApproval} onClick={handleApprove} fullWidth>
+                <Button disabled={isFinished || requestedApproval} onClick={handleApprove} outLine>
                   Approve
                 </Button>
               </div>
@@ -165,6 +171,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
               <>
                 <Button
                   disabled={stakedBalance.eq(new BigNumber(0)) || pendingTx}
+                  outLine
                   onClick={
                     isOldSyrup
                       ? async () => {
@@ -179,15 +186,19 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
                 </Button>
                 <StyledActionSpacer />
                 {!isOldSyrup && (
-                  <IconButton disabled={isFinished && sousId !== 0} onClick={onPresentDeposit}>
-                    <AddIcon color="background" />
-                  </IconButton>
+                  <Button
+                    outLine
+                    disabled={isFinished && sousId !== 0}
+                    onClick={onPresentDeposit}
+                  >
+                    <AddIcon/>
+                  </Button>
                 )}
               </>
             ))}
         </StyledCardActions>
         <StyledDetails>
-          <div style={{ flex: 1 }}>{TranslateString(736, 'APR')}:</div>
+          <div style={{ flex: 1,  color: '#DAA10E' }}>{TranslateString(736, 'APR')}:</div>
           {isFinished || isOldSyrup || !apy || apy?.isNaN() || !apy?.isFinite() ? (
             '-'
           ) : (
@@ -195,7 +206,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
           )}
         </StyledDetails>
         <StyledDetails>
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1,  color: '#DAA10E' }}>
             <span role="img" aria-label={stakingTokenName}>
               {' '}
             </span>
