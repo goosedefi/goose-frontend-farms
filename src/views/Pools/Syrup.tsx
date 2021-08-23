@@ -70,9 +70,7 @@ const Farm: React.FC = () => {
 
   return (
     <>
-      <Banner>
-        <h1>{TranslateString(282, 'Graze the great plains and earn BISON')}</h1>
-      </Banner>
+      <Banner/>
       <Page>
         <PoolTabButtons />
         <Divider />
