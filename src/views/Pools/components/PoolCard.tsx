@@ -3,6 +3,8 @@ import React, { useCallback, useState } from 'react'
 import { IconButton, useModal, AddIcon, Image } from '@pancakeswap-libs/uikit';
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import UnlockButton from 'components/UnlockButton'
+import Tooltip from '@material-ui/core/Tooltip'
+import InfoIcon from '@material-ui/icons/Info'
 
 import Label from 'components/Label'
 import Balance from 'components/Balance'
@@ -31,6 +33,7 @@ import HarvestButton from './HarvestButton'
 import CardFooter from './CardFooter'
 
 
+
 interface PoolWithApy extends Pool {
   apy: BigNumber
 }
@@ -41,6 +44,7 @@ interface HarvestProps {
 
 const CustomCardTitle = styled(CardTitle)`
   font-size: 22px;
+  color: #FFFFFF
 `
 
 const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
@@ -126,6 +130,11 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
       <div style={{ padding: '24px' }}>
         <CustomCardTitle isFinished={isFinished && sousId !== 0}>
           {isOldSyrup && '[OLD]'} {poolName} {TranslateString(348, 'Pool')}
+          {singleStake &&
+          <Tooltip title="Stake your BISON to earn more BISON rewards and be eligible for the weekly platform distribution.">
+            <InfoIcon fontSize='small'  style={{ color: '#DAA10E', marginLeft: '3px'}}/>
+          </Tooltip>
+          }
         </CustomCardTitle>
         <div style={{ marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
           <div style={{ flex: 1 }}>

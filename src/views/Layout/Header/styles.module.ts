@@ -12,6 +12,7 @@ const useStyles = makeStyles(() => ({
     color: '#CACACA',
     fontSize: '16px',
     textTransform: 'capitalize',
+    fontWeight: 'bold',
   },
   button: {
     textTransform: 'none',

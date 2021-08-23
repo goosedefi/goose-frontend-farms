@@ -38,6 +38,7 @@ interface HarvestProps {
 
 const CustomCardTitle = styled(CardTitle)`
   font-size: 22px;
+  color: #ffffff
 `
 
 const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
@@ -58,7 +59,6 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
     isFinished,
     userData,
     stakingLimit,
-    tokenPerBlock,
   } = pool
   // Pools using native BNB behave differently than pools using a token
   const isBnbPool = poolCategory === PoolCategory.BINANCE
@@ -191,7 +191,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
       parseFloat(pool.tokenPerBlock),
     )
     return new BigNumber(apr);
- 
+
 }, [pool.tokenDecimals, pool.tokenPerBlock, pool.totalStaked, pool.poolName, reserve0, reserve1, rewardTokenPrice, token0price, token1price, totalSupply])
 
 const apy = getApr();
@@ -208,7 +208,7 @@ const apy = getApr();
         </CustomCardTitle>
         <div style={{ marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
           <div style={{ flex: 1 }}>
-            <Image src={`/images/tokens/${image || tokenName}.png`} width={64} height={64} alt={tokenName} />
+            <Image src={`/images/tokens/${poolName === 'biAPE-BNB APE' ? 'biAPE' :image || tokenName}.png`} width={64} height={64} alt={tokenName} />
           </div>
           {account && harvest && !isOldSyrup && (
             <HarvestButton

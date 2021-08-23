@@ -13,7 +13,8 @@ const useStyles = makeStyles(() => ({
     disable: {
       '& span': {
         fontWeight: 'bold',
-        color: '#1E1F20',
+        color: 'rgba(180, 156, 64, 0.31)',
+        background: 'rgba(54, 46, 18, 0.36)',
       }
     }
   }

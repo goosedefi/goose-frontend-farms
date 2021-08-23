@@ -37,7 +37,7 @@ const Balance: React.FC<BalanceProps> = ({ value, fontSize, color, decimals, isD
 Balance.defaultProps = {
   fontSize: '32px',
   isDisabled: false,
-  color: 'text',
+  color: '#ffffff',
   decimals: 3,
 }
 

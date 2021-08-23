@@ -73,7 +73,7 @@ const Farm: React.FC = () => {
   return (
     <Page>
       <Hero>
-          <Heading as="h1" size="xl" mb="16px" style={{ textAlign: 'center'}}>
+          <Heading as="h1" size="xl" mb="16px" style={{ textAlign: 'center', color: '#FFF'}}>
             {TranslateString(282, 'Graze the great plains and earn BISON')}
           </Heading>
       </Hero>

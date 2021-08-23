@@ -74,12 +74,12 @@ const Label = styled.div`
 `
 const TokenLink = styled.a`
   display: block;
- margin-top: 20px;
+  margin-top: 20px;
 `
 
 const Rewards = styled.a`
   display: flex;
-  color: #c9c4d4;
+  color: #DAA10E;
   font-size: 14px;
   border: 2px solid #DAA10E;
   border-radius: 16px;
@@ -146,11 +146,6 @@ const CardFooter: React.FC<Props> = ({
                   :</Label>
               </FlexFull>
               <Balance fontSize="14px" isDisabled={isFinished} value={blocksRemaining} decimals={0} />
-              {singleStake &&
-              <Tooltip title="Stake your BISON to earn more BISON rewards and be eligible for the weekly platform distribution.">
-                <InfoIcon fontSize='small'  style={{ color: '#DAA10E', marginLeft: '3px'}}/>
-              </Tooltip>
-              }
             </Row>
           )}
 
