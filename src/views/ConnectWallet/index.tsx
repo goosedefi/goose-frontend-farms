@@ -1,5 +1,4 @@
 import React from 'react';
-import { useWeb3React } from '@web3-react/core';
 import { useWalletModal } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 
@@ -12,8 +11,7 @@ import useStyles  from './styles.module';
 
 const ConnectWallet = () => {
   const classes = useStyles();
-  const { chainId, account } = useWeb3React();
-  const { connect, reset } = useWallet()
+  const { connect, reset, account, chainId } = useWallet()
   const { onPresentConnectModal } = useWalletModal(connect, reset)
 
 

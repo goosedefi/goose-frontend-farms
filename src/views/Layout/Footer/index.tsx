@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import {
   Grid, AppBar, Toolbar, Typography, Link as MaterialLink,
 } from '@material-ui/core';
-import { useWeb3React } from '@web3-react/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 
@@ -37,7 +36,6 @@ const footerLinks = [
 ];
 
 const Footer = () => {
-  const { account } = useWeb3React();
   const classes = useStyles();
   const matches = useMediaQuery('(max-width:1350px)');
 
