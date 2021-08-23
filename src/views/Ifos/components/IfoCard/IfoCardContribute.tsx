@@ -5,7 +5,7 @@ import BigNumber from 'bignumber.js'
 import { Contract } from 'web3-eth-contract'
 import { useERC20 } from 'hooks/useContract'
 import { useIfoAllowance } from 'hooks/useAllowance'
-import { useIfoApprove } from 'hooks/useApprove'
+// import { useIfoApprove } from 'hooks/useApprove'
 import { IfoStatus } from 'config/constants/types'
 import { getBalanceNumber } from 'utils/formatBalance'
 import LabelButton from './LabelButton'
@@ -36,8 +36,8 @@ const IfoCardContribute: React.FC<Props> = ({
 
   const { account } = useWallet()
   const contractRaisingToken = useERC20(currencyAddress)
-  const allowance = useIfoAllowance(contractRaisingToken, address, pendingTx)
-  const onApprove = useIfoApprove(contractRaisingToken, address)
+  const allowance = null; // useIfoAllowance(contractRaisingToken, address, pendingTx)
+  const onApprove = null; // useIfoApprove(contractRaisingToken, address)
   const [onPresentContributeModal] = useModal(
     <ContributeModal currency={currency} contract={contract} currencyAddress={currencyAddress} />,
   )

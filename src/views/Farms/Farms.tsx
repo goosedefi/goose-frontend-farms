@@ -6,8 +6,8 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
 import { Image, Heading } from '@pancakeswap-libs/uikit'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
-import FlexLayout from 'components/layout/Flex'
-import Page from 'components/layout/Page'
+import FlexLayout from 'components/Layout/Flex'
+import Page from 'components/Layout/Page'
 import { useFarms, usePriceBnbBusd, usePriceCakeBusd } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
@@ -34,7 +34,8 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const { fastRefresh } = useRefresh()
   useEffect(() => {
     if (account) {
-      dispatch(fetchFarmUserDataAsync(account))
+      const pids = [null];
+      dispatch(fetchFarmUserDataAsync({account, pids}))
     }
   }, [account, dispatch, fastRefresh])
 

@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react'
 import BigNumber from 'bignumber.js'
 import styled, { keyframes } from 'styled-components'
 import { Flex, Text, Skeleton } from '@pancakeswap-libs/uikit'
-import { communityFarms } from 'config/constants'
+// import { communityFarms } from 'config/constants'
 import { Farm } from 'state/types'
 import { provider } from 'web3-core'
 import useI18n from 'hooks/useI18n'
@@ -18,6 +18,9 @@ const textCol ='black';
 
 export interface FarmWithStakedValue extends Farm {
   apy?: BigNumber
+  quoteTokenSymbol: QuoteToken
+  tokenSymbol: string
+
 }
 
 const RainbowLight = keyframes`
@@ -104,7 +107,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
   // const farmImage = farm.lpSymbol.split(' ')[0].toLocaleLowerCase()
   const farmImage = farm.isTokenOnly ? farm.tokenSymbol.toLowerCase() : `${farm.tokenSymbol.toLowerCase()}-${farm.quoteTokenSymbol.toLowerCase()}`
 
-  const totalValue: BigNumber = useMemo(() => {
+  const totalValue: BigNumber | string = useMemo(() => {
     if (!farm.lpTotalInQuoteToken) {
       return null
     }
@@ -128,7 +131,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
     maximumFractionDigits: 2,
   })
 
-  const { quoteTokenAdresses, quoteTokenSymbol, tokenAddresses, risk } = farm
+  const { quoteToken, quoteTokenSymbol, tokenAddresses, lpAddresses /* , risk */ } = farm
 
   return (
     <FCard>
@@ -136,7 +139,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
       <CardHeading
         lpLabel={lpLabel}
         multiplier={farm.multiplier}
-        risk={risk}
+        // risk={risk}
         depositFee={farm.depositFeeBP}
         farmImage={farmImage}
         tokenSymbol={farm.tokenSymbol}
@@ -149,9 +152,9 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
               <>
                 <ApyButton
                   lpLabel={lpLabel}
-                  quoteTokenAdresses={quoteTokenAdresses}
+                  quoteTokenAdresses={quoteToken.address}
                   quoteTokenSymbol={quoteTokenSymbol}
-                  tokenAddresses={tokenAddresses}
+                  tokenAddresses={lpAddresses}
                   cakePrice={cakePrice}
                   apy={farm.apy}
                 />
@@ -189,9 +192,9 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
           }
           totalValueFormated={totalValueFormated}
           lpLabel={lpLabel}
-          quoteTokenAdresses={quoteTokenAdresses}
+          quoteTokenAdresses={quoteToken.address}
           quoteTokenSymbol={quoteTokenSymbol}
-          tokenAddresses={tokenAddresses}
+          tokenAddresses={lpAddresses}
         />
       </ExpandingWrapper>
     </FCard>
