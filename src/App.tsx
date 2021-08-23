@@ -42,11 +42,10 @@ const App: FC = () => {
             <Switch>
               <Route path="/">
                 <div style={{ minHeight: 'calc(100vh - 250px)'}}>
-                   {
-                    account
+                   {account
                       ? <Pools />
                       : <ConnectWallet/>
-                  }
+                   }
                 </div>
               </Route>
               <Route component={NotFound} />

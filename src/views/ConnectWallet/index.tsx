@@ -33,7 +33,6 @@ const ConnectWallet = () => {
               <div>{ZapOffIcon}</div>
               <div className={classes.text}>Connect a Wallet to ACCESS the DASHBOARD</div>
               <Button className={classes.button} onClick={onPresentConnectModal} outLine>{LogIn}Connect Wallet</Button>
-
             </>
           )
       }
