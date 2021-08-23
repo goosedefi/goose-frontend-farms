@@ -3,7 +3,6 @@ import { Route, useRouteMatch } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
-import { Heading } from '@pancakeswap-libs/uikit'
 import { BLOCKS_PER_YEAR } from 'config'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
@@ -12,7 +11,6 @@ import useBlock from 'hooks/useBlock'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useFarms, usePriceBnbBusd, usePools } from 'state/hooks'
 import { QuoteToken, PoolCategory } from 'config/constants/types'
-import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
 import { Grid } from '@material-ui/core';
 import PoolCard from './components/PoolCard'
@@ -71,33 +69,33 @@ const Farm: React.FC = () => {
   const [finishedPools, openPools] = partition(poolsWithApy, (pool) => pool.isFinished)
 
   return (
-    <Page>
-      <Hero>
-          <Heading as="h1" size="xl" mb="16px" style={{ textAlign: 'center', color: '#FFF'}}>
-            {TranslateString(282, 'Graze the great plains and earn BISON')}
-          </Heading>
-      </Hero>
-      <PoolTabButtons />
-      <Divider />
-      <Grid container spacing={3}>
-        <Route exact path={`${path}`}>
-            {orderBy(openPools, ['sortOrder']).map((pool) => {
-              if (pool.earningToken === pool.stakingTokenAddress) {
-                return  <Grid item lg={4} xs={12}><PoolCard key={pool.sousId} pool={pool} /></Grid>
-              }
-              return <Grid item lg={4} xs={12}><PoolCardLP key={pool.sousId} pool={pool} /></Grid>
-            })}
-        </Route>
-        <Route path={`${path}/history`}>
-            {orderBy(finishedPools, ['sortOrder']).map((pool) => {
-              if (pool.earningToken === pool.stakingTokenAddress) {
-                return  <Grid item lg={4} xs={12}><PoolCard key={pool.sousId} pool={pool} /></Grid>
-              }
-              return <Grid item lg={4} xs={12}><PoolCardLP key={pool.sousId} pool={pool} /></Grid>
-            })}
-        </Route>
-      </Grid>
-    </Page>
+    <>
+      <Banner>
+        <h1>{TranslateString(282, 'Graze the great plains and earn BISON')}</h1>
+      </Banner>
+      <Page>
+        <PoolTabButtons />
+        <Divider />
+        <Grid container spacing={3}>
+          <Route exact path={`${path}`}>
+              {orderBy(openPools, ['sortOrder']).map((pool) => {
+                if (pool.earningToken === pool.stakingTokenAddress) {
+                  return  <Grid item lg={4} xs={12}><PoolCard key={pool.sousId} pool={pool} /></Grid>
+                }
+                return <Grid item lg={4} xs={12}><PoolCardLP key={pool.sousId} pool={pool} /></Grid>
+              })}
+          </Route>
+          <Route path={`${path}/history`}>
+              {orderBy(finishedPools, ['sortOrder']).map((pool) => {
+                if (pool.earningToken === pool.stakingTokenAddress) {
+                  return  <Grid item lg={4} xs={12}><PoolCard key={pool.sousId} pool={pool} /></Grid>
+                }
+                return <Grid item lg={4} xs={12}><PoolCardLP key={pool.sousId} pool={pool} /></Grid>
+              })}
+          </Route>
+        </Grid>
+      </Page>
+    </>
   )
 }
 
@@ -126,6 +124,26 @@ const Hero = styled.div`
     grid-template-columns: 1fr 1fr;
     margin: 0;
     max-width: none;
+  }
+`
+const Banner = styled.div`
+  background-image: url('Graze-fade.jpg');
+  height: 300px;
+  width: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat; 
+  background-size: cover;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 40px;
+  font-weight: 600;
+  
+  @media (max-width: 576px) {
+    font-size: 20px;
+    height: 100px;
   }
 `
 
