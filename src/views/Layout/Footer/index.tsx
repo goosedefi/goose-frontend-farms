@@ -63,7 +63,7 @@ const Footer = () => {
                     className={classes.link}
                     component={MaterialLink}
                     style={{ textDecoration: 'none' }}
-                    href="https://twitter.com/BiSharesFinance"
+                    href={item.href}
                     target="_blank"
                     color="textPrimary"
                     variant="h5"
