@@ -29,9 +29,10 @@ import {
 } from 'utils/contractHelpers'
 import { getMulticallAddress, getLotteryTicketAddress} from 'utils/addressHelpers'
 import pancakeRabbits from 'config/abi/pancakeRabbits.json'
+import rabbitmintingfarm from 'config/abi/rabbitmintingfarm.json'
 import lottery from 'config/abi/lottery.json'
 import lotteryTicket from 'config/abi/lotteryNft.json'
-
+import ifo from 'config/abi/ifo.json'
 // Imports below migrated from Exchange useContract.ts
 import { Contract } from '@ethersproject/contracts'
 import { ChainId, WETH } from '@pancakeswap/sdk'
@@ -247,4 +248,14 @@ export const useLottery = () => {
 export const useLotteryTicket = () => {
   const abi = (lotteryTicket as unknown) as AbiItem
   return useContract(abi, getLotteryTicketAddress())
+}
+
+export const useIfoContract = (address: string) => {
+  const ifoAbi = (ifo as unknown) as AbiItem
+  return useContract(ifoAbi, address)
+}
+
+export const useRabbitMintingFarm = (address: string) => {
+  const rabbitMintingFarmAbi = (rabbitmintingfarm as unknown) as AbiItem
+  return useContract(rabbitMintingFarmAbi, address)
 }

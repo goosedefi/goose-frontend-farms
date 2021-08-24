@@ -16,7 +16,8 @@ const Providers: React.FC = ({ children }) => {
   return (
     <Provider store={store}>
       <ThemeContextProvider>
-        <LanguageContextProvider>
+       {// <LanguageContextProvider>
+       }
           <bsc.UseWalletProvider
             chainId={chainId}
             connectors={{
@@ -24,13 +25,14 @@ const Providers: React.FC = ({ children }) => {
               bsc,
             }}
           >
-            <BlockContextProvider>
+           <BlockContextProvider>
               <RefreshContextProvider>
-                <ModalProvider>{children}</ModalProvider>
-              </RefreshContextProvider>
-            </BlockContextProvider>
+              <ModalProvider>{children}</ModalProvider> 
+              </RefreshContextProvider> 
+           </BlockContextProvider> 
           </bsc.UseWalletProvider>
-        </LanguageContextProvider>
+       {// </LanguageContextProvider>
+       }
       </ThemeContextProvider>
     </Provider>
   )

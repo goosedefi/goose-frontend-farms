@@ -18,7 +18,7 @@ import { useAppDispatch } from 'state'
 import { useTranslation } from 'contexts/Localisation'
 
 const useAuth = () => {
-  const { t } = useTranslation()
+  const t = useTranslation()
   const dispatch = useAppDispatch()
   const { activate, deactivate } = useWeb3React()
   const { toastError } = useToast()
@@ -36,7 +36,7 @@ const useAuth = () => {
           } else {
             window.localStorage.removeItem(connectorLocalStorageKey)
             if (error instanceof NoEthereumProviderError || error instanceof NoBscProviderError) {
-              toastError(t('Provider Error'), t('No provider was found'))
+              toastError('Provider Error', 'No provider was found')
             } else if (
               error instanceof UserRejectedRequestErrorInjected ||
               error instanceof UserRejectedRequestErrorWalletConnect
@@ -45,17 +45,17 @@ const useAuth = () => {
                 const walletConnector = connector as WalletConnectConnector
                 walletConnector.walletConnectProvider = null
               }
-              toastError(t('Authorization Error'), t('Please authorize to access your account'))
+              toastError('Authorization Error', 'Please authorize to access your account')
             } else {
               toastError(error.name, error.message)
             }
           }
         })
       } else {
-        toastError(t('Unable to find connector'), t('The connector config is wrong'))
+        toastError('Unable to find connector', 'The connector config is wrong')
       }
     },
-    [t, activate, toastError],
+    [activate, toastError],
   )
 
   const logout = useCallback(() => {

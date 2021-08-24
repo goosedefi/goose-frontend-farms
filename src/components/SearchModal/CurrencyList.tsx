@@ -131,7 +131,7 @@ export default function CurrencyList({
 
   const { chainId } = useActiveWeb3React()
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   const inactiveTokens: {
     [address: string]: Token
@@ -153,11 +153,9 @@ export default function CurrencyList({
           <FixedContentRow style={style}>
             <LightGreyCard padding="8px 12px" borderRadius="8px">
               <RowBetween>
-                <Text small>{t('Expanded results from inactive Token Lists')}</Text>
+                <Text small>Expanded results from inactive Token Lists</Text>
                 <QuestionHelper
-                  text={t(
-                    "Tokens from inactive lists. Import specific tokens below or click 'Manage' to activate more lists.",
-                  )}
+                  text="Tokens from inactive lists. Import specific tokens below or click 'Manage' to activate more lists."
                   ml="4px"
                 />
               </RowBetween>
@@ -190,7 +188,6 @@ export default function CurrencyList({
       setImportToken,
       showImportView,
       breakIndex,
-      t,
     ],
   )
 

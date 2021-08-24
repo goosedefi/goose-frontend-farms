@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { ResetCSS } from '@pantherswap-libs/uikit'
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
+import Pools from './views/Pools'
 import PageLoader from './components/PageLoader'
 import NftGlobalNotification from './views/Nft/components/NftGlobalNotification'
 
@@ -83,7 +84,7 @@ const App: React.FC = () => {
               <Farms />
             </Route>
             <Route path="/pools">
-              <Farms tokenMode/>
+              <Pools/>
             </Route>
             {/* <Route path="/pools"> */}
             {/*  <Pools /> */}

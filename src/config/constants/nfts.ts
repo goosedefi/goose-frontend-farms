@@ -2,6 +2,9 @@ import { Nft, NftSource, NftType } from './types'
 
 export const IPFS_GATEWAY = 'https://ipfs.io/ipfs'
 
+
+export const PANCAKE_RABBITS_ADDRESS = '0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07'
+
 export const nftSources: NftSource = {
   [NftType.PANCAKE]: {
     address: {

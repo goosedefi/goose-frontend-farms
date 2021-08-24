@@ -113,7 +113,7 @@ export function useDerivedSwapInfo(): {
   inputError?: string
 } {
   const { account } = useActiveWeb3React()
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   const {
     independentField,
@@ -153,26 +153,26 @@ export function useDerivedSwapInfo(): {
 
   let inputError: string | undefined
   if (!account) {
-    inputError = t('Connect Wallet')
+    inputError = 'Connect Wallet'
   }
 
   if (!parsedAmount) {
-    inputError = inputError ?? t('Enter an amount')
+    inputError = inputError ?? 'Enter an amount'
   }
 
   if (!currencies[Field.INPUT] || !currencies[Field.OUTPUT]) {
-    inputError = inputError ?? t('Select a token')
+    inputError = inputError ?? 'Select a token'
   }
 
   const formattedTo = isAddress(to)
   if (!to || !formattedTo) {
-    inputError = inputError ?? t('Enter a recipient')
+    inputError = inputError ?? 'Enter a recipient'
   } else if (
     BAD_RECIPIENT_ADDRESSES.indexOf(formattedTo) !== -1 ||
     (bestTradeExactIn && involvesAddress(bestTradeExactIn, formattedTo)) ||
     (bestTradeExactOut && involvesAddress(bestTradeExactOut, formattedTo))
   ) {
-    inputError = inputError ?? t('Invalid recipient')
+    inputError = inputError ?? 'Invalid recipient'
   }
 
   const [allowedSlippage] = useUserSlippageTolerance()
@@ -186,7 +186,7 @@ export function useDerivedSwapInfo(): {
   ]
 
   if (balanceIn && amountIn && balanceIn.lessThan(amountIn)) {
-    inputError = t('Insufficient %symbol% balance', { symbol: amountIn.currency.symbol })
+    inputError = `Insufficient ${amountIn.currency.symbol} balance`
   }
 
   return {

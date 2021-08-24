@@ -39,7 +39,7 @@ export default function ManageTokens({
 }) {
   const { chainId } = useActiveWeb3React()
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   const [searchQuery, setSearchQuery] = useState<string>('')
 
@@ -106,7 +106,7 @@ export default function ManageTokens({
               isWarning={!isAddressValid}
             />
           </Row>
-          {!isAddressValid && <Text color="failure">{t('Enter valid token address')}</Text>}
+          {!isAddressValid && <Text color="failure">Enter valid token address</Text>}
           {searchToken && (
             <ImportRow
               token={searchToken}
@@ -117,16 +117,18 @@ export default function ManageTokens({
           )}
         </AutoColumn>
         {tokenList}
+       { /*
         <Footer>
           <Text bold color="textSubtle">
-            {userAddedTokens?.length} {userAddedTokens.length === 1 ? t('Custom Token') : t('Custom Tokens')}
+            {userAddedTokens?.length} {userAddedTokens.length === 1 ? 'Custom Token' : 'Custom Tokens'}
           </Text>
           {userAddedTokens.length > 0 && (
             <Button variant="tertiary" onClick={handleRemoveAll}>
-              {t('Clear all')}
+              Clear all
             </Button>
           )}
         </Footer>
+          */}
       </Column>
     </Wrapper>
   )

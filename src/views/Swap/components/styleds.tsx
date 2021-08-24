@@ -51,13 +51,15 @@ export const StyledBalanceMaxMini = styled.button`
   float: right;
 
   :hover {
-    background-color: ${({ theme }) => theme.colors.dropdown};
+    background-color: ${({ theme }) => `${theme.colors.warning}33`};
   }
   :focus {
-    background-color: ${({ theme }) => theme.colors.dropdown};
+    background-color: ${({ theme }) => `${theme.colors.warning}33`};
     outline: none;
   }
 `
+
+// ${({ theme }) => theme.colors.dropdown
 
 export const TruncatedText = styled(Text).attrs({ ellipsis: true })`
   width: 220px;

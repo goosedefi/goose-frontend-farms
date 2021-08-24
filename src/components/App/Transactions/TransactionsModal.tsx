@@ -30,7 +30,7 @@ const TransactionsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
   const dispatch = useDispatch<AppDispatch>()
   const allTransactions = useAllTransactions()
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   const sortedRecentTransactions = useMemo(() => {
     const txs = Object.values(allTransactions)
@@ -45,22 +45,22 @@ const TransactionsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
   }, [dispatch, chainId])
 
   return (
-    <Modal title={t('Recent Transactions')} headerBackground="gradients.cardHeader" onDismiss={onDismiss}>
+    <Modal title='Recent Transactions' headerBackground="gradients.cardHeader" onDismiss={onDismiss}>
       {account && (
         <ModalBody>
           {!!pending.length || !!confirmed.length ? (
             <>
               <AutoRow mb="1rem" style={{ justifyContent: 'space-between' }}>
-                <Text>{t('Recent Transactions')}</Text>
+                <Text>Recent Transactions</Text>
                 <Button variant="tertiary" scale="xs" onClick={clearAllTransactionsCallback}>
-                  {t('clear all')}
+                  clear all
                 </Button>
               </AutoRow>
               {renderTransactions(pending)}
               {renderTransactions(confirmed)}
             </>
           ) : (
-            <Text>{t('No recent transactions')}</Text>
+            <Text>No recent transactions</Text>
           )}
         </ModalBody>
       )}

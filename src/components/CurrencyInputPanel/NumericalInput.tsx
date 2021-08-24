@@ -58,7 +58,7 @@ export const Input = React.memo(function InnerInput({
     }
   }
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   return (
     <StyledInput
@@ -70,7 +70,7 @@ export const Input = React.memo(function InnerInput({
       }}
       // universal input options
       inputMode="decimal"
-      title={t('Token Amount')}
+      title='Token Amount'
       autoComplete="off"
       autoCorrect="off"
       // text-specific options

@@ -52,7 +52,7 @@ const Label = styled(Text)`
 export default function Swap({ history }: RouteComponentProps) {
   const loadedUrlParams = useDefaultsFromURLSearch()
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   // token warning stuff
   const [loadedInputCurrency, loadedOutputCurrency] = [
@@ -305,11 +305,11 @@ export default function Swap({ history }: RouteComponentProps) {
   return (
     <Page>
       <AppBody>
-        <AppHeader title={t('Exchange')} subtitle={t('Trade tokens in an instant')} />
+        <AppHeader title='Exchange' subtitle='Trade tokens in an instant' />
         <Wrapper id="swap-page">
           <AutoColumn gap="md">
             <CurrencyInputPanel
-              label={independentField === Field.OUTPUT && !showWrap && trade ? t('From (estimated)') : t('From')}
+              label={independentField === Field.OUTPUT && !showWrap && trade ? 'From (estimated)': 'From'}
               value={formattedAmounts[Field.INPUT]}
               showMaxButton={!atMaxAmountInput}
               currency={currencies[Field.INPUT]}
@@ -333,7 +333,7 @@ export default function Swap({ history }: RouteComponentProps) {
                 </ArrowWrapper>
                 {recipient === null && !showWrap && isExpertMode ? (
                   <Button variant="text" id="add-recipient-button" onClick={() => onChangeRecipient('')}>
-                    {t('+ Add a send (optional)')}
+                    + Add a send (optional)
                   </Button>
                 ) : null}
               </AutoRow>
@@ -341,7 +341,7 @@ export default function Swap({ history }: RouteComponentProps) {
             <CurrencyInputPanel
               value={formattedAmounts[Field.OUTPUT]}
               onUserInput={handleTypeOutput}
-              label={independentField === Field.INPUT && !showWrap && trade ? t('To (estimated)') : t('To')}
+              label={independentField === Field.INPUT && !showWrap && trade ? 'To (estimated)' : 'To'}
               showMaxButton={false}
               currency={currencies[Field.OUTPUT]}
               onCurrencySelect={handleOutputSelect}
@@ -356,7 +356,7 @@ export default function Swap({ history }: RouteComponentProps) {
                     <ArrowDownIcon width="16px" />
                   </ArrowWrapper>
                   <Button variant="text" id="remove-recipient-button" onClick={() => onChangeRecipient(null)}>
-                    {t('- Remove send')}
+                    - Remove send
                   </Button>
                 </AutoRow>
                 <AddressInputPanel id="recipient" value={recipient} onChange={onChangeRecipient} />
@@ -367,7 +367,7 @@ export default function Swap({ history }: RouteComponentProps) {
               <AutoColumn gap="8px" style={{ padding: '0 16px' }}>
                 {Boolean(trade) && (
                   <RowBetween align="center">
-                    <Label>{t('Price')}</Label>
+                    <Label>Price</Label>
                     <TradePrice
                       price={trade?.executionPrice}
                       showInverted={showInverted}
@@ -377,7 +377,7 @@ export default function Swap({ history }: RouteComponentProps) {
                 )}
                 {allowedSlippage !== INITIAL_ALLOWED_SLIPPAGE && (
                   <RowBetween align="center">
-                    <Label>{t('Slippage Tolerance')}</Label>
+                    <Label>Slippage Tolerance</Label>
                     <Text bold color="primary">
                       {allowedSlippage / 100}%
                     </Text>
@@ -389,7 +389,7 @@ export default function Swap({ history }: RouteComponentProps) {
           <Box mt="1rem">
             {swapIsUnsupported ? (
               <Button width="100%" disabled mb="4px">
-                {t('Unsupported Asset')}
+                Unsupported Asset
               </Button>
             ) : !account ? (
               <ConnectWalletButton width="100%" />
@@ -401,11 +401,11 @@ export default function Swap({ history }: RouteComponentProps) {
             ) : noRoute && userHasSpecifiedInputOutput ? (
               <GreyCard style={{ textAlign: 'center' }}>
                 <Text color="textSubtle" mb="4px">
-                  {t('Insufficient liquidity for this trade.')}
+                  Insufficient liquidity for this trade.
                 </Text>
                 {singleHopOnly && (
                   <Text color="textSubtle" mb="4px">
-                    {t('Try enabling multi-hop trades.')}
+                    Try enabling multi-hop trades.
                   </Text>
                 )}
               </GreyCard>
@@ -419,12 +419,12 @@ export default function Swap({ history }: RouteComponentProps) {
                 >
                   {approval === ApprovalState.PENDING ? (
                     <AutoRow gap="6px" justify="center">
-                      {t('Enabling')} <CircleLoader stroke="white" />
+                      Enabling <CircleLoader stroke="white" />
                     </AutoRow>
                   ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
-                    t('Enabled')
+                    'Enabled'
                   ) : (
-                    t('Enable %asset%', { asset: currencies[Field.INPUT]?.symbol ?? '' })
+                    `Enable ${currencies[Field.INPUT]?.symbol ?? '' }`
                   )}
                 </Button>
                 <Button
@@ -449,10 +449,10 @@ export default function Swap({ history }: RouteComponentProps) {
                   }
                 >
                   {priceImpactSeverity > 3 && !isExpertMode
-                    ? t('Price Impact High')
+                    ? 'Price Impact High'
                     : priceImpactSeverity > 2
-                    ? t('Swap Anyway')
-                    : t('Swap')}
+                    ? 'Swap Anyway'
+                    : 'Swap'}
                 </Button>
               </RowBetween>
             ) : (
@@ -479,8 +479,8 @@ export default function Swap({ history }: RouteComponentProps) {
                   (priceImpactSeverity > 3 && !isExpertMode
                     ? `Price Impact Too High`
                     : priceImpactSeverity > 2
-                    ? t('Swap Anyway')
-                    : t('Swap'))}
+                    ? 'Swap Anyway'
+                    : 'Swap')}
               </Button>
             )}
             {showApproveFlow && (

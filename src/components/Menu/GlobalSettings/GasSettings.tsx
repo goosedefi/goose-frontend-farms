@@ -6,17 +6,15 @@ import { GAS_PRICE_GWEI, GAS_PRICE } from 'state/user/hooks/helpers'
 import { useGasPriceManager } from 'state/user/hooks'
 
 const GasSettings = () => {
-  const { t } = useTranslation()
+  const t = useTranslation()
   const [gasPrice, setGasPrice] = useGasPriceManager()
 
   return (
     <Flex flexDirection="column">
       <Flex mb="12px" alignItems="center">
-        <Text>{t('Default Transaction Speed (GWEI)')}</Text>
+        <Text>Default Transaction Speed (GWEI)</Text>
         <QuestionHelper
-          text={t(
-            'Adjusts the gas price (transaction fee) for your transaction. Higher GWEI = higher speed = higher fees',
-          )}
+          text='Adjusts the gas price (transaction fee) for your transaction. Higher GWEI = higher speed = higher fees'
           placement="top-start"
           ml="4px"
         />
@@ -31,7 +29,7 @@ const GasSettings = () => {
           }}
           variant={gasPrice === GAS_PRICE_GWEI.default ? 'primary' : 'tertiary'}
         >
-          {t('Standard (%gasPrice%)', { gasPrice: GAS_PRICE.default })}
+          `Standard (${GAS_PRICE.default})`
         </Button>
         <Button
           mt="4px"
@@ -42,7 +40,7 @@ const GasSettings = () => {
           }}
           variant={gasPrice === GAS_PRICE_GWEI.fast ? 'primary' : 'tertiary'}
         >
-          {t('Fast (%gasPrice%)', { gasPrice: GAS_PRICE.fast })}
+          `Fast (${GAS_PRICE.fast})`
         </Button>
         <Button
           mr="4px"
@@ -53,7 +51,7 @@ const GasSettings = () => {
           }}
           variant={gasPrice === GAS_PRICE_GWEI.instant ? 'primary' : 'tertiary'}
         >
-          {t('Instant (%gasPrice%)', { gasPrice: GAS_PRICE.instant })}
+          `Instant (${GAS_PRICE.instant})`
         </Button>
       </Flex>
     </Flex>

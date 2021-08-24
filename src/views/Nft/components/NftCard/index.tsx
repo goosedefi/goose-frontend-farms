@@ -70,8 +70,8 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
     reInitialize,
   } = useContext(NftProviderContext)
   const walletCanClaim = canClaim && !hasClaimed
-  const { bunnyId, name, previewImage, originalImage, description } = nft
-  const tokenIds = getTokenIds(bunnyId)
+  const { variationId, name, images, description } = nft
+  const tokenIds = getTokenIds(variationId)
   const isSupplyAvailable = currentDistributedSupply < totalSupplyDistributed
   const walletOwnsNft = tokenIds && tokenIds.length > 0
   const Icon = state.isOpen ? ChevronUpIcon : ChevronDownIcon
@@ -80,8 +80,8 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
     setState((prevState) => ({ ...prevState, isLoading: true }))
     try {
       const { methods } = getPancakeRabbitContract()
-      const bunnyCount = await methods.bunnyCount(bunnyId).call()
-      const bunnyBurnCount = await methods.bunnyBurnCount(bunnyId).call()
+      const bunnyCount = await methods.bunnyCount(variationId).call()
+      const bunnyBurnCount = await methods.bunnyBurnCount(variationId).call()
 
       setState((prevState) => ({
         ...prevState,
@@ -93,7 +93,7 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
     } catch (error) {
       console.error(error)
     }
-  }, [bunnyId])
+  }, [variationId])
 
   const handleClick = async () => {
     if (state.isOpen) {
@@ -122,7 +122,7 @@ const NftCard: React.FC<NftCardProps> = ({ nft }) => {
 
   return (
     <Card isActive={walletOwnsNft}>
-      <Image src={`/images/nfts/${previewImage}`} alt={name} originalLink={walletOwnsNft ? originalImage : null} />
+      <Image src={`/images/nfts/${images}`} alt={name}/>
       <CardBody>
         <Header>
           <Heading>{name}</Heading>

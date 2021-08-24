@@ -13,7 +13,7 @@ const InputPanel = styled.div`
   flex-flow: column nowrap;
   position: relative;
   border-radius: 1.25rem;
-  background-color: ${({ theme }) => theme.colors.backgroundAlt};
+  background-color: ${({ theme }) => theme.colors.background};
   z-index: 1;
   width: 100%;
 `
@@ -26,7 +26,7 @@ const ContainerRow = styled.div<{ error: boolean }>`
   border: 1px solid ${({ error, theme }) => (error ? theme.colors.failure : theme.colors.background)};
   transition: border-color 300ms ${({ error }) => (error ? 'step-end' : 'step-start')},
     color 500ms ${({ error }) => (error ? 'step-end' : 'step-start')};
-  background-color: ${({ theme }) => theme.colors.backgroundAlt};
+  background-color: ${({ theme }) => theme.colors.background};
 `
 
 const InputContainer = styled.div`
@@ -40,7 +40,7 @@ const Input = styled.input<{ error?: boolean }>`
   border: none;
   flex: 1 1 auto;
   width: 0;
-  background-color: ${({ theme }) => theme.colors.backgroundAlt};
+  background-color: ${({ theme }) => theme.colors.background};
   transition: color 300ms ${({ error }) => (error ? 'step-end' : 'step-start')};
   color: ${({ error, theme }) => (error ? theme.colors.failure : theme.colors.primary)};
   overflow: hidden;
@@ -72,7 +72,7 @@ export default function AddressInputPanel({
   value,
   onChange,
 }: {
-  id?: string
+  id: string
   // the typed string value
   value: string
   // triggers whenever the typed value changes
@@ -80,7 +80,7 @@ export default function AddressInputPanel({
 }) {
   const { chainId } = useActiveWeb3React()
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   const { address, loading, name } = useENS(value)
 
@@ -101,10 +101,10 @@ export default function AddressInputPanel({
         <InputContainer>
           <AutoColumn gap="md">
             <RowBetween>
-              <Text>{t('Recipient')}</Text>
+              <Text>Recipient</Text>
               {address && chainId && (
                 <Link external small href={getBscScanLink(name ?? address, 'address', chainId)}>
-                  ({t('View on BscScan')})
+                  View on BscScan
                 </Link>
               )}
             </RowBetween>
@@ -115,7 +115,7 @@ export default function AddressInputPanel({
               autoCorrect="off"
               autoCapitalize="off"
               spellCheck="false"
-              placeholder={t('Wallet Address or ENS name')}
+              placeholder='Wallet Address or ENS name'
               error={error}
               pattern="^(0x[a-fA-F0-9]{40})$"
               onChange={handleInput}

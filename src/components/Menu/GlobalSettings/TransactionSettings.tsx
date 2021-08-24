@@ -20,7 +20,7 @@ const SlippageTabs = () => {
   const [slippageInput, setSlippageInput] = useState('')
   const [deadlineInput, setDeadlineInput] = useState('')
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   const slippageInputIsValid =
     slippageInput === '' || (userSlippageTolerance / 100).toFixed(2) === Number.parseFloat(slippageInput).toFixed(2)
@@ -74,11 +74,9 @@ const SlippageTabs = () => {
     <Flex flexDirection="column">
       <Flex flexDirection="column" mb="24px">
         <Flex mb="12px">
-          <Text>{t('Slippage Tolerance')}</Text>
+          <Text>Slippage Tolerance</Text>
           <QuestionHelper
-            text={t(
-              'Setting a high slippage tolerance can help transactions succeed, but you may not get such a good price. Use with caution.',
-            )}
+            text='Setting a high slippage tolerance can help transactions succeed, but you may not get such a good price. Use with caution.'
             placement="top-start"
             ml="4px"
           />
@@ -142,18 +140,18 @@ const SlippageTabs = () => {
         {!!slippageError && (
           <Text fontSize="14px" color={slippageError === SlippageError.InvalidInput ? 'red' : '#F3841E'} mt="8px">
             {slippageError === SlippageError.InvalidInput
-              ? t('Enter a valid slippage percentage')
+              ? 'Enter a valid slippage percentage'
               : slippageError === SlippageError.RiskyLow
-              ? t('Your transaction may fail')
-              : t('Your transaction may be frontrun')}
+              ? 'Your transaction may fail'
+              : 'Your transaction may be frontrun'}
           </Text>
         )}
       </Flex>
       <Flex justifyContent="space-between" alignItems="center" mb="24px">
         <Flex alignItems="center">
-          <Text>{t('Tx deadline (mins)')}</Text>
+          <Text>Tx deadline (mins)</Text>
           <QuestionHelper
-            text={t('Your transaction will revert if it is left confirming for longer than this time.')}
+            text='Your transaction will revert if it is left confirming for longer than this time.'
             placement="top-start"
             ml="4px"
           />

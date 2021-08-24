@@ -18,7 +18,6 @@ const priceHelperLps: FarmConfig[] = [
     },
     token: tokens.qsd,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
   },
 ]
 

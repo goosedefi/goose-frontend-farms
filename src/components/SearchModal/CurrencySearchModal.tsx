@@ -70,17 +70,17 @@ export default function CurrencySearchModal({
   const [importList, setImportList] = useState<TokenList | undefined>()
   const [listURL, setListUrl] = useState<string | undefined>()
 
-  const { t } = useTranslation()
+  // const t = useTranslation()
 
   const config = {
-    [CurrencyModalView.search]: { title: t('Select a Token'), onBack: undefined },
-    [CurrencyModalView.manage]: { title: t('Manage'), onBack: () => setModalView(CurrencyModalView.search) },
+    [CurrencyModalView.search]: { title: 'Select a Token', onBack: undefined },
+    [CurrencyModalView.manage]: { title: 'Manage', onBack: () => setModalView(CurrencyModalView.search) },
     [CurrencyModalView.importToken]: {
-      title: t('Import Tokens'),
+      title: 'Import Tokens',
       onBack: () =>
         setModalView(prevView && prevView !== CurrencyModalView.importToken ? prevView : CurrencyModalView.search),
     },
-    [CurrencyModalView.importList]: { title: t('Import List'), onBack: () => setModalView(CurrencyModalView.search) },
+    [CurrencyModalView.importList]: { title: 'Import List', onBack: () => setModalView(CurrencyModalView.search) },
   }
 
   return (
@@ -116,6 +116,7 @@ export default function CurrencySearchModal({
         ) : (
           ''
         )}
+       
         {modalView === CurrencyModalView.search && (
           <Footer>
             <Button
@@ -124,10 +125,11 @@ export default function CurrencySearchModal({
               onClick={() => setModalView(CurrencyModalView.manage)}
               className="list-token-manage-button"
             >
-              {t('Manage Tokens')}
+              Manage Tokens
             </Button>
           </Footer>
         )}
+        
       </StyledModalBody>
     </StyledModalContainer>
   )

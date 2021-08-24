@@ -28,7 +28,7 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
   const [audioPlay, toggleSetAudioMode] = useAudioModeManager()
   const { onChangeRecipient } = useSwapActionHandlers()
 
-  const { t } = useTranslation()
+  const t = useTranslation()
   const { theme } = useTheme()
 
   if (showConfirmExpertModal) {
@@ -55,7 +55,7 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
 
   return (
     <Modal
-      title={t('Settings')}
+      title='Settings'
       headerBackground="gradients.cardHeader"
       onDismiss={onDismiss}
       style={{ maxWidth: '420px', overflowY: 'auto' }}
@@ -63,21 +63,21 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
       <Flex flexDirection="column">
         <Flex pb="24px" flexDirection="column">
           <Text bold textTransform="uppercase" fontSize="12px" color="secondary" mb="24px">
-            {t('Global')}
+            Global
           </Text>
           <GasSettings />
         </Flex>
         <Flex pt="24px" flexDirection="column" borderTop="1px grey solid">
           <Text bold textTransform="uppercase" fontSize="12px" color="secondary" mb="24px">
-            {t('Swaps & Liquidity')}
+            Swaps and Liquidity
           </Text>
           <TransactionSettings />
         </Flex>
         <Flex justifyContent="space-between" alignItems="center" mb="24px">
           <Flex alignItems="center">
-            <Text>{t('Expert Mode')}</Text>
+            <Text>Expert Mode</Text>
             <QuestionHelper
-              text={t('Bypasses confirmation modals and allows high slippage trades. Use at your own risk.')}
+              text='Bypasses confirmation modals and allows high slippage trades. Use at your own risk.'
               placement="top-start"
               ml="4px"
             />
@@ -86,8 +86,8 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
         </Flex>
         <Flex justifyContent="space-between" alignItems="center" mb="24px">
           <Flex alignItems="center">
-            <Text>{t('Disable Multihops')}</Text>
-            <QuestionHelper text={t('Restricts swaps to direct pairs only.')} placement="top-start" ml="4px" />
+            <Text>Disable Multihops</Text>
+            <QuestionHelper text='Restricts swaps to direct pairs only.' placement="top-start" ml="4px" />
           </Flex>
           <Toggle
             id="toggle-disable-multihop-button"
@@ -100,9 +100,9 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
         </Flex>
         <Flex justifyContent="space-between" alignItems="center">
           <Flex alignItems="center">
-            <Text>{t('Flippy sounds')}</Text>
+            <Text>Flippy sounds</Text>
             <QuestionHelper
-              text={t('Fun sounds to make a truly immersive pancake-flipping trading experience')}
+              text='Fun sounds to make a truly immersive pancake-flipping trading experience'
               placement="top-start"
               ml="4px"
             />

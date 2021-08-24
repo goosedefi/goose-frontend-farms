@@ -25,7 +25,7 @@ export default function Manage({
 }) {
   const [showLists, setShowLists] = useState(true)
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   return (
     <ModalBody>
@@ -36,8 +36,8 @@ export default function Manage({
         variant="subtle"
         mb="32px"
       >
-        <ButtonMenuItem width="50%">{t('Lists')}</ButtonMenuItem>
-        <ButtonMenuItem width="50%">{t('Tokens')}</ButtonMenuItem>
+        <ButtonMenuItem width="50%">Lists</ButtonMenuItem>
+        <ButtonMenuItem width="50%">Tokens</ButtonMenuItem>
       </StyledButtonMenu>
       {showLists ? (
         <ManageLists setModalView={setModalView} setImportList={setImportList} setListUrl={setListUrl} />

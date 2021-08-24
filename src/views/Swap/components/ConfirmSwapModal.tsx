@@ -54,7 +54,7 @@ const ConfirmSwapModal: React.FC<InjectedModalProps & ConfirmSwapModalProps> = (
     [originalTrade, trade],
   )
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   const modalHeader = useCallback(() => {
     return trade ? (
@@ -81,12 +81,8 @@ const ConfirmSwapModal: React.FC<InjectedModalProps & ConfirmSwapModalProps> = (
   }, [allowedSlippage, onConfirm, showAcceptChanges, swapErrorMessage, trade])
 
   // text to show while loading
-  const pendingText = t('Swapping %amountA% %symbolA% for %amountB% %symbolB%', {
-    amountA: trade?.inputAmount?.toSignificant(6) ?? '',
-    symbolA: trade?.inputAmount?.currency?.symbol ?? '',
-    amountB: trade?.outputAmount?.toSignificant(6) ?? '',
-    symbolB: trade?.outputAmount?.currency?.symbol ?? '',
-  })
+  const pendingText = `Swapping ${trade?.inputAmount?.toSignificant(6) ?? ''} ${trade?.inputAmount?.currency?.symbol ?? ''} for ${trade?.outputAmount?.toSignificant(6) ?? ''} ${trade?.outputAmount?.currency?.symbol ?? ''}`
+  
 
   const confirmationContent = useCallback(
     () =>
@@ -100,7 +96,7 @@ const ConfirmSwapModal: React.FC<InjectedModalProps & ConfirmSwapModalProps> = (
 
   return (
     <TransactionConfirmationModal
-      title={t('Confirm Swap')}
+      title='Confirm Swap'
       onDismiss={onDismiss}
       customOnDismiss={customOnDismiss}
       attemptingTxn={attemptingTxn}

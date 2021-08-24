@@ -11,7 +11,7 @@ import { get } from 'lodash'
  * @param overrides An overrides object to pass to the method. gasPrice passed in here will take priority over the price returned by useGasPrice
  * @returns https://docs.ethers.io/v5/api/providers/types/#providers-TransactionReceipt
  */
-export function useCallWithGasPrice() {
+export default function useCallWithGasPrice() {
   const gasPrice = useGasPrice()
 
   const callWithGasPrice = useCallback(

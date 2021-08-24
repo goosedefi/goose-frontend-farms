@@ -31,15 +31,12 @@ export interface Farm extends FarmConfig {
   lpTotalSupply?: SerializedBigNumber
   tokenPriceVsQuote?: SerializedBigNumber
   poolWeight?: SerializedBigNumber
-  isTokenOnly: boolean
   userData?: {
     allowance: string
     tokenBalance: string
     stakedBalance: string
     earnings: string
   }
-  tokenAddresses?: string
-  depositFeeBP?: number
 }
 
 export interface Pool extends PoolConfig {

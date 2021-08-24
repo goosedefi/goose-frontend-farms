@@ -15,11 +15,11 @@ const ExpertModal: React.FC<ExpertModalProps> = ({
   const [, toggleExpertMode] = useExpertModeManager()
   const [isRememberChecked, setIsRememberChecked] = useState(false)
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   return (
     <Modal
-      title={t('Expert Mode')}
+      title='Expert Mode'
       onBack={() => setShowConfirmExpertModal(false)}
       onDismiss={() => setShowConfirmExpertModal(false)}
       headerBackground="gradients.cardHeader"
@@ -27,12 +27,10 @@ const ExpertModal: React.FC<ExpertModalProps> = ({
     >
       <Message variant="warning" mb="24px">
         <Text>
-          {t(
-            "Expert mode turns off the 'Confirm' transaction prompt, and allows high slippage trades that often result in bad rates and lost funds.",
-          )}
+          Expert mode turns off the Confirm transaction prompt, and allows high slippage trades that often result in bad rates and lost funds.
         </Text>
       </Message>
-      <Text mb="24px">{t('Only use this mode if you know what you’re doing.')}</Text>
+      <Text mb="24px">Only use this mode if you know what you’re doing.</Text>
       <Flex alignItems="center" mb="24px">
         <Checkbox
           name="confirmed"
@@ -42,7 +40,7 @@ const ExpertModal: React.FC<ExpertModalProps> = ({
           scale="sm"
         />
         <Text ml="10px" color="textSubtle" style={{ userSelect: 'none' }}>
-          {t('Don’t show this again')}
+          Don’t show this again
         </Text>
       </Flex>
       <Button
@@ -59,7 +57,7 @@ const ExpertModal: React.FC<ExpertModalProps> = ({
           }
         }}
       >
-        {t('Turn On Expert Mode')}
+        Turn On Expert Mode
       </Button>
       <Button
         variant="secondary"
@@ -67,7 +65,7 @@ const ExpertModal: React.FC<ExpertModalProps> = ({
           setShowConfirmExpertModal(false)
         }}
       >
-        {t('Cancel')}
+        Cancel
       </Button>
     </Modal>
   )

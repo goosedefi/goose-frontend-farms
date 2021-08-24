@@ -17,7 +17,7 @@ interface ImportProps {
 function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
   const { chainId } = useActiveWeb3React()
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   const [confirmed, setConfirmed] = useState(false)
 
@@ -30,12 +30,10 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
     <AutoColumn gap="lg">
       <Message variant="warning">
         <Text>
-          {t(
-            'Anyone can create a BEP20 token on BSC with any name, including creating fake versions of existing tokens and tokens that claim to represent projects that do not have a token.',
-          )}
+          Anyone can create a BEP20 token on BSC with any name, including creating fake versions of existing tokens and tokens that claim to represent projects that do not have a token.
           <br />
           <br />
-          {t('If you purchase an arbitrary token, you may be unable to sell it back.')}
+          If you purchase an arbitrary token, you may be unable to sell it back.
         </Text>
       </Message>
 
@@ -53,11 +51,11 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
                 scale="sm"
                 startIcon={list.logoURI && <ListLogo logoURI={list.logoURI} size="12px" />}
               >
-                {t('via')} {list.name}
+                via {list.name}
               </Tag>
             ) : (
               <Tag variant="failure" outline scale="sm" startIcon={<ErrorIcon color="failure" />}>
-                {t('Unknown Source')}
+                Unknown Source
               </Tag>
             )}
             <Flex alignItems="center">
@@ -68,7 +66,7 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
               <Flex justifyContent="space-between" width="100%">
                 <Text mr="4px">{address}</Text>
                 <Link href={getBscScanLink(token.address, 'address', chainId)} external>
-                  ({t('View on BscScan')})
+                  View on BscScan
                 </Link>
               </Flex>
             )}
@@ -86,7 +84,7 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
             onChange={() => setConfirmed(!confirmed)}
           />
           <Text ml="8px" style={{ userSelect: 'none' }}>
-            {t('I understand')}
+            I understand
           </Text>
         </Flex>
         <Button
@@ -100,7 +98,7 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
           }}
           className=".token-dismiss-button"
         >
-          {t('Import')}
+          Import
         </Button>
       </Flex>
     </AutoColumn>

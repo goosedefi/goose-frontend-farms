@@ -54,7 +54,7 @@ export default function ImportRow({
   // globals
   const { chainId } = useActiveWeb3React()
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   // check if token comes from list
   const inactiveTokenList = useCombinedInactiveList()
@@ -77,7 +77,7 @@ export default function ImportRow({
         {list && list.logoURI && (
           <RowFixed>
             <Text small mr="4px" color="textSubtle">
-              {t('via')} {list.name}
+              via {list.name}
             </Text>
             <ListLogo logoURI={list.logoURI} size="12px" />
           </RowFixed>
@@ -93,7 +93,7 @@ export default function ImportRow({
             showImportView()
           }}
         >
-          {t('Import')}
+          Import
         </Button>
       ) : (
         <RowFixed style={{ minWidth: 'fit-content' }}>

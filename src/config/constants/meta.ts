@@ -58,3 +58,58 @@ export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
       return null
   }
 }
+
+
+
+
+export const getCustomMetaDefault = (path: string): PageMeta => {
+  switch (path) {
+    case '/':
+      return {
+        title: 'Home | PancakeSwap',
+      }
+    case '/competition':
+      return {
+        title: 'Trading Battle | PancakeSwap',
+      }
+    case '/prediction':
+      return {
+        title: 'Prediction | PancakeSwap',
+      }
+    case '/farms':
+      return {
+        title: 'Farms | PancakeSwap',
+      }
+    case '/pools':
+      return {
+        title: 'Pools | PancakeSwap',
+      }
+    case '/lottery':
+      return {
+        title: 'Lottery | PancakeSwap',
+      }
+    case '/collectibles':
+      return {
+        title: 'Collectibles | PancakeSwap',
+      }
+    case '/ifo':
+      return {
+        title: 'Initial Farm Offering | PancakeSwap',
+      }
+    case '/teams':
+      return {
+        title: 'Leaderboard | PancakeSwap',
+      }
+    case '/profile/tasks':
+      return {
+        title: 'Task Center | PancakeSwap',
+      }
+    case '/profile':
+      return {
+        title: 'Your Profile | PancakeSwap',
+      }
+    default:
+      return null
+  }
+}
+

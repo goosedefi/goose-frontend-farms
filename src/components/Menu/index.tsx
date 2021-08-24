@@ -6,18 +6,25 @@ import useTheme from 'hooks/useTheme'
 import { usePriceCakeBusd } from 'state/hooks'
 import { Menu as UikitMenu } from '@pancakeswap-libs/uikit'
 import styled from 'styled-components'
+
+import { languageList } from 'config/localisation/languages'
+import { useTranslation } from 'contexts/Localisation'
+
 import config from './config'
-
-
 
 
 const Menu = (props) => {
   const { account, connect, reset } = useWallet()
-  const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
-  const { isDark, toggleTheme } = useTheme()
-  const cakePriceUsd = usePriceCakeBusd()
+ const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
+ //  const { isDark, toggleTheme } = useTheme()
+  // const cakePriceUsd = usePriceCakeBusd()
 
   const textCol ='black';
+
+  const { isDark, toggleTheme } = useTheme()
+  const cakePriceUsd = usePriceCakeBusd()
+  // const { profile } = useProfile()
+  // const { currentLanguage, setLanguage } = useTranslation()
 
 /*
 const styleX = styled.div`
@@ -40,9 +47,9 @@ background-repeat: no-repeat;
       logout={reset}
       isDark={isDark}
       toggleTheme={toggleTheme}
-      currentLang={selectedLanguage && selectedLanguage.code}
-      langs={languages}
-      setLang={setSelectedLanguage}
+      currentLang={languages[2]}
+      langs={languageList}
+      // setLang={setLanguage}
       cakePriceUsd={cakePriceUsd.toNumber()}
       links={config}
       priceLink="https://www.coingecko.com/en/coins/goose-finance"

@@ -5,7 +5,7 @@ import { tryParseAmount } from '../state/swap/hooks'
 import { useTransactionAdder } from '../state/transactions/hooks'
 import { useCurrencyBalance } from '../state/wallet/hooks'
 import { useWETHContract } from './useContract'
-import { useCallWithGasPrice } from './useCallWithGasPrice'
+import  useCallWithGasPrice  from './useCallWithGasPrice'
 
 export enum WrapType {
   NOT_APPLICABLE,

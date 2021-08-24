@@ -1,30 +1,9 @@
 import BigNumber from 'bignumber.js'
-// import { SerializedBigNumber, TranslatableText } from 'state/types'
-// import { farmsConfig } from './farms'
-
-export type TranslatableText =
-  | string
-  | {
-      key: string
-      data?: {
-        [key: string]: string | number
-      }
-    }
-
-export type SerializedBigNumber = string
+import { SerializedBigNumber, TranslatableText } from 'state/types'
 
 export interface Address {
   97?: string
   56: string
-}
-
-export enum QuoteToken {
-  'BNB' = 'BNB',
-  'CAKE' = 'CAKE',
-  'SYRUP' = 'SYRUP',
-  'BUSD' = 'BUSD',
-  'TWT' = 'TWT',
-  'UST' = 'UST',
 }
 
 export interface Token {
@@ -63,6 +42,16 @@ export interface Ifo {
   version: number
   [PoolIds.poolBasic]?: IfoPoolInfo
   [PoolIds.poolUnlimited]: IfoPoolInfo
+  subTitle?: string
+    description?: string
+    launchDate?: string
+    launchTime?: string
+    saleAmount?:string
+    raiseAmount?:string
+    cakeToBurn?:string
+    projectSiteUrl?: string
+    currencyAddress?:string
+    tokenDecimals?:number
 }
 
 export enum PoolCategory {
@@ -85,9 +74,6 @@ export interface FarmConfig {
     earnLabel: string
     endBlock: number
   }
-  isTokenOnly:boolean
-  userDataLoaded?: boolean
-  loadArchivedFarmsData?: string
 }
 
 export interface PoolConfig {
@@ -144,7 +130,7 @@ export type Nft = {
   identifier: string
 
   // Used to be "bunnyId". Used when minting NFT
-  variationId?: number | string
+  variationId?: number
 }
 
 export type TeamImages = {
@@ -165,7 +151,6 @@ export type Team = {
 
 export type CampaignType = 'ifo' | 'teambattle' | 'participation'
 
-
 export type Campaign = {
   id: string
   type: CampaignType
@@ -173,7 +158,6 @@ export type Campaign = {
   description?: TranslatableText
   badge?: string
 }
-
 
 export type PageMeta = {
   title: string

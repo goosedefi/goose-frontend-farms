@@ -36,7 +36,7 @@ function CurrencySearch({
   showImportView,
   setImportToken,
 }: CurrencySearchProps) {
-  const { t } = useTranslation()
+  const t = useTranslation()
   const { chainId } = useActiveWeb3React()
 
   // refs for fixed size lists
@@ -126,7 +126,7 @@ function CurrencySearch({
           <Row>
             <Input
               id="token-search-input"
-              placeholder={t('Search name or paste address')}
+              placeholder='Search name or paste address'
               scale="lg"
               autoComplete="off"
               value={searchQuery}
@@ -163,7 +163,7 @@ function CurrencySearch({
         ) : (
           <Column style={{ padding: '20px', height: '100%' }}>
             <Text color="textSubtle" textAlign="center" mb="20px">
-              {t('No results found.')}
+              No results found.
             </Text>
           </Column>
         )}

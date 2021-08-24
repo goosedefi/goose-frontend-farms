@@ -14,7 +14,6 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.syrup,
     quoteToken: tokens.wbnb,
-    isTokenOnly: true,
 
   },
   {
@@ -26,7 +25,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.cake,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
+
   },
   {
     pid: 252,
@@ -37,7 +36,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.busd,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
+
   },
   /**
    * V3 by order of release (some may be out of PID order due to multiplier boost)
@@ -51,7 +50,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.bel,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
+
   },
   {
     pid: 446,
@@ -63,7 +62,7 @@ export const farms: FarmConfig[] = [
     token: tokens.bmon,
     quoteToken: tokens.busd,
     isCommunity: true,
-    isTokenOnly: false,
+
   },
   {
     pid: 447,
@@ -75,7 +74,7 @@ export const farms: FarmConfig[] = [
     token: tokens.gnt,
     quoteToken: tokens.wbnb,
     isCommunity: true,
-    isTokenOnly: false,
+
   },
   {
     pid: 450,
@@ -87,7 +86,7 @@ export const farms: FarmConfig[] = [
     token: tokens.sfund,
     quoteToken: tokens.wbnb,
     isCommunity: true,
-    isTokenOnly: false,
+
   },
   {
     pid: 448,
@@ -99,7 +98,7 @@ export const farms: FarmConfig[] = [
     token: tokens.rusd,
     quoteToken: tokens.busd,
     isCommunity: true,
-    isTokenOnly: false,
+
   },
   {
     pid: 449,
@@ -111,7 +110,7 @@ export const farms: FarmConfig[] = [
     token: tokens.bp,
     quoteToken: tokens.wbnb,
     isCommunity: true,
-    isTokenOnly: false,
+
   },
   {
     pid: 317,
@@ -122,7 +121,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.ramp,
     quoteToken: tokens.busd,
-    isTokenOnly: false,
+
   }, /*
   {
     pid: 445,
@@ -4346,7 +4345,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.inj,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
+
   },
   {
     pid: 29,
@@ -4357,7 +4356,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.usdc,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
+
   },
   {
     pid: 30,
@@ -4368,7 +4367,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.sxp,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
+
   },
   {
     pid: 32,
@@ -4379,7 +4378,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.ctk,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
+
   }, /*
   {
     pid: 34,
@@ -4391,7 +4390,7 @@ export const farms: FarmConfig[] = [
     token: tokens.stax,
     quoteToken: tokens.cake,
     isCommunity: true,
-    isTokenOnly: false,
+
   },
   {
     pid: 35,
@@ -4403,7 +4402,7 @@ export const farms: FarmConfig[] = [
     token: tokens.nar,
     quoteToken: tokens.cake,
     isCommunity: true,
-    isTokenOnly: false,
+
   },
   {
     pid: 36,
@@ -4415,7 +4414,7 @@ export const farms: FarmConfig[] = [
     token: tokens.nya,
     quoteToken: tokens.cake,
     isCommunity: true,
-    isTokenOnly: false,
+
   },
   {
     pid: 38,
@@ -4437,7 +4436,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.bake,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
+
   },
   {
     pid: 9,
@@ -4448,7 +4447,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.burger,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
+
   },
   {
     pid: 10,
@@ -4459,7 +4458,7 @@ export const farms: FarmConfig[] = [
     },
     token: tokens.bake,
     quoteToken: tokens.wbnb,
-    isTokenOnly: false,
+
   }, */
 ]
 

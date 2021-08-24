@@ -44,17 +44,17 @@ const Container = styled.div<{ hideInput: boolean }>`
 `
 interface CurrencyInputPanelProps {
   value: string
-  onUserInput: (value: string) => void
+  onUserInput?: (value: string) => void
   onMax?: () => void
   showMaxButton: boolean
-  label?: string
-  onCurrencySelect: (currency: Currency) => void
-  currency?: Currency | null
+  label: string
+  onCurrencySelect?: (currency: Currency) => void
+  currency: Currency | null
   disableCurrencySelect?: boolean
   hideBalance?: boolean
   pair?: Pair | null
   hideInput?: boolean
-  otherCurrency?: Currency | null
+  otherCurrency: Currency | null
   id: string
   showCommonBases?: boolean
 }
@@ -76,8 +76,8 @@ export default function CurrencyInputPanel({
 }: CurrencyInputPanelProps) {
   const { account } = useActiveWeb3React()
   const selectedCurrencyBalance = useCurrencyBalance(account ?? undefined, currency ?? undefined)
-  const { t } = useTranslation()
-  const translatedLabel = label || t('Input')
+  const t = useTranslation()
+  const translatedLabel = label || 'Input'
 
   const [onPresentCurrencyModal] = useModal(
     <CurrencySearchModal
@@ -97,7 +97,7 @@ export default function CurrencyInputPanel({
               {account && (
                 <Text onClick={onMax} fontSize="14px" style={{ display: 'inline', cursor: 'pointer' }}>
                   {!hideBalance && !!currency && selectedCurrencyBalance
-                    ? t('Balance: %amount%', { amount: selectedCurrencyBalance?.toSignificant(6) ?? '' })
+                    ? `Balance: ${selectedCurrencyBalance?.toSignificant(6) ?? '' }`
                     : ' -'}
                 </Text>
               )}
@@ -147,7 +147,7 @@ export default function CurrencyInputPanel({
                         currency.symbol.length - 5,
                         currency.symbol.length,
                       )}`
-                    : currency?.symbol) || t('Select a currency')}
+                    : currency?.symbol) || 'Select a currency'}
                 </Text>
               )}
               {!disableCurrencySelect && <ChevronDownIcon />}

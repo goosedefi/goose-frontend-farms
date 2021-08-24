@@ -36,7 +36,7 @@ function ImportList({ listURL, list, onImport }: ImportProps) {
   const { theme } = useTheme()
   const dispatch = useDispatch<AppDispatch>()
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   // user must accept
   const [confirmed, setConfirmed] = useState(false)
@@ -97,12 +97,10 @@ function ImportList({ listURL, list, onImport }: ImportProps) {
           <Message variant="danger">
             <Flex flexDirection="column">
               <Text fontSize="20px" textAlign="center" color={theme.colors.failure} mb="16px">
-                {t('Import at your own risk')}
+                Import at your own risk
               </Text>
               <Text color={theme.colors.failure} mb="8px">
-                {t(
-                  'By adding this list you are implicitly trusting that the data is correct. Anyone can create a list, including creating fake versions of existing lists and lists that claim to represent projects that do not have one.',
-                )}
+                By adding this list you are implicitly trusting that the data is correct. Anyone can create a list, including creating fake versions of existing lists and lists that claim to represent projects that do not have one.
               </Text>
               <Text bold color={theme.colors.failure} mb="16px">
                 {typeof 'If you purchase a token from this list, you may not be able to sell it back.'}
@@ -116,14 +114,14 @@ function ImportList({ listURL, list, onImport }: ImportProps) {
                   scale="sm"
                 />
                 <Text ml="10px" style={{ userSelect: 'none' }}>
-                  {t('I understand')}
+                  I understand
                 </Text>
               </Flex>
             </Flex>
           </Message>
 
           <Button disabled={!confirmed} onClick={handleAddList}>
-            {t('Import')}
+            Import
           </Button>
           {addError ? (
             <Text color="failure" style={{ textOverflow: 'ellipsis', overflow: 'hidden' }}>

@@ -46,7 +46,7 @@ const usePreventModalOverlayClick = () => {
 }
 
 const SwapWarningModal: React.FC<SwapWarningModalProps> = ({ swapCurrency, onDismiss }) => {
-  const { t } = useTranslation()
+  const t = useTranslation()
   const { theme } = useTheme()
   usePreventModalOverlayClick()
 
@@ -65,8 +65,8 @@ const SwapWarningModal: React.FC<SwapWarningModalProps> = ({ swapCurrency, onDis
 
   return (
     <StyledModalContainer minWidth="280px">
-      <ModalHeader background={theme.colors.gradients.cardHeader}>
-        <Heading p="12px 24px">{t('Notice for trading %symbol%', { symbol: SWAP_WARNING.symbol })}</Heading>
+      <ModalHeader background="blue" /* {theme.colors.gradients.cardHeader} */>
+        <Heading p="12px 24px">`Notice for trading ${SWAP_WARNING.symbol }`</Heading>
       </ModalHeader>
       <ModalBody p="24px">
         <MessageContainer variant="warning" mb="24px">

@@ -49,7 +49,7 @@ const ListRow = memo(function ListRow({ listUrl }: { listUrl: string }) {
 
   const isActive = useIsListActive(listUrl)
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   const handleAcceptListUpdate = useCallback(() => {
     if (!pending) return
@@ -75,14 +75,14 @@ const ListRow = memo(function ListRow({ listUrl }: { listUrl: string }) {
     <div>
       <Text>{list && listVersionLabel(list.version)}</Text>
       <LinkExternal external href={`https://tokenlists.org/token-list?url=${listUrl}`}>
-        {t('See')}
+        See
       </LinkExternal>
       <Button variant="danger" scale="xs" onClick={handleRemoveList} disabled={Object.keys(listsByUrl).length === 1}>
-        {t('Remove')}
+        Remove
       </Button>
       {pending && (
         <Button variant="text" onClick={handleAcceptListUpdate} style={{ fontSize: '12px' }}>
-          {t('Update list')}
+          Update list
         </Button>
       )}
     </div>,
@@ -105,7 +105,7 @@ const ListRow = memo(function ListRow({ listUrl }: { listUrl: string }) {
         </Row>
         <RowFixed mt="4px">
           <Text fontSize="12px" mr="6px" textTransform="lowercase">
-            {list.tokens.length} {t('Tokens')}
+            {list.tokens.length} Tokens
           </Text>
           <span ref={targetRef}>
             <CogIcon color="text" width="12px" />
@@ -143,7 +143,7 @@ function ManageLists({
 }) {
   const [listUrlInput, setListUrlInput] = useState<string>('')
 
-  const { t } = useTranslation()
+  const t = useTranslation()
 
   const lists = useAllLists()
 
@@ -242,7 +242,7 @@ function ManageLists({
           <Input
             id="list-add-input"
             scale="lg"
-            placeholder={t('https:// or ipfs:// or ENS name')}
+            placeholder='https:// or ipfs:// or ENS name'
             value={listUrlInput}
             onChange={handleInput}
           />
@@ -262,18 +262,18 @@ function ManageLists({
                 <AutoColumn gap="4px" style={{ marginLeft: '20px' }}>
                   <Text bold>{tempList.name}</Text>
                   <Text color="textSubtle" small textTransform="lowercase">
-                    {tempList.tokens.length} {t('Tokens')}
+                    {tempList.tokens.length} Tokens
                   </Text>
                 </AutoColumn>
               </RowFixed>
               {isImported ? (
                 <RowFixed>
                   <CheckmarkIcon width="16px" mr="10px" />
-                  <Text>{t('Loaded')}</Text>
+                  <Text>Loaded</Text>
                 </RowFixed>
               ) : (
                 <Button width="fit-content" onClick={handleImport}>
-                  {t('Import')}
+                  Import
                 </Button>
               )}
             </RowBetween>

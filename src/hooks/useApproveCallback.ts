@@ -10,7 +10,7 @@ import { useTransactionAdder, useHasPendingApproval } from '../state/transaction
 import { computeSlippageAdjustedAmounts } from '../utils/prices'
 import { calculateGasMargin } from '../utils'
 import { useTokenContract } from './useContract'
-import { useCallWithGasPrice } from './useCallWithGasPrice'
+import useCallWithGasPrice from './useCallWithGasPrice'
 
 export enum ApprovalState {
   UNKNOWN,

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Flex } from '@pancakeswap/uikit'
 import Footer from 'components/Menu/Footer'
-import SubNav from 'components/Menu/SubNav'
+import SubNav from 'components/Menu/subNav'
 
 const StyledPage = styled.div`
   display: flex;
@@ -35,7 +35,7 @@ const Page: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...pro
       <SubNav />
       {children}
       <Flex flexGrow={1} />
-      <Footer />
+     { /* <Footer /> */ }
     </StyledPage>
   )
 }
