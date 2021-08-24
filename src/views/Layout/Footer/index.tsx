@@ -48,7 +48,7 @@ const Footer = () => {
         >
           <Grid
             item
-            lg={3}
+            lg={2}
             xs={12}
             container
             alignItems="center"
@@ -101,7 +101,7 @@ const Footer = () => {
               </Typography>
             </Grid>
           </Grid>
-          <Grid item lg={7} container justifyContent="flex-end" alignItems="center" spacing={3}>
+          <Grid item lg={8} container justifyContent="flex-end" alignItems="center" spacing={3}>
             <Grid item>
               <Typography
                 className={classes.title}
