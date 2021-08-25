@@ -1,8 +1,9 @@
-import BigNumber from 'bignumber.js'
-import React, { useCallback, useState } from 'react'
-import styled from 'styled-components'
-import { useModal, AddIcon, Image } from '@pancakeswap-libs/uikit'
-import { useWallet } from '@binance-chain/bsc-use-wallet'
+import React, { useCallback, useState, useEffect } from 'react';
+import BigNumber from 'bignumber.js';
+import styled from 'styled-components';
+import { useModal, AddIcon, Image } from '@pancakeswap-libs/uikit';
+import { useWallet } from '@binance-chain/bsc-use-wallet';
+import { useQuery } from "@apollo/client";
 
 import UnlockButton from 'components/UnlockButton'
 import Label from 'components/Label'
@@ -16,11 +17,13 @@ import { useSousStake } from 'hooks/useStake'
 import { useSousUnstake } from 'hooks/useUnstake'
 import useBlock from 'hooks/useBlock'
 import { useSousHarvest } from 'hooks/useHarvest'
+import useGetLpTokenPrice from 'hooks/useGetLpTokenPrice'
+import { useBnbPriceState } from 'hooks/useBnbPrice';
 
 import { getBalanceNumber } from 'utils/formatBalance'
 import { QuoteToken, PoolCategory } from 'config/constants/types'
 import { Pool } from 'state/types'
-import { useFarms, usePriceBnbBusd, useBISONPrice } from 'state/hooks'
+import { usePriceBnbBusd, useBISONPrice } from 'state/hooks'
 import { getPoolApr } from 'utils/apr'
 
 import DepositModal from './DepositModal'
@@ -31,6 +34,7 @@ import Card from './Card'
 import OldSyrupTitle from './OldSyrupTitle'
 import HarvestButton from './HarvestButton'
 import CardFooter from './CardFooter'
+import { BISON_PRICE } from '../../../constants/graph.constants'
 
 interface HarvestProps {
   pool: Pool
@@ -65,9 +69,8 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const TranslateString = useI18n()
   const stakingTokenContract = useERC20(stakingTokenAddress)
   const lpTokenContract = useLP(stakingTokenAddress)
+  const { binancecoin } = useBnbPriceState();
 
-
-  const [liquidity, setLiquidity] = useState(new BigNumber(0))
   const [totalSupply, setTotalSupply] = useState(new BigNumber(0))
 
   const [reserve0, setReserve0] = useState(new BigNumber(0))
@@ -82,13 +85,8 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const { onStake } = useSousStake(sousId, isBnbPool)
   const { onUnstake } = useSousUnstake(sousId)
   const { onReward } = useSousHarvest(sousId, isBnbPool)
-  const farms = useFarms()
-
-  // APR
-  // const rewardTokenPrice = useGetApiPrice(pool.earningToken ? pool.earningToken : '')
-
-  // const token0price = useGetApiPrice(token0 !== undefined ? token0 : '')
-  // const token1price = useGetApiPrice(token1 !== undefined ? token1 : '')
+  const { lpTokenPriceUsd } = useGetLpTokenPrice({lpTokenContract})
+  const { data } = useQuery(BISON_PRICE);
 
   const token0price = useBISONPrice()
   const token1price = usePriceBnbBusd()
@@ -140,7 +138,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
     }
   }, [onApprove, setRequestedApproval])
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (stakingTokenAddress !== undefined) {
       lpTokenContract.methods
         .token0()
@@ -182,7 +180,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
       quoteValue = new BigNumber(token1price).times(reserve0)
     }
     const totalValue = baseValue.plus(quoteValue)
-    const lpTokenPrice = totalValue.div(getBalanceNumber(totalSupply)).times(token0price)
+    const lpTokenPrice = totalValue.div(getBalanceNumber(totalSupply)).times(token0price);
 
     const apr = getPoolApr(
       lpTokenPrice,
@@ -288,6 +286,30 @@ const apy = getApr();
             {TranslateString(384, 'Your Stake')}:
           </div>
           <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(stakedBalance)} />
+        </StyledDetails>
+        <StyledDetails>
+          <div style={{ flex: 1, color: '#DAA10E' }}>
+            <span role="img" aria-label={stakingTokenName}>
+              {' '}
+            </span>
+            Staked value:
+          </div>
+          <div style={{ color: '#FFFFFF', fontWeight: 'bold' }}>
+            ~ ${lpTokenPriceUsd && stakedBalance.div(1e18).multipliedBy(lpTokenPriceUsd).toFixed(2)}
+          </div>
+        </StyledDetails>
+        <StyledDetails>
+          <div style={{ flex: 1, color: '#DAA10E', lineHeight: '25px' }}>
+            <span role="img" aria-label={stakingTokenName}>
+              {' '}
+            </span>
+            Earned value:
+          </div>
+          <div style={{ color: '#FFFFFF', fontWeight: 'bold', lineHeight: '25px' }}>
+            ~ ${data?.token &&
+            new BigNumber(data?.token?.derivedETH).times(binancecoin?.usd).multipliedBy(earnings.div(1e18)).toFixed(2)
+            }
+          </div>
         </StyledDetails>
       </div>
       <CardFooter

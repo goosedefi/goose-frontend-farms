@@ -33,6 +33,7 @@
     ]
   },
   "dependencies": {
+    "@apollo/client": "^3.4.9",
     "@binance-chain/bsc-use-wallet": "^0.8.1",
     "@crowdin/crowdin-api-client": "^1.10.1",
     "@ethersproject/abi": "^5.0.7",
@@ -47,6 +48,7 @@
     "bignumber.js": "^9.0.0",
     "chart.js": "^2.9.4",
     "classnames": "^2.3.1",
+    "graphql": "^15.5.1",
     "iframe-resizer-react": "^1.1.0",
     "lodash": "^4.17.20",
     "react": "^17.0.1",

@@ -9,6 +9,8 @@ import GlobalStyle from './style/Global'
 import PageLoader from './components/PageLoader'
 import Layout from './views/Layout';
 import ConnectWallet from './views/ConnectWallet';
+import ApolloWrap from './views/ApolloWrap';
+import BnbPriceContextProvider from './views/BnbPriceContextWrap'
 
 const Pools = lazy(() => import('./views/Pools'))
 const NotFound = lazy(() => import('./views/NotFound'))
@@ -35,23 +37,27 @@ const App: FC = () => {
 
   return (
     <Router>
-        <ResetCSS />
-        <GlobalStyle />
-        <Layout>
-          <Suspense fallback={<PageLoader />}>
-            <Switch>
-              <Route path="/">
-                <div style={{ minHeight: 'calc(100vh - 250px)'}}>
-                   {account
-                      ? <Pools />
-                      : <ConnectWallet/>
-                   }
-                </div>
-              </Route>
-              <Route component={NotFound} />
-            </Switch>
-          </Suspense>
-        </Layout>
+      <BnbPriceContextProvider>
+        <ApolloWrap>
+          <ResetCSS />
+          <GlobalStyle />
+          <Layout>
+            <Suspense fallback={<PageLoader />}>
+              <Switch>
+                <Route path="/">
+                  <div style={{ minHeight: 'calc(100vh - 250px)'}}>
+                     {account
+                        ? <Pools />
+                        : <ConnectWallet/>
+                     }
+                  </div>
+                </Route>
+                <Route component={NotFound} />
+              </Switch>
+            </Suspense>
+          </Layout>
+        </ApolloWrap>
+      </BnbPriceContextProvider>
     </Router>
   )
 }

@@ -1,10 +1,11 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useState } from 'react'
-import { IconButton, useModal, AddIcon, Image } from '@pancakeswap-libs/uikit';
+import { useModal, AddIcon, Image } from '@pancakeswap-libs/uikit';
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import UnlockButton from 'components/UnlockButton'
 import Tooltip from '@material-ui/core/Tooltip'
 import InfoIcon from '@material-ui/icons/Info'
+import { useQuery } from '@apollo/client'
 
 import Label from 'components/Label'
 import Balance from 'components/Balance'
@@ -32,6 +33,8 @@ import OldSyrupTitle from './OldSyrupTitle'
 import HarvestButton from './HarvestButton'
 import CardFooter from './CardFooter'
 
+import { BISON_PRICE } from '../../../constants/graph.constants'
+import { useBnbPriceState } from '../../../hooks/useBnbPrice'
 
 
 interface PoolWithApy extends Pool {
@@ -77,6 +80,8 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const { onStake } = useSousStake(sousId, isBnbPool)
   const { onUnstake } = useSousUnstake(sousId)
   const { onReward } = useSousHarvest(sousId, isBnbPool)
+  const { binancecoin } = useBnbPriceState();
+  const { data } = useQuery(BISON_PRICE);
 
   const [requestedApproval, setRequestedApproval] = useState(false)
   const [pendingTx, setPendingTx] = useState(false)
@@ -222,6 +227,32 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
             {TranslateString(384, 'Your Stake')}:
           </div>
           <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(stakedBalance)} />
+        </StyledDetails>
+        <StyledDetails>
+          <div style={{ flex: 1, color: '#DAA10E' }}>
+            <span role="img" aria-label={stakingTokenName}>
+              {' '}
+            </span>
+            Staked value:
+          </div>
+          <div style={{ color: '#FFFFFF', fontWeight: 'bold' }}>
+            ~ ${data?.token &&
+              new BigNumber(data?.token?.derivedETH).times(binancecoin?.usd).multipliedBy(stakedBalance.div(1e18)).toFixed(2)
+            }
+          </div>
+        </StyledDetails>
+        <StyledDetails>
+          <div style={{ flex: 1, color: '#DAA10E', lineHeight: '25px' }}>
+            <span role="img" aria-label={stakingTokenName}>
+              {' '}
+            </span>
+            Earned value:
+          </div>
+          <div style={{ color: '#FFFFFF', fontWeight: 'bold', lineHeight: '25px' }}>
+            ~ ${data?.token &&
+            new BigNumber(data?.token?.derivedETH).times(binancecoin?.usd).multipliedBy(earnings.div(1e18)).toFixed(2)
+            }
+          </div>
         </StyledDetails>
       </div>
       <CardFooter
