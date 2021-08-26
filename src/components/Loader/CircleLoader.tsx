@@ -28,8 +28,8 @@ export default function CircleLoader({
   stroke,
   ...rest
 }: {
-  size?: string
-  stroke?: string
+  size: string // ?
+  stroke: string // ?
   [k: string]: any
 }) {
   return (

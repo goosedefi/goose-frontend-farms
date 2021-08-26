@@ -17,9 +17,9 @@ export default function CurrencyLogo({
   size = '24px',
   style,
 }: {
-  currency?: Currency
-  size?: string
-  style?: React.CSSProperties
+  currency: Currency // ?
+  size: string // ?
+  style: React.CSSProperties // ?
 }) {
   const uriLocations = useHttpLocations(currency instanceof WrappedTokenInfo ? currency.logoURI : undefined)
 

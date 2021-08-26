@@ -18,10 +18,10 @@ import useTokenComparator from './sorting'
 import ImportRow from './ImportRow'
 
 interface CurrencySearchProps {
-  selectedCurrency?: Currency | null
+  selectedCurrency: Currency | null
   onCurrencySelect: (currency: Currency) => void
-  otherSelectedCurrency?: Currency | null
-  showCommonBases?: boolean
+  otherSelectedCurrency: Currency | null
+  showCommonBases: boolean
   showImportView: () => void
   setImportToken: (token: Token) => void
 }
@@ -141,7 +141,7 @@ function CurrencySearch({
         </AutoColumn>
         {searchToken && !searchTokenIsAdded ? (
           <Column style={{ padding: '20px 0', height: '100%' }}>
-            <ImportRow token={searchToken} showImportView={showImportView} setImportToken={setImportToken} />
+            <ImportRow token={searchToken} showImportView={showImportView} setImportToken={setImportToken} style={{ marginRight: '1px' }} dim={false} />
           </Column>
         ) : filteredSortedTokens?.length > 0 || filteredInactiveTokens?.length > 0 ? (
           <Box margin="24px -24px">

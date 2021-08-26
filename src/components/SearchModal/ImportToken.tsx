@@ -11,7 +11,7 @@ import { useTranslation } from 'contexts/Localisation'
 
 interface ImportProps {
   tokens: Token[]
-  handleCurrencySelect?: (currency: Currency) => void
+  handleCurrencySelect: (currency: Currency) => void
 }
 
 function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
@@ -49,7 +49,7 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
                 variant="success"
                 outline
                 scale="sm"
-                startIcon={list.logoURI && <ListLogo logoURI={list.logoURI} size="12px" />}
+                startIcon={list.logoURI && <ListLogo logoURI={list.logoURI} size="12px" style={{ marginRight: '1px' }} alt="alt text"/>}
               >
                 via {list.name}
               </Tag>

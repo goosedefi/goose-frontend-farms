@@ -31,8 +31,8 @@ export default function CommonBases({
   onSelect,
   selectedCurrency,
 }: {
-   chainId?: ChainId
-   selectedCurrency?: Currency | null
+   chainId: ChainId
+   selectedCurrency: Currency | null
   onSelect: (currency: Currency) => void
 }) {
   const t = useTranslation()
@@ -51,14 +51,14 @@ export default function CommonBases({
           }}
           disable={selectedCurrency === ETHER}
         >
-          <CurrencyLogo currency={ETHER} style={{ marginRight: 8 }} />
+          <CurrencyLogo currency={ETHER} style={{ marginRight: 8 }} size ='24px' />
           <Text>BNB</Text>
         </BaseWrapper>
         {(chainId ? SUGGESTED_BASES[chainId] : []).map((token: Token) => {
           const selected = selectedCurrency instanceof Token && selectedCurrency.address === token.address
           return (
             <BaseWrapper onClick={() => !selected && onSelect(token)} disable={selected} key={token.address}>
-              <CurrencyLogo currency={token} style={{ marginRight: 8 }} />
+              <CurrencyLogo currency={token} style={{ marginRight: 8 }} size ='24px'/>
               <Text>{token.symbol}</Text>
             </BaseWrapper>
           )

@@ -48,9 +48,9 @@ export const Input = React.memo(function InnerInput({
 }: {
   value: string | number
   onUserInput: (input: string) => void
-  error?: boolean
-  fontSize?: string
-  align?: 'right' | 'left'
+  error: boolean // ?
+  fontSize: string // ?
+  align: 'right' | 'left' // ?
 } & Omit<React.HTMLProps<HTMLInputElement>, 'ref' | 'onChange' | 'as'>) {
   const enforcer = (nextUserInput: string) => {
     if (nextUserInput === '' || inputRegex.test(escapeRegExp(nextUserInput))) {

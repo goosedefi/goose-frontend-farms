@@ -84,7 +84,7 @@ function CurrencyRow({
       disabled={isSelected}
       selected={otherSelected}
     >
-      <CurrencyLogo currency={currency} size="24px" />
+      <CurrencyLogo currency={currency} size="24px" style={{ marginRight: '1px' }}/>
       <Column>
         <Text bold>{currency.symbol}</Text>
         <Text color="textSubtle" small ellipsis maxWidth="200px">
@@ -92,7 +92,7 @@ function CurrencyRow({
         </Text>
       </Column>
       <RowFixed style={{ justifySelf: 'flex-end' }}>
-        {balance ? <Balance balance={balance} /> : account ? <CircleLoader /> : null}
+        {balance ? <Balance balance={balance} /> : account ? <CircleLoader size='1px' stroke="default"/> : null}
       </RowFixed>
     </MenuItem>
   )
@@ -112,10 +112,10 @@ export default function CurrencyList({
 }: {
   height: number
   currencies: Currency[]
-  selectedCurrency?: Currency | null
+  selectedCurrency: Currency | null
   onCurrencySelect: (currency: Currency) => void
-  otherCurrency?: Currency | null
-  fixedListRef?: MutableRefObject<FixedSizeList | undefined>
+  otherCurrency: Currency | null
+  fixedListRef: MutableRefObject<FixedSizeList | undefined>
   showETH: boolean
   showImportView: () => void
   setImportToken: (token: Token) => void

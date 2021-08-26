@@ -44,19 +44,19 @@ const Container = styled.div<{ hideInput: boolean }>`
 `
 interface CurrencyInputPanelProps {
   value: string
-  onUserInput?: (value: string) => void
-  onMax?: () => void
+  onUserInput: (value: string) => void
+  onMax: () => void
   showMaxButton: boolean
   label: string
-  onCurrencySelect?: (currency: Currency) => void
+  onCurrencySelect: (currency: Currency) => void
   currency: Currency | null
-  disableCurrencySelect?: boolean
-  hideBalance?: boolean
-  pair?: Pair | null
-  hideInput?: boolean
+  disableCurrencySelect: boolean
+  hideBalance: boolean
+  pair: Pair | null
+  hideInput: boolean
   otherCurrency: Currency | null
   id: string
-  showCommonBases?: boolean
+  showCommonBases: boolean
 }
 export default function CurrencyInputPanel({
   value,

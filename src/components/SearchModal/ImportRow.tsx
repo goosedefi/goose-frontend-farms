@@ -46,8 +46,8 @@ export default function ImportRow({
   setImportToken,
 }: {
   token: Token
-  style?: CSSProperties
-  dim?: boolean
+  style: CSSProperties
+  dim: boolean
   showImportView: () => void
   setImportToken: (token: Token) => void
 }) {
@@ -79,7 +79,7 @@ export default function ImportRow({
             <Text small mr="4px" color="textSubtle">
               via {list.name}
             </Text>
-            <ListLogo logoURI={list.logoURI} size="12px" />
+            <ListLogo logoURI={list.logoURI} size="12px" alt="alt text" style={{ marginRight: '1px' }}/>
           </RowFixed>
         )}
       </AutoColumn>

@@ -4,7 +4,7 @@ import { Text, AutoRenewIcon } from '@pancakeswap/uikit'
 import { StyledBalanceMaxMini } from './styleds'
 
 interface TradePriceProps {
-  price?: Price
+  price: Price
   showInverted: boolean
   setShowInverted: (showInverted: boolean) => void
 }
