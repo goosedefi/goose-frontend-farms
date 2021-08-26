@@ -176,7 +176,7 @@ export default function FullPositionCard({ pair, ...props }: PositionCardProps) 
       <Flex justifyContent="space-between" role="button" onClick={() => setShowMore(!showMore)} p="16px">
         <Flex flexDirection="column">
           <Flex alignItems="center" mb="4px">
-            <DoubleCurrencyLogo currency0={currency0} currency1={currency1} size={20} />
+            <DoubleCurrencyLogo currency0={currency0} currency1={currency1} size={20} margin={false} />
             <Text bold ml="8px">
               {!currency0 || !currency1 ? <Dots>Loading</Dots> : `${currency0.symbol}/${currency1.symbol}`}
             </Text>
@@ -192,7 +192,7 @@ export default function FullPositionCard({ pair, ...props }: PositionCardProps) 
         <AutoColumn gap="8px" style={{ padding: '16px' }}>
           <FixedHeightRow>
             <RowFixed>
-              <CurrencyLogo size="20px" currency={currency0} />
+              <CurrencyLogo size="20px" currency={currency0} style={{ padding: '1px' }} />
               <Text color="textSubtle" ml="4px">
                 Pooled {currency0.symbol}
               </Text>
@@ -208,7 +208,7 @@ export default function FullPositionCard({ pair, ...props }: PositionCardProps) 
 
           <FixedHeightRow>
             <RowFixed>
-              <CurrencyLogo size="20px" currency={currency1} />
+              <CurrencyLogo size="20px" currency={currency1} style={{ padding: '1px' }}/>
               <Text color="textSubtle" ml="4px">
                 Pooled {currency1.symbol}
               </Text>

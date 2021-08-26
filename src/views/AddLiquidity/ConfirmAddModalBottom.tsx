@@ -27,14 +27,14 @@ function ConfirmAddModalBottom({
       <RowBetween>
         <Text>{t(`${ currencies[Field.CURRENCY_A]?.symbol } Deposited`)}</Text>
         <RowFixed>
-          <CurrencyLogo currency={currencies[Field.CURRENCY_A]} style={{ marginRight: '8px' }} />
+          <CurrencyLogo currency={currencies[Field.CURRENCY_A]} style={{ marginRight: '8px' }} size='6px' />
           <Text>{parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)}</Text>
         </RowFixed>
       </RowBetween>
       <RowBetween>
         <Text>{t(`${currencies[Field.CURRENCY_B]?.symbol } Deposited`)}</Text>
         <RowFixed>
-          <CurrencyLogo currency={currencies[Field.CURRENCY_B]} style={{ marginRight: '8px' }} />
+          <CurrencyLogo currency={currencies[Field.CURRENCY_B]} style={{ marginRight: '8px' }} size='6px'/>
           <Text>{parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)}</Text>
         </RowFixed>
       </RowBetween>

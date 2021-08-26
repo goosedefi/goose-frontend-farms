@@ -318,6 +318,12 @@ export default function Swap({ history }: RouteComponentProps) {
               onCurrencySelect={handleInputSelect}
               otherCurrency={currencies[Field.OUTPUT]}
               id="swap-currency-input"
+              // edit error out
+              disableCurrencySelect = {false}
+              hideBalance = {false}
+              pair = {null} // used for double token logo
+              hideInput = {false}
+              showCommonBases
             />
             <AutoColumn justify="space-between">
               <AutoRow justify={isExpertMode ? 'space-between' : 'center'} style={{ padding: '0 1rem' }}>
@@ -347,6 +353,13 @@ export default function Swap({ history }: RouteComponentProps) {
               onCurrencySelect={handleOutputSelect}
               otherCurrency={currencies[Field.INPUT]}
               id="swap-currency-output"
+              // edit error out
+              disableCurrencySelect = {false}
+              hideBalance = {false}
+              pair = {null} // used for double token logo
+              hideInput = {false}
+              showCommonBases
+              onMax={()=>null}
             />
 
             {isExpertMode && recipient !== null && !showWrap ? (
@@ -418,8 +431,8 @@ export default function Swap({ history }: RouteComponentProps) {
                   width="48%"
                 >
                   {approval === ApprovalState.PENDING ? (
-                    <AutoRow gap="6px" justify="center">
-                      Enabling <CircleLoader stroke="white" />
+                    <AutoRow gap="6px" justify="center" size="10px">
+                      Enabling <CircleLoader stroke="white" size="15px"/>
                     </AutoRow>
                   ) : approvalSubmitted && approval === ApprovalState.APPROVED ? (
                     'Enabled'
@@ -485,7 +498,7 @@ export default function Swap({ history }: RouteComponentProps) {
             )}
             {showApproveFlow && (
               <Column style={{ marginTop: '1rem' }}>
-                <ProgressSteps steps={[approval === ApprovalState.APPROVED]} />
+                <ProgressSteps steps={[approval === ApprovalState.APPROVED]} disabled={false} />
               </Column>
             )}
             {isExpertMode && swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}

@@ -69,7 +69,7 @@ function ImportList({ listURL, list, onImport }: ImportProps) {
           <Card padding="12px 20px">
             <RowBetween>
               <RowFixed>
-                {list.logoURI && <ListLogo logoURI={list.logoURI} size="40px" />}
+                {list.logoURI && <ListLogo logoURI={list.logoURI} size="40px" style={{ padding: '1px' }} alt="alt logo"/>}
                 <AutoColumn gap="sm" style={{ marginLeft: '20px' }}>
                   <RowFixed>
                     <Text bold mr="6px">

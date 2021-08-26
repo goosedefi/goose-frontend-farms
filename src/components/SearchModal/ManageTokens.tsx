@@ -72,7 +72,7 @@ export default function ManageTokens({
       userAddedTokens.map((token) => (
         <RowBetween key={token.address} width="100%">
           <RowFixed>
-            <CurrencyLogo currency={token} size="20px" />
+            <CurrencyLogo currency={token} size="20px" style={{ padding: '1px' }}/>
             <Link external href={getBscScanLink(token.address, 'address', chainId)} color="textSubtle" ml="10px">
               {token.symbol}
             </Link>
@@ -113,6 +113,7 @@ export default function ManageTokens({
               showImportView={() => setModalView(CurrencyModalView.importToken)}
               setImportToken={setImportToken}
               style={{ height: 'fit-content' }}
+              dim={false}
             />
           )}
         </AutoColumn>

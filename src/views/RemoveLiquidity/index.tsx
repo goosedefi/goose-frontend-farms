@@ -319,7 +319,7 @@ export default function RemoveLiquidity({
         <RowBetween align="flex-end">
           <Text fontSize="24px">{parsedAmounts[Field.CURRENCY_A]?.toSignificant(6)}</Text>
           <RowFixed gap="4px">
-            <CurrencyLogo currency={currencyA} size="24px" />
+            <CurrencyLogo currency={currencyA} size="24px" style={{ padding: '1px' }}/>
             <Text fontSize="24px" ml="10px">
               {currencyA?.symbol}
             </Text>
@@ -331,7 +331,7 @@ export default function RemoveLiquidity({
         <RowBetween align="flex-end">
           <Text fontSize="24px">{parsedAmounts[Field.CURRENCY_B]?.toSignificant(6)}</Text>
           <RowFixed gap="4px">
-            <CurrencyLogo currency={currencyB} size="24px" />
+            <CurrencyLogo currency={currencyB} size="24px" style={{ padding: '1px' }}/>
             <Text fontSize="24px" ml="10px">
               {currencyB?.symbol}
             </Text>
@@ -353,7 +353,7 @@ export default function RemoveLiquidity({
             {t(`${currencyA?.symbol ?? ''}/${currencyB?.symbol ?? '' } Burned`)}
           </Text>
           <RowFixed>
-            <DoubleCurrencyLogo currency0={currencyA} currency1={currencyB} margin />
+            <DoubleCurrencyLogo currency0={currencyA} currency1={currencyB} margin size={15}/>
             <Text>{parsedAmounts[Field.LIQUIDITY]?.toSignificant(6)}</Text>
           </RowFixed>
         </RowBetween>
@@ -505,7 +505,7 @@ export default function RemoveLiquidity({
                 <LightGreyCard>
                   <Flex justifyContent="space-between" mb="8px">
                     <Flex>
-                      <CurrencyLogo currency={currencyA} />
+                      <CurrencyLogo currency={currencyA} style={{ padding: '1px' }} size="6px"/>
                       <Text small color="textSubtle" id="remove-liquidity-tokena-symbol" ml="4px">
                         {currencyA?.symbol}
                       </Text>
@@ -514,7 +514,7 @@ export default function RemoveLiquidity({
                   </Flex>
                   <Flex justifyContent="space-between">
                     <Flex>
-                      <CurrencyLogo currency={currencyB} />
+                      <CurrencyLogo currency={currencyB} style={{ padding: '1px' }} size="6px"/>
                       <Text small color="textSubtle" id="remove-liquidity-tokenb-symbol" ml="4px">
                         {currencyB?.symbol}
                       </Text>

@@ -46,7 +46,7 @@ const UnsupportedModal: React.FC<Props> = ({ currencies, onDismiss }) => {
             Object.keys(unsupportedTokens).includes(token.address) && (
               <AutoColumn key={token.address?.concat('not-supported')} gap="10px">
                 <AutoRow gap="5px" align="center">
-                  <CurrencyLogo currency={token} size="24px" />
+                  <CurrencyLogo currency={token} size="24px" style={{ padding: '1px' }}/>
                   <Text>{token.symbol}</Text>
                 </AutoRow>
                 {chainId && (

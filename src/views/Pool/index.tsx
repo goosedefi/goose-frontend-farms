@@ -14,8 +14,8 @@ import { AppHeader, AppBody } from '../../components/App'
 import Page from '../Page'
 
 const Body = styled(CardBody)`
-  background-color: ${({ theme }) => theme.colors.dropdownDeep};
-`
+  background-color: ${({ theme }) => theme.colors.primaryBright};
+// dropdown color`
 
 export default function Pool() {
   const { account } = useActiveWeb3React()
@@ -72,6 +72,7 @@ export default function Pool() {
           key={v2Pair.liquidityToken.address}
           pair={v2Pair}
           mb={index < allV2PairsWithLiquidity.length - 1 ? '16px' : 0}
+          showUnwrapped
         />
       ))
     }

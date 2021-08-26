@@ -112,7 +112,11 @@ export default function CurrencyInputPanel({
                 value={value}
                 onUserInput={(val) => {
                   onUserInput(val)
-                }}
+                }} // error resolv starts next line
+                error={false}
+                align="left"
+                fontSize="10px"
+                
               />
               {account && currency && showMaxButton && label !== 'To' && (
                 <Button onClick={onMax} scale="sm" variant="text">
