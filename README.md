@@ -1,7 +1,5 @@
-# 🥞 Pancake Frontend
+![QR](https://quantresurgencemhy2069p5074.s3.eu-west-2.amazonaws.com/logos/QRLogo_small.png)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7bebf1a3-be7b-4165-afd1-446256acd5e3/deploy-status)](https://app.netlify.com/sites/pancake-prod/deploys)
+# Quant Resurgence Frontend
 
-This project contains the main features of the pancake application.
-
-If you want to contribute, please refer to the [contributing guidelines](./CONTRIBUTING.md) of this project.
+This project contains the main features of the pancake/goose application.
