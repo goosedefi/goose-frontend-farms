@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button, Heading, Text as UIKitText, ArrowForwardIcon } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
-import Container from 'components/layout/Container'
+import Container from 'components/Layout/Container'
 
 const StyledHowItWorks = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.textSubtle};

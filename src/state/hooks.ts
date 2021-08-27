@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmsPublicDataAsync, fetchPoolsPublicDataAsync, fetchPoolsUserDataAsync } from './actions'
 import { State, Farm, Pool } from './types'
-import { QuoteToken } from '../config/constants/types'
+//  import { QuoteToken } from '../config/constants/types'
 
 const ZERO = new BigNumber(0)
 
@@ -69,7 +69,7 @@ export const usePoolFromPid = (sousId): Pool => {
 // Prices
 
 export const usePriceBnbBusd = (): BigNumber => {
-  const pid = 2 // BUSD-BNB LP
+  const pid = 252 // BUSD-BNB LP
   const farm = useFarmFromPid(pid)
   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO
 }
@@ -93,9 +93,9 @@ export const useTotalValue = (): BigNumber => {
     const farm = farms[i]
     if (farm.lpTotalInQuoteToken) {
       let val;
-      if (farm.quoteTokenSymbol === QuoteToken.BNB) {
+      if (farm.quoteToken.symbol === 'BNB') {
         val = (bnbPrice.times(farm.lpTotalInQuoteToken));
-      }else if (farm.quoteTokenSymbol === QuoteToken.CAKE) {
+      }else if (farm.quoteToken.symbol === 'CAKE') {
         val = (cakePrice.times(farm.lpTotalInQuoteToken));
       }else{
         val = (farm.lpTotalInQuoteToken);

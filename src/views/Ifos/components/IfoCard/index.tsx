@@ -155,9 +155,9 @@ const IfoCard: React.FC<IfoCardProps> = ({ ifo }) => {
         {(isActive || isFinished) && (
           <IfoCardContribute
             address={address}
-            currency={currency}
+            currency= {null} // {currency}
             currencyAddress={currencyAddress}
-            contract={contract}
+            contract= {null} // {contract}
             status={state.status}
             raisingAmount={state.raisingAmount}
             tokenDecimals={tokenDecimals}

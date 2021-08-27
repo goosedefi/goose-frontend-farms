@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, useRouteMatch } from 'react-router-dom'
-import Container from 'components/layout/Container'
+import Container from 'components/Layout/Container'
 import IfoTabButtons from './components/IfoTabButtons'
 import Hero from './components/Hero'
 import CurrentIfo from './CurrentIfo'

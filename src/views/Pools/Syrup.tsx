@@ -11,9 +11,9 @@ import useI18n from 'hooks/useI18n'
 import useBlock from 'hooks/useBlock'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useFarms, usePriceBnbBusd, usePools } from 'state/hooks'
-import { QuoteToken, PoolCategory } from 'config/constants/types'
-import FlexLayout from 'components/layout/Flex'
-import Page from 'components/layout/Page'
+import {Token, PoolCategory } from 'config/constants/types'
+import FlexLayout from 'components/Layout/Flex'
+import Page from 'components/Layout/Page'
 import Coming from './components/Coming'
 import PoolCard from './components/PoolCard'
 import PoolTabButtons from './components/PoolTabButtons'
@@ -28,12 +28,12 @@ const Farm: React.FC = () => {
   const bnbPriceUSD = usePriceBnbBusd()
   const block = useBlock()
 
-  const priceToBnb = (tokenName: string, tokenPrice: BigNumber, quoteToken: QuoteToken): BigNumber => {
+  const priceToBnb = (tokenName: string, tokenPrice: BigNumber | string, quoteToken: Token): BigNumber => {
     const tokenPriceBN = new BigNumber(tokenPrice)
     if (tokenName === 'BNB') {
       return new BigNumber(1)
     }
-    if (tokenPrice && quoteToken === QuoteToken.BUSD) {
+    if (tokenPrice && quoteToken.symbol === 'Token') {
       return tokenPriceBN.div(bnbPriceUSD)
     }
     return tokenPriceBN
@@ -41,15 +41,15 @@ const Farm: React.FC = () => {
 
   const poolsWithApy = pools.map((pool) => {
     const isBnbPool = pool.poolCategory === PoolCategory.BINANCE
-    const rewardTokenFarm = farms.find((f) => f.tokenSymbol === pool.tokenName)
-    const stakingTokenFarm = farms.find((s) => s.tokenSymbol === pool.stakingTokenName)
+    const rewardTokenFarm = farms.find((f) => f.lpSymbol === pool.earningToken.symbol)
+    const stakingTokenFarm = farms.find((s) => s.token.symbol === pool.stakingToken.symbol)
 
     // /!\ Assume that the farm quote price is BNB
     const stakingTokenPriceInBNB = isBnbPool ? new BigNumber(1) : new BigNumber(stakingTokenFarm?.tokenPriceVsQuote)
     const rewardTokenPriceInBNB = priceToBnb(
-      pool.tokenName,
+      pool.stakingToken.symbol,
       rewardTokenFarm?.tokenPriceVsQuote,
-      rewardTokenFarm?.quoteTokenSymbol,
+      rewardTokenFarm?.quoteToken,
     )
 
     const totalRewardPricePerYear = rewardTokenPriceInBNB.times(pool.tokenPerBlock).times(BLOCKS_PER_YEAR)

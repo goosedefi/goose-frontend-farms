@@ -14,7 +14,7 @@ import useBlock from 'hooks/useBlock'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { useSousHarvest } from 'hooks/useHarvest'
 import Balance from 'components/Balance'
-import { QuoteToken, PoolCategory } from 'config/constants/types'
+import { Token, PoolCategory } from 'config/constants/types'
 import { Pool } from 'state/types'
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
@@ -27,6 +27,11 @@ import CardFooter from './CardFooter'
 
 interface PoolWithApy extends Pool {
   apy: BigNumber
+  image?: any
+  stakingTokenAddress?: any
+  projectLink?: any
+  tokenDecimals?: any
+
 }
 
 interface HarvestProps {
@@ -37,8 +42,8 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const {
     sousId,
     image,
-    tokenName,
-    stakingTokenName,
+    earningToken,
+    stakingToken,
     stakingTokenAddress,
     projectLink,
     harvest,
@@ -58,7 +63,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const stakingTokenContract = useERC20(stakingTokenAddress)
   const { account } = useWallet()
   const block = useBlock()
-  const { onApprove } = useSousApprove(stakingTokenContract, sousId)
+  const  onApprove  = null // useSousApprove(stakingTokenContract, sousId)
   const { onStake } = useSousStake(sousId, isBnbPool)
   const { onUnstake } = useSousUnstake(sousId)
   const { onReward } = useSousHarvest(sousId, isBnbPool)
@@ -73,7 +78,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
 
   const blocksUntilStart = Math.max(startBlock - block, 0)
   const blocksRemaining = Math.max(endBlock - block, 0)
-  const isOldSyrup = stakingTokenName === QuoteToken.SYRUP
+  const isOldSyrup = stakingToken.symbol === 'SYRUP'
   const accountHasStakedBalance = stakedBalance?.toNumber() > 0
   const needsApproval = !accountHasStakedBalance && !allowance.toNumber() && !isBnbPool
   const isCardActive = isFinished && accountHasStakedBalance
@@ -83,16 +88,16 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
     <DepositModal
       max={stakingLimit && stakingTokenBalance.isGreaterThan(convertedLimit) ? convertedLimit : stakingTokenBalance}
       onConfirm={onStake}
-      tokenName={stakingLimit ? `${stakingTokenName} (${stakingLimit} max)` : stakingTokenName}
+      tokenName={stakingLimit ? `${stakingToken.symbol} (${stakingLimit} max)` : stakingToken.symbol}
     />,
   )
 
   const [onPresentCompound] = useModal(
-    <CompoundModal earnings={earnings} onConfirm={onStake} tokenName={stakingTokenName} />,
+    <CompoundModal earnings={earnings} onConfirm={onStake} tokenName={stakingToken.symbol} />,
   )
 
   const [onPresentWithdraw] = useModal(
-    <WithdrawModal max={stakedBalance} onConfirm={onUnstake} tokenName={stakingTokenName} />,
+    <WithdrawModal max={stakedBalance} onConfirm={onUnstake} tokenName={stakingToken.symbol} />,
   )
 
   const handleApprove = useCallback(async () => {
@@ -113,11 +118,11 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
       {isFinished && sousId !== 0 && <PoolFinishedSash />}
       <div style={{ padding: '24px' }}>
         <CardTitle isFinished={isFinished && sousId !== 0}>
-          {isOldSyrup && '[OLD]'} {tokenName} {TranslateString(348, 'Pool')}
+          {isOldSyrup && '[OLD]'} {stakingToken.symbol} {TranslateString(348, 'Pool')}
         </CardTitle>
         <div style={{ marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
           <div style={{ flex: 1 }}>
-            <Image src={`/images/tokens/${image || tokenName}.png`} width={64} height={64} alt={tokenName} />
+            <Image src={`/images/tokens/${image || stakingToken.symbol}.png`} width={64} height={64} alt={stakingToken.symbol} />
           </div>
           {account && harvest && !isOldSyrup && (
             <HarvestButton
@@ -145,14 +150,14 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
         ) : (
           <OldSyrupTitle hasBalance={accountHasStakedBalance} />
         )}
-        <Label isFinished={isFinished && sousId !== 0} text={TranslateString(330, `${tokenName} earned`)} />
+        <Label isFinished={isFinished && sousId !== 0} text={TranslateString(330, `${stakingToken.symbol} earned`)} />
         <StyledCardActions>
           {!account && <UnlockButton />}
           {account &&
             (needsApproval && !isOldSyrup ? (
               <div style={{ flex: 1 }}>
                 <Button disabled={isFinished || requestedApproval} onClick={handleApprove} fullWidth>
-                  {`Approve ${stakingTokenName}`}
+                  {`Approve ${stakingToken.symbol}`}
                 </Button>
               </div>
             ) : (
@@ -169,7 +174,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
                       : onPresentWithdraw
                   }
                 >
-                  {`Unstake ${stakingTokenName}`}
+                  {`Unstake ${stakingToken.symbol}`}
                 </Button>
                 <StyledActionSpacer />
                 {!isOldSyrup && (
@@ -190,7 +195,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
         </StyledDetails>
         <StyledDetails>
           <div style={{ flex: 1 }}>
-            <span role="img" aria-label={stakingTokenName}>
+            <span role="img" aria-label={stakingToken.symbol}>
               🥞{' '}
             </span>
             {TranslateString(384, 'Your Stake')}:

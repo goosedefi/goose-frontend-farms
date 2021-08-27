@@ -1,0 +1,154 @@
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import { Flex, Box, Text, ExpandableLabel, LinkExternal, Grid, HelpIcon, useTooltip } from '@pancakeswap/uikit'
+import { useTranslation } from 'contexts/Localisation'
+import { getApy } from 'utils/compoundApyHelpers'
+
+const Footer = styled(Flex)`
+  width: 100%;
+  background: ${({ theme }) => theme.colors.secondary};
+`
+
+const BulletList = styled.ul`
+  list-style-type: none;
+  margin-top: 16px;
+  padding: 0;
+  li {
+    margin: 0;
+    padding: 0;
+  }
+  li::before {
+    content: '•';
+    margin-right: 4px;
+    color: ${({ theme }) => theme.colors.textSubtle};
+  }
+  li::marker {
+    font-size: 12px;
+  }
+`
+
+interface RoiCalculatorFooterProps {
+  isFarm: boolean
+  apr: number
+  displayApr: string
+  autoCompoundFrequency: number
+  multiplier: string
+  linkLabel: string
+  linkHref: string
+  performanceFee: number
+}
+
+const RoiCalculatorFooter: React.FC<RoiCalculatorFooterProps> = ({
+  isFarm,
+  apr,
+  displayApr,
+  autoCompoundFrequency,
+  multiplier,
+  linkLabel,
+  linkHref,
+  performanceFee,
+}) => {
+  const [isExpanded, setIsExpanded] = useState(false)
+  const {
+    targetRef: multiplierRef,
+    tooltip: multiplierTooltip,
+    tooltipVisible: multiplierTooltipVisible,
+  } = useTooltip(
+    <>
+      <Text>
+        The Multiplier represents the proportion of CAKE rewards each farm receives, as a proportion of the CAKE produced each block.
+      </Text>
+      <Text my="24px">
+        For example, if a 1x farm received 1 CAKE per block, a 40x farm would receive 40 CAKE per block.
+      </Text>
+      <Text>This amount is already included in all APR calculations for the farm.</Text>
+    </>,
+    { placement: 'top-end', tooltipOffset: [20, 10] },
+  )
+
+  const gridRowCount = isFarm ? 4 : 2
+  const apy = (getApy(apr, autoCompoundFrequency > 0 ? autoCompoundFrequency : 1, 365, performanceFee) * 100).toFixed(2)
+
+  return (
+    <Footer p="16px" flexDirection="column">
+      <ExpandableLabel expanded={isExpanded} onClick={() => setIsExpanded((prev) => !prev)}>
+        {isExpanded ? 'Hide' : 'Details'}
+      </ExpandableLabel>
+      {isExpanded && (
+        <Box px="8px">
+          <Grid gridTemplateColumns="2.5fr 1fr" gridRowGap="8px" gridTemplateRows={`repeat(${gridRowCount}, auto)`}>
+            {isFarm && (
+              <>
+                <Text color="textSubtle" small>
+                  APR (incl. LP rewards)
+                </Text>
+                <Text small textAlign="right">
+                  {displayApr}%
+                </Text>
+              </>
+            )}
+            <Text color="textSubtle" small>
+              {isFarm ? 'Base APR (CAKE yield only)' : 'APR'}
+            </Text>
+            <Text small textAlign="right">
+              {apr.toFixed(2)}%
+            </Text>
+            <Text color="textSubtle" small>
+              `APY (${ autoCompoundFrequency > 0 ? autoCompoundFrequency : 1}x daily compound)`
+            </Text>
+            <Text small textAlign="right">
+              {apy}%
+            </Text>
+            {isFarm && (
+              <>
+                <Text color="textSubtle" small>
+                  Farm Multiplier
+                </Text>
+                <Flex justifyContent="flex-end" alignItems="flex-end">
+                  <Text small textAlign="right" mr="4px">
+                    {multiplier}
+                  </Text>
+                  <span ref={multiplierRef}>
+                    <HelpIcon color="textSubtle" width="16px" height="16px" />
+                  </span>
+                  {multiplierTooltipVisible && multiplierTooltip}
+                </Flex>
+              </>
+            )}
+          </Grid>
+          <BulletList>
+            <li>
+              <Text fontSize="12px" textAlign="center" color="textSubtle" display="inline">
+                Calculated based on current rates.
+              </Text>
+            </li>
+            {isFarm && (
+              <li>
+                <Text fontSize="12px" textAlign="center" color="textSubtle" display="inline">
+                  LP rewards: 0.17% trading fees, distributed proportionally among LP token holders.
+                </Text>
+              </li>
+            )}
+            <li>
+              <Text fontSize="12px" textAlign="center" color="textSubtle" display="inline">
+                All figures are estimates provided for your convenience only, and by no means represent guaranteed returns.
+              </Text>
+            </li>
+            {performanceFee > 0 && (
+              <li>
+                <Text mt="14px" fontSize="12px" textAlign="center" color="textSubtle" display="inline">
+                  `All estimated rates take into account this pool’s ${performanceFee} performance fee`
+                </Text>
+              </li>
+            )}
+          </BulletList>
+          <Flex justifyContent="center" mt="24px">
+            <LinkExternal href={linkHref}>{linkLabel}</LinkExternal>
+          </Flex>
+        </Box>
+      )}
+    </Footer>
+  )
+}
+
+export default RoiCalculatorFooter

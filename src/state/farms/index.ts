@@ -1,7 +1,9 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
-import farmsConfig from 'config/constants/farms'
+import isArchivedPid from 'utils/farmHelpers'
+import {farmsConfig} from 'config/constants/farms'
 import fetchFarms from './fetchFarms'
+
 import {
   fetchFarmUserEarnings,
   fetchFarmUserAllowances,
@@ -10,7 +12,10 @@ import {
 } from './fetchFarmUser'
 import { FarmsState, Farm } from '../types'
 
-const initialState: FarmsState = { data: [...farmsConfig] }
+
+export const nonArchivedFarms = farmsConfig.filter(({ pid }) => !isArchivedPid(pid))
+
+const initialState: FarmsState = { data: [...farmsConfig], loadArchivedFarmsData: true, userDataLoaded: true }
 
 export const farmsSlice = createSlice({
   name: 'Farms',
@@ -38,14 +43,14 @@ export const { setFarmsPublicData, setFarmUserData } = farmsSlice.actions
 
 // Thunks
 export const fetchFarmsPublicDataAsync = () => async (dispatch) => {
-  const farms = await fetchFarms()
+  const farms = await fetchFarms(farmsConfig)
   dispatch(setFarmsPublicData(farms))
 }
 export const fetchFarmUserDataAsync = (account) => async (dispatch) => {
-  const userFarmAllowances = await fetchFarmUserAllowances(account)
-  const userFarmTokenBalances = await fetchFarmUserTokenBalances(account)
-  const userStakedBalances = await fetchFarmUserStakedBalances(account)
-  const userFarmEarnings = await fetchFarmUserEarnings(account)
+  const userFarmAllowances = await fetchFarmUserAllowances(account, farmsConfig)
+  const userFarmTokenBalances = await fetchFarmUserTokenBalances(account, farmsConfig)
+  const userStakedBalances = await fetchFarmUserStakedBalances(account, farmsConfig)
+  const userFarmEarnings = await fetchFarmUserEarnings(account, farmsConfig)
 
   const arrayOfUserDataObjects = userFarmAllowances.map((farmAllowance, index) => {
     return {

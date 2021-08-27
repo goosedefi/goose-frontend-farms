@@ -2,7 +2,8 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["./src"]
+        "paths": ["./src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   },
@@ -17,6 +18,7 @@
     "no-plusplus": 0,
     "prefer-destructuring": ["warn", { "object": true, "array": false }],
     "no-underscore-dangle": 0,
+    "no-param-reassign": 0,
     // Start temporary rules
     // These rules are here just to keep the lint error to 0 during the migration to the new rule set
     // They need to be removed and fixed as soon as possible
@@ -25,7 +27,18 @@
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-explicit-any": 0,
     "radix": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "no-nested-ternary": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+   ]
     // End temporary rules
   }
 }

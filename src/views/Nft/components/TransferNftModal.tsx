@@ -43,7 +43,7 @@ const TransferNftModal: React.FC<TransferNftModalProps> = ({ nft, tokenIds, onSu
   const [error, setError] = useState(null)
   const TranslateString = useI18n()
   const { account } = useWallet()
-  const pancakeRabbitsContract = usePancakeRabbits(PANCAKE_RABBITS_ADDRESS)
+  const pancakeRabbitsContract = usePancakeRabbits() /* PANCAKE_RABBITS_ADDRESS */ 
 
   const handleConfirm = async () => {
     try {

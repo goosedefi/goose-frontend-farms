@@ -1,30 +1,87 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
-import { Button, Modal } from '@pancakeswap-libs/uikit'
-import ModalActions from 'components/ModalActions'
-import TokenInput from 'components/TokenInput'
-import useI18n from 'hooks/useI18n'
-import { getFullDisplayBalance } from 'utils/formatBalance'
+import styled from 'styled-components'
+import { Flex, Text, Button, Modal, LinkExternal, CalculateIcon, IconButton } from '@pancakeswap/uikit'
+import { ModalActions, ModalInput } from 'components/Modal'
+import RoiCalculatorModal from 'components/RoiCalculatorModal'
+import { useTranslation } from 'contexts/Localisation'
+import { getFullDisplayBalance, formatNumber } from 'utils/formatBalance'
+import useToast from 'hooks/useToast'
+import { getInterestBreakdown } from 'utils/compoundApyHelpers'
+
+const AnnualRoiContainer = styled(Flex)`
+  cursor: pointer;
+`
+
+const AnnualRoiDisplay = styled(Text)`
+  width: 72px;
+  max-width: 72px;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+`
 
 interface DepositModalProps {
   max: BigNumber
+  stakedBalance: BigNumber
+  multiplier?: string
+  lpPrice: BigNumber
+  lpLabel?: string
   onConfirm: (amount: string) => void
   onDismiss?: () => void
   tokenName?: string
-  depositFeeBP?: number
+  apr?: number
+  displayApr?: string
+  addLiquidityUrl?: string
+  cakePrice?: BigNumber
 }
 
-const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, tokenName = '' , depositFeeBP = 0}) => {
+const DepositModal: React.FC<DepositModalProps> = ({
+  max,
+  stakedBalance,
+  onConfirm,
+  onDismiss,
+  tokenName = '',
+  multiplier,
+  displayApr,
+  lpPrice,
+  lpLabel,
+  apr,
+  addLiquidityUrl,
+  cakePrice,
+}) => {
   const [val, setVal] = useState('')
+  const { toastSuccess, toastError } = useToast()
   const [pendingTx, setPendingTx] = useState(false)
-  const TranslateString = useI18n()
+  const [showRoiCalculator, setShowRoiCalculator] = useState(false)
+  function t(x){return x;}
   const fullBalance = useMemo(() => {
     return getFullDisplayBalance(max)
   }, [max])
 
+  const lpTokensToStake = new BigNumber(val)
+  const fullBalanceNumber = new BigNumber(fullBalance)
+
+  const usdToStake = lpTokensToStake.times(lpPrice)
+
+  const interestBreakdown = getInterestBreakdown({
+    principalInUSD: !lpTokensToStake.isNaN() ? usdToStake.toNumber() : 0,
+    apr,
+    earningTokenPrice: cakePrice.toNumber(),
+  })
+
+  const annualRoi = cakePrice.times(interestBreakdown[3])
+  const formattedAnnualRoi = formatNumber(
+    annualRoi.toNumber(),
+    annualRoi.gt(10000) ? 0 : 2,
+    annualRoi.gt(10000) ? 0 : 2,
+  )
+
   const handleChange = useCallback(
     (e: React.FormEvent<HTMLInputElement>) => {
-      setVal(e.currentTarget.value)
+      if (e.currentTarget.validity.valid) {
+        setVal(e.currentTarget.value.replace(/,/g, '.'))
+      }
     },
     [setVal],
   )
@@ -33,32 +90,79 @@ const DepositModal: React.FC<DepositModalProps> = ({ max, onConfirm, onDismiss, 
     setVal(fullBalance)
   }, [fullBalance, setVal])
 
+  if (showRoiCalculator) {
+    return (
+      <RoiCalculatorModal
+        linkLabel={t(`Get ${lpLabel}`)}
+        stakingTokenBalance={stakedBalance.plus(max)}
+        stakingTokenSymbol={tokenName}
+        stakingTokenPrice={lpPrice.toNumber()}
+        earningTokenPrice={cakePrice.toNumber()}
+        apr={apr}
+        multiplier={multiplier}
+        displayApr={displayApr}
+        linkHref={addLiquidityUrl}
+        isFarm
+        initialValue={val}
+        onBack={() => setShowRoiCalculator(false)}
+      />
+    )
+  }
+
   return (
-    <Modal title={`${TranslateString(316, 'Deposit')} ${tokenName} Tokens`} onDismiss={onDismiss}>
-      <TokenInput
+    <Modal title={t('Stake LP tokens')} onDismiss={onDismiss}>
+      <ModalInput
         value={val}
         onSelectMax={handleSelectMax}
         onChange={handleChange}
         max={fullBalance}
         symbol={tokenName}
-        depositFeeBP={depositFeeBP}
+        addLiquidityUrl={addLiquidityUrl}
+        inputTitle={t('Stake')}
       />
+      <Flex mt="24px" alignItems="center" justifyContent="space-between">
+        <Text mr="8px" color="textSubtle">
+          {t('Annual ROI at current rates')}:
+        </Text>
+        <AnnualRoiContainer alignItems="center" onClick={() => setShowRoiCalculator(true)}>
+          <AnnualRoiDisplay>${formattedAnnualRoi}</AnnualRoiDisplay>
+          <IconButton variant="text" scale="sm">
+            <CalculateIcon color="textSubtle" width="18px" />
+          </IconButton>
+        </AnnualRoiContainer>
+      </Flex>
       <ModalActions>
-        <Button variant="secondary" onClick={onDismiss}>
-          {TranslateString(462, 'Cancel')}
+        <Button variant="secondary" onClick={onDismiss} width="100%" disabled={pendingTx}>
+          {t('Cancel')}
         </Button>
         <Button
-          disabled={pendingTx}
+          width="100%"
+          disabled={
+            pendingTx || !lpTokensToStake.isFinite() || lpTokensToStake.eq(0) || lpTokensToStake.gt(fullBalanceNumber)
+          }
           onClick={async () => {
             setPendingTx(true)
-            await onConfirm(val)
-            setPendingTx(false)
-            onDismiss()
+            try {
+              await onConfirm(val)
+              toastSuccess(t('Staked!'), t('Your funds have been staked in the farm'))
+              onDismiss()
+            } catch (e) {
+              toastError(
+                t('Error'),
+                t('Please try again. Confirm the transaction and make sure you are paying enough gas!'),
+              )
+              console.error(e)
+            } finally {
+              setPendingTx(false)
+            }
           }}
         >
-          {pendingTx ? TranslateString(488, 'Pending Confirmation') : TranslateString(464, 'Confirm')}
+          {pendingTx ? t('Confirming') : t('Confirm')}
         </Button>
       </ModalActions>
+      <LinkExternal href={addLiquidityUrl} style={{ alignSelf: 'center' }}>
+        {t(`Get ${tokenName}`)}
+      </LinkExternal>
     </Modal>
   )
 }
