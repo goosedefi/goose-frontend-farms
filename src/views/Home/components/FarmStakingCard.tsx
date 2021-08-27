@@ -2,7 +2,7 @@ import React, { useState, useCallback, Fragment } from 'react'
 
 // import {ImageBackground} from 'react-native'
 import styled from 'styled-components'
-import { Heading, Card, CardBody, Button } from '@pancakeswap-libs/uikit'
+import { Heading, Card, CardBody, Button, Image } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import BigNumber from 'bignumber.js'
 import useI18n from 'hooks/useI18n'
@@ -40,6 +40,7 @@ const ChartImageArea = styled.div`
   background-position: right;
   justify-content: center;
   background-repeat: no-repeat;
+  background-size: auto;
 `
 // ${({ theme }) => theme.colors.textSubtle};
 const Label = styled.div`
