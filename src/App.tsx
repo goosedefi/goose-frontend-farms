@@ -26,6 +26,7 @@ import { RedirectPathToSwapOnly, RedirectToSwap } from './views/Swap/redirects'
 // Only pool is included in the main bundle because of it's the most visited page'
 const Home = lazy(() => import('./views/Home'))
 const Farms = lazy(() => import('./views/Farms'))
+const FarmsLite = lazy(() => import('./views/FarmsLite'))
 // const Lottery = lazy(() => import('./views/Lottery'))
 // const Pools = lazy(() => import('./views/Pools'))
 // const Ifos = lazy(() => import('./views/Ifos'))
@@ -103,10 +104,11 @@ const App: React.FC = () => {
               <Home />
             </Route>
             <Route path="/liquidity-rewards">
-              <Farms />
+              <FarmsLite />
             </Route>
             <Route path="/pools">
-              <Pools/>
+              { /* <Pools/> */}
+              <FarmsLite tokenMode/>
             </Route>
                         {/* Using this format because these components use routes injected props. We need to rework them with hooks */}
                         <Route exact strict path="/swap" component={Swap} />
