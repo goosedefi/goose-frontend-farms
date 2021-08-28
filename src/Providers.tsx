@@ -9,6 +9,8 @@ import { ThemeContextProvider } from 'contexts/ThemeContext'
 import { BlockContextProvider } from 'contexts/BlockContext'
 import { RefreshContextProvider } from 'contexts/RefreshContext'
 import store from 'state'
+import { ToastsProvider } from 'contexts/ToastsContext'
+
 
 const Providers: React.FC = ({ children }) => {
   const rpcUrl = getRpcUrl()
@@ -18,6 +20,7 @@ const Providers: React.FC = ({ children }) => {
       <ThemeContextProvider>
        {// <LanguageContextProvider>
        }
+       <ToastsProvider>
           <bsc.UseWalletProvider
             chainId={chainId}
             connectors={{
@@ -31,6 +34,7 @@ const Providers: React.FC = ({ children }) => {
               </RefreshContextProvider> 
            </BlockContextProvider> 
           </bsc.UseWalletProvider>
+          </ToastsProvider>
        {// </LanguageContextProvider>
        }
       </ThemeContextProvider>

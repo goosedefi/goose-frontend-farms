@@ -9,7 +9,8 @@ const UnlockButton = (props) => {
   const { onPresentConnectModal } = useWalletModal(connect, reset)
 
 Button.defaultProps = {
-  color: 'rgba(142, 0, 0, 1)'
+  // color: 'rgba(142, 0, 0, 1)';
+  // background-color:'rgba(142, 0, 0, 1)';
 }
 
   return (
