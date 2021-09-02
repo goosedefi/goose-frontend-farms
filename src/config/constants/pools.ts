@@ -106,6 +106,27 @@ const pools: PoolConfig[] = [
     tokenDecimals: 18,
     quoteTokenSymbol: QuoteToken.BISON,
     quoteTokenAdresses: contracts.cake,
+  },
+  {
+    sousId: 6,
+    poolName: 'biCHAIN-BNB ARBX',
+    tokenName: 'BISON',
+    stakingTokenName: QuoteToken.biCHAINBNB,
+    earningToken: '0x19a6da6e382b85f827088092a3dbe864d9ccba73',
+    stakingTokenAddress: '0xDAff7BEB8cAD0E75CcA3d9F36b8f8C0e1cf37b85',
+    contractAddress: {
+      97: '0xEA93812aA70eC89932aF6EBe6eCe93135712e4Ab',
+      56: '0x49324bB0BE8fF4d6C6881ca4806A65C9f947C238',
+    },
+    poolCategory: PoolCategory.REWARDS,
+    projectLink: 'https://arbex.bishares.finance/add/BNB/0x10A520829C1E9631Ef9E60e37eEA3916092cAa99',
+    harvest: true,
+    tokenPerBlock: '0.007440476190476190',
+    sortOrder: 1,
+    isFinished: false,
+    tokenDecimals: 18,
+    quoteTokenSymbol: QuoteToken.BISON,
+    quoteTokenAdresses: contracts.cake,
   }
 ]
 
