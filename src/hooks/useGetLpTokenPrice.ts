@@ -9,7 +9,7 @@ import { getGraphUniSwapBody } from '../constants/graph.constants';
 const useGetLpTokenPrice = ({ lpTokenContract }) => {
   const [tokensArray, setTokensArray] = useState([]);
   const [lpTokenPrice, setLpTokenPrice] = useState<any>(null);
-  const { data } = useQuery(getGraphUniSwapBody(tokensArray));
+  const { data } = useQuery(getGraphUniSwapBody(["0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c"]));
   const { binancecoin } = useBnbPriceState();
 
   useEffect(() => {
@@ -28,10 +28,8 @@ const useGetLpTokenPrice = ({ lpTokenContract }) => {
 
         const totalSupplyBN = new BigNumber(totalSupply).div(1e18);
         const tokenPrice0 = new BigNumber(data.tokens[0]?.derivedETH).times(binancecoin.usd);
-        const tokenPrice1 = new BigNumber(data.tokens[1]?.derivedETH).times(binancecoin.usd);
-        const reserve0 = new BigNumber(_reserve0).div(1e18);
         const reserve1 = new BigNumber(_reserve1).div(1e18);
-        const result = reserve0.multipliedBy(tokenPrice0).plus(reserve1.multipliedBy(tokenPrice1)).div(totalSupplyBN);
+        const result = reserve1.multipliedBy(tokenPrice0).plus(reserve1.multipliedBy(tokenPrice0)).div(totalSupplyBN);
         setLpTokenPrice(result)
       })()
     }

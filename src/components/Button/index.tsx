@@ -10,13 +10,12 @@ import useStyles  from './styles.module';
 
 type Props = MuiButtonProps & {
   className?: string
-  onClick?: () => void
   outLine?: boolean
   loader?: boolean
   disabled?: boolean
 }
 
-const Button: FC<Props> = ({ children, className, onClick, outLine,
+const Button: FC<Props> = ({ children, className, outLine,
        loader, disabled, ...props
 }) => {
   const classes = useStyles();
@@ -24,7 +23,6 @@ const Button: FC<Props> = ({ children, className, onClick, outLine,
   return (
     <MaterialButton
       className={classNames(className, { [classes.button]: outLine, [classes.disable]: disabled })}
-      onClick={loader ? () => {} : onClick}
       disabled={loader || disabled}
       {...props}
     >

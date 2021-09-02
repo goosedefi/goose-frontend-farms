@@ -46,7 +46,7 @@ interface HarvestProps {
 }
 
 const CustomCardTitle = styled(CardTitle)`
-  font-size: 22px;
+  font-size: 20px;
   color: #FFFFFF
 `
 

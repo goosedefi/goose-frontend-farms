@@ -1,4 +1,4 @@
-import React, { useState, useMemo, FC, MouseEventHandler } from 'react';
+import React, { useState, useMemo } from 'react';
 import classNames from 'classnames';
 import { Grid, AppBar, Toolbar, Button as MuButton, } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ import Button from '../../../components/Button';
 import LogOutModal from '../../modal/LogOutModal';
 
 import { LogIn, Wallet, ArrowDownIcon } from '../../../constants/icon.constants';
-import { PATH_INDEX, LINK_PATH_HOME, LINK_PATH_ABOUT, LINK_PATH_FUNDS } from '../../../constants/routes.constants';
+import { PATH_INDEX, LINK_PATH_HOME, LINK_PATH_ABOUT, LINK_PATH_FUNDS, LINK_PATH_ARBX } from '../../../constants/routes.constants';
 
 import useStyles  from './styles.module';
 
@@ -50,6 +50,7 @@ const Header = () => {
                 <MuButton className={classes.link} href={LINK_PATH_HOME}>Home</MuButton>
                 <MuButton className={classes.link} href={LINK_PATH_ABOUT}>About</MuButton>
                 <MuButton className={classes.link} href={LINK_PATH_FUNDS} target='_blank'>Funds</MuButton>
+                <MuButton className={classes.link} href={LINK_PATH_ARBX} target='_blank'>ArbEx</MuButton>
               </Grid>
             )
           }
@@ -81,6 +82,7 @@ const Header = () => {
                   className={classes.mobileButton}
                   aria-controls="simple-menu"
                   aria-haspopup="true"
+                  onClick={event => setDropDown(event.target)}
                   type='button'
                 >
                   {ArrowDownIcon}
@@ -95,6 +97,7 @@ const Header = () => {
                   <a href={LINK_PATH_HOME} className={classes.linMenu}><MenuItem>Home</MenuItem></a>
                   <a href={LINK_PATH_ABOUT} className={classes.linMenu}><MenuItem>About</MenuItem></a>
                   <a href={PATH_INDEX} className={classes.linMenu}><MenuItem>Funds</MenuItem></a>
+                  <a href={LINK_PATH_ARBX} className={classes.linMenu}><MenuItem>ArbEx</MenuItem></a>
                 </Menu>
               </Grid>
             )
