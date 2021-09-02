@@ -5,7 +5,7 @@ import { Button, Heading, Modal, useModal } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import rabbitmintingfarm from 'config/abi/rabbitmintingfarm.json'
-import { RABBIT_MINTING_FARM_ADDRESS } from 'config/constants/nfts'
+import { MINTING_FARM_ADDRESS } from 'config/constants/nfts'
 import multicall from 'utils/multicall'
 
 interface NftYouWonModalProps {
@@ -55,10 +55,10 @@ const NftGlobalNotification = () => {
       const [totalSupplyDistributedArr, currentDistributedSupplyArr, canClaimArr, hasClaimedArr] = await multicall(
         rabbitmintingfarm,
         [
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'totalSupplyDistributed' },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'currentDistributedSupply' },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'canClaim', params: [account] },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'hasClaimed', params: [account] },
+          { address: MINTING_FARM_ADDRESS, name: 'totalSupplyDistributed' },
+          { address: MINTING_FARM_ADDRESS, name: 'currentDistributedSupply' },
+          { address: MINTING_FARM_ADDRESS, name: 'canClaim', params: [account] },
+          { address: MINTING_FARM_ADDRESS, name: 'hasClaimed', params: [account] },
         ],
       )
 

@@ -117,7 +117,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
     : '-'
 
   const lpLabel = farm.lpSymbol
-  const earnLabel = 'EGG'
+  const earnLabel = 'BISON'
   const farmAPY = farm.apy && farm.apy.times(new BigNumber(100)).toNumber().toLocaleString(undefined, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -127,7 +127,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
 
   return (
     <FCard>
-      {farm.tokenSymbol === 'EGG' && <StyledCardAccent />}
+      {farm.tokenSymbol === 'BISON'}
       <CardHeading
         lpLabel={lpLabel}
         multiplier={farm.multiplier}
@@ -149,6 +149,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
                   tokenAddresses={tokenAddresses}
                   cakePrice={cakePrice}
                   apy={farm.apy}
+                  factory={farm.factory}
                 />
                 {farmAPY}%
               </>
@@ -187,6 +188,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
           quoteTokenAdresses={quoteTokenAdresses}
           quoteTokenSymbol={quoteTokenSymbol}
           tokenAddresses={tokenAddresses}
+          factory={farm.factory}
         />
       </ExpandingWrapper>
     </FCard>

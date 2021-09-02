@@ -14,6 +14,7 @@ import lotteryTicket from 'config/abi/lotteryNft.json'
 import masterChef from 'config/abi/masterchef.json'
 import sousChef from 'config/abi/sousChef.json'
 import sousChefBnb from 'config/abi/sousChefBnb.json'
+import univ2lp from 'config/abi/uni_v2_lp.json'
 
 const useContract = (abi: AbiItem, address: string, contractOptions?: ContractOptions) => {
   const web3 = useWeb3()
@@ -67,6 +68,11 @@ export const useLotteryTicket = () => {
 export const useMasterchef = () => {
   const abi = (masterChef as unknown) as AbiItem
   return useContract(abi, getMasterChefAddress())
+}
+
+export const useLP = (address: string) => {
+  const lpAbi = (univ2lp as unknown) as AbiItem
+  return useContract(lpAbi, address)
 }
 
 export const useSousChef = (id) => {

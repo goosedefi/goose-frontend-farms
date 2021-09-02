@@ -40,9 +40,20 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
 
   const [stakedOnly, setStakedOnly] = useState(false)
 
-  const activeFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X')
-  const inactiveFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier === '0X')
+  // const activeFarms = farmsLP.filter(
+  //   (farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X' && farm.lpSymbol !== 'BNB-BUSD LP',
+  // )
+  // const inactiveFarms = farmsLP.filter(
+  //   (farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier === '0X' && farm.lpSymbol !== 'BNB-BUSD LP',
+  // )
 
+  const activeFarms = farmsLP.filter(
+    (farm) => farm.multiplier !== '0X' && farm.lpSymbol !== 'BNB-BUSD LP' && farm.lpSymbol !== 'BISON-BUSD LP',
+  )
+  const inactiveFarms = farmsLP.filter(
+    (farm) => farm.multiplier === '0X' && farm.lpSymbol !== 'BNB-BUSD LP' && farm.lpSymbol !== 'BISON-BUSD LP',
+  )
+  
   const stakedOnlyFarms = activeFarms.filter(
     (farm) => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
   )
@@ -57,7 +68,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         // if (!farm.tokenAmount || !farm.lpTotalInQuoteToken || !farm.lpTotalInQuoteToken) {
         //   return farm
         // }
-        const cakeRewardPerBlock = new BigNumber(farm.eggPerBlock || 1).times(new BigNumber(farm.poolWeight)) .div(new BigNumber(10).pow(18))
+        const cakeRewardPerBlock = new BigNumber(farm.lifePerBlock || 1).times(new BigNumber(farm.poolWeight)) .div(new BigNumber(10).pow(18))
         const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
 
         let apy = cakePrice.times(cakeRewardPerYear);
@@ -94,13 +105,13 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
       <Heading as="h1" size="lg" color="primary" mb="50px" style={{ textAlign: 'center' }}>
         {
           tokenMode ?
-            TranslateString(10002, 'Stake tokens to earn EGG')
+            TranslateString(10002, 'Stake tokens to earn BISON')
             :
-          TranslateString(320, 'Stake LP tokens to earn EGG')
+          TranslateString(320, 'Stake LP tokens to earn BISON')
         }
       </Heading>
       <Heading as="h2" color="secondary" mb="50px" style={{ textAlign: 'center' }}>
-        {TranslateString(10000, 'Deposit Fee will be used to buyback EGG')}
+        {TranslateString(10000, 'Deposit Fee will be used to buyback BISON')}
       </Heading>
       <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/>
       <div>
@@ -114,7 +125,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
           </Route>
         </FlexLayout>
       </div>
-      <Image src="/images/egg/8.png" alt="illustration" width={1352} height={587} responsive />
+      {/* <Image src="/images/egg/8.png" alt="illustration" width={1352} height={587} responsive /> */}
     </Page>
   )
 }

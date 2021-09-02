@@ -1,15 +1,18 @@
 {
-  "name": "goose-frontend",
+  "name": "bishares-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build": "react-scripts build",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-mainnet": "react-scripts build && rm -rf ../farms-mainnet/* && mv ./build/* ../farms-mainnet/",
+    "build-testnet": "react-scripts build && rm -rf ../farms-testnet/* && mv ./build/* ../farms-testnet/",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'",
+    "uikit": "cd ../bishares-uikit && yarn && yarn build && rm -rf ../bishares-frontend-farms/node_modules/@pancakeswap-libs/uikit/dist && cp -Rp ./dist ../bishares-frontend-farms/node_modules/@pancakeswap-libs/uikit/"
   },
   "husky": {
     "hooks": {
@@ -30,10 +33,13 @@
     ]
   },
   "dependencies": {
+    "@apollo/client": "^3.4.9",
     "@binance-chain/bsc-use-wallet": "^0.8.1",
     "@crowdin/crowdin-api-client": "^1.10.1",
     "@ethersproject/abi": "^5.0.7",
-    "@pancakeswap-libs/uikit": "goosedefi/goose-uikit",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@pancakeswap-libs/uikit": "bisharesindexfund/bishares-uikit",
     "@reduxjs/toolkit": "^1.5.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
@@ -41,6 +47,8 @@
     "@types/styled-components": "^5.1.7",
     "bignumber.js": "^9.0.0",
     "chart.js": "^2.9.4",
+    "classnames": "^2.3.1",
+    "graphql": "^15.5.1",
     "iframe-resizer-react": "^1.1.0",
     "lodash": "^4.17.20",
     "react": "^17.0.1",

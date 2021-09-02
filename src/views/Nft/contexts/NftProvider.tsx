@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import useBlock from 'hooks/useBlock'
 import rabbitmintingfarm from 'config/abi/rabbitmintingfarm.json'
-import { RABBIT_MINTING_FARM_ADDRESS } from 'config/constants/nfts'
+import { MINTING_FARM_ADDRESS } from 'config/constants/nfts'
 import multicall from 'utils/multicall'
 import { getPancakeRabbitContract } from '../utils/contracts'
 
@@ -66,11 +66,11 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
           totalSupplyDistributedArr,
           currentDistributedSupplyArr,
         ] = await multicall(rabbitmintingfarm, [
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'startBlockNumber' },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'endBlockNumber' },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'countBunniesBurnt' },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'totalSupplyDistributed' },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'currentDistributedSupply' },
+          { address: MINTING_FARM_ADDRESS, name: 'startBlockNumber' },
+          { address: MINTING_FARM_ADDRESS, name: 'endBlockNumber' },
+          { address: MINTING_FARM_ADDRESS, name: 'countBunniesBurnt' },
+          { address: MINTING_FARM_ADDRESS, name: 'totalSupplyDistributed' },
+          { address: MINTING_FARM_ADDRESS, name: 'currentDistributedSupply' },
         ])
 
         // TODO: Figure out why these are coming back as arrays
@@ -103,8 +103,8 @@ const NftProvider: React.FC<NftProviderProps> = ({ children }) => {
       try {
         const pancakeRabbitsContract = getPancakeRabbitContract()
         const [canClaimArr, hasClaimedArr] = await multicall(rabbitmintingfarm, [
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'canClaim', params: [account] },
-          { address: RABBIT_MINTING_FARM_ADDRESS, name: 'hasClaimed', params: [account] },
+          { address: MINTING_FARM_ADDRESS, name: 'canClaim', params: [account] },
+          { address: MINTING_FARM_ADDRESS, name: 'hasClaimed', params: [account] },
         ])
         const balanceOf = await pancakeRabbitsContract.methods.balanceOf(account).call()
         const [canClaim]: [boolean] = canClaimArr
