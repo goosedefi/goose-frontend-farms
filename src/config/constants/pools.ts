@@ -116,7 +116,7 @@ const pools: PoolConfig[] = [
     stakingTokenAddress: '0xDAff7BEB8cAD0E75CcA3d9F36b8f8C0e1cf37b85',
     contractAddress: {
       97: '0xEA93812aA70eC89932aF6EBe6eCe93135712e4Ab',
-      56: '0x49324bB0BE8fF4d6C6881ca4806A65C9f947C238',
+      56: '0xdBf6Afe135e2C4CB599680C2F1554bBDa219CE10',
     },
     poolCategory: PoolCategory.REWARDS,
     projectLink: 'https://arbex.bishares.finance/add/BNB/0x10A520829C1E9631Ef9E60e37eEA3916092cAa99',
