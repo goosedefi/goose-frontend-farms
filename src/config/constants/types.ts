@@ -29,6 +29,7 @@ export enum QuoteToken {
   'BISON' = 'BISON',
   'BISONBNB' = 'BISON-BNB',
   'biAPEBNB' = 'biAPE-BNB',
+  'biCHAINBNB' = 'biCHAIN-BNB',
 }
 
 export enum PoolCategory {

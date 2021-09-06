@@ -25,6 +25,7 @@ import { QuoteToken, PoolCategory } from 'config/constants/types'
 import { Pool } from 'state/types'
 import { usePriceBnbBusd, useBISONPrice } from 'state/hooks'
 import { getPoolApr } from 'utils/apr'
+import getAvatar from 'utils/getAvatar'
 
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
@@ -41,7 +42,7 @@ interface HarvestProps {
 }
 
 const CustomCardTitle = styled(CardTitle)`
-  font-size: 22px;
+  font-size: 20px;
   color: #ffffff
 `
 
@@ -206,7 +207,7 @@ const apy = getApr();
         </CustomCardTitle>
         <div style={{ marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
           <div style={{ flex: 1 }}>
-            <Image src={`/images/tokens/${poolName === 'biAPE-BNB APE' ? 'biAPE' :image || tokenName}.png`} width={64} height={64} alt={tokenName} />
+            <Image src={`/images/tokens/${getAvatar(poolName)}.png`} width={64} height={64} alt={tokenName} />
           </div>
           {account && harvest && !isOldSyrup && (
             <HarvestButton
