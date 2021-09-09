@@ -21,7 +21,7 @@ const ApyButton: React.FC<ApyButtonProps> = ({
   tokenAddresses,
   cakePrice,
   apy,
-  factory
+  factory,
 }) => {
   const [onPresentApyModal] = useModal(
     <ApyCalculatorModal

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import BigNumber from 'bignumber.js'
 import { ChevronDown, ChevronUp } from 'react-feather'
 import { Image } from '@pancakeswap-libs/uikit'
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '@material-ui/core/Tooltip'
 
 import useI18n from 'hooks/useI18n'
 
@@ -10,12 +10,11 @@ import { getBalanceNumber } from 'utils/formatBalance'
 
 import Balance from 'components/Balance'
 import Button from 'components/Button'
-import InfoIcon from '@material-ui/icons/Info';
+import InfoIcon from '@material-ui/icons/Info'
 
 import { PoolCategory } from 'config/constants/types'
 
 import styled from 'styled-components'
-
 
 interface Props {
   poolName: string
@@ -79,15 +78,15 @@ const TokenLink = styled.a`
 
 const Rewards = styled.a`
   display: flex;
-  color: #DAA10E;
+  color: #daa10e;
   font-size: 14px;
-  border: 2px solid #DAA10E;
+  border: 2px solid #daa10e;
   border-radius: 16px;
   align-items: center;
   justify-content: space-between;
   width: 100px;
   padding: 5px;
-  
+
   span {
     margin-right: 5px;
   }
@@ -100,7 +99,7 @@ const CardFooter: React.FC<Props> = ({
   blocksRemaining,
   isFinished,
   stakingTokenName,
-  singleStake
+  singleStake,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const TranslateString = useI18n()
@@ -111,10 +110,9 @@ const CardFooter: React.FC<Props> = ({
   return (
     <StyledFooter isFinished={isFinished}>
       <Row>
-
         <FlexFull>
           <Rewards>
-            <Image src="images/tokens/BISON.png" width={20} height={20} alt='logo'/>
+            <Image src="images/tokens/BISON.png" width={20} height={20} alt="logo" />
             <span>Rewards</span>
           </Rewards>
         </FlexFull>
@@ -130,29 +128,26 @@ const CardFooter: React.FC<Props> = ({
                 <span role="img" aria-label="syrup">
                   {' '}
                 </span>
-                <span style={{ color: '#DAA10E'}}>Total {stakingTokenName} Staked</span>
+                <span style={{ color: '#DAA10E' }}>Total {stakingTokenName} Staked</span>
               </Label>
             </FlexFull>
-            {singleStake ? <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />
-            :
-            <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />
-            }
+            {singleStake ? (
+              <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />
+            ) : (
+              <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(totalStaked)} />
+            )}
           </Row>
           {blocksRemaining > 0 && (
             <Row>
               <FlexFull>
-                <Label style={{ color: '#DAA10E'}}>
-                  {TranslateString(410, 'Remaining Blocks')}
-                  :</Label>
+                <Label style={{ color: '#DAA10E' }}>{TranslateString(410, 'Remaining Blocks')}:</Label>
               </FlexFull>
               <Balance fontSize="14px" isDisabled={isFinished} value={blocksRemaining} decimals={0} />
             </Row>
           )}
 
           <TokenLink href={projectLink} target="_blank" rel="noreferrer">
-            <Button outLine>
-              {!singleStake ? `${poolName} LP`: `GET ${poolName}`}
-            </Button>
+            <Button outLine>{!singleStake ? `${poolName} LP` : `GET ${poolName}`}</Button>
           </TokenLink>
         </Details>
       )}

@@ -10,12 +10,11 @@ import useBlock from 'hooks/useBlock'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { usePools } from 'state/hooks'
 import Page from 'components/layout/Page'
-import { Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core'
 import PoolCard from './components/PoolCard'
 import PoolCardLP from './components/PoolCardLP'
 import PoolTabButtons from './components/PoolTabButtons'
 import Divider from './components/Divider'
-
 
 const Farm: React.FC = () => {
   const { path } = useRouteMatch()
@@ -38,30 +37,46 @@ const Farm: React.FC = () => {
     }
   })
 
-  const [finishedPools, openPools] = partition(poolsWithApy, (pool) => pool.isFinished);
+  const [finishedPools, openPools] = partition(poolsWithApy, (pool) => pool.isFinished)
 
   return (
     <>
-      <Banner/>
+      <Banner />
       <Page>
         <PoolTabButtons />
         <Divider />
         <Grid container spacing={3}>
           <Route exact path={`${path}`}>
-              {orderBy(openPools, ['sortOrder']).map((pool) => {
-                if (pool.earningToken === pool.stakingTokenAddress) {
-                  return  <Grid item lg={4} xs={12}><PoolCard key={pool.sousId} pool={pool} /></Grid>
-                }
-                return <Grid item lg={4} xs={12}><PoolCardLP key={pool.sousId} pool={pool} /></Grid>
-              })}
+            {orderBy(openPools, ['sortOrder']).map((pool) => {
+              if (pool.earningToken === pool.stakingTokenAddress) {
+                return (
+                  <Grid item lg={4} xs={12}>
+                    <PoolCard key={pool.sousId} pool={pool} />
+                  </Grid>
+                )
+              }
+              return (
+                <Grid item lg={4} xs={12}>
+                  <PoolCardLP key={pool.sousId} pool={pool} />
+                </Grid>
+              )
+            })}
           </Route>
           <Route path={`${path}/history`}>
-              {orderBy(finishedPools, ['sortOrder']).map((pool) => {
-                if (pool.earningToken === pool.stakingTokenAddress) {
-                  return  <Grid item lg={4} xs={12}><PoolCard key={pool.sousId} pool={pool} /></Grid>
-                }
-                return <Grid item lg={4} xs={12}><PoolCardLP key={pool.sousId} pool={pool} /></Grid>
-              })}
+            {orderBy(finishedPools, ['sortOrder']).map((pool) => {
+              if (pool.earningToken === pool.stakingTokenAddress) {
+                return (
+                  <Grid item lg={4} xs={12}>
+                    <PoolCard key={pool.sousId} pool={pool} />
+                  </Grid>
+                )
+              }
+              return (
+                <Grid item lg={4} xs={12}>
+                  <PoolCardLP key={pool.sousId} pool={pool} />
+                </Grid>
+              )
+            })}
           </Route>
         </Grid>
       </Page>
@@ -74,16 +89,16 @@ const Banner = styled.div`
   height: 300px;
   width: 100%;
   background-position: bottom;
-  background-repeat: no-repeat; 
+  background-repeat: no-repeat;
   background-size: cover;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 40px;
   font-weight: 600;
-  
+
   @media (max-width: 576px) {
     font-size: 20px;
     height: 100px;

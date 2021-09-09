@@ -128,13 +128,13 @@ export const usePriceCakeBusd = (): BigNumber => {
   // const bnbPriceUSD = usePriceBnbBusd()
   // const farm = useFarmFromPid(pid)
   // return farm.tokenPriceVsQuote ? bnbPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
-  const pid = 2; // BISON-BUSD LP
-  const farm = useFarmFromPid(pid);
-  return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO;
+  const pid = 2 // BISON-BUSD LP
+  const farm = useFarmFromPid(pid)
+  return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO
 }
 
 export const useBISONPrice = (): BigNumber => {
-  const { price } = useSelector((state: RootStateOrAny) => state.bison.data);
+  const { price } = useSelector((state: RootStateOrAny) => state.bison.data)
   return price ? new BigNumber(price) : ZERO
 }
 

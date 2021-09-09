@@ -1,15 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { BnbPriceContext, useBnbPrice } from 'hooks/useBnbPrice';
+import { BnbPriceContext, useBnbPrice } from 'hooks/useBnbPrice'
 
 const BnbPriceContextProvider = ({ children }) => {
-  const price = useBnbPrice();
+  const price = useBnbPrice()
 
-  return (
-    <BnbPriceContext.Provider value={price}>
-      {children}
-    </BnbPriceContext.Provider>
-  );
+  return <BnbPriceContext.Provider value={price}>{children}</BnbPriceContext.Provider>
 }
 
-export default BnbPriceContextProvider;
+export default BnbPriceContextProvider

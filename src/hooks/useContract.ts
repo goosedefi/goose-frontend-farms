@@ -32,12 +32,12 @@ const useContract = (abi: AbiItem, address: string, contractOptions?: ContractOp
  */
 
 export const useIfoContract = (address: string) => {
-  const ifoAbi = (ifo as unknown) as AbiItem
+  const ifoAbi = ifo as unknown as AbiItem
   return useContract(ifoAbi, address)
 }
 
 export const useERC20 = (address: string) => {
-  const erc20Abi = (erc20 as unknown) as AbiItem
+  const erc20Abi = erc20 as unknown as AbiItem
   return useContract(erc20Abi, address)
 }
 
@@ -46,39 +46,39 @@ export const useCake = () => {
 }
 
 export const useRabbitMintingFarm = (address: string) => {
-  const rabbitMintingFarmAbi = (rabbitmintingfarm as unknown) as AbiItem
+  const rabbitMintingFarmAbi = rabbitmintingfarm as unknown as AbiItem
   return useContract(rabbitMintingFarmAbi, address)
 }
 
 export const usePancakeRabbits = (address: string) => {
-  const pancakeRabbitsAbi = (pancakeRabbits as unknown) as AbiItem
+  const pancakeRabbitsAbi = pancakeRabbits as unknown as AbiItem
   return useContract(pancakeRabbitsAbi, address)
 }
 
 export const useLottery = () => {
-  const abi = (lottery as unknown) as AbiItem
+  const abi = lottery as unknown as AbiItem
   return useContract(abi, getLotteryAddress())
 }
 
 export const useLotteryTicket = () => {
-  const abi = (lotteryTicket as unknown) as AbiItem
+  const abi = lotteryTicket as unknown as AbiItem
   return useContract(abi, getLotteryTicketAddress())
 }
 
 export const useMasterchef = () => {
-  const abi = (masterChef as unknown) as AbiItem
+  const abi = masterChef as unknown as AbiItem
   return useContract(abi, getMasterChefAddress())
 }
 
 export const useLP = (address: string) => {
-  const lpAbi = (univ2lp as unknown) as AbiItem
+  const lpAbi = univ2lp as unknown as AbiItem
   return useContract(lpAbi, address)
 }
 
 export const useSousChef = (id) => {
   const config = poolsConfig.find((pool) => pool.sousId === id)
   const rawAbi = config.poolCategory === PoolCategory.BINANCE ? sousChefBnb : sousChef
-  const abi = (rawAbi as unknown) as AbiItem
+  const abi = rawAbi as unknown as AbiItem
   return useContract(abi, config.contractAddress[process.env.REACT_APP_CHAIN_ID])
 }
 

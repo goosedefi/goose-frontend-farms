@@ -1,12 +1,12 @@
 // @ts-ignore
 import React, { FC } from 'react'
-import classNames from 'classnames';
-import { Button as MaterialButton } from '@material-ui/core';
-import { ButtonProps as MuiButtonProps } from "@material-ui/core/Button";
+import classNames from 'classnames'
+import { Button as MaterialButton } from '@material-ui/core'
+import { ButtonProps as MuiButtonProps } from '@material-ui/core/Button'
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '@material-ui/core/CircularProgress'
 
-import useStyles  from './styles.module';
+import useStyles from './styles.module'
 
 type Props = MuiButtonProps & {
   className?: string
@@ -15,10 +15,8 @@ type Props = MuiButtonProps & {
   disabled?: boolean
 }
 
-const Button: FC<Props> = ({ children, className, outLine,
-       loader, disabled, ...props
-}) => {
-  const classes = useStyles();
+const Button: FC<Props> = ({ children, className, outLine, loader, disabled, ...props }) => {
+  const classes = useStyles()
 
   return (
     <MaterialButton
@@ -28,7 +26,7 @@ const Button: FC<Props> = ({ children, className, outLine,
     >
       {loader ? <CircularProgress /> : children}
     </MaterialButton>
-  );
-};
+  )
+}
 
-export default Button;
+export default Button

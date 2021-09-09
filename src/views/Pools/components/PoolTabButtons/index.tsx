@@ -9,15 +9,13 @@ const ButtonMenuBison = styled(ButtonMenu)`
   border: none;
 `
 
-
 const PoolTabButtons = () => {
   const { url, isExact } = useRouteMatch()
   const TranslateString = useI18n()
 
   return (
     <Wrapper>
-      <ButtonMenuBison
-        activeIndex={!isExact ? 1 : 0} size="sm" variant="subtle">
+      <ButtonMenuBison activeIndex={!isExact ? 1 : 0} size="sm" variant="subtle">
         <ButtonMenuItem
           as={Link}
           to={`${url}`}

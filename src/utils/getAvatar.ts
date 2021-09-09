@@ -1,12 +1,12 @@
 const getAvatar = (poolName) => {
   switch (poolName) {
     case 'biAPE-BNB APE':
-        return 'biAPE';
+      return 'biAPE'
     case 'biCHAIN-BNB ARBX':
-      return 'biChain';
+      return 'biChain'
     default:
-      return 'BISON';
+      return 'BISON'
   }
 }
 
-export default getAvatar;
+export default getAvatar

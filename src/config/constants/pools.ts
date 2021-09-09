@@ -14,7 +14,8 @@ const pools: PoolConfig[] = [
       56: '0x3d5e1C77e9C81B72b0b0F88Cd63d2Aab38881b96',
     },
     poolCategory: PoolCategory.REWARDS,
-    projectLink: 'https://app.apeswap.finance/swap?inputCurrency=ETH&outputCurrency=0x19A6Da6e382b85F827088092a3DBe864d9cCba73',
+    projectLink:
+      'https://app.apeswap.finance/swap?inputCurrency=ETH&outputCurrency=0x19A6Da6e382b85F827088092a3DBe864d9cCba73',
     harvest: true,
     tokenPerBlock: '0.006751543209876540',
     sortOrder: 1,
@@ -106,7 +107,7 @@ const pools: PoolConfig[] = [
     tokenDecimals: 18,
     quoteTokenSymbol: QuoteToken.BISON,
     quoteTokenAdresses: contracts.cake,
-  }
+  },
 ]
 
 export default pools

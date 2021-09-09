@@ -128,16 +128,16 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
         )}
       </Description>
       <Flex justifyContent="center">
-        { factory === 'pcs' &&
+        {factory === 'pcs' && (
           <LinkExternal href={`https://exchange.pancakeswap.finance/#/add/${liquidityUrlPathParts}`}>
             {TranslateString(999, 'Get')} {lpLabel}
           </LinkExternal>
-        }
-        { factory === 'ape' &&
+        )}
+        {factory === 'ape' && (
           <LinkExternal href={`https://app.apeswap.finance/#/add/${liquidityUrlPathParts}`}>
             {TranslateString(999, 'Get')} {lpLabel}
           </LinkExternal>
-        }
+        )}
       </Flex>
     </Modal>
   )

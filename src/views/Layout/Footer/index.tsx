@@ -1,16 +1,11 @@
-import React from 'react';
-import classNames from 'classnames';
-import {
-  Grid, AppBar, Toolbar, Typography, Link as MaterialLink,
-} from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import React from 'react'
+import classNames from 'classnames'
+import { Grid, AppBar, Toolbar, Typography, Link as MaterialLink } from '@material-ui/core'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
+import { TwitterIcon, GitHub, TelegramIcon, MediumSquareIcon, DiscordIcon } from '../../../constants/icon.constants'
 
-import {
-  TwitterIcon, GitHub, TelegramIcon, MediumSquareIcon, DiscordIcon,
-} from '../../../constants/icon.constants';
-
-import useStyles from './styles.module';
+import useStyles from './styles.module'
 
 const footerLinks = [
   {
@@ -33,19 +28,16 @@ const footerLinks = [
     icon: DiscordIcon,
     href: 'https://discord.com/invite/w2jejq5rBP',
   },
-];
+]
 
 const Footer = () => {
-  const classes = useStyles();
-  const matches = useMediaQuery('(max-width:1350px)');
+  const classes = useStyles()
+  const matches = useMediaQuery('(max-width:1350px)')
 
   return (
     <AppBar position="relative" color="transparent" elevation={1}>
       <Toolbar className={classes.footer}>
-        <Grid
-          container
-          alignItems="center"
-        >
+        <Grid container alignItems="center">
           <Grid
             item
             lg={3}
@@ -56,24 +48,22 @@ const Footer = () => {
             spacing={3}
             className={classNames({ [classes.mobileIcon]: matches })}
           >
-            {
-              footerLinks.map(item => (
-                <Grid item key={item.href}>
-                  <Typography
-                    className={classes.link}
-                    component={MaterialLink}
-                    style={{ textDecoration: 'none' }}
-                    href={item.href}
-                    target="_blank"
-                    color="textPrimary"
-                    variant="h5"
-                    noWrap
-                  >
-                    {item.icon}
-                  </Typography>
-                </Grid>
-              ))
-            }
+            {footerLinks.map((item) => (
+              <Grid item key={item.href}>
+                <Typography
+                  className={classes.link}
+                  component={MaterialLink}
+                  style={{ textDecoration: 'none' }}
+                  href={item.href}
+                  target="_blank"
+                  color="textPrimary"
+                  variant="h5"
+                  noWrap
+                >
+                  {item.icon}
+                </Typography>
+              </Grid>
+            ))}
           </Grid>
           <Grid lg={3} xs={12} item container justifyContent="center" alignItems="center">
             <Grid xs={12} lg={6} item className={classNames({ [classes.centerLink]: matches })}>
@@ -103,12 +93,7 @@ const Footer = () => {
           </Grid>
           <Grid item lg={6} container className={classes.copyrightTitle} alignItems="center" spacing={3}>
             <Grid item>
-              <Typography
-                className={classes.title}
-                color="textSecondary"
-                variant="subtitle1"
-                noWrap
-              >
+              <Typography className={classes.title} color="textSecondary" variant="subtitle1" noWrap>
                 © 2021 by Bishares Finance
               </Typography>
             </Grid>
@@ -116,7 +101,7 @@ const Footer = () => {
         </Grid>
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

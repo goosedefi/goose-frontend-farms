@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   content: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
     fontSize: '16px',
     color: '#DAA10E',
     textTransform: 'uppercase',
-  /*  fontWeight: '700', */
+    /*  fontWeight: '700', */
     position: 'relative',
 
     '&:hover': {
@@ -31,7 +31,6 @@ const useStyles = makeStyles(() => ({
     width: '32px',
     height: '32px',
   },
+}))
 
-}));
-
-export default useStyles;
+export default useStyles

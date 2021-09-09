@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   wrap: {
@@ -12,8 +12,8 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     fontSize: '16px',
     textTransform: 'none',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
   },
-}));
+}))
 
-export default useStyles;
+export default useStyles

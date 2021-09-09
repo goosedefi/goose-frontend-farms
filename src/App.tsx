@@ -7,9 +7,9 @@ import { useFetchPublicData, useFetchPriceData, useFetchTotalSupplyData } from '
 import GlobalStyle from './style/Global'
 
 import PageLoader from './components/PageLoader'
-import Layout from './views/Layout';
-import ConnectWallet from './views/ConnectWallet';
-import ApolloWrap from './views/ApolloWrap';
+import Layout from './views/Layout'
+import ConnectWallet from './views/ConnectWallet'
+import ApolloWrap from './views/ApolloWrap'
 import BnbPriceContextProvider from './views/BnbPriceContextWrap'
 
 const Pools = lazy(() => import('./views/Pools'))
@@ -22,12 +22,12 @@ BigNumber.config({
 })
 
 const App: FC = () => {
-  const { account, connect } = useWallet();
-   useEffect(() => {
+  const { account, connect } = useWallet()
+  useEffect(() => {
     if (!account && window.localStorage.getItem('accountStatus')) {
       connect('injected')
     }
-  }, [account, connect]);
+  }, [account, connect])
 
   useFetchPublicData()
 
@@ -45,12 +45,7 @@ const App: FC = () => {
             <Suspense fallback={<PageLoader />}>
               <Switch>
                 <Route path="/">
-                  <div style={{ minHeight: 'calc(100vh - 250px)'}}>
-                     {account
-                        ? <Pools />
-                        : <ConnectWallet/>
-                     }
-                  </div>
+                  <div style={{ minHeight: 'calc(100vh - 250px)' }}>{account ? <Pools /> : <ConnectWallet />}</div>
                 </Route>
                 <Route component={NotFound} />
               </Switch>

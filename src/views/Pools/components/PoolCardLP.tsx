@@ -1,14 +1,14 @@
-import React, { useCallback, useState, useEffect } from 'react';
-import BigNumber from 'bignumber.js';
-import styled from 'styled-components';
-import { useModal, AddIcon, Image } from '@pancakeswap-libs/uikit';
-import { useWallet } from '@binance-chain/bsc-use-wallet';
-import { useQuery } from "@apollo/client";
+import React, { useCallback, useState, useEffect } from 'react'
+import BigNumber from 'bignumber.js'
+import styled from 'styled-components'
+import { useModal, AddIcon, Image } from '@pancakeswap-libs/uikit'
+import { useWallet } from '@binance-chain/bsc-use-wallet'
+import { useQuery } from '@apollo/client'
 
 import UnlockButton from 'components/UnlockButton'
 import Label from 'components/Label'
 import Balance from 'components/Balance'
-import Button from 'components/Button';
+import Button from 'components/Button'
 
 import { useERC20, useLP } from 'hooks/useContract'
 import { useSousApprove } from 'hooks/useApprove'
@@ -18,7 +18,7 @@ import { useSousUnstake } from 'hooks/useUnstake'
 import useBlock from 'hooks/useBlock'
 import { useSousHarvest } from 'hooks/useHarvest'
 import useGetLpTokenPrice from 'hooks/useGetLpTokenPrice'
-import { useBnbPriceState } from 'hooks/useBnbPrice';
+import { useBnbPriceState } from 'hooks/useBnbPrice'
 
 import { getBalanceNumber } from 'utils/formatBalance'
 import { QuoteToken, PoolCategory } from 'config/constants/types'
@@ -43,7 +43,7 @@ interface HarvestProps {
 
 const CustomCardTitle = styled(CardTitle)`
   font-size: 20px;
-  color: #ffffff
+  color: #ffffff;
 `
 
 const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
@@ -70,7 +70,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const TranslateString = useI18n()
   const stakingTokenContract = useERC20(stakingTokenAddress)
   const lpTokenContract = useLP(stakingTokenAddress)
-  const { binancecoin } = useBnbPriceState();
+  const { binancecoin } = useBnbPriceState()
 
   const [totalSupply, setTotalSupply] = useState(new BigNumber(0))
 
@@ -86,8 +86,8 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const { onStake } = useSousStake(sousId, isBnbPool)
   const { onUnstake } = useSousUnstake(sousId)
   const { onReward } = useSousHarvest(sousId, isBnbPool)
-  const { lpTokenPriceUsd } = useGetLpTokenPrice({lpTokenContract})
-  const { data } = useQuery(BISON_PRICE);
+  const { lpTokenPriceUsd } = useGetLpTokenPrice({ lpTokenContract })
+  const { data } = useQuery(BISON_PRICE)
 
   const token0price = useBISONPrice()
   const token1price = usePriceBnbBusd()
@@ -170,10 +170,9 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   }, [lpTokenContract, stakingTokenAddress])
 
   const getApr = useCallback(() => {
-
-    let baseValue;
-    let quoteValue;
-    if(pool.poolName !== 'biAPE-BNB APE') {
+    let baseValue
+    let quoteValue
+    if (pool.poolName !== 'biAPE-BNB APE') {
       baseValue = new BigNumber(token0price).times(reserve0)
       quoteValue = new BigNumber(token1price).times(reserve1)
     } else {
@@ -181,7 +180,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
       quoteValue = new BigNumber(token1price).times(reserve0)
     }
     const totalValue = baseValue.plus(quoteValue)
-    const lpTokenPrice = totalValue.div(getBalanceNumber(totalSupply)).times(token0price);
+    const lpTokenPrice = totalValue.div(getBalanceNumber(totalSupply)).times(token0price)
 
     const apr = getPoolApr(
       lpTokenPrice,
@@ -189,17 +188,24 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
       getBalanceNumber(pool.totalStaked, pool.tokenDecimals),
       parseFloat(pool.tokenPerBlock),
     )
-    return new BigNumber(apr);
+    return new BigNumber(apr)
+  }, [
+    pool.tokenDecimals,
+    pool.tokenPerBlock,
+    pool.totalStaked,
+    pool.poolName,
+    reserve0,
+    reserve1,
+    rewardTokenPrice,
+    token0price,
+    token1price,
+    totalSupply,
+  ])
 
-}, [pool.tokenDecimals, pool.tokenPerBlock, pool.totalStaked, pool.poolName, reserve0, reserve1, rewardTokenPrice, token0price, token1price, totalSupply])
-
-const apy = getApr();
+  const apy = getApr()
 
   return (
-    <Card
-      isActive={isCardActive}
-      isFinished={isFinished && sousId !== 0}
-    >
+    <Card isActive={isCardActive} isFinished={isFinished && sousId !== 0}>
       {isFinished && sousId !== 0 && <PoolFinishedSash />}
       <div style={{ padding: '24px' }}>
         <CustomCardTitle isFinished={isFinished && sousId !== 0}>
@@ -265,14 +271,14 @@ const apy = getApr();
                 <StyledActionSpacer />
                 {!isOldSyrup && (
                   <Button disabled={isFinished && sousId !== 0} onClick={onPresentDeposit} outLine>
-                    <AddIcon/>
+                    <AddIcon />
                   </Button>
                 )}
               </>
             ))}
         </StyledCardActions>
         <StyledDetails>
-          <div style={{ flex: 1,  color: '#DAA10E' }}>{TranslateString(736, 'APR')}:</div>
+          <div style={{ flex: 1, color: '#DAA10E' }}>{TranslateString(736, 'APR')}:</div>
           {isFinished || isOldSyrup || !apy || apy?.isNaN() || !apy?.isFinite() ? (
             '-'
           ) : (
@@ -307,9 +313,12 @@ const apy = getApr();
             Earned value:
           </div>
           <div style={{ color: '#FFFFFF', fontWeight: 'bold', lineHeight: '25px' }}>
-            ~ ${data?.token &&
-            new BigNumber(data?.token?.derivedETH).times(binancecoin?.usd).multipliedBy(earnings.div(1e18)).toFixed(2)
-            }
+            ~ $
+            {data?.token &&
+              new BigNumber(data?.token?.derivedETH)
+                .times(binancecoin?.usd)
+                .multipliedBy(earnings.div(1e18))
+                .toFixed(2)}
           </div>
         </StyledDetails>
       </div>

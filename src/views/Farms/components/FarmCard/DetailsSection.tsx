@@ -45,7 +45,7 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
   quoteTokenAdresses,
   quoteTokenSymbol,
   tokenAddresses,
-  factory
+  factory,
 }) => {
   const TranslateString = useI18n()
   const liquidityUrlPathParts = getLiquidityUrlPathParts({ quoteTokenAdresses, quoteTokenSymbol, tokenAddresses })
@@ -54,26 +54,28 @@ const DetailsSection: React.FC<ExpandableSectionProps> = ({
     <Wrapper>
       <Flex justifyContent="space-between">
         <Text>{TranslateString(316, 'Stake')}:</Text>
-        { factory === 'pcs' && 
-          <StyledLinkExternal href={
-            isTokenOnly ?
-              `https://exchange.pancakeswap.com/#/swap/${tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
-              :
-            `https://exchange.pancakeswap.com/#/add/${liquidityUrlPathParts}`
-          }>
+        {factory === 'pcs' && (
+          <StyledLinkExternal
+            href={
+              isTokenOnly
+                ? `https://exchange.pancakeswap.com/#/swap/${tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+                : `https://exchange.pancakeswap.com/#/add/${liquidityUrlPathParts}`
+            }
+          >
             {lpLabel}
           </StyledLinkExternal>
-        }
-        { factory === 'ape' && 
-          <StyledLinkExternal href={
-            isTokenOnly ?
-              `https://app.apeswap.finance/#/swap/${tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
-              :
-            `https://exchange.apeswap.com/#/add/${liquidityUrlPathParts}`
-          }>
+        )}
+        {factory === 'ape' && (
+          <StyledLinkExternal
+            href={
+              isTokenOnly
+                ? `https://app.apeswap.finance/#/swap/${tokenAddresses[process.env.REACT_APP_CHAIN_ID]}`
+                : `https://exchange.apeswap.com/#/add/${liquidityUrlPathParts}`
+            }
+          >
             {lpLabel}
           </StyledLinkExternal>
-        }
+        )}
       </Flex>
       {!removed && (
         <Flex justifyContent="space-between">

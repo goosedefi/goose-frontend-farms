@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(() => ({
   modalWrap: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
     padding: '24px',
     borderBottom: '0.5px solid #333333',
     fontSize: '16px',
-  /*  fontWeight: '700', */
+    /*  fontWeight: '700', */
     color: '#FFF',
     display: 'flex',
     alignItems: 'center',
@@ -41,6 +41,6 @@ const useStyles = makeStyles(() => ({
       marginRight: '0',
     },
   },
-}));
+}))
 
-export default useStyles;
+export default useStyles
