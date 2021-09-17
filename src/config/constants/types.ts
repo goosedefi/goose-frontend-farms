@@ -26,11 +26,16 @@ export enum QuoteToken {
   'BUSD' = 'BUSD',
   'TWT' = 'TWT',
   'UST' = 'UST',
+  'BISON' = 'BISON',
+  'BISONBNB' = 'BISON-BNB',
+  'biAPEBNB' = 'biAPE-BNB',
+  'biCHAINBNB' = 'biCHAIN-BNB',
 }
 
 export enum PoolCategory {
   'COMMUNITY' = 'Community',
   'CORE' = 'Core',
+  'REWARDS' = 'Rewards',
   'BINANCE' = 'Binance', // Pools using native BNB behave differently than pools using a token
 }
 
@@ -51,6 +56,7 @@ export interface FarmConfig {
   isTokenOnly?: boolean
   isCommunity?: boolean
   risk: number
+  factory?: string
   dual?: {
     rewardPerBlock: number
     earnLabel: string
@@ -61,8 +67,10 @@ export interface FarmConfig {
 export interface PoolConfig {
   sousId: number
   image?: string
+  poolName: string
   tokenName: string
   stakingTokenName: QuoteToken
+  earningToken?: string
   stakingLimit?: number
   stakingTokenAddress?: string
   contractAddress: Address
@@ -73,6 +81,8 @@ export interface PoolConfig {
   harvest?: boolean
   isFinished?: boolean
   tokenDecimals: number
+  quoteTokenSymbol: string
+  quoteTokenAdresses: { 56: string; 97: string }
 }
 
 export type Nft = {

@@ -15,6 +15,7 @@ interface ApyCalculatorModalProps {
   quoteTokenAdresses?: Address
   quoteTokenSymbol?: string
   tokenAddresses: Address
+  factory: string
 }
 
 const Grid = styled.div`
@@ -41,6 +42,7 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
   tokenAddresses,
   cakePrice,
   apy,
+  factory,
 }) => {
   const TranslateString = useI18n()
   const liquidityUrlPathParts = getLiquidityUrlPathParts({ quoteTokenAdresses, quoteTokenSymbol, tokenAddresses })
@@ -67,7 +69,7 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
         </GridItem>
         <GridItem>
           <Text fontSize="12px" bold color="textSubtle" textTransform="uppercase" mb="20px">
-            {TranslateString(999, 'EGG per $1000')}
+            {TranslateString(999, 'BISON per $1000')}
           </Text>
         </GridItem>
         {/* 1 day row */}
@@ -126,9 +128,16 @@ const ApyCalculatorModal: React.FC<ApyCalculatorModalProps> = ({
         )}
       </Description>
       <Flex justifyContent="center">
-        <LinkExternal href={`https://exchange.pancakeswap.finance/#/add/${liquidityUrlPathParts}`}>
-          {TranslateString(999, 'Get')} {lpLabel}
-        </LinkExternal>
+        {factory === 'pcs' && (
+          <LinkExternal href={`https://exchange.pancakeswap.finance/#/add/${liquidityUrlPathParts}`}>
+            {TranslateString(999, 'Get')} {lpLabel}
+          </LinkExternal>
+        )}
+        {factory === 'ape' && (
+          <LinkExternal href={`https://app.apeswap.finance/#/add/${liquidityUrlPathParts}`}>
+            {TranslateString(999, 'Get')} {lpLabel}
+          </LinkExternal>
+        )}
       </Flex>
     </Modal>
   )
