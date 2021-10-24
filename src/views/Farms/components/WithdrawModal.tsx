@@ -6,7 +6,7 @@ import TokenInput from 'components/TokenInput'
 import useI18n from 'hooks/useI18n'
 import { getFullDisplayBalance } from 'utils/formatBalance'
 
-interface WithdrawModalProps {
+export interface WithdrawModalProps {
   max: BigNumber
   onConfirm: (amount: string) => void
   onDismiss?: () => void

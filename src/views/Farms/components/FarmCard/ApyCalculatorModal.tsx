@@ -7,7 +7,7 @@ import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
 import { calculateCakeEarnedPerThousandDollars, apyModalRoi } from 'utils/compoundApyHelpers'
 import { Address } from 'config/constants/types'
 
-interface ApyCalculatorModalProps {
+export interface ApyCalculatorModalProps {
   onDismiss?: () => void
   lpLabel?: string
   cakePrice?: BigNumber

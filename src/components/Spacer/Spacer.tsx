@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 
-interface SpacerProps {
+export interface SpacerProps {
   size?: 'sm' | 'md' | 'lg'
 }
 

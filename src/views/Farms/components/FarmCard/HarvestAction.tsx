@@ -7,7 +7,7 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import styled from 'styled-components'
 import useStake from '../../../../hooks/useStake'
 
-interface FarmCardActionsProps {
+export interface FarmCardActionsProps {
   earnings?: BigNumber
   pid?: number
 }

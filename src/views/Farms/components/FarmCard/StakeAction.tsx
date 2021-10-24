@@ -9,7 +9,7 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import DepositModal from '../DepositModal'
 import WithdrawModal from '../WithdrawModal'
 
-interface FarmCardActionsProps {
+export interface FarmCardActionsProps {
   stakedBalance?: BigNumber
   tokenBalance?: BigNumber
   tokenName?: string

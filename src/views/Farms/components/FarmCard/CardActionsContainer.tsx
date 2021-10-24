@@ -19,7 +19,7 @@ export interface FarmWithStakedValue extends Farm {
   apy?: BigNumber
 }
 
-interface FarmCardActionsProps {
+export interface FarmCardActionsProps {
   farm: FarmWithStakedValue
   ethereum?: provider
   account?: string

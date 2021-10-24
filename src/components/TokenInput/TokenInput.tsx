@@ -5,7 +5,7 @@ import { Button } from '@pancakeswap-libs/uikit'
 import useI18n from '../../hooks/useI18n'
 import Input, { InputProps } from '../Input'
 
-interface TokenInputProps extends InputProps {
+export interface TokenInputProps extends InputProps {
   max: number | string
   symbol: string
   onSelectMax?: () => void

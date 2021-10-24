@@ -8,7 +8,7 @@ import rabbitmintingfarm from 'config/abi/rabbitmintingfarm.json'
 import { RABBIT_MINTING_FARM_ADDRESS } from 'config/constants/nfts'
 import multicall from 'utils/multicall'
 
-interface NftYouWonModalProps {
+export interface NftYouWonModalProps {
   onDismiss?: () => void
 }
 
