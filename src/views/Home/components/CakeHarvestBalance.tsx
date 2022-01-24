@@ -6,7 +6,7 @@ import useI18n from 'hooks/useI18n'
 import useAllEarnings from 'hooks/useAllEarnings'
 import CardValue from './CardValue'
 
-const CakeHarvestBalance = ({earningsSum}) => {
+const CakeHarvestBalance = ({ earningsSum }) => {
   const TranslateString = useI18n()
   const { account } = useWallet()
 

@@ -54,21 +54,21 @@ const fetchFarms = async () => {
         lpTokenBalanceMC,
         lpTotalSupply,
         tokenDecimals,
-        quoteTokenDecimals
+        quoteTokenDecimals,
       ] = await multicall(erc20, calls)
 
-      let tokenAmount;
-      let lpTotalInQuoteToken;
-      let tokenPriceVsQuote;
-      if(farmConfig.isTokenOnly){
-        tokenAmount = new BigNumber(lpTokenBalanceMC).div(new BigNumber(10).pow(tokenDecimals));
-        if(farmConfig.tokenSymbol === QuoteToken.BUSD && farmConfig.quoteTokenSymbol === QuoteToken.BUSD){
-          tokenPriceVsQuote = new BigNumber(1);
-        }else{
-          tokenPriceVsQuote = new BigNumber(quoteTokenBlanceLP).div(new BigNumber(tokenBalanceLP));
+      let tokenAmount
+      let lpTotalInQuoteToken
+      let tokenPriceVsQuote
+      if (farmConfig.isTokenOnly) {
+        tokenAmount = new BigNumber(lpTokenBalanceMC).div(new BigNumber(10).pow(tokenDecimals))
+        if (farmConfig.tokenSymbol === QuoteToken.BUSD && farmConfig.quoteTokenSymbol === QuoteToken.BUSD) {
+          tokenPriceVsQuote = new BigNumber(1)
+        } else {
+          tokenPriceVsQuote = new BigNumber(quoteTokenBlanceLP).div(new BigNumber(tokenBalanceLP))
         }
-        lpTotalInQuoteToken = tokenAmount.times(tokenPriceVsQuote);
-      }else{
+        lpTotalInQuoteToken = tokenAmount.times(tokenPriceVsQuote)
+      } else {
         // Ratio in % a LP tokens that are in staking, vs the total number in circulation
         const lpTokenRatio = new BigNumber(lpTokenBalanceMC).div(new BigNumber(lpTotalSupply))
 
@@ -84,10 +84,10 @@ const fetchFarms = async () => {
           .div(new BigNumber(10).pow(quoteTokenDecimals))
           .times(lpTokenRatio)
 
-        if(tokenAmount.comparedTo(0) > 0){
-          tokenPriceVsQuote = quoteTokenAmount.div(tokenAmount);
-        }else{
-          tokenPriceVsQuote = new BigNumber(quoteTokenBlanceLP).div(new BigNumber(tokenBalanceLP));
+        if (tokenAmount.comparedTo(0) > 0) {
+          tokenPriceVsQuote = quoteTokenAmount.div(tokenAmount)
+        } else {
+          tokenPriceVsQuote = new BigNumber(quoteTokenBlanceLP).div(new BigNumber(tokenBalanceLP))
         }
       }
 

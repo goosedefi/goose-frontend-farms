@@ -35,15 +35,12 @@ const TokenInput: React.FC<TokenInputProps> = ({ max, symbol, onChange, onSelect
         placeholder="0"
         value={value}
       />
-      {
-        depositFeeBP > 0 ?
-          <StyledMaxText>
-            {TranslateString(10001, 'Deposit Fee')}: {new BigNumber(value || 0).times(depositFeeBP/10000).toString()} {symbol}
-          </StyledMaxText>
-          :
-          null
-      }
-
+      {depositFeeBP > 0 ? (
+        <StyledMaxText>
+          {TranslateString(10001, 'Deposit Fee')}: {new BigNumber(value || 0).times(depositFeeBP / 10000).toString()}{' '}
+          {symbol}
+        </StyledMaxText>
+      ) : null}
     </StyledTokenInput>
   )
 }

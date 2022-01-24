@@ -75,7 +75,7 @@
     {
       "data": {
         "stringId": 304,
-        "text": "\u81ea\u53d1\u8d77\u4ee5\u6765\u7684 EGG \u603b\u711a\u6bc1\u91cf"
+        "text": "\u81ea\u53d1\u8d77\u4ee5\u6765\u7684 FIRE \u603b\u711a\u6bc1\u91cf"
       }
     },
     {
@@ -123,13 +123,13 @@
     {
       "data": {
         "stringId": 320,
-        "text": "\u8d28\u62bc LP \u4ee3\u5e01\u4ee5\u5806\u53e0 EGG"
+        "text": "\u8d28\u62bc LP \u4ee3\u5e01\u4ee5\u5806\u53e0 FIRE"
       }
     },
     {
       "data": {
         "stringId": 322,
-        "text": "\u8d28\u62bc EGG\uff0c\u83b7\u53d6 SYRUP\u3002"
+        "text": "\u8d28\u62bc FIRE\uff0c\u83b7\u53d6 SYRUP\u3002"
       }
     },
     {
@@ -153,7 +153,7 @@
     {
       "data": {
         "stringId": 334,
-        "text": "\u6bcf\u6b21\u60a8\u8d28\u62bc\u4e0e\u53d6\u6d88\u8d28\u62bc EGG \u4ee3\u5e01\u65f6\uff0c\u5408\u7ea6\u90fd\u4f1a\u81ea\u52a8\u4e3a\u60a8\u6536\u5272 EGG \u5956\u52b1\uff01"
+        "text": "\u6bcf\u6b21\u60a8\u8d28\u62bc\u4e0e\u53d6\u6d88\u8d28\u62bc FIRE \u4ee3\u5e01\u65f6\uff0c\u5408\u7ea6\u90fd\u4f1a\u81ea\u52a8\u4e3a\u60a8\u6536\u5272 FIRE \u5956\u52b1\uff01"
       }
     },
     {
@@ -219,7 +219,7 @@
     {
       "data": {
         "stringId": 358,
-        "text": "EGG \u4ef7\u683c"
+        "text": "FIRE \u4ef7\u683c"
       }
     },
     {
@@ -243,7 +243,7 @@
     {
       "data": {
         "stringId": 380,
-        "text": "1 EGG = 1 SYRUP"
+        "text": "1 FIRE = 1 SYRUP"
       }
     },
     {
@@ -291,7 +291,7 @@
     {
       "data": {
         "stringId": 400,
-        "text": "SYRUP \u6301\u6709\u8005\u6bcf\u5929\u5c06\u6309\u6bd4\u4f8b\u5206\u4eab EGG \u533a\u5757\u5956\u52b1\u7684 25%\uff08\u6bcf\u4e2a\u533a\u5757 10 EGG\uff09\uff0c\u5956\u52b1\u6309\u533a\u5757\u5206\u53d1\u3002"
+        "text": "SYRUP \u6301\u6709\u8005\u6bcf\u5929\u5c06\u6309\u6bd4\u4f8b\u5206\u4eab FIRE \u533a\u5757\u5956\u52b1\u7684 25%\uff08\u6bcf\u4e2a\u533a\u5757 10 FIRE\uff09\uff0c\u5956\u52b1\u6309\u533a\u5757\u5206\u53d1\u3002"
       }
     },
     {
@@ -351,13 +351,13 @@
     {
       "data": {
         "stringId": 424,
-        "text": "%num% EGG"
+        "text": "%num% FIRE"
       }
     },
     {
       "data": {
         "stringId": 426,
-        "text": "\u82b1\u8d39 EGG \u8d2d\u4e70\u5f69\u7968\uff0c\u4e3a\u5956\u6c60\u505a\u8d21\u732e\u3002\u5f69\u7968\u8d2d\u4e70\u5728\u5f00\u5956\u524d\u7ea6 30 \u5206\u949f\u7ed3\u675f\u3002\u5982\u679c\u60a8\u7684\u5f69\u7968\u4e2d\u4e86 2\u30013 \u6216 4 \u4e2a\u53f7\u7801\u4e14\u987a\u5e8f\u4e00\u81f4\uff0c\u5219\u4f1a\u8d62\u53d6\u5956\u91d1\uff01\u795d\u60a8\u597d\u8fd0\uff01"
+        "text": "\u82b1\u8d39 FIRE \u8d2d\u4e70\u5f69\u7968\uff0c\u4e3a\u5956\u6c60\u505a\u8d21\u732e\u3002\u5f69\u7968\u8d2d\u4e70\u5728\u5f00\u5956\u524d\u7ea6 30 \u5206\u949f\u7ed3\u675f\u3002\u5982\u679c\u60a8\u7684\u5f69\u7968\u4e2d\u4e86 2\u30013 \u6216 4 \u4e2a\u53f7\u7801\u4e14\u987a\u5e8f\u4e00\u81f4\uff0c\u5219\u4f1a\u8d62\u53d6\u5956\u91d1\uff01\u795d\u60a8\u597d\u8fd0\uff01"
       }
     },
     {
@@ -435,25 +435,25 @@
     {
       "data": {
         "stringId": 454,
-        "text": "%num% EGG \u53ef\u7528"
+        "text": "%num% FIRE \u53ef\u7528"
       }
     },
     {
       "data": {
         "stringId": 456,
-        "text": "\u60a8\u7684\u91d1\u989d\u5fc5\u987b\u7b49\u4e8e 10 EGG \u7684\u500d\u6570"
+        "text": "\u60a8\u7684\u91d1\u989d\u5fc5\u987b\u7b49\u4e8e 10 FIRE \u7684\u500d\u6570"
       }
     },
     {
       "data": {
         "stringId": 458,
-        "text": "1 \u5f20\u5f69\u7968 = 10 EGG"
+        "text": "1 \u5f20\u5f69\u7968 = 10 FIRE"
       }
     },
     {
       "data": {
         "stringId": 460,
-        "text": "\u60a8\u5c06\u82b1\u8d39\uff1a%num% EGG"
+        "text": "\u60a8\u5c06\u82b1\u8d39\uff1a%num% FIRE"
       }
     },
     {
@@ -483,7 +483,7 @@
     {
       "data": {
         "stringId": 470,
-        "text": "\u5728\u60a8\u82b1\u8d39 EGG \u8d2d\u4e70\u5f69\u7968\u540e\uff0c\u65e0\u6cd5\u5c06 EGG \u9000\u8fd8\u7ed9\u60a8\u3002"
+        "text": "\u5728\u60a8\u82b1\u8d39 FIRE \u8d2d\u4e70\u5f69\u7968\u540e\uff0c\u65e0\u6cd5\u5c06 FIRE \u9000\u8fd8\u7ed9\u60a8\u3002"
       }
     },
     {
@@ -507,7 +507,7 @@
     {
       "data": {
         "stringId": 478,
-        "text": "\u5f69\u7968\u8d2d\u4e70\u4e3a\u6700\u7ec8\u72b6\u6001\u3002\u8d2d\u4e70\u5f69\u7968\u540e\uff0c\u65e0\u6cd5\u5c06 EGG \u9000\u8fd8\u7ed9\u60a8\u3002"
+        "text": "\u5f69\u7968\u8d2d\u4e70\u4e3a\u6700\u7ec8\u72b6\u6001\u3002\u8d2d\u4e70\u5f69\u7968\u540e\uff0c\u65e0\u6cd5\u5c06 FIRE \u9000\u8fd8\u7ed9\u60a8\u3002"
       }
     },
     {
@@ -519,7 +519,7 @@
     {
       "data": {
         "stringId": 482,
-        "text": "\u5f85\u9886\u53d6\u7684 EGG \u5956\u91d1"
+        "text": "\u5f85\u9886\u53d6\u7684 FIRE \u5956\u91d1"
       }
     },
     {
@@ -555,13 +555,13 @@
     {
       "data": {
         "stringId": 494,
-        "text": "\u6279\u51c6 EGG"
+        "text": "\u6279\u51c6 FIRE"
       }
     },
     {
       "data": {
         "stringId": 496,
-        "text": "SYRUP \u6301\u6709\u8005\u6bcf\u5929\u5c06\u6309\u6bd4\u4f8b\u5206\u4eab EGG \u533a\u5757\u5956\u52b1\u7684 40%\uff08\u6bcf\u4e2a\u533a\u5757 10 EGG\uff09\uff0c\u5956\u52b1\u6309\u533a\u5757\u5206\u53d1\u3002"
+        "text": "SYRUP \u6301\u6709\u8005\u6bcf\u5929\u5c06\u6309\u6bd4\u4f8b\u5206\u4eab FIRE \u533a\u5757\u5956\u52b1\u7684 40%\uff08\u6bcf\u4e2a\u533a\u5757 10 FIRE\uff09\uff0c\u5956\u52b1\u6309\u533a\u5757\u5206\u53d1\u3002"
       }
     },
     {
@@ -579,19 +579,19 @@
     {
       "data": {
         "stringId": 504,
-        "text": "\u60a8\u5c06\u4f7f\u7528 EGG-BNB LP \u4ee3\u5e01\u6765\u652f\u4ed8\u65b0\u4ee3\u5e01\u7684\u8d39\u7528\uff0c\u8fd9\u610f\u5473\u7740\u60a8\u9700\u8981\u5728\u6d41\u52a8\u6027\u8d44\u91d1\u6c60\u4e2d\u8d28\u62bc\u7b49\u91cf\u7684 EGG \u548c BNB \u624d\u80fd\u53c2\u4e0e\u3002"
+        "text": "\u60a8\u5c06\u4f7f\u7528 FIRE-BNB LP \u4ee3\u5e01\u6765\u652f\u4ed8\u65b0\u4ee3\u5e01\u7684\u8d39\u7528\uff0c\u8fd9\u610f\u5473\u7740\u60a8\u9700\u8981\u5728\u6d41\u52a8\u6027\u8d44\u91d1\u6c60\u4e2d\u8d28\u62bc\u7b49\u91cf\u7684 FIRE \u548c BNB \u624d\u80fd\u53c2\u4e0e\u3002"
       }
     },
     {
       "data": {
         "stringId": 506,
-        "text": "\u83b7\u53d6 EGG-BNB LP >"
+        "text": "\u83b7\u53d6 FIRE-BNB LP >"
       }
     },
     {
       "data": {
         "stringId": 508,
-        "text": "\u6b64\u9879\u76ee\u83b7\u5f97\u4e86 BNB\uff0cGoose Finance \u4f1a\u711a\u6bc1 EGG\u3002"
+        "text": "\u6b64\u9879\u76ee\u83b7\u5f97\u4e86 BNB\uff0cRiver Finance \u4f1a\u711a\u6bc1 FIRE\u3002"
       }
     },
     {
@@ -609,7 +609,7 @@
     {
       "data": {
         "stringId": 514,
-        "text": "\u901a\u8fc7 Binance Smart Chain \u4e0a\u6700\u5e38\u7528\u7684 AMM \u9879\u76ee\u548c\u6d41\u52a8\u6027\u4f9b\u5e94\u5546 Goose Finance \u53d1\u8d77\u60a8\u7684\u9879\u76ee\uff0c\u5c06\u60a8\u7684\u4ee3\u5e01\u76f4\u63a5\u5f15\u5165 BSC \u4e0a\u6700\u6d3b\u8dc3\u4e14\u5feb\u901f\u53d1\u5c55\u7684\u793e\u533a\u3002"
+        "text": "\u901a\u8fc7 Binance Smart Chain \u4e0a\u6700\u5e38\u7528\u7684 AMM \u9879\u76ee\u548c\u6d41\u52a8\u6027\u4f9b\u5e94\u5546 Lit Finance \u53d1\u8d77\u60a8\u7684\u9879\u76ee\uff0c\u5c06\u60a8\u7684\u4ee3\u5e01\u76f4\u63a5\u5f15\u5165 BSC \u4e0a\u6700\u6d3b\u8dc3\u4e14\u5feb\u901f\u53d1\u5c55\u7684\u793e\u533a\u3002"
       }
     },
     {
@@ -657,7 +657,7 @@
     {
       "data": {
         "stringId": 534,
-        "text": "EGG \u7edf\u8ba1\u6570\u636e"
+        "text": "FIRE \u7edf\u8ba1\u6570\u636e"
       }
     },
     {
@@ -675,7 +675,7 @@
     {
       "data": {
         "stringId": 540,
-        "text": "\u65b0 EGG\/\u533a\u5757"
+        "text": "\u65b0 FIRE\/\u533a\u5757"
       }
     },
     {
@@ -687,19 +687,19 @@
     {
       "data": {
         "stringId": 544,
-        "text": "\u5f85\u6536\u5272\u7684 EGG"
+        "text": "\u5f85\u6536\u5272\u7684 FIRE"
       }
     },
     {
       "data": {
         "stringId": 546,
-        "text": "\u94b1\u5305\u4e2d\u7684 EGG"
+        "text": "\u94b1\u5305\u4e2d\u7684 FIRE"
       }
     },
     {
       "data": {
         "stringId": 548,
-        "text": "\u6b63\u5728\u6536\u96c6 EGG"
+        "text": "\u6b63\u5728\u6536\u96c6 FIRE"
       }
     },
     {
@@ -711,7 +711,7 @@
     {
       "data": {
         "stringId": 552,
-        "text": "\u5f85\u6536\u96c6\u7684 EGG"
+        "text": "\u5f85\u6536\u96c6\u7684 FIRE"
       }
     },
     {
@@ -765,7 +765,7 @@
     {
       "data": {
         "stringId": 576,
-        "text": "Goose Finance"
+        "text": "Lit Finance"
       }
     },
     {
@@ -777,7 +777,7 @@
     {
       "data": {
         "stringId": 580,
-        "text": "\u8d28\u62bc EGG \u4ee5\u8d5a\u53d6\u65b0\u4ee3\u5e01\u3002"
+        "text": "\u8d28\u62bc FIRE \u4ee5\u8d5a\u53d6\u65b0\u4ee3\u5e01\u3002"
       }
     },
     {
@@ -795,7 +795,7 @@
     {
       "data": {
         "stringId": 586,
-        "text": "\u5c06\u711a\u6bc1\u7684 EGG (USD)"
+        "text": "\u5c06\u711a\u6bc1\u7684 FIRE (USD)"
       }
     },
     {
@@ -807,7 +807,7 @@
     {
       "data": {
         "stringId": 590,
-        "text": "\u2b50\ufe0f \u6bcf\u6b21\u60a8\u8d28\u62bc\u548c\u53d6\u6d88\u8d28\u62bc LP \u4ee3\u5e01\u65f6\uff0c\u5408\u7ea6\u90fd\u4f1a\u81ea\u52a8\u4e3a\u60a8\u6536\u5272 EGG \u5956\u52b1\uff01"
+        "text": "\u2b50\ufe0f \u6bcf\u6b21\u60a8\u8d28\u62bc\u548c\u53d6\u6d88\u8d28\u62bc LP \u4ee3\u5e01\u65f6\uff0c\u5408\u7ea6\u90fd\u4f1a\u81ea\u52a8\u4e3a\u60a8\u6536\u5272 FIRE \u5956\u52b1\uff01"
       }
     },
     {
@@ -825,13 +825,13 @@
     {
       "data": {
         "stringId": 596,
-        "text": "\u8d2d\u4e70 EGG \u548c BNB \u4ee3\u5e01"
+        "text": "\u8d2d\u4e70 FIRE \u548c BNB \u4ee3\u5e01"
       }
     },
     {
       "data": {
         "stringId": 598,
-        "text": "\u901a\u8fc7\u6dfb\u52a0 EGG \u548c BNB \u6d41\u52a8\u6027\u83b7\u53d6 EGG-BNB LP \u4ee3\u5e01"
+        "text": "\u901a\u8fc7\u6dfb\u52a0 FIRE \u548c BNB \u6d41\u52a8\u6027\u83b7\u53d6 FIRE-BNB LP \u4ee3\u5e01"
       }
     },
     {
@@ -843,7 +843,7 @@
     {
       "data": {
         "stringId": 602,
-        "text": "\u5728\u9500\u552e\u8fc7\u7a0b\u4e2d\uff0c\u63d0\u4ea4\u60a8\u7684 EGG-LP \u4ee3\u5e01\u6765\u8d2d\u4e70 IFO \u4ee3\u5e01"
+        "text": "\u5728\u9500\u552e\u8fc7\u7a0b\u4e2d\uff0c\u63d0\u4ea4\u60a8\u7684 FIRE-LP \u4ee3\u5e01\u6765\u8d2d\u4e70 IFO \u4ee3\u5e01"
       }
     },
     {
@@ -879,7 +879,7 @@
     {
       "data": {
         "stringId": 614,
-        "text": "\u5151\u6362\u6210 EGG\uff0c\u6216\u8005\u4fdd\u7559\u4f5c\u4e3a\u60a8\u7684\u6536\u85cf\u54c1\uff01"
+        "text": "\u5151\u6362\u6210 FIRE\uff0c\u6216\u8005\u4fdd\u7559\u4f5c\u4e3a\u60a8\u7684\u6536\u85cf\u54c1\uff01"
       }
     },
     {
@@ -921,7 +921,7 @@
     {
       "data": {
         "stringId": 628,
-        "text": "\u5f53\u60a8\u5c06 NFT \u5151\u6362\u6210 EGG \u540e\uff0c\u60a8\u5c06\u6c38\u8fdc\u65e0\u6cd5\u8bbf\u95ee\u5b83\uff01"
+        "text": "\u5f53\u60a8\u5c06 NFT \u5151\u6362\u6210 FIRE \u540e\uff0c\u60a8\u5c06\u6c38\u8fdc\u65e0\u6cd5\u8bbf\u95ee\u5b83\uff01"
       }
     },
     {
@@ -951,7 +951,7 @@
     {
       "data": {
         "stringId": 638,
-        "text": "\u5728\u4e0b\u9762\u5217\u51fa\u7684\u5230\u671f\u65e5\u4e4b\u524d\uff0c\u83b7\u80dc\u8005\u53ef\u4ee5\u5c06\u5176 NFT \u5151\u6362\u6210 EGG \u4ef7\u503c\u3002\u5982\u679c\u60a8\u5c4a\u65f6\u672a\u5151\u6362\u60a8\u7684 NFT\uff0c\u8bf7\u4e0d\u8981\u62c5\u5fc3\uff1a\u60a8\u4ecd\u53ef\u4ee5\u5c06\u5176\u4fdd\u5b58\u5728\u94b1\u5305\u4e2d\uff01"
+        "text": "\u5728\u4e0b\u9762\u5217\u51fa\u7684\u5230\u671f\u65e5\u4e4b\u524d\uff0c\u83b7\u80dc\u8005\u53ef\u4ee5\u5c06\u5176 NFT \u5151\u6362\u6210 FIRE \u4ef7\u503c\u3002\u5982\u679c\u60a8\u5c4a\u65f6\u672a\u5151\u6362\u60a8\u7684 NFT\uff0c\u8bf7\u4e0d\u8981\u62c5\u5fc3\uff1a\u60a8\u4ecd\u53ef\u4ee5\u5c06\u5176\u4fdd\u5b58\u5728\u94b1\u5305\u4e2d\uff01"
       }
     },
     {
@@ -993,7 +993,7 @@
     {
       "data": {
         "stringId": 654,
-        "text": "\u5151\u6362\u6210 EGG"
+        "text": "\u5151\u6362\u6210 FIRE"
       }
     },
     {
@@ -1119,7 +1119,7 @@
     {
       "data": {
         "stringId": 696,
-        "text": "\u8d28\u62bc LP \u4ee3\u5e01\u4ee5\u8d5a\u53d6 EGG"
+        "text": "\u8d28\u62bc LP \u4ee3\u5e01\u4ee5\u8d5a\u53d6 FIRE"
       }
     },
     {
@@ -1161,13 +1161,13 @@
     {
       "data": {
         "stringId": 708,
-        "text": "EGG \u5f69\u7968"
+        "text": "FIRE \u5f69\u7968"
       }
     },
     {
       "data": {
         "stringId": 710,
-        "text": "\u4f7f\u7528 EGG \u8d2d\u4e70\u5f69\u7968"
+        "text": "\u4f7f\u7528 FIRE \u8d2d\u4e70\u5f69\u7968"
       }
     },
     {
@@ -1209,7 +1209,7 @@
     {
       "data": {
         "stringId": 10000,
-        "text": "质押费用将用于回购 EGG"
+        "text": "质押费用将用于回购 FIRE"
       }
     },
     {
@@ -1221,7 +1221,7 @@
     {
       "data": {
         "stringId": 10002,
-        "text": "质押代币以堆叠 EGG"
+        "text": "质押代币以堆叠 FIRE"
       }
     },
     {
