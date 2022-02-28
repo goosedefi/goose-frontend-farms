@@ -154,7 +154,7 @@
   },
   {
     "inputs": [],
-    "name": "egg",
+    "name": "high",
     "outputs": [
       {
         "internalType": "contract EggToken",
