@@ -7,6 +7,7 @@ declare module 'styled-components' {
   export interface DefaultTheme extends PancakeTheme {}
 }
 
+
 const GlobalStyle = createGlobalStyle`
   * {
     font-family: 'IBM Plex Mono', monospace;
@@ -20,5 +21,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 `
+
+
 
 export default GlobalStyle

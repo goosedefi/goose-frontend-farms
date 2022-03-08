@@ -12,6 +12,8 @@ const ThemeContextProvider = ({ children }) => {
     return isDarkUserSetting ? JSON.parse(isDarkUserSetting) : false
   })
 
+
+
   const toggleTheme = () => {
     setIsDark((prevState) => {
       localStorage.setItem(CACHE_KEY, JSON.stringify(!prevState))

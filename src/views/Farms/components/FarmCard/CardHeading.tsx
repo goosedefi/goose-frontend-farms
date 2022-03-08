@@ -10,12 +10,33 @@ export interface ExpandableSectionProps {
   depositFee?: number
   farmImage?: string
   tokenSymbol?: string
+  farmAPY?: string
+
 }
 
 const Wrapper = styled(Flex)`
+  padding:30px 20px;
+  background:#0E0E14;
+  border-radius:20px;
   svg {
     margin-right: 0.25rem;
   }
+`
+
+const AprWrapper = styled.div`
+  text-align:left;
+  font-size:22px;
+  font-weight:600;
+  margin-top:20px;
+  color:#30BAC6;
+`
+
+const TVLWrapper = styled.div`
+  color:#fff;
+  font-size:12px;
+  text-align:left;
+  font-weight:600;
+  margin-top:20px;
 `
 
 const MultiplierTag = styled(Tag)`
@@ -29,19 +50,18 @@ const CardHeading: React.FC<ExpandableSectionProps> = ({
   farmImage,
   tokenSymbol,
   depositFee,
+  farmAPY,
 }) => {
   return (
-    <Wrapper justifyContent="space-between" alignItems="center" mb="12px">
-      <Image src={`/images/farms/${farmImage}.png`} alt={tokenSymbol} width={64} height={64} />
-      <Flex flexDirection="column" alignItems="flex-end">
-        <Heading mb="4px">{lpLabel}</Heading>
-        <Flex justifyContent="center">
-          {depositFee === 0 ? <NoFeeTag /> : null}
-          {/* {isCommunityFarm ? <CommunityTag /> : <CoreTag />} */}
-          {/* <RiskTag risk={risk} /> */}
-          <MultiplierTag variant="secondary">{multiplier}</MultiplierTag>
+    <Wrapper justifyContent="space-between" alignItems="left" mb="12px" flexDirection="column">
+        <Flex flexDirection="row" alignItems="flex-end" justifyContent="space-between" >
+          <Heading mb="4px" >{lpLabel}</Heading>
+          <Image src={`/images/farms/${farmImage}.png`} alt={tokenSymbol} width={28} height={28} />
         </Flex>
-      </Flex>
+        <AprWrapper>
+          {farmAPY}% APR
+        </AprWrapper>
+        <TVLWrapper>TVL: $1,026,865</TVLWrapper>
     </Wrapper>
   )
 }

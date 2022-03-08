@@ -91,7 +91,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
 
   return (
     <Page>
-      <Heading as="h1" size="lg" color="primary" mb="50px" style={{ textAlign: 'center' }}>
+      <Heading as="h1" size="lg" color="white" mb="10px" style={{ textAlign: 'center' }}>
         {
           tokenMode ?
             TranslateString(10002, 'Stake tokens to earn HIGH')
@@ -99,12 +99,11 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
           TranslateString(320, 'Stake LP tokens to earn HIGH')
         }
       </Heading>
-      <Heading as="h2" color="secondary" mb="50px" style={{ textAlign: 'center' }}>
-        {TranslateString(10000, 'Deposit Fee will be used to buyback HIGH')}
+      <Heading as="h2" color="white" mb="30px" style={{ textAlign: 'center', fontSize: '13px', fontWeight: 'normal' }}>
+        {TranslateString(10000, 'Stake HIGH to earn BLISS once event ends')}
       </Heading>
       <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/>
       <div>
-        <Divider />
         <FlexLayout>
           <Route exact path={`${path}`}>
             {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
@@ -114,7 +113,6 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
           </Route>
         </FlexLayout>
       </div>
-      <Image src="/images/high/8.png" alt="illustration" width={1352} height={587} responsive />
     </Page>
   )
 }
