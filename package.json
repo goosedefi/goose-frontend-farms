@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev":"cd euphoria-uikit && yarn pack && cd .. && yarn install && react-scripts start",
+    "dev": "cd euphoria-uikit && yarn pack && cd .. && yarn install && react-scripts start",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx}'"
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}"
   },
   "husky": {
     "hooks": {
