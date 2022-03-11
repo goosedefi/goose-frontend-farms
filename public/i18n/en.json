@@ -663,7 +663,7 @@
     {
       "data": {
         "stringId": 540,
-        "text": "New HIGH\/block"
+        "text": "New HIGH/block"
       }
     },
     {
@@ -1209,7 +1209,7 @@
     {
       "data": {
         "stringId": 10000,
-        "text": "Deposit Fee will be used to buyback HIGH"
+        "text": "Stake HIGH to earn BLISS once event ends"
       }
     },
     {
