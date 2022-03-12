@@ -58,9 +58,10 @@ const HeaderContainer = styled.div`
   }
 `
 const BottomHeader = styled.div`
-  font-size: 14px;
+  font-family: 'IBM Plex Mono Italic', monospace;
+  font-size: 18px;
   text-align: center;
-  padding: 9px;
+  padding: 18px;
   font-style: italic;
   background: rgb(241, 104, 243);
   background: linear-gradient(137deg, rgba(241, 104, 243, 1) 0%, rgba(159, 229, 255, 1) 100%);
@@ -153,7 +154,7 @@ function Mainheader(props: HeaderProps) {
           <ConnectButton>Connect Wallet</ConnectButton>
         </div>
       </HeaderContainer>
-      <BottomHeader>Launching Soon.</BottomHeader>
+      <BottomHeader>Launching soon...</BottomHeader>
     </div>
   )
 }
