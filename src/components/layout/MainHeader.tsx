@@ -120,8 +120,8 @@ function Mainheader(props: HeaderProps) {
                 </div>
               </li>
               <li>
-                <div className={classnames("header_box", { active: location.pathname === '/Farms' })}>
-                    <Link to="/Farms" className={classnames("header_link", { active: location.pathname === '/Farms' })}>
+                <div className={classnames("header_box", { active: location.pathname.includes('/Farms') })}>
+                    <Link to="/Farms" className={classnames("header_link", { active: location.pathname.includes('/Farms') })}>
                     Farms
                     </Link>
                 </div>
