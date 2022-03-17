@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { ThemeProvider as SCThemeProvider } from 'styled-components'
-import { light, dark } from '@pancakeswap-libs/uikit'
+import { light, dark as darkOrigin, PancakeTheme } from '@pancakeswap-libs/uikit'
+
+// customize dark theme
+const dark: PancakeTheme = darkOrigin;
+dark.toggle.handleBackground = 'white';
 
 const CACHE_KEY = 'IS_DARK'
 
