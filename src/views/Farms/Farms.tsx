@@ -26,7 +26,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const TranslateString = useI18n()
   const farmsLP = useFarms()
   const cakePrice = usePriceCakeBusd()
-  const bnbPrice = usePriceBnbBusd()
+  // const bnbPrice = usePriceBnbBusd()
   const { account, ethereum }: { account: string; ethereum: provider } = useWallet()
   const {tokenMode} = farmsProps;
 
@@ -62,11 +62,11 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
 
         let apy = cakePrice.times(cakeRewardPerYear);
 
-        let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
+        const totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
 
-        if (farm.quoteTokenSymbol === QuoteToken.BNB) {
+        /* if (farm.quoteTokenSymbol === QuoteToken.BNB) {
           totalValue = totalValue.times(bnbPrice);
-        }
+        } */
 
         if(totalValue.comparedTo(0) > 0){
           apy = apy.div(totalValue);
@@ -79,14 +79,14 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
           key={farm.pid}
           farm={farm}
           removed={removed}
-          bnbPrice={bnbPrice}
+          // bnbPrice={bnbPrice}
           cakePrice={cakePrice}
           ethereum={ethereum}
           account={account}
         />
       ))
     },
-    [bnbPrice, account, cakePrice, ethereum],
+    [/* bnbPrice, */ account, cakePrice, ethereum],
   )
 
   return (
