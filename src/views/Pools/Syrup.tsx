@@ -10,7 +10,7 @@ import partition from 'lodash/partition'
 import useI18n from 'hooks/useI18n'
 import useBlock from 'hooks/useBlock'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { useFarms, usePriceBnbBusd, usePools } from 'state/hooks'
+import { useFarms, usePools } from 'state/hooks'
 import { QuoteToken, PoolCategory } from 'config/constants/types'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
@@ -25,16 +25,12 @@ const Farm: React.FC = () => {
   const { account } = useWallet()
   const farms = useFarms()
   const pools = usePools(account)
-  const bnbPriceUSD = usePriceBnbBusd()
   const block = useBlock()
 
   const priceToBnb = (tokenName: string, tokenPrice: BigNumber, quoteToken: QuoteToken): BigNumber => {
     const tokenPriceBN = new BigNumber(tokenPrice)
     if (tokenName === 'BNB') {
       return new BigNumber(1)
-    }
-    if (tokenPrice && quoteToken === QuoteToken.BUSD) {
-      return tokenPriceBN.div(bnbPriceUSD)
     }
     return tokenPriceBN
   }
