@@ -40,5 +40,6 @@ const ToggleWrapper = styled.div`
 
   ${Text} {
     margin-left: 8px;
+    color: #FFFFFF;
   }
 `

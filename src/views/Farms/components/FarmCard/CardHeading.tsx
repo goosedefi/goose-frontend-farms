@@ -43,6 +43,10 @@ const MultiplierTag = styled(Tag)`
   margin-left: 4px;
 `
 
+const HeadingWrapper = styled(Heading)`
+  color:#fff;
+`
+
 const CardHeading: React.FC<ExpandableSectionProps> = ({
   lpLabel,
   multiplier,
@@ -55,7 +59,7 @@ const CardHeading: React.FC<ExpandableSectionProps> = ({
   return (
     <Wrapper justifyContent="space-between" alignItems="left" mb="12px" flexDirection="column">
         <Flex flexDirection="row" alignItems="flex-end" justifyContent="space-between" >
-          <Heading mb="4px" >{lpLabel}</Heading>
+          <HeadingWrapper mb="4px" >{lpLabel}</HeadingWrapper>
           <Image src={`/images/farms/${farmImage}.png`} alt={tokenSymbol} width={28} height={28} />
         </Flex>
         <AprWrapper>
