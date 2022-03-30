@@ -73,7 +73,6 @@ const Farm: React.FC = () => {
             {orderBy(openPools, ['sortOrder']).map((pool) => (
               <PoolCard key={pool.sousId} pool={pool} />
             ))}
-            <Coming />
           </>
         </Route>
         <Route path={`${path}/history`}>
