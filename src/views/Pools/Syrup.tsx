@@ -63,21 +63,10 @@ const Farm: React.FC = () => {
 
   return (
     <Page>
-      <Hero>
-        <div>
-          <Heading as="h1" size="xxl" mb="16px">
-            {TranslateString(282, 'SYRUP Pool')}
-          </Heading>
-          <ul>
-            <li>{TranslateString(580, 'Stake CAKE to earn new tokens.')}</li>
-            <li>{TranslateString(404, 'You can unstake at any time.')}</li>
-            <li>{TranslateString(406, 'Rewards are calculated per block.')}</li>
-          </ul>
-        </div>
-        <img src="/images/syrup.png" alt="SYRUP POOL icon" width={410} height={191} />
-      </Hero>
+      <Heading as="h1" size="lg" color="white" mb="30px" style={{ textAlign: 'center' }}>
+        {TranslateString(580, 'Stake CAKE to earn new tokens.')}
+      </Heading>
       <PoolTabButtons />
-      <Divider />
       <FlexLayout>
         <Route exact path={`${path}`}>
           <>
