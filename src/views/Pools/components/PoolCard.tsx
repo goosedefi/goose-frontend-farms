@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
-import { Button, IconButton, useModal, AddIcon, Image } from '@pancakeswap-libs/uikit'
+import { Button, IconButton, useModal, AddIcon, Image, Flex, Heading } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import UnlockButton from 'components/UnlockButton'
 import Label from 'components/Label'
@@ -25,7 +25,7 @@ import OldSyrupTitle from './OldSyrupTitle'
 import HarvestButton from './HarvestButton'
 import CardFooter from './CardFooter'
 
-const FCard = styled.div`
+const PCard = styled.div`
   align-self: baseline;
   background: #17171F;
   border-radius: 20px;
@@ -66,6 +66,19 @@ interface PoolWithApy extends Pool {
 interface HarvestProps {
   pool: PoolWithApy
 }
+
+const CardHeadingWrapper = styled(Flex)`
+  padding:30px 20px;
+  background:#0E0E14;
+  border-radius:20px;
+  svg {
+    margin-right: 0.25rem;
+  }
+`
+
+const HeadingWrapper = styled(Heading)`
+  color:#fff;
+`
 
 const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const {
@@ -143,16 +156,16 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   }, [onApprove, setRequestedApproval])
 
   return (
-    <FCard>
+    <PCard>
       <StyledCardAccent />
+      <CardHeadingWrapper justifyContent="space-between" alignItems="left" mb="12px" flexDirection="column">
+        <Flex flexDirection="row" alignItems="flex-end" justifyContent="space-between" >
+          <HeadingWrapper mb="4px" >{isOldSyrup && '[OLD]'} {tokenName} {TranslateString(348, 'Pool')}</HeadingWrapper>
+          <Image src={`/images/tokens/${image || tokenName}.png`} alt={tokenName} width={28} height={28} />
+        </Flex>
+      </CardHeadingWrapper>
       <div style={{ padding: '24px' }}>
-        <CardTitle isFinished={isFinished && sousId !== 0}>
-          {isOldSyrup && '[OLD]'} {tokenName} {TranslateString(348, 'Pool')}
-        </CardTitle>
         <div style={{ marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
-          <div style={{ flex: 1 }}>
-            <Image src={`/images/tokens/${image || tokenName}.png`} width={64} height={64} alt={tokenName} />
-          </div>
           {account && harvest && !isOldSyrup && (
             <HarvestButton
               disabled={!earnings.toNumber() || pendingTx}
@@ -181,7 +194,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
         )}
         <Label isFinished={isFinished && sousId !== 0} text={TranslateString(330, `${tokenName} earned`)} />
         <StyledCardActions>
-          {!account && <UnlockButton />}
+          {!account && <UnlockButton mt="8px" fullWidth />}
           {account &&
             (needsApproval && !isOldSyrup ? (
               <div style={{ flex: 1 }}>
@@ -240,7 +253,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
         blocksUntilStart={blocksUntilStart}
         poolCategory={poolCategory}
       />
-    </FCard>
+    </PCard>
   )
 }
 
