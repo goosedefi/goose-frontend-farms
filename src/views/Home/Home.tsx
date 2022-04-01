@@ -6,8 +6,9 @@ import Page from 'components/layout/Page'
 import FarmStakingCard from './components/FarmStakingCard'
 import LotteryCard from './components/LotteryCard'
 import CakeStats from './components/CakeStats'
-import TotalValueLockedCard from './components/TotalValueLockedCard'
+import TotalStackedCard from './components/TotalStackedCard'
 import TwitterCard from './components/TwitterCard'
+import LogoCard from './components/LogoCard'
 
 const Hero = styled.div`
   align-items: center;
@@ -58,18 +59,10 @@ const Home: React.FC = () => {
 
   return (
     <Page>
-      <Hero>
-        <Heading as="h1" size="xl" mb="24px" color="secondary">
-          {TranslateString(576, 'Euphoria')}
-        </Heading>
-        <Text>{TranslateString(578, 'Top 3 best DEFI app on Binance Smart Chain.')}</Text>
-      </Hero>
       <div>
         <Cards>
-          <FarmStakingCard />
-          <TwitterCard/>
-          <CakeStats />
-          <TotalValueLockedCard />
+          <TotalStackedCard />
+          <LogoCard />
         </Cards>
       </div>
     </Page>

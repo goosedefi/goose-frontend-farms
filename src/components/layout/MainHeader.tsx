@@ -105,7 +105,11 @@ function Mainheader(props: HeaderProps) {
       <HeaderContainer>
         <div style={{ display: 'flex' }}>
           <div className="logoContainer header_box">
-            <h1>EUPHORIA</h1>
+            <h1>
+              <Link to="/">
+                EUPHORIA
+              </Link>
+            </h1>
           </div>
           <div className="nav_container">
             <ul>
