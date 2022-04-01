@@ -147,7 +147,7 @@ function Mainheader(props: HeaderProps) {
         <div style={{ display: 'flex' }}>
           <EggContainer>
             <div className="egg">
-              <img src="/images/farms/egg_logo.png" alt="egg logo" />
+              <img src="/images/tokens/BLISS.png" alt="bliss logo" width="22px" height="22px" />
             </div>
             <div className="count">$0.126</div>
           </EggContainer>
