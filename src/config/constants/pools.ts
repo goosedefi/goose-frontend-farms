@@ -105,7 +105,7 @@ const pools: PoolConfig[] = [
   },
   {
     sousId: 6,
-    tokenName: 'MIM',
+    tokenName: 'USDT',
     stakingTokenName: QuoteToken.CAKE,
     stakingTokenAddress: '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
     contractAddress: {
