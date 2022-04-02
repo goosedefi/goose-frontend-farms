@@ -7,12 +7,14 @@ const dark: PancakeTheme = darkOrigin;
 dark.toggle.handleBackground = 'white';
 dark.colors.input = '#292933';
 dark.colors.success = '#cdcdcd';
+dark.card.background = '#27262c';
 
 // customize light theme
 const light: PancakeTheme = lightOrigin;
 light.toggle.handleBackground = 'white';
 light.colors.input = '#292933';
 light.colors.success = '#cdcdcd';
+light.card.background = '#27262c';
 
 const CACHE_KEY = 'IS_DARK'
 
