@@ -163,6 +163,8 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
         farmImage={farmImage}
         tokenSymbol={farm.tokenSymbol}
         farmAPY={farmAPY}
+        firstTokenImage={farm.firstTokenImage}
+        secondTokenImage={farm.secondTokenSymbol}
       />
       <CardBottomContent>
         <div className="cardContent">
