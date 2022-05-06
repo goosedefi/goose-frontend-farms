@@ -116,7 +116,8 @@ function Mainheader(props: HeaderProps) {
               <li>
                 <div className={classnames("header_box", { active: location.pathname === '/Trade' })}>
                     <Link
-                    to="/Trade"
+                    to={{ pathname: "https://www.sushi.com/" }}
+                    target="_blank"
                     className={classnames("header_link", { active: location.pathname === '/Trade' })}
                     >
                     Trade
