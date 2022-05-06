@@ -10,6 +10,7 @@ const StyledTotalStackedCard = styled(Card)`
   align-items: center;
   display: flex;
   flex: 1;
+  background: transparent;
 `
 
 const TotalStackedCard = () => {

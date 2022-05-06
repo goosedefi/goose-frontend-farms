@@ -5,6 +5,7 @@ import { Card, CardBody } from '@pancakeswap-libs/uikit'
 const StyledLotteryCard = styled(Card)`
   background-position: top right;
   min-height: 376px;
+  background: transparent;
 `
 
 const Block = styled.div`
@@ -32,7 +33,7 @@ const LogoCard = () => {
   return (
     <StyledLotteryCard>
       <CardBody>
-        <CardImage src="/images/tokens/BLISS.png" alt="bliss logo" />
+        <CardImage src="/images/euphoria-transparent.png" alt="euphoria logo" />
       </CardBody>
     </StyledLotteryCard>
   )
