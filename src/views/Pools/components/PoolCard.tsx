@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
-import { Button, IconButton, useModal, AddIcon, Image, Flex, Heading } from '@pancakeswap-libs/uikit'
+import { Button, IconButton, useModal, AddIcon, Image, Flex, Heading, Text } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import UnlockButton from 'components/UnlockButton'
 import Label from 'components/Label'
@@ -24,6 +24,37 @@ import Card from './Card'
 import OldSyrupTitle from './OldSyrupTitle'
 import HarvestButton from './HarvestButton'
 import CardFooter from './CardFooter'
+
+const CardBottomContent = styled.div`
+  padding:15px;
+  backgroudn:red !important;
+  text-align:left;
+  flex-direcion:row;
+  display:flex;
+  justify-content:space-between;
+  flex:1 1;
+  .cardContent{
+  }
+  .textTitle{
+    color:#fff;
+    font-size:12px;
+  }
+`
+
+const StyledHarvestButton = styled.button`
+  background:#000;
+  border:1px solid #30BAC6;
+  padding:8px 12px;
+  font-size:14px;
+  color:#fff;
+  border-radius:6px;
+  margin-top:10px;
+  transition:0.25s all;
+  cursor:pointer;
+  &:hover{
+    border:1px solid #6CF3FF;
+  }
+`
 
 const PCard = styled.div`
   align-self: baseline;
@@ -164,35 +195,16 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
           <Image src={`/images/tokens/${image || tokenName}.png`} alt={tokenName} width={28} height={28} />
         </Flex>
       </CardHeadingWrapper>
-      <div style={{ padding: '24px' }}>
-        <div style={{ marginBottom: '8px', display: 'flex', alignItems: 'center' }}>
-          {account && harvest && !isOldSyrup && (
-            <HarvestButton
-              disabled={!earnings.toNumber() || pendingTx}
-              text={pendingTx ? 'Collecting' : 'Harvest'}
-              onClick={async () => {
-                setPendingTx(true)
-                await onReward()
-                setPendingTx(false)
-              }}
-            />
-          )}
+      <CardBottomContent>
+        <div className="cardContent">
+          <Text className="textTitle">Rewards Earned</Text>
+          <Text bold style={{ fontSize: '20px', color: '#30BAC6' }}>3,534 HIGH</Text>
         </div>
-        {!isOldSyrup ? (
-          <BalanceAndCompound>
-            <Balance value={getBalanceNumber(earnings, tokenDecimals)} isDisabled={isFinished} />
-            {sousId === 0 && account && harvest && (
-              <HarvestButton
-                disabled={!earnings.toNumber() || pendingTx}
-                text={pendingTx ? TranslateString(999, 'Compounding') : TranslateString(999, 'Compound')}
-                onClick={onPresentCompound}
-              />
-            )}
-          </BalanceAndCompound>
-        ) : (
-          <OldSyrupTitle hasBalance={accountHasStakedBalance} />
-        )}
-        <Label isFinished={isFinished && sousId !== 0} text={TranslateString(330, `${tokenName} earned`)} />
+        <div>
+          <StyledHarvestButton>Harvest</StyledHarvestButton>
+        </div>
+      </CardBottomContent>
+      <div style={{ padding: '24px' }}>
         <StyledCardActions>
           {!account && <UnlockButton mt="8px" fullWidth />}
           {account &&
