@@ -111,6 +111,14 @@ const HeadingWrapper = styled(Heading)`
   color:#fff;
 `
 
+const AprWrapper = styled.div`
+  text-align:left;
+  font-size:22px;
+  font-weight:600;
+  margin-top:20px;
+  color:#30BAC6;
+`
+
 const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const {
     sousId,
@@ -194,6 +202,13 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
           <HeadingWrapper mb="4px" >{isOldSyrup && '[OLD]'} {tokenName} {TranslateString(348, 'Pool')}</HeadingWrapper>
           <Image src={`/images/tokens/${image || tokenName}.png`} alt={tokenName} width={28} height={28} />
         </Flex>
+        <AprWrapper>
+        {isFinished || isOldSyrup || !apy || apy?.isNaN() || !apy?.isFinite() ? (
+            '- %'
+          ) : (
+            <Balance fontSize="14px" isDisabled={isFinished} value={apy?.toNumber()} decimals={2} unit="%" />
+          )} APR
+        </AprWrapper>
       </CardHeadingWrapper>
       <CardBottomContent>
         <div className="cardContent">
@@ -239,14 +254,6 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
               </>
             ))}
         </StyledCardActions>
-        <StyledDetails>
-          <div style={{ flex: 1 }}>{TranslateString(736, 'APR')}:</div>
-          {isFinished || isOldSyrup || !apy || apy?.isNaN() || !apy?.isFinite() ? (
-            '-'
-          ) : (
-            <Balance fontSize="14px" isDisabled={isFinished} value={apy?.toNumber()} decimals={2} unit="%" />
-          )}
-        </StyledDetails>
         <StyledDetails>
           <div style={{ flex: 1 }}>
             <span role="img" aria-label={stakingTokenName}>
