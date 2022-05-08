@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useState } from 'react'
 import styled from 'styled-components'
-import { Button, IconButton, useModal, AddIcon, Image, Flex, Heading, Text } from '@pancakeswap-libs/uikit'
+import { Button, IconButton, useModal, AddIcon, Image, Flex, Heading, Text, Link, LinkExternal } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import UnlockButton from 'components/UnlockButton'
 import Label from 'components/Label'
@@ -16,6 +16,7 @@ import { useSousHarvest } from 'hooks/useHarvest'
 import Balance from 'components/Balance'
 import { QuoteToken, PoolCategory } from 'config/constants/types'
 import { Pool } from 'state/types'
+import ExpandableSectionButton from 'components/ExpandableSectionButton'
 import DepositModal from './DepositModal'
 import WithdrawModal from './WithdrawModal'
 import CompoundModal from './CompoundModal'
@@ -119,6 +120,30 @@ const AprWrapper = styled.div`
   color:#30BAC6;
 `
 
+const ExpandingWrapper = styled.div<{ expanded: boolean }>`
+  height: ${(props) => (props.expanded ? '100%' : '0px')};
+  overflow: hidden;
+`
+
+const DetailsWrapper = styled.div`
+  margin-top: 24px;
+`
+
+const StyledLinkExternal = styled(LinkExternal)`
+  text-decoration: none;
+  font-weight: normal;
+  color: ${({ theme }) => theme.colors.text};
+  display: flex;
+  align-items: center;
+
+  svg {
+    padding-left: 4px;
+    height: 18px;
+    width: auto;
+    fill: ${({ theme }) => theme.colors.primary};
+  }
+`
+
 const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const {
     sousId,
@@ -148,6 +173,8 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
   const { onStake } = useSousStake(sousId, isBnbPool)
   const { onUnstake } = useSousUnstake(sousId)
   const { onReward } = useSousHarvest(sousId, isBnbPool)
+
+  const [showExpandableSection, setShowExpandableSection] = useState(false)
 
   const [requestedApproval, setRequestedApproval] = useState(false)
   const [pendingTx, setPendingTx] = useState(false)
@@ -228,7 +255,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
           <StyledHarvestButton>Harvest</StyledHarvestButton>
         </div>
       </CardBottomContent>
-      <div style={{ padding: '24px' }}>
+      <div style={{ padding: '24px 24px 0px 24px' }}>
         <StyledCardActions>
           {!account && <UnlockButton mt="8px" fullWidth />}
           {account &&
@@ -264,14 +291,33 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
             ))}
         </StyledCardActions>
       </div>
-      <CardFooter
-        projectLink={projectLink}
-        totalStaked={totalStaked}
-        blocksRemaining={blocksRemaining}
-        isFinished={isFinished}
-        blocksUntilStart={blocksUntilStart}
-        poolCategory={poolCategory}
+      <ExpandableSectionButton
+        onClick={() => setShowExpandableSection(!showExpandableSection)}
+        expanded={showExpandableSection}
       />
+      <ExpandingWrapper expanded={showExpandableSection}>
+        <DetailsWrapper>
+          <Flex justifyContent="space-between">
+            <Text>{TranslateString(316, 'Stake')}:</Text>
+            <StyledLinkExternal href={
+                `https://app.pangolin.exchange/#/swap/${stakingTokenAddress[process.env.REACT_APP_CHAIN_ID]}`
+            }>
+              {stakingTokenName}
+            </StyledLinkExternal>
+          </Flex>
+          {!isFinished && (
+            <Flex justifyContent="space-between">
+              <Text>{TranslateString(23, 'Total Liquidity')}:</Text>
+              <Text>{totalStaked}</Text>
+            </Flex>
+          )}
+          <Flex justifyContent="flex-start">
+            <Link external href={`https://bscscan.com/token/${stakingTokenAddress[process.env.REACT_APP_CHAIN_ID]}`} bold={false}>
+              {TranslateString(356, 'View on BscScan')}
+            </Link>
+          </Flex>
+        </DetailsWrapper>
+      </ExpandingWrapper>
     </PCard>
   )
 }
