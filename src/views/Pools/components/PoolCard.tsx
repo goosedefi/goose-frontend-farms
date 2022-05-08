@@ -200,7 +200,7 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
       <CardHeadingWrapper justifyContent="space-between" alignItems="left" mb="12px" flexDirection="column">
         <Flex flexDirection="row" alignItems="flex-end" justifyContent="space-between" >
           <HeadingWrapper mb="4px" >{isOldSyrup && '[OLD]'} {tokenName} {TranslateString(348, 'Pool')}</HeadingWrapper>
-          <Image src={`/images/tokens/${image || tokenName}.png`} alt={tokenName} width={28} height={28} />
+          <Image src={`/images/tokens/${image || tokenName}.png`} alt={tokenName} width={38} height={38} />
         </Flex>
         <AprWrapper>
         {isFinished || isOldSyrup || !apy || apy?.isNaN() || !apy?.isFinite() ? (
@@ -214,6 +214,15 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
         <div className="cardContent">
           <Text className="textTitle">Rewards Earned</Text>
           <Text bold style={{ fontSize: '20px', color: '#30BAC6' }}>3,534 HIGH</Text>
+        </div>
+        <div>
+          <StyledHarvestButton>Harvest</StyledHarvestButton>
+        </div>
+      </CardBottomContent>
+      <CardBottomContent>
+        <div className="cardContent">
+          <Text className="textTitle">{tokenName} Deposited</Text>
+          <Text bold style={{ fontSize: '20px', color: '#30BAC6' }}>{getBalanceNumber(stakedBalance)}</Text>
         </div>
         <div>
           <StyledHarvestButton>Harvest</StyledHarvestButton>
@@ -254,15 +263,6 @@ const PoolCard: React.FC<HarvestProps> = ({ pool }) => {
               </>
             ))}
         </StyledCardActions>
-        <StyledDetails>
-          <div style={{ flex: 1 }}>
-            <span role="img" aria-label={stakingTokenName}>
-              🥞{' '}
-            </span>
-            {TranslateString(384, 'Your Stake')}:
-          </div>
-          <Balance fontSize="14px" isDisabled={isFinished} value={getBalanceNumber(stakedBalance)} />
-        </StyledDetails>
       </div>
       <CardFooter
         projectLink={projectLink}
