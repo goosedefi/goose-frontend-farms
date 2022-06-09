@@ -7,9 +7,10 @@ declare module 'styled-components' {
   export interface DefaultTheme extends PancakeTheme {}
 }
 
+
 const GlobalStyle = createGlobalStyle`
   * {
-    font-family: 'Kanit', sans-serif;
+    font-family: 'IBM Plex Mono', monospace;
   }
   body {
     background-color: ${({ theme }) => theme.colors.background};
@@ -20,5 +21,7 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 `
+
+
 
 export default GlobalStyle

@@ -6,12 +6,13 @@ import Page from 'components/layout/Page'
 import FarmStakingCard from './components/FarmStakingCard'
 import LotteryCard from './components/LotteryCard'
 import CakeStats from './components/CakeStats'
-import TotalValueLockedCard from './components/TotalValueLockedCard'
+import TotalStackedCard from './components/TotalStackedCard'
 import TwitterCard from './components/TwitterCard'
+import LogoCard from './components/LogoCard'
 
 const Hero = styled.div`
   align-items: center;
-  background-image: url('/images/egg/3.png');
+  background-image: url('/images/high/3.png');
   background-repeat: no-repeat;
   background-position: top center;
   display: flex;
@@ -23,7 +24,7 @@ const Hero = styled.div`
   text-align: center;
 
   ${({ theme }) => theme.mediaQueries.lg} {
-    background-image: url('/images/egg/3.png'), url('/images/egg/3b.png');
+    background-image: url('/images/high/3.png'), url('/images/high/3b.png');
     background-position: left center, right center;
     height: 165px;
     padding-top: 0;
@@ -58,18 +59,10 @@ const Home: React.FC = () => {
 
   return (
     <Page>
-      <Hero>
-        <Heading as="h1" size="xl" mb="24px" color="secondary">
-          {TranslateString(576, 'Goose Finance')}
-        </Heading>
-        <Text>{TranslateString(578, 'Top 3 best DEFI app on Binance Smart Chain.')}</Text>
-      </Hero>
       <div>
         <Cards>
-          <FarmStakingCard />
-          <TwitterCard/>
-          <CakeStats />
-          <TotalValueLockedCard />
+          <TotalStackedCard />
+          <LogoCard />
         </Cards>
       </div>
     </Page>

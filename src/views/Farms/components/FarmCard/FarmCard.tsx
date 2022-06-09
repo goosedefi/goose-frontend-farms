@@ -29,6 +29,37 @@ const RainbowLight = keyframes`
   }
 `
 
+const CardBottomContent = styled.div`
+  padding:15px;
+  backgroudn:red !important;
+  text-align:left;
+  flex-direcion:row;
+  display:flex;
+  justify-content:space-between;
+  flex:1 1;
+  .cardContent{
+  }
+  .textTitle{
+    color:#fff;
+    font-size:12px;
+  }
+`
+
+const HarvestButton = styled.button`
+  background:#000;
+  border:1px solid #30BAC6;
+  padding:8px 12px;
+  font-size:14px;
+  color:#fff;
+  border-radius:6px;
+  margin-top:10px;
+  transition:0.25s all;
+  cursor:pointer;
+  &:hover{
+    border:1px solid #6CF3FF;
+  }
+`
+
 const StyledCardAccent = styled.div`
   background: linear-gradient(45deg,
   rgba(255, 0, 0, 1) 0%,
@@ -43,26 +74,22 @@ const StyledCardAccent = styled.div`
   rgba(251, 7, 217, 1) 90%,
   rgba(255, 0, 0, 1) 100%);
   background-size: 300% 300%;
-  animation: ${RainbowLight} 2s linear infinite;
-  border-radius: 16px;
-  filter: blur(6px);
+  border-radius: 20px;
   position: absolute;
-  top: -2px;
-  right: -2px;
-  bottom: -2px;
-  left: -2px;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
   z-index: -1;
 `
 
 const FCard = styled.div`
   align-self: baseline;
-  background: ${(props) => props.theme.card.background};
-  border-radius: 32px;
-  box-shadow: 0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05);
+  background: #17171F;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 24px;
   position: relative;
   text-align: center;
 `
@@ -104,20 +131,20 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
       return null
     }
     if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-      return bnbPrice.times(farm.lpTotalInQuoteToken)
+      return null // bnbPrice.times(farm.lpTotalInQuoteToken)
     }
     if (farm.quoteTokenSymbol === QuoteToken.CAKE) {
       return cakePrice.times(farm.lpTotalInQuoteToken)
     }
     return farm.lpTotalInQuoteToken
-  }, [bnbPrice, cakePrice, farm.lpTotalInQuoteToken, farm.quoteTokenSymbol])
+  }, [/* bnbPrice, */ cakePrice, farm.lpTotalInQuoteToken, farm.quoteTokenSymbol])
 
   const totalValueFormated = totalValue
     ? `$${Number(totalValue).toLocaleString(undefined, { maximumFractionDigits: 0 })}`
     : '-'
 
   const lpLabel = farm.lpSymbol
-  const earnLabel = 'EGG'
+  const earnLabel = 'HIGH'
   const farmAPY = farm.apy && farm.apy.times(new BigNumber(100)).toNumber().toLocaleString(undefined, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
@@ -127,7 +154,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
 
   return (
     <FCard>
-      {farm.tokenSymbol === 'EGG' && <StyledCardAccent />}
+      {farm.tokenSymbol === 'HIGH' && <StyledCardAccent />}
       <CardHeading
         lpLabel={lpLabel}
         multiplier={farm.multiplier}
@@ -135,39 +162,41 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
         depositFee={farm.depositFeeBP}
         farmImage={farmImage}
         tokenSymbol={farm.tokenSymbol}
+        farmAPY={farmAPY}
+        firstTokenImage={farm.firstTokenImage}
+        secondTokenImage={farm.secondTokenSymbol}
       />
-      {!removed && (
-        <Flex justifyContent='space-between' alignItems='center'>
-          <Text>{TranslateString(352, 'APR')}:</Text>
-          <Text bold style={{ display: 'flex', alignItems: 'center' }}>
-            {farm.apy ? (
-              <>
-                <ApyButton
-                  lpLabel={lpLabel}
-                  quoteTokenAdresses={quoteTokenAdresses}
-                  quoteTokenSymbol={quoteTokenSymbol}
-                  tokenAddresses={tokenAddresses}
-                  cakePrice={cakePrice}
-                  apy={farm.apy}
-                />
-                {farmAPY}%
-              </>
-            ) : (
-              <Skeleton height={24} width={80} />
-            )}
-          </Text>
-        </Flex>
-      )}
-      <Flex justifyContent='space-between'>
-        <Text>{TranslateString(318, 'Earn')}:</Text>
-        <Text bold>{earnLabel}</Text>
-      </Flex>
-      <Flex justifyContent='space-between'>
-        <Text style={{ fontSize: '24px' }}>{TranslateString(10001, 'Deposit Fee')}:</Text>
-        <Text bold style={{ fontSize: '24px' }}>{(farm.depositFeeBP / 100)}%</Text>
-      </Flex>
+      <CardBottomContent>
+        <div className="cardContent">
+          <Text className="textTitle">{TranslateString(318, 'Earn')}:</Text>
+          <Text bold style={{ fontSize: '20px', color: '#30BAC6' }}>{earnLabel}</Text>
+        </div>
+        <div className="cardContent">
+          <Text className="textTitle">{TranslateString(10001, 'Deposit Fee')}:</Text>
+          <Text bold style={{ fontSize: '20px', color: '#30BAC6' }}>{(farm.depositFeeBP / 100)}%</Text>
+        </div>
+      </CardBottomContent>
+      <CardBottomContent>
+        <div className="cardContent">
+          <Text className="textTitle">Rewards Earned</Text>
+          <Text bold style={{ fontSize: '20px', color: '#30BAC6' }}>3,534 HIGH</Text>
+        </div>
+        <div>
+          <HarvestButton>Harvest</HarvestButton>
+        </div>
+      </CardBottomContent>
+
+      <CardBottomContent>
+        <div className="cardContent">
+          <Text className="textTitle">BLISS Deposited</Text>
+          <Text bold style={{ fontSize: '20px', color: '#30BAC6' }}>12,342</Text>
+        </div>
+        <div>
+          <HarvestButton>Harvest</HarvestButton>
+        </div>
+      </CardBottomContent>
+
       <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
-      <Divider />
       <ExpandableSectionButton
         onClick={() => setShowExpandableSection(!showExpandableSection)}
         expanded={showExpandableSection}

@@ -26,7 +26,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const TranslateString = useI18n()
   const farmsLP = useFarms()
   const cakePrice = usePriceCakeBusd()
-  const bnbPrice = usePriceBnbBusd()
+  // const bnbPrice = usePriceBnbBusd()
   const { account, ethereum }: { account: string; ethereum: provider } = useWallet()
   const {tokenMode} = farmsProps;
 
@@ -62,11 +62,11 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
 
         let apy = cakePrice.times(cakeRewardPerYear);
 
-        let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
+        const totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
 
-        if (farm.quoteTokenSymbol === QuoteToken.BNB) {
+        /* if (farm.quoteTokenSymbol === QuoteToken.BNB) {
           totalValue = totalValue.times(bnbPrice);
-        }
+        } */
 
         if(totalValue.comparedTo(0) > 0){
           apy = apy.div(totalValue);
@@ -79,32 +79,31 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
           key={farm.pid}
           farm={farm}
           removed={removed}
-          bnbPrice={bnbPrice}
+          // bnbPrice={bnbPrice}
           cakePrice={cakePrice}
           ethereum={ethereum}
           account={account}
         />
       ))
     },
-    [bnbPrice, account, cakePrice, ethereum],
+    [/* bnbPrice, */ account, cakePrice, ethereum],
   )
 
   return (
     <Page>
-      <Heading as="h1" size="lg" color="primary" mb="50px" style={{ textAlign: 'center' }}>
+      <Heading as="h1" size="lg" color="white" mb="10px" style={{ textAlign: 'center' }}>
         {
           tokenMode ?
-            TranslateString(10002, 'Stake tokens to earn EGG')
+            TranslateString(10002, 'Stake tokens to earn HIGH')
             :
-          TranslateString(320, 'Stake LP tokens to earn EGG')
+          TranslateString(320, 'Stake LP tokens to earn HIGH')
         }
       </Heading>
-      <Heading as="h2" color="secondary" mb="50px" style={{ textAlign: 'center' }}>
-        {TranslateString(10000, 'Deposit Fee will be used to buyback EGG')}
+      <Heading as="h2" color="white" mb="30px" style={{ textAlign: 'center', fontSize: '13px', fontWeight: 'normal' }}>
+        {TranslateString(10000, 'Stake HIGH to earn BLISS once event ends')}
       </Heading>
       <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/>
       <div>
-        <Divider />
         <FlexLayout>
           <Route exact path={`${path}`}>
             {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
@@ -114,7 +113,6 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
           </Route>
         </FlexLayout>
       </div>
-      <Image src="/images/egg/8.png" alt="illustration" width={1352} height={587} responsive />
     </Page>
   )
 }
